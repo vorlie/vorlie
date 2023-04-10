@@ -1,7 +1,4 @@
-### Welcome to my Github profile!<br>
-## Socials
-[<image src="./twitter.png" alt=Twitter width=64/>](https://twitter.com/User9684)
-[<image src="./discord.png" alt=Discord width=64/>](https://discordapp.com/users/212795145639165952)
+### Welcome to my ugly ass Github profile!<br>
 <br>
 ## Reporting Stats
 <br>
