@@ -1,16 +1,15 @@
-### Hi there 👋
-
-<!--
-**vorlie/vorlie** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-
-Here are some ideas to get you started:
-
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+### Welcome to my Github profile!<br>
+## Socials
+[<image src="./twitter.png" alt=Twitter width=64/>](https://twitter.com/User9684)
+[<image src="./discord.png" alt=Discord width=64/>](https://discordapp.com/users/212795145639165952)
+<br>
+## Reporting Stats
+<br>
+![](https://img.dangercord.com/212795145639165952)
+<br><br>
+## Github Stats
+![](https://komarev.com/ghpvc/?username=vorlie&color=ffccff)
+<br><br>
+![Vorlie's GitHub stats](https://github-readme-stats.vercel.app/api?username=vorlie&count_private=true&theme=github_dark&show_icons=true&border_color=4C8EDA&include_all_commits=true&border_radius=12)
+<br><br>
+![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=vorlie&theme=github_dark&layout=compact&border_color=4C8EDA&card_width=445&border_radius=12)
