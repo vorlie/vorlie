@@ -1,7 +1,4 @@
 ### Welcome to my ugly ass Github profile!<br>
-<br>
-## Reporting Stats
-<br>
 ![](https://img.dangercord.com/212795145639165952)
 <br><br>
 ## Github Stats
