@@ -5,4 +5,4 @@
 
 ## Stats
 [![Discord Presence](https://lanyard.cnrad.dev/api/670986272377929743?bg=549654&borderRadius=25px)](https://discord.com/users/670986272377929743)
-![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=vorlie&bg_color=549654&layout=compact&border_color=549654&card_width=445&border_radius=25&title_color=b3ffb3&text_color=b3ffb3)
+![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=vorlie&bg_color=549654&layout=compact&border_color=549654&card_width=410&border_radius=25&title_color=b3ffb3&text_color=b3ffb3)
