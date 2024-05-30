@@ -14,11 +14,16 @@
 <div align="center">
   <h1>🎶 Widgets:</h1>
   <a href="https://discord.com/users/614807913302851594">
-    <img src="https://lanyard.cnrad.dev/api/614807913302851594?bg=45419B&amp&borderRadius=25px&animated=True&showDisplayName=true" alt="Discord Presence">
+    <img src="https://lanyard.cnrad.dev/api/614807913302851594?bg=45419B&amp&borderRadius=25px&animated=True&showDisplayName=true" alt="discord presence">
   </a>
 </div>
 <div align="center">
   <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
-    <img src="https://github-readme-stats.vercel.app/api?username=vorlie&include_all_commits=true&&show_icons=true&line_height=20&title_color=C1BFFA&icon_color=C1BFFA&text_color=FFFFFF&bg_color=45419B&hide_border=true&border_radius=25&" alt="my Github Stats"/>
+    <img src="https://github-readme-stats.vercel.app/api?username=vorlie&include_all_commits=true&&show_icons=true&line_height=20&title_color=C1BFFA&icon_color=C1BFFA&text_color=FFFFFF&bg_color=45419B&hide_border=true&border_radius=25&" alt="stats"/>
+  </a>
+</div>
+<div align="center">
+  <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
+    <img src="https://github-readme-stats.vercel.app/api/top-langs?username=vorlie&show_icons=true&locale=en&layout=compact&bg_color=45419B&title_color=C1BFFA&hide_border=true&border_radius=25&text_color=FFFFFF" alt="top langs" />
   </a>
 </div>
