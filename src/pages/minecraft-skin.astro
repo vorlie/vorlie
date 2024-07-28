@@ -1,0 +1,81 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Vorlie | Minecraft Skin">
+    <div class="header">
+        <p class="header-text">My Minecraft Skin</p>
+        <p class="body-text">Here is my skin that I currently use.</p>
+        <p class="mobile-text">
+            If you see this, then it means you are on mobile. 
+            Skin render might be moved a little bit to the right but thats due to how MineRender accepts width/height values, can't set <span class="span-color">100%</span> for example or I have a big skill issue, it's one of them probably.
+            You might want to scroll horizontally.</p>
+    </div>
+    <div class="wrapper" id="wrapper"></div>
+</Layout>
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/three.js/94/three.min.js"
+    integrity="sha256-NGC9JEuTWN4GhTj091wctgjzftr+8WNDmw0H8J5YPYE="
+    crossorigin="anonymous"></script>
+<script
+    src="https://cdn.jsdelivr.net/gh/InventivetalentDev/MineRender@1.4.6/dist/skin.min.js"
+></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var renderOptions = {
+            canvas: {
+                width: 500, 
+                height: 500,
+            },
+        };
+
+        var skinRender = new SkinRender(
+            renderOptions,
+            document.getElementById("wrapper"),
+        );
+        skinRender.render("vorlie");
+    });
+</script>
+<style>
+    .span-color {
+        color: var(--accent-gradient);
+    }
+    .header-text {
+        margin: 0;
+        font-size: 35px;
+        padding-bottom: 5px;
+        font-weight: 600;
+        color: var(--color-text);
+    }
+
+    .body-text {
+        color: var(--color-text);
+        font-size: 20px;
+    }
+    .wrapper {
+        width: fit-content;
+        height: auto;
+    }
+
+    .mobile-text {
+        display: none;
+    }
+    @media (max-width: 768px) {
+        .header-text {
+            text-align: center;
+        }
+
+        .body-text {
+            text-align: center;
+        }
+
+        .mobile-text {
+            display: block;
+            text-align: center;
+        }
+    }
+</style>

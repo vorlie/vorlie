@@ -24,6 +24,6 @@
 </div>
 <div align="center">
   <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
-    <img src="https://github-readme-stats.vercel.app/api/top-langs?username=vorlie&show_icons=true&locale=en&layout=compact&bg_color=45419B&title_color=C1BFFA&hide_border=true&border_radius=25&text_color=FFFFFF" alt="top langs" />
+    <img src="https://github-readme-stats.vercel.app/api/top-langs?username=Ushie&show_icons=true&locale=en&layout=compact&bg_color=45419B&title_color=C1BFFA&hide_border=true&border_radius=25&text_color=FFFFFF" alt="top langs" />
   </a>
 </div>

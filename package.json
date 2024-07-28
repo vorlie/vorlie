@@ -1,0 +1,21 @@
+{
+  "name": "charliedetta",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev --host",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/react": "^3.6.0",
+    "@vercel/speed-insights": "^1.0.11",
+    "astro": "^4.11.5",
+    "bootstrap-icons": "^1.11.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.2"
+  }
+}

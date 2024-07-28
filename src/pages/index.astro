@@ -1,0 +1,139 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Lanyard from "../components/Lanyard.astro";
+import AudioVisualizer from "../components/AudioVisualizer.astro";
+---
+
+<Layout title="Vorlie | Home">
+    <div class="main">
+        <div class="text">
+            <p class="header-text">
+                Hey there! I'm <span class="span-color">Charlie</span>, an incompetent dev
+            </p>
+            <div class="body-text">
+                <p>
+                  I'm a 18 year old idiot who likes to make websites and code discord bots. I'm currently learning <span class="span-color">TypeScript</span>. 
+                  I know <span class="span-color">Python</span>, <span class="span-color">HTML/CSS</span>, <span class="span-color">Astro</span>.
+                  <br>I like to watch anime. My favourite anime(s) are <span class="span-color">Bleach</span> and <span class="span-color">86: Eighty Six</span>. 
+                  <br>I like to play <span class="span-color">League of Legends</span>, <span class="span-color">World of Tanks Blitz</span>, and <span class="span-color">Minecraft</span>. I also play other games.
+                  <br>
+                </p>
+            </div>
+        </div>
+        <AudioVisualizer />
+        <Lanyard />
+        <p class="header-text-sec">Socials</p>
+        <div class="links">
+            <div class="buttons">
+                <a href="hhttps://u.gg/lol/profile/eun1/%E6%88%91%E7%88%B1%E4%B8%AD%E5%9B%BD%E5%85%B1%E4%BA%A7%E5%85%9A-yap/overview"><svg class="svg_color" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 50 50" width="50px" height="50px">    <path d="M 11 3 C 10.621 3 10.275469 3.2137344 10.105469 3.5527344 C 9.9364688 3.8917344 9.9712188 4.2966094 10.199219 4.5996094 L 13 8.3320312 L 13 41.667969 L 9.1992188 45.400391 C 8.9722187 45.703391 8.9374687 46.108266 9.1054688 46.447266 C 9.2754687 46.786266 9.621 47 10 47 L 39 47 C 39.304 47 39.59125 46.862 39.78125 46.625 L 44.78125 41.625 C 45.02125 41.324 45.066391 40.913406 44.900391 40.566406 C 44.733391 40.221406 44.385 40 44 40 L 23 40 L 23 4 C 23 3.447 22.553 3 22 3 L 11 3 z M 25 7 L 25 9 C 34.925 9 43 17.075 43 27 C 43 31.144 41.578797 34.954 39.216797 38 L 41.685547 38 C 43.774547 34.841 45 31.063 45 27 C 45 15.972 36.028 7 25 7 z M 25 11 L 25 38 L 36.589844 38 C 39.315844 35.13 41 31.262 41 27 C 41 18.178 33.822 11 25 11 z M 11 12.740234 C 7.544 16.134234 5.3072969 20.765109 5.0292969 25.912109 C 5.0102969 26.272109 5 26.635 5 27 C 5 27.59 5.0261719 28.174953 5.0761719 28.751953 C 5.5021719 33.631953 7.693 38.012766 11 41.259766 L 11 38.287109 C 8.503 35.197109 7 31.273 7 27 C 7 22.727 8.503 18.802891 11 15.712891 L 11 12.740234 z M 11 19.271484 C 9.729 21.564484 9 24.198 9 27 C 9 29.802 9.729 32.435516 11 34.728516 L 11 19.271484 z"/></svg></a>
+                <a href="https://www.faceit.com/en/players/vorlie"><svg class="svg_color"  xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 32 32" width="32px" height="32px"><path d="M 5 5 L 5 6 L 5 27 L 27 27 L 27 5 L 5 5 z M 7 7 L 25 7 L 25 25 L 7 25 L 7 7 z M 22 10 L 18 16 L 9 16 L 22 21 L 22 10 z"/></svg></a>
+                <a href="https://youtube.com/@vve1_"><i class="bi bi-youtube"></i></a>
+                <a href="https://github.com/vorlie"><i class="bi bi-github"></i></a>
+                <a href="https://discord.gg/ujYCjUwu6U"><i class="bi bi-discord"></i></a>
+            </div>
+        </div>  
+    </div>
+</Layout>
+<style>
+.link{
+  text-decoration: none;
+  color: var(--accent-gradient);
+  transition: 0.2s ease;
+  &:hover{
+    color: var(--color-text-hover);
+    text-decoration: underline;
+  }
+}
+.main {
+    text-align: left;
+    justify-content: left;
+    max-width: 100%;
+}
+.text {
+    color: var(--color-text);
+    font-size: 20px;
+}
+.span-size{
+    font-size: 25px;
+}
+.header-text {
+    margin: 0;
+    font-size: 35px;
+    padding-bottom: 5px;
+    font-weight: 600;
+}
+.header-text-sec{
+    font-size: 30px;
+    font-weight: 600;
+    text-align: left;
+    margin: auto;
+}
+.body-text {
+    margin: 0;
+    max-width: 95%;
+}
+.body-text p{
+    margin: 0 0 10px;
+}
+.bi{
+    font-size: 40px;
+}
+.svg_color {
+    fill: var(--color-text);
+    width: 50px;
+    height: 50px;
+    transition: 0.2s ease;
+    &:hover{
+        fill: var(--color-text-hover);
+    }
+}
+.buttons {
+  display: flex;
+  gap: 10px;
+  align-items: left; 
+  justify-content: left;
+  max-width: fit-content;
+  margin: auto 0; 
+}
+
+.buttons a {
+  text-decoration: none;
+  padding: 10px;
+  color: var(--color-text);
+  transition: 0.2s ease;
+}
+
+.buttons a:hover {
+  color: var(--color-text-hover);
+}
+
+.span-color {
+  color: var(--accent-gradient);
+}
+
+.span-color a {
+  color: var(--accent-gradient);
+  text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  .main {
+    text-align: center;
+    padding: 10px;
+  }
+
+  .header-text-sec {
+    text-align: center;
+  }
+  .audioPlayer {
+    max-width: 100%;
+    margin-bottom: 10px;
+  }
+  .buttons {
+    justify-content: center; 
+    align-items: center; 
+    flex-wrap: wrap;
+    margin: 0 auto;
+  }
+}
+</style>

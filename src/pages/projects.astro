@@ -1,0 +1,143 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout title="Vorlie | Projects">
+    <p class="header-text">Projects</p>
+    <div class="projects">
+        <div class="project">
+            <div class="project-container">
+                <p class="project-title">YoutubeDL</p>
+                <p class="project-desc">Simple youtube downloader, soundcloud is supported. Contributions are always welcome!</p>
+            </div>
+            <div class="project-links">
+                <a class="link" href="https://github.com/vorlie/YoutubeDL">Repository</a>
+                <a class="link" href="https://github.com/vorlie/YoutubeDL/releases/">Releases</a>
+            </div>
+        </div>
+        <div class="project">
+            <div class="project-container">
+                <p class="project-title">ImageFormatConverter</p>
+                <p class="project-desc">A convenient tool for converting between JPEG, WebP, PNG, GIF, BMP, and TIFF formats.</p>
+            </div>
+            <div class="project-links">
+                <a class="link" href="https://github.com/vorlie/ImageFormatConverter">Repository</a>
+                <a class="link" href="https://github.com/vorlie/ImageFormatConverter/releases">Releases</a>
+            </div>
+        </div>
+        <div class="project">
+            <div class="project-container">
+                <p class="project-title">FFmpegMerger</p>
+                <p class="project-desc">Allows to merge audio and video files with ease, without touching the terminal. FFmpeg is needed!</p>
+            </div>
+            <div class="project-links">
+                <a class="link" href="https://github.com/vorlie/FFmpegMerger">Repository</a>
+                <a class="link" href="https://github.com/vorlie/FFmpegMerger/releases">Releases</a>
+            </div>
+        </div>
+        <div class="project">
+            <div class="project-container">
+                <p class="project-title">multi-tool</p>
+                <p class="project-desc">Supports image file conversion, audio-video merging, and a fun AI chat. Requires FFmpeg in PATH. Discover the easter egg!</p>
+            </div>
+            <div class="project-links">
+                <a class="link" href="https://github.com/vorlie/multi-tool">Repository</a>
+                <a class="link" href="https://github.com/vorlie/multi-tool/releases">Releases</a>
+            </div>
+        </div>
+        <div class="project">
+            <div class="project-container">
+                <p class="project-title">NotepadV</p>
+                <p class="project-desc">Project created for fun due to my boredom. I won't be updating it that much since as I said it's for fun.
+
+                </p>
+            </div>
+            <div class="project-links">
+                <a class="link" href="https://github.com/vorlie/NotepadV">Repository</a>
+                <a class="link" href="https://github.com/vorlie/NotepadV/releases">Releases</a>
+            </div>
+        </div>
+
+    </div>
+</Layout>
+<style>
+    .header-text{
+        margin: 0;
+        font-size: 35px;
+        color: var(--color-text);
+        padding-bottom: 5px;
+        font-weight: 600;
+    }
+    .projects{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 30px;
+        align-items: left;
+        justify-content: left;
+        margin: 0;
+        padding: 5px;
+        max-width: fit-content;
+    }
+    .project-title{
+        font-size: 20px;
+        font-weight: 600;
+        text-align: left;
+        margin: 0;
+        padding: 5px;
+        color: var(--color-text);
+    }
+    .project-desc{
+        color: var(--color-text-secondary);
+        font-size: 15px;
+        font-weight: 400;
+        text-align: left;
+        margin: 0;
+        padding: 5px;
+    }
+    .project{
+        display: flex;
+        flex-direction:column;
+        gap: 5px;
+        align-items: left;
+        justify-content: left;
+        margin: 0;
+        padding: 5px;
+        width: 600px;
+        border-radius: var(--roundness);
+        padding: 20px;
+        background: var(--color-main-background-secondary);
+    }
+    .project-links{
+        display: flex;
+        flex-direction: row;
+        gap: 5px;
+        align-items: left;
+        justify-content: left;
+        margin: 0;
+        padding: 5px;
+        max-width: fit-content;
+        border-radius: var(--roundness);
+    }
+    .link{
+        background: var(--color-main-background-secondary);
+        padding: 10px;
+        border-radius: var(--roundness);
+        text-decoration: none;
+        color: var(--color-2);
+        transition: 0.2s ease;
+        &:hover{
+            color: var(--color-text-hover);
+            background: var(--color-main-background);
+        }
+    }
+    @media (max-width: 768px) {
+        .projects{
+            justify-content: center;
+        }
+        .header-text{
+            text-align: center;
+            margin: 0;
+            padding: 10px;
+        }
+    }
+</style>

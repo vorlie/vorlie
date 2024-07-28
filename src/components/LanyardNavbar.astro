@@ -1,0 +1,73 @@
+<astro>
+    <a class="lanyard" href="https://discord.com/users/614807913302851594">
+        <div class="vorlie">
+            <img id="avatar" src="" alt="User Avatar" />
+            <img id="avatar-deco" src="" alt="Avatar Decoration" />
+            <div class="userinfo"></div>
+        </div>
+    </a>
+    <div class="status"></div>
+</astro>
+<script src="../scripts/lanyard/navbar.ts"></script>
+<style>
+    .vorlie {
+        padding: 5px;
+        border-radius: var(--roundness);
+        background-color: var(--color-main-background);
+        max-width: fit-content;
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        transition: 0.3s ease-in-out;
+    }
+    #avatar {
+        margin-left: 5px;
+        margin-right: 10px;
+        display: block;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid transparent;
+    }
+
+    #avatar-deco {
+        position: absolute;
+        margin-right: 10px;
+        width: 60px;
+        height: 60px;
+        border: 2px solid transparent;
+        pointer-events: none;
+        -o-object-fit: cover;
+        object-fit: cover;
+    }
+    .status {
+        margin-top: 10px;
+        display: flex;
+        padding: 4px;
+        border-radius: var(--roundness-2);
+        background: var(--color-main-background-secondary);
+    }
+    .lanyard {
+        text-decoration: none;
+        color: inherit;
+    }
+    .userinfo {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        margin-right: 5px;
+    }
+
+    .user-info {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .user-info p {
+        text-align: left;
+        font-size: 18px;
+        margin: 5px 0;
+    }
+</style>
