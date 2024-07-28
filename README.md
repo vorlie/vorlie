@@ -3,7 +3,7 @@
   <p> In free time I play games, such as League of Legends(Mostly league), osu! and watch some movies, shows!<br></p>
   <h3>🔥 Stuff that I know and try to learn:</h3>
   <a href="https://skillicons.dev">
-    <img alt="Languages / Frameworks" src="https://skillicons.dev/icons?i=astro,css,html,js,md,py,cpp,java&perline=13">
+    <img alt="Languages / Frameworks" src="https://skillicons.dev/icons?i=astro,css,html,js,md,py,ts&perline=13">
   </a>
   <h3>💯 Other stuff</h3>
   <a href="https://skillicons.dev">
