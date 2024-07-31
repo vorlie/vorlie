@@ -16,4 +16,4 @@ const updateNavbar = async (): Promise<void> => {
 updatePresence();
 updateNavbar();
 setInterval(updatePresence, 1000);
-setInterval(updateNavbar, 1000000);
+setInterval(updateNavbar, 10000);
