@@ -7,7 +7,7 @@ const generateNavbarHTML = (navbarData: DiscordUser): string => {
     const username = navbarData.username;
 
     return `
-        <p style="margin: 4px auto;font-weight: 600;font-size: 20px; color: var(--color-2);">${displayName}<span style="color: var(--color-2);"> @${username}</span></p>
+        <p style="margin: 4px auto;font-weight: 600;font-size: 20px; color: var(--color-1);">${displayName}<br><span style="color: var(--color-2);">@${username}</span></p>
     `;
 };
 
