@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import "../styles/MinecraftSkin.css";
 ---
 
 <Layout title="Vorlie | Minecraft Skin">
@@ -40,42 +41,3 @@ import Layout from "../layouts/Layout.astro";
         skinRender.render("vorlie");
     });
 </script>
-<style>
-    .span-color {
-        color: var(--accent-gradient);
-    }
-    .header-text {
-        margin: 0;
-        font-size: 35px;
-        padding-bottom: 5px;
-        font-weight: 600;
-        color: var(--color-text);
-    }
-
-    .body-text {
-        color: var(--color-text);
-        font-size: 20px;
-    }
-    .wrapper {
-        width: fit-content;
-        height: auto;
-    }
-
-    .mobile-text {
-        display: none;
-    }
-    @media (max-width: 768px) {
-        .header-text {
-            text-align: center;
-        }
-
-        .body-text {
-            text-align: center;
-        }
-
-        .mobile-text {
-            display: block;
-            text-align: center;
-        }
-    }
-</style>

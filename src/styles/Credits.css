@@ -1,0 +1,54 @@
+/* src/components/react/css/Credits.css */
+.credits-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: var(--background-color);
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.header-text {
+    margin: 0;
+    font-size: 2em;
+    color: var(--header-color);
+    text-align: center;
+    padding-bottom: 15px;
+    font-weight: bold;
+}
+
+.credit-item {
+    margin-bottom: 10px;
+    font-size: 1.2em;
+    color: var(--text-color);
+}
+
+.credit-label {
+    font-weight: bold;
+}
+
+.credit-link {
+    text-decoration: none;
+    color: var(--link-color);
+    transition: color 0.3s ease;
+}
+
+.credit-link:hover {
+    color: var(--link-hover-color);
+    text-decoration: underline;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .credits-container {
+        padding: 15px;
+    }
+
+    .header-text {
+        font-size: 1.5em;
+    }
+
+    .credit-item {
+        font-size: 1em;
+    }
+}

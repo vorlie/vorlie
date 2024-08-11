@@ -1,35 +1,9 @@
+---
+import '../styles/Lanyard.css';
+---
 <astro>
     <p class="header">Activities</p>
     <div class="presence-container">
     </div>
 </astro>
 <script src="../scripts/lanyard/presence.ts"></script>
-<style>
-.header{
-    padding-top: 5px;
-    font-size: 30px;
-    font-weight: 600;
-    text-align: left;
-    margin: auto;
-}
-.presence-container {
-    display: flex;
-    flex-direction:column;
-    gap: 20px;
-    align-items: left;
-    justify-content: left;
-    margin: 15px 0;
-}
-
-@media (max-width: 768px) {
-    .header{
-        text-align: center;
-    }
-    .presence-container {
-        text-align: left;
-        margin: 10px auto;
-        padding: 10px;
-        max-width: 100%;
-    }
-}
-</style>

@@ -1,0 +1,40 @@
+.sidebar-inner {
+    padding: 10px;
+}
+
+nav a {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: var(--color-text);
+    text-decoration: none;
+    font-size: 18px;
+    transition: 0.2s ease;
+    padding: 4px;
+    text-align: center;
+    border-radius: var(--roundness-2);
+    background: var(--color-main-background-secondary);
+
+    &:hover {
+        color: var(--color-text-hover);
+        background: var(--color-1);
+    }
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    padding: 10px;
+}
+
+.footer a {
+    color: var(--color-text);
+    text-decoration: none;
+    font-size: 18px;
+    transition: 0.2s ease;
+    padding: 4px;
+
+    &:hover {
+        color: var(--color-text-hover);
+    }
+}
