@@ -21,23 +21,26 @@ const creditsData = [
 
 export const Credits: React.FC = () => {
     return (
-        <div className="credits-container">
+        <div className="credits">
             <h1 className="header-text">Credits</h1>
-            {creditsData.map((credit, index) => (
-                <div key={index} className="credit-item">
-                    {credit.label && <span className="credit-label">{credit.label}:</span>}
-                    {credit.links ? (
-                        credit.links.map((link, i) => (
-                            <React.Fragment key={i}>
-                                <a className="credit-link" href={link.link} target="_blank" rel="noopener noreferrer">{link.name}</a>
-                                {i < credit.links.length - 1 && ', '}
-                            </React.Fragment>
-                        ))
-                    ) : (
-                        <a className="credit-link" href={credit.link} target="_blank" rel="noopener noreferrer">{credit.name}</a>
-                    )}
-                </div>
-            ))}
+            <div className="credits-container">
+                
+                {creditsData.map((credit, index) => (
+                    <div key={index} className="credit-item">
+                        {credit.label && <span className="credit-label">{credit.label}:</span>}
+                        {credit.links ? (
+                            credit.links.map((link, i) => (
+                                <React.Fragment key={i}>
+                                    <a className="credit-link" href={link.link} target="_blank" rel="noopener noreferrer">{link.name}</a>
+                                    {i < credit.links.length - 1 && ', '}
+                                </React.Fragment>
+                            ))
+                        ) : (
+                            <a className="credit-link" href={credit.link} target="_blank" rel="noopener noreferrer">{credit.name}</a>
+                        )}
+                    </div>
+                ))}
+            </div>
         </div>
     );
 };

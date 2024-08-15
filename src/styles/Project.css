@@ -3,7 +3,7 @@
     font-size: 35px;
     color: var(--color-text);
     padding-bottom: 5px;
-    font-weight: 600;
+    font-weight: bold;
 }
 .projects{
     display: flex;

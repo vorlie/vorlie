@@ -1,7 +1,7 @@
-/* src/components/react/css/Credits.css */
+/* src/styles/Credits.css */
 .credits-container {
     max-width: 800px;
-    margin: 0 auto;
+    margin: 0;
     padding: 20px;
     background-color: var(--background-color);
     border-radius: var(--border-radius);
@@ -12,7 +12,7 @@
     margin: 0;
     font-size: 2em;
     color: var(--header-color);
-    text-align: center;
+    text-align: left;
     padding-bottom: 15px;
     font-weight: bold;
 }
