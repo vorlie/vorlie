@@ -27,7 +27,7 @@ export const Credits: React.FC = () => {
                 
                 {creditsData.map((credit, index) => (
                     <div key={index} className="credit-item">
-                        {credit.label && <span className="credit-label">{credit.label}:</span>}
+                        {credit.label && <span className="credit-label">{credit.label}: </span>}
                         {credit.links ? (
                             credit.links.map((link, i) => (
                                 <React.Fragment key={i}>

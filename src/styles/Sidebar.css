@@ -33,7 +33,7 @@ nav a {
     font-size: 18px;
     transition: 0.2s ease;
     padding: 4px;
-
+   
     &:hover {
         color: var(--color-text-hover);
     }

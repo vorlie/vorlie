@@ -28,12 +28,12 @@
 
 .credit-link {
     text-decoration: none;
-    color: var(--link-color);
+    color: var(--color-2);
     transition: color 0.3s ease;
 }
 
 .credit-link:hover {
-    color: var(--link-hover-color);
+    color: var(--color-text);
     text-decoration: underline;
 }
 
