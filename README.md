@@ -1,6 +1,7 @@
 <div align="center">
   <h1> 💫 About Me: </h1>
   <p> In free time I play games, such as Minecraft, osu!, NFS Heat and watch some movies, shows!<br></p>
+  <p> In free time I play games, such as Minecraft, osu!, NFS Heat and watch some movies, shows!<br></p>
   <h3>🔥 Stuff that I know and try to learn:</h3>
   <a href="https://skillicons.dev">
     <img alt="Languages / Frameworks" src="https://skillicons.dev/icons?i=astro,css,html,js,md,py,ts&perline=13">
