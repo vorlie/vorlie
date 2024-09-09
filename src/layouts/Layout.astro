@@ -11,6 +11,7 @@ import Sidebar from '../components/Sidebar.astro';
 import Particles from '../components/particles.astro';
 import NoiseBackground from '../components/NoiseBackground.astro';
 import SpeedInsights  from "@vercel/speed-insights/astro"
+import Navbar from '../components/react/Navbar';
 ---
 
 <!DOCTYPE html>
@@ -32,10 +33,11 @@ import SpeedInsights  from "@vercel/speed-insights/astro"
 		<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
 	</head>
 	<body>
+		
 		<SpeedInsights />
 		<Particles />
 		<NoiseBackground />
-		<div class="sidebar-container">
+		<!--<div class="sidebar-container">
 			<div class="sidebar">
 				<Sidebar />
 			</div>
@@ -50,10 +52,12 @@ import SpeedInsights  from "@vercel/speed-insights/astro"
 				<a href="/minecraft-skin">My Minecraft Skin</a>
 				<a href="/credits">Credits</a>
 			</div>
-		</div>
+		</div> -->
+		<Navbar />
 		<div class="main-content">
-		  <slot />
-		</div>
+		  	
+		  	<slot />
+		</div> 
 	  </body>
 </html>
 <script src="../scripts/lanyard/updateLanyard.ts"></script>
@@ -124,73 +128,10 @@ import SpeedInsights  from "@vercel/speed-insights/astro"
 	.activityPointerEventsAllow {
 		pointer-events: auto; 
 	}
-	.sidebar-container {
-		display: block;
-        position: fixed;
-        width: 250px;
-        height: 98.5%;
-        background: var(--color-main-background-secondary);
-		backdrop-filter: blur(2px);
-		-webkit-backdrop-filter: blur(2px);
-        overflow-y: auto;
-		border-radius: var(--roundness);
-    }
-	.navbar-container {
-		display: none;
+	.main-content{
+		margin: 10px auto;
+		justify-content: center;
+		max-width: 1200px;
 	}
-	.main-content {
-		margin-left: 260px;
-		padding: 20px;
-        background: var(--color-main-background-secondary);
-		backdrop-filter: blur(2px);
-		-webkit-backdrop-filter: blur(2px);
-        overflow-y: auto;
-		border-radius: var(--roundness);
-    }
-	@media (max-width: 768px) {
-		.sidebar-container {
-			display: none;
-		}
-		.main-content {
-			margin-left: 0;
-			padding: 5px;
-			margin-top: 70px; 
-        }
-		.navbar-container {
-            display: block;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-			height: 60px;
-			overflow-y: scroll;
-			border-radius: 0 0 var(--roundness) var(--roundness);
-            background: var(--color-main-background-secondary);
-			backdrop-filter: blur(2px);
-			-webkit-backdrop-filter: blur(2px);
-            z-index: 1000;
-        }
-		.navbar{
-			display: flex;
-			justify-content: left;
-			align-items: center;
-			height: 100%;
-		}
-		.navbar a {
-			margin: 5px;
-			padding: 10px;
-			color: var(--color-text);
-			text-decoration: none;
-			text-align: left;
-			font-size: 18px;
-			transition: 0.2s ease;
-			text-wrap:nowrap;
-			border-radius: var(--roundness-2);
-			background: var(--color-main-background-secondary);
-			&:active {
-				color: var(--color-text-hover);
-				background: var(--color-1);
-			}
-		}
-	}
+
 </style>

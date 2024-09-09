@@ -1,17 +1,18 @@
 .header-text{
     margin: 0;
-    font-size: 35px;
+    font-size: 30px;
     color: var(--color-text);
     padding-bottom: 5px;
     font-weight: bold;
+    text-align: center;
 }
 .projects{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     gap: 30px;
-    align-items: left;
-    justify-content: left;
+
+    justify-content: center;
     margin: 0;
     padding: 5px;
     max-width: fit-content;
@@ -40,7 +41,7 @@
     justify-content: left;
     margin: 0;
     padding: 5px;
-    width: 600px;
+    width: 300px;
     border-radius: var(--roundness);
     padding: 20px;
     background: var(--color-main-background-secondary);

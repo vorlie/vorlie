@@ -1,8 +1,5 @@
 .vorlie {
-    padding: 5px;
-    border-radius: var(--roundness);
-    background-color: var(--color-main-background);
-    max-width: 100%;
+    max-width: fit-content;
     position: relative;
     display: flex;
     flex-direction: row;
@@ -51,4 +48,55 @@
 .user-info {
     display: flex;
     flex-direction: column;
+}
+
+.navbar {
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: var(--color-main-background-secondary);
+    border-radius: var(--roundness);
+    padding: 10px;
+    overflow-x: auto;
+}
+
+.navbar-inner-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.nav-items {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 0 5px; 
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    text-decoration: none;
+    color: var(--color-1);
+    padding: 8px;
+    border-radius: var(--roundness);
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.3s ease;
+    white-space: nowrap; 
+    flex-shrink: 0;
+    &:hover {
+        color: var(--acolor-3);
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-items {
+        gap: 1px;
+        padding: 0 5px; 
+    }
 }

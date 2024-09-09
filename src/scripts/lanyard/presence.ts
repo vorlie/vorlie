@@ -45,6 +45,13 @@ export const displayPresence = async (presence: LanyardData | null): Promise<voi
     let hasDisplayableActivity = false;
 
     presence.activities.forEach(async (activity, index) => {
+        const truncateText = (text: string, maxLength: number) => {
+            if (text.length > maxLength) {
+                return text.slice(0, maxLength) + '...';
+            }
+            return text;
+        }
+        
         let isCustomStatus = activity.type === 4;
         let activityDetails = activity.details ?? '';
         let activityState = activity.state ?? '';
@@ -54,9 +61,12 @@ export const displayPresence = async (presence: LanyardData | null): Promise<voi
         let endTimestamp = activity.timestamps?.end;
         let imageUrl = '/images/default.png'; 
         if (activity.name.toLowerCase().includes('spotify') && presence.spotify) {
-            activityName = `Listening to ${presence.spotify.song}`;
-            activityDetails = `on ${presence.spotify.album}`;
-            activityState = `by ${presence.spotify.artist}`;
+            let truncatedName = truncateText(`Listening to ${presence.spotify.song}`, 30);
+            let truncatedDetails = truncateText(`by ${presence.spotify.artist}`, 33);
+            let truncatedState = truncateText(presence.spotify.song, 33);
+            activityName = truncatedName;
+            activityDetails = truncatedDetails;
+            activityState = truncatedState;
             startTimestamp = presence.spotify.timestamps.start;
             endTimestamp = presence.spotify.timestamps.end;
         }
@@ -73,8 +83,7 @@ export const displayPresence = async (presence: LanyardData | null): Promise<voi
         activityElement.style.backgroundColor = 'var(--color-main-background-secondary)';
         activityElement.style.borderRadius = 'var(--roundness)';
         activityElement.style.padding = '10px 15px';
-        const maxWidth = window.innerWidth <= 768 ? '100%' : 'fit-content';
-        activityElement.style.maxWidth = maxWidth;
+        activityElement.style.width = '350px';
 
         hasDisplayableActivity = true;
 
@@ -112,20 +121,12 @@ export const displayPresence = async (presence: LanyardData | null): Promise<voi
         detailsElement.style.marginLeft = '10px'; 
         detailsElement.style.verticalAlign = 'top';
 
-        const maxTextLength = window.innerWidth <= 768 ? 25 : 50;
-        const truncateText = (text: string, maxLength: number) => {
-            if (text.length > maxLength) {
-                return text.slice(0, maxLength) + '...';
-            }
-            return text;
-        }
-
         if (activityDetails) {
             const detailsTextElement = document.createElement('p');
             detailsTextElement.style.margin = '0';
             detailsTextElement.className = 'activityDetails';
             detailsTextElement.title = activityDetails;
-            detailsTextElement.textContent = truncateText(activityDetails, maxTextLength);
+            detailsTextElement.textContent = truncateText(activityDetails, 33);
             detailsElement.appendChild(detailsTextElement);
         }
 
@@ -134,7 +135,7 @@ export const displayPresence = async (presence: LanyardData | null): Promise<voi
             stateElement.style.margin = '0';
             stateElement.className = 'activityState';
             stateElement.title = activityState;
-            stateElement.textContent = truncateText(activityState, maxTextLength);
+            stateElement.textContent = truncateText(activityState, 33);
             detailsElement.appendChild(stateElement);
         }
 

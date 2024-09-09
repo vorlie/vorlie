@@ -1,6 +1,6 @@
 // navbar.ts
 import type { LanyardData, DiscordUser } from './interfaces';
-import { fetchPresence, getStatusColor } from './lanyard';
+import { getStatusColor } from './lanyard';
 
 const generateNavbarHTML = (navbarData: DiscordUser): string => {
     const displayName = navbarData.display_name || '';
@@ -13,8 +13,7 @@ const generateNavbarHTML = (navbarData: DiscordUser): string => {
 
 export const displayNavbar = (navbarData: LanyardData | null): void => {
     const navbar = document.querySelector('.vorlie');
-    const statusContainer = document.querySelector('.status') as HTMLElement;
-    if (!navbar || !navbarData || !statusContainer) {
+    if (!navbar || !navbarData) {
         if (navbar) {
             navbar.innerHTML = '<p>Loading...</p>';
         }
@@ -42,45 +41,5 @@ export const displayNavbar = (navbarData: LanyardData | null): void => {
         avatarDecoImg.style.display = 'block';
     } else if (avatarDecoImg) {
         avatarDecoImg.style.display = 'none';
-    }
-
-    const customStatus = navbarData.activities.find(activity => activity.type === 4);
-    if (customStatus) {
-        let emojiElement: HTMLImageElement | null = null;
-        let statusTextElement: HTMLSpanElement | HTMLAnchorElement;
-
-        if (customStatus.emoji) {
-            emojiElement = document.createElement('img');
-            emojiElement.src = `https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/72x72/${customStatus.emoji.name.codePointAt(0)!.toString(16)}.png` ?? customStatus.emoji.name;
-            emojiElement.style.width = '24px';
-            emojiElement.style.height = '24px';
-            emojiElement.style.marginRight = '8px';
-        }
-
-        const statusState = customStatus.state ?? '';
-        if (statusState.startsWith('https://')) {
-            const anchorElement = document.createElement('a') as HTMLAnchorElement;
-            anchorElement.href = statusState;
-            anchorElement.textContent = statusState;
-            anchorElement.target = '_blank';
-            anchorElement.rel = 'noopener noreferrer';
-            anchorElement.style.color = 'var(--accent-gradient)';
-            anchorElement.style.textDecoration = 'underline';
-
-            statusTextElement = anchorElement;
-        } else {
-            statusTextElement = document.createElement('span');
-            statusTextElement.textContent = statusState || 'No status';
-        }
-
-        statusContainer.innerHTML = '';
-        if (emojiElement) {
-            statusContainer.appendChild(emojiElement);
-        }
-        statusContainer.appendChild(statusTextElement);
-        statusContainer.style.display = 'flex';
-    } else {
-        statusContainer.innerHTML = '';
-        statusContainer.style.display = 'none';
     }
 };

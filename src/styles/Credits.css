@@ -1,17 +1,17 @@
 /* src/styles/Credits.css */
 .credits-container {
     max-width: 800px;
-    margin: 0;
-    padding: 20px;
+    margin: 0 auto;
     background-color: var(--background-color);
     border-radius: var(--border-radius);
+    text-align: center;
 }
 
 .header-text {
-    margin: 0;
-    font-size: 2em;
+    margin: 0 auto;
+    font-size: 30px;
+    text-align: center;
     color: var(--header-color);
-    text-align: left;
     padding-bottom: 15px;
     font-weight: bold;
 }

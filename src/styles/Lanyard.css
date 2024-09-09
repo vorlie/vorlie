@@ -1,16 +1,9 @@
-.header{
-    padding-top: 5px;
-    font-size: 30px;
-    font-weight: 600;
-    text-align: left;
-    margin: auto;
-}
 .presence-container {
     display: flex;
-    flex-direction:column;
-    gap: 20px;
-    align-items: left;
-    justify-content: left;
+    flex-direction: row;
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
     margin: 15px 0;
 }
 
@@ -20,6 +13,7 @@
     }
     .presence-container {
         text-align: left;
+        flex-direction: column;
         margin: 10px auto;
         padding: 10px;
         max-width: 100%;
