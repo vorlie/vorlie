@@ -1,4 +1,14 @@
 /* src/styles/Credits.css */
+
+#credits{
+    color: var(--color-2);
+    text-decoration: underline;
+    transition: 0.3s ease;
+    &:hover {
+        color: var(--acolor-3);
+    }
+}
+
 .credits-container {
     max-width: 800px;
     margin: 0 auto;

@@ -1,3 +1,11 @@
+#specs{
+    color: var(--color-2);
+    text-decoration: underline;
+    transition: 0.3s ease;
+    &:hover {
+        color: var(--acolor-3);
+    }
+}
 .main {
     text-align: left;
     justify-content: center;

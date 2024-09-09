@@ -15,10 +15,10 @@ const Navbar: React.FC = ({ }) => (
                 </div>
             </a>
             <div className="nav-items">
-                <NavItem link="/" linkText="Home" iconString='house-fill'/>
-                <NavItem link="/projects" linkText="Projects" iconString='code-square' />
-                <NavItem link="/pc-specs" linkText="Specs" iconString='pci-card'/>
-                <NavItem link="/credits" linkText="Credits" iconString='info-square-fill'/>
+                <NavItem id="home" link="/" linkText="Home" iconString='house-fill'/>
+                <NavItem id="projects" link="/projects" linkText="Projects" iconString='code-square' />
+                <NavItem id="specs" link="/pc-specs" linkText="Specs" iconString='pci-card'/>
+                <NavItem id="credits" link="/credits" linkText="Credits" iconString='info-square-fill'/>
             </div>
         </div>
     </div>
