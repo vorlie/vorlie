@@ -100,15 +100,24 @@
     font-size: 40px;
 }
 
-.hamburger-menu{
+.hamburger-menu {
     background: var(--color-main-background-secondary);
     padding: 10px;
     position: absolute;
-    z-index: 1000; 
+    z-index: 1000;
     border-radius: var(--roundness);
     border: none;
+    opacity: 0; /* Start hidden */
+    visibility: hidden; /* Start hidden */
+    transition: opacity 0.3s ease, visibility 0.3s ease; /* Fade in/out transitions */
+    display: block; /* Ensure element remains in layout */
 }
+  
 
+.hamburger-menu.visible {
+    opacity: 1;  
+    visibility: visible;  
+}
 .backdrop {
     display: none;
     position: fixed;
