@@ -1,0 +1,32 @@
+---
+import NavItem from './react/NavItem';
+---
+<script src="../scripts/toggleHamburger.ts"></script>
+<div class="navbar">
+  <div class="navbar-inner-container">
+    <a class="lanyard" href="https://discord.com/users/614807913302851594">
+      <div class="vorlie">
+        <img id="avatar" src="" alt="User Avatar" />
+        <img id="avatar-deco" src="" alt="Avatar Decoration" />
+        <div class="userinfo"></div>
+      </div>
+    </a>
+    <button popovertarget="nav-hamburgertarget" id="nav-hamburger" class="nav-hamburger">
+      <i class="bi bi-list fontsize2"></i>
+    </button>
+    <div popover id="nav-hamburgertarget" class="hamburger-menu" >
+        <NavItem id="home" link="/" linkText="Home" iconString="house-fill" />
+        <NavItem id="projects" link="/projects" linkText="Projects" iconString="code-square" />
+        <NavItem id="specs" link="/pc-specs" linkText="Specs" iconString="pci-card" />
+        <NavItem id="credits" link="/credits" linkText="Credits" iconString="info-square-fill" />
+    </div>
+    <div class="nav-items">
+        <NavItem id="home" link="/" linkText="Home" iconString="house-fill" />
+        <NavItem id="projects" link="/projects" linkText="Projects" iconString="code-square" />
+        <NavItem id="specs" link="/pc-specs" linkText="Specs" iconString="pci-card" />
+        <NavItem id="credits" link="/credits" linkText="Credits" iconString="info-square-fill" />
+    </div>
+  </div>
+  <div id="invisible-close-button" class="invisible-close-button"></div>
+  <div id="backdrop" class="backdrop"></div>
+</div>

@@ -90,13 +90,54 @@
     white-space: nowrap; 
     flex-shrink: 0;
     &:hover {
-        color: var(--acolor-3);
+        color: var(--color-3);
     }
 }
+#nav-hamburger{
+    display: none;
+}
+.fontsize2{
+    font-size: 40px;
+}
 
+.hamburger-menu{
+    background: var(--color-main-background-secondary);
+    padding: 10px;
+    position: absolute;
+    z-index: 1000; 
+    border-radius: var(--roundness);
+    border: none;
+}
+
+.backdrop {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999
+  }
+
+body {
+    transition: filter 0.3s ease;
+}
 @media (max-width: 768px) {
     .nav-items {
-        gap: 1px;
-        padding: 0 5px; 
+        display: none;
+    }
+    #nav-hamburger {
+        display: block;
+        color: var(--color-1);
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        margin: 0;
+        transition: 0.3s ease;
+        &:hover {
+            color: var(--color-2);
+        }
     }
 }
