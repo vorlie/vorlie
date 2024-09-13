@@ -25,7 +25,6 @@ const NavItem: React.FC<NavItemProps> = ({ link, linkText, iconString, id, subCl
             {linkText ? linkText : null }
         </a>
     </div>
-
 );
 
 export default NavItem;

@@ -20,7 +20,7 @@
     height: 50px;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid transparent;
+    border: 2px solid var(--status-color-offline);
 }
 
 #avatar-deco {

@@ -37,7 +37,6 @@ export const displayNavbar = (navbarData: LanyardData | null): void => {
 
     if (navbarData.discord_user.avatar_decoration_data && avatarDecoImg) {
         avatarDecoImg.src = `https://cdn.discordapp.com/avatar-decoration-presets/${navbarData.discord_user.avatar_decoration_data.asset}.png`;
-        avatarDecoImg.alt = 'Avatar Decoration';
         avatarDecoImg.style.display = 'block';
     } else if (avatarDecoImg) {
         avatarDecoImg.style.display = 'none';
