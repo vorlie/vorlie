@@ -63,7 +63,7 @@ export const displayPresence = async (presence: LanyardData | null): Promise<voi
         if (activity.name.toLowerCase().includes('spotify') && presence.spotify) {
             let truncatedName = truncateText(`Listening to ${presence.spotify.song}`, 30);
             let truncatedDetails = truncateText(`by ${presence.spotify.artist}`, 33);
-            let truncatedState = truncateText(presence.spotify.song, 33);
+            let truncatedState = truncateText(presence.spotify.song, 30);
             activityName = truncatedName;
             activityDetails = truncatedDetails;
             activityState = truncatedState;

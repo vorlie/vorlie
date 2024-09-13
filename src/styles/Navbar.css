@@ -6,6 +6,12 @@
     align-items: center;
     transition: 0.3s ease-in-out;
 }
+.subcolor{
+    color: var(--color-text-hover) !important;
+    &:hover{
+        color: var(--color-3) !important;
+    }
+}
 #avatar {
     margin-left: 5px;
     margin-right: 10px;

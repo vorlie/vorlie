@@ -6,7 +6,7 @@ const ctx = canvas.getContext('2d');
 
 let width, height, lastNow;
 let snowflakes;
-const maxSnowflakes = 400;
+const maxSnowflakes = 100;
 
 function init() {
   snowflakes = [];

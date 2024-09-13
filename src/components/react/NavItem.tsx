@@ -1,17 +1,28 @@
 import React from 'react';
 import '../../styles/Navbar.css';
+
 interface NavItemProps {
     link: string;
-    linkText: string;
+    linkText?: string;
     iconString: string;
     id: string;
+    subClass?: string;
+    newPage?: boolean;
+    title?: string;
 }
 
-const NavItem: React.FC<NavItemProps> = ({ link, linkText, iconString, id }) => (
+const NavItem: React.FC<NavItemProps> = ({ link, linkText, iconString, id, subClass, newPage, title }) => (
     <div>
-        <a id={id} className="nav-item" href={link} rel="noopener noreferrer">
+        <a 
+            id={id} 
+            className={`nav-item ${subClass}`} 
+            href={link} 
+            rel="noopener noreferrer"
+            target={newPage ? "_blank" : "_self"}
+            title={title ? title : ''}
+        >
             <i className={`bi bi-${iconString}`} style={{ fontSize: '18px' }} ></i>
-            {linkText}
+            {linkText ? linkText : null }
         </a>
     </div>
 
