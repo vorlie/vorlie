@@ -52,12 +52,6 @@ body {
     font-size: var(--header-size);
     font-weight: 600;
     text-align: center;
-    margin: 0;
-}
-.header2{
-    font-size: var(--header-size);
-    font-weight: 600;
-    text-align: center;
     margin: var(--margin);
 }
 .text {
