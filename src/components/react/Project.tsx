@@ -1,5 +1,4 @@
 import React from 'react';
-import '../../styles/Project.css';
 
 interface ProjectProps {
     title: string;
@@ -15,9 +14,12 @@ const Project: React.FC<ProjectProps> = ({ title, desc, links }) => (
         </div>
         <div className="project-links">
             {links.map((link, index) => (
-                <a key={index} className="link" href={link.href} target="_blank" rel="noopener noreferrer">
-                    {link.text}
-                </a>
+                <React.Fragment key={index}>
+                    <a className="link" href={link.href} target="_blank" rel="noopener noreferrer">
+                        {link.text}
+                    </a>
+                    {index < links.length - 1 && <span className="separator"> • </span>}
+                </React.Fragment>
             ))}
         </div>
     </div>

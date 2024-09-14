@@ -1,29 +1,45 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Lanyard from "../components/Lanyard.astro";
-import AudioVisualizer from "../components/AudioVisualizer.astro";
-import "../styles/Main.css";
+
+import { PCSpecification } from "../components/react/PCSpecification";
+import { ProjectsPage } from '../components/react/ProjectsPage';
 ---
 
 <Layout title="Vorlie | Home" description="A place to my social media and stuff">
-    <div class="main">
-        <div class="text">
-            <p class="header-text">
-                Hey there! I'm <span class="span-color">Charlie</span>, nice to meet you.
-            </p>
-            <p class="body-text">
-                I like to code random things that no one asked for. I sometimes play games. I listen to a lot of Frenchcore. Before you ask, I'm okay.
-                I also like to watch anime. My favorite anime is <span class="span-color">Bleach</span>, <span class="span-color">86: Eighty Six</span> and ekhem <span class="span-color">High School DxD</span>.
-            </p>
-            <!-- 
-            <div class="buttons">
-                <a href="https://youtube.com/@vve1_"><i class="bi bi-youtube fontsize"></i> YouTube</a>
-                <a href="https://github.com/vorlie"><i class="bi bi-github fontsize"></i>GitHub</a>
-                <a href="https://discord.gg/ujYCjUwu6U"><i class="bi bi-discord fontsize"></i>Discord</a>
-            </div>
-            -->
-        </div> 
-        <p class="header-text">What I am currently doing:</p>
-        <Lanyard />
+    <div class="text">
+        <h1 class="header">
+            Hey there! I'm <span class="span-color">Charlie</span>, nice to meet you.
+        </h1>
+        <p class="body-text">
+            I like to code random things that no one asked for. I sometimes play games. I listen to a lot of Frenchcore. Before you ask, I'm okay.
+            I also like to watch anime. My favorite anime is <span class="span-color">Bleach</span>, <span class="span-color">86: Eighty Six</span> and ekhem <span class="span-color">High School DxD</span>.
+        </p>
+    </div> 
+    <div class="activity-container">
     </div>
+    <ProjectsPage />
+    <PCSpecification />
+    <!-- Need to make it better later.
+    <div class="footer">
+        <div class="footer-container">
+            <div class="footer-inner-container social">
+                <p class="footer-text">Socials</p>
+                <hr class="footer-hr">
+                <div class="footer-links">
+                    <a href="#" class="link">Discord</a>
+                    <a href="#" class="link">GitHub</a>
+                    <a href="#" class="link">YouTube</a>
+                </div>
+            </div>
+            <div class="footer-inner-container discordbot">
+                <p class="footer-text">Miko</p>
+                <hr class="footer-hr">
+                <div class="footer-links">
+                    <a href="/miko/terms-of-service" class="link">Terms of Service</a>
+                    <a href="/miko/privacy-policy" class="link">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    -->
 </Layout>

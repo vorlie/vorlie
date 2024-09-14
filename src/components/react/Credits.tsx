@@ -4,19 +4,13 @@ import '../../styles/Credits.css';
 
 const creditsData = [
     { label: 'Discord Integration', link: 'https://github.com/Phineas/lanyard?tab=readme-ov-file', name: 'Lanyard by Phineas' },
-    { label: 'Discord Timestamp Generator', link: 'https://r.3v.fi/discord-timestamps/', name: 'Discord Timestamps by r.3v' },
     { label: 'Website hosting', link: 'https://vercel.com/', name: 'Vercel' },
     { label: 'Framework(s)', link: 'https://astro.build/', name: 'Astro' },
     { label: 'Icons', links: [
         { link: 'https://icons8.com/icons', name: 'Icons8' },
         { link: 'https://icons.getbootstrap.com/', name: 'Bootstrap Icons' }
     ] },
-    { label: 'Minecraft Skin Render', link: 'https://cdn.jsdelivr.net/gh/InventivetalentDev/MineRender@1.4.6/dist/skin.min.js', name: 'MineRender' },
     { label: 'Noise Effect', link: 'https://codepen.io/IbeVanmeenen/pen/vZzgvg', name: 'Background Noise by IbeVanmeenen' },
-    { label: 'Off-site scripts', links: [
-        { link: 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js', name: 'jQuery' },
-        { link: 'https://cdnjs.cloudflare.com/ajax/libs/three.js/94/three.min.js', name: 'Three.js' }
-    ] }
 ];
 
 export const Credits: React.FC = () => {

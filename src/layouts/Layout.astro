@@ -7,7 +7,8 @@ interface Props {
 const { title } = Astro.props;
 const { description } = Astro.props;
 
-import Sidebar from '../components/Sidebar.astro';
+import "../styles/globals.css";
+
 import Particles from '../components/particles.astro';
 import NoiseBackground from '../components/NoiseBackground.astro';
 import SpeedInsights  from "@vercel/speed-insights/astro"
@@ -37,25 +38,8 @@ import Navbar from '../components/Navbar.astro';
 		<SpeedInsights />
 		<Particles />
 		<NoiseBackground />
-		<!--<div class="sidebar-container">
-			<div class="sidebar">
-				<Sidebar />
-			</div>
-		</div>
-		<div class="navbar-container">
-			<div class="navbar">
-				<a href="/">Home</a>
-				<a href="/fonts">Fonts</a>
-				<a href="/projects">Projects</a>
-				<a href="/pc-specs">My PC Specs</a>
-				<a href="/discord-timestamps">Timestamps</a>
-				<a href="/minecraft-skin">My Minecraft Skin</a>
-				<a href="/credits">Credits</a>
-			</div>
-		</div> -->
 		<Navbar />
 		<div class="main-content">
-		  	
 		  	<slot />
 		</div> 
 	  </body>
@@ -63,29 +47,6 @@ import Navbar from '../components/Navbar.astro';
 <script src="../scripts/lanyard/updateLanyard.ts"></script>
 
 <style is:global>
-	:root {
-		--accent-gradient: #EB819D;  
-		--color-background: #101112; 
-		--color-main: #16171a;
-		--color-main-background: #202225d0;
-		--color-main-background-secondary: #20222580; 
-		--rn-background-color: #FDD5DD; 
-		--rn-background-color-2: #FEEBEA; 
-		--color-1: #EB819D; 
-		--color-2: #BB4160; 
-		--color-3: #A41A4C; 
-		--color-text-secondary: #FEEBEA80; 
-		--color-text: #FDD5DD;
-		--color-text-dark: #A41A4C; 
-		--color-text-hover: #FFFFFF; 
-		--border-color: #FED8CD80; 
-		--roundness: 16px; 
-		--roundness-2: 8px; 
-		--status-color-online: #43b581; 
-		--status-color-dnd: #f04747; 
-		--status-color-idle: #faa61a; 
-		--status-color-offline: #636366; 
-	}
 	::selection{
 		color: var(--color-text-dark);
 		background: var(--rn-background-color-2);
@@ -98,8 +59,6 @@ import Navbar from '../components/Navbar.astro';
 		scroll-behavior: smooth;
 		color: var(--color-text);
 		font-family: system-ui, sans-serif;
-		/*background: radial-gradient(circle, transparent 25%, var(--color-background)  26%),linear-gradient(45deg, transparent 46%, var(--color-main) 47%, var(--color-main) 52%, transparent 53%), linear-gradient(135deg, transparent 46%, var(--color-main) 47%, var(--color-main) 52%, transparent 53%);
-	    background-size: 3em 3em;*/
 		background-color: var(--color-background);
 		opacity: 1;
 	}
@@ -130,7 +89,7 @@ import Navbar from '../components/Navbar.astro';
 		pointer-events: auto; 
 	}
 	.main-content{
-		margin: 10px auto;
+		margin: auto;
 		justify-content: center;
 		max-width: 1200px;
 	}

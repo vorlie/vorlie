@@ -17,4 +17,4 @@ updatePresence();
 updateNavbar();
 
 setInterval(updatePresence, 1000);
-setInterval(updateNavbar, 10000);
+setInterval(updateNavbar, 60000);

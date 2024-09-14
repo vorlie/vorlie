@@ -3,7 +3,7 @@ import Project from './Project';
 
 export const ProjectsPage: React.FC = () => (
     <div className="projects-page">
-        <p className="header-text">Projects</p>
+        <h1 className="header2" id='projects'>Here are some of my projects</h1>
         <div className="projects">
             <Project
                 title="Iota Player"

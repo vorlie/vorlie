@@ -1,5 +1,4 @@
 import React from 'react';
-import '../../styles/Navbar.css';
 
 interface NavItemProps {
     link: string;

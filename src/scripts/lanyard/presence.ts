@@ -1,6 +1,5 @@
 // presence.ts
-import type { LanyardData, Activity } from './interfaces';
-import { fetchPresence, getStatusColor } from './lanyard';
+import type { LanyardData } from './interfaces';
 
 const extractImageUrl = (url: string, application_id?: string): string => {
     if (url.startsWith('mp:external/')) {
@@ -32,7 +31,7 @@ const formatDuration = (start: number, end: number): string => {
 
 
 export const displayPresence = async (presence: LanyardData | null): Promise<void> => {
-    const container = document.querySelector('.presence-container');
+    const container = document.querySelector('.activity-container');
     if (!container) return;
 
     container.innerHTML = ''; 
@@ -61,9 +60,9 @@ export const displayPresence = async (presence: LanyardData | null): Promise<voi
         let endTimestamp = activity.timestamps?.end;
         let imageUrl = '/images/default.png'; 
         if (activity.name.toLowerCase().includes('spotify') && presence.spotify) {
-            let truncatedName = truncateText(`Listening to ${presence.spotify.song}`, 30);
-            let truncatedDetails = truncateText(`by ${presence.spotify.artist}`, 33);
-            let truncatedState = truncateText(presence.spotify.song, 30);
+            let truncatedName = truncateText(`Listening to ${presence.spotify.song}`, 28);
+            let truncatedDetails = truncateText(`by ${presence.spotify.artist}`, 25);
+            let truncatedState = truncateText(presence.spotify.song, 25);
             activityName = truncatedName;
             activityDetails = truncatedDetails;
             activityState = truncatedState;
@@ -80,10 +79,6 @@ export const displayPresence = async (presence: LanyardData | null): Promise<voi
 
         const activityElement = document.createElement('div');
         activityElement.classList.add('activity');
-        activityElement.style.backgroundColor = 'var(--color-main-background-secondary)';
-        activityElement.style.borderRadius = 'var(--roundness)';
-        activityElement.style.padding = '10px 15px';
-        activityElement.style.width = '350px';
 
         hasDisplayableActivity = true;
 
@@ -94,10 +89,6 @@ export const displayPresence = async (presence: LanyardData | null): Promise<voi
         }
 
         const nameElement = document.createElement('p');
-        nameElement.style.color = 'var(--accent-gradient)';
-        nameElement.style.fontSize = '20px';
-        nameElement.style.fontWeight = '600';
-        nameElement.style.margin = '2px 0';
         nameElement.className = 'activityName';
         nameElement.title = activityName ?? '';
         nameElement.textContent = activityName ?? '';
@@ -106,42 +97,34 @@ export const displayPresence = async (presence: LanyardData | null): Promise<voi
 
         const imgElement = document.createElement('img');
         imgElement.className = 'activityPointerEventsAllow';
+        imgElement.className = 'activityImage';
         imgElement.src = imageUrl;
         imgElement.alt = activity.name;
         imgElement.title = activityLargeText;
-        imgElement.style.width = '60px';
-        imgElement.style.height = '60px';
-        imgElement.style.objectFit = 'cover';
-        imgElement.style.borderRadius = '10px';
 
         activityElement.appendChild(imgElement);
 
         const detailsElement = document.createElement('div');
-        detailsElement.style.display = 'inline-block';
-        detailsElement.style.marginLeft = '10px'; 
-        detailsElement.style.verticalAlign = 'top';
+        detailsElement.className = 'activityDetailsContainer';
 
         if (activityDetails) {
             const detailsTextElement = document.createElement('p');
-            detailsTextElement.style.margin = '0';
             detailsTextElement.className = 'activityDetails';
             detailsTextElement.title = activityDetails;
-            detailsTextElement.textContent = truncateText(activityDetails, 33);
+            detailsTextElement.textContent = truncateText(activityDetails, 25);
             detailsElement.appendChild(detailsTextElement);
         }
 
         if (activityState) {
             const stateElement = document.createElement('p');
-            stateElement.style.margin = '0';
             stateElement.className = 'activityState';
             stateElement.title = activityState;
-            stateElement.textContent = truncateText(activityState, 33);
+            stateElement.textContent = truncateText(activityState, 25);
             detailsElement.appendChild(stateElement);
         }
 
         if (startTimestamp) {
             const elapsedElement = document.createElement('p');
-            elapsedElement.style.margin = '0';
             elapsedElement.className = 'activityTimestamp';
             let elapsedText = `${formatElapsedTime(startTimestamp)} elapsed`;
         
