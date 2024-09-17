@@ -51,12 +51,24 @@
     --rn-background-color-2: var(--color-text-secondary);
 }
 
+body {
+    transition: filter 0.3s ease;
+}
+
 *{
     cursor: none; 
 }
 
-body {
-    transition: filter 0.3s ease;
+#custom-cursor {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: var(--color-1);
+    mix-blend-mode: difference;
+    pointer-events: none;
+    z-index: 90;
+    transition: transform 0.1s ease, background-color 0.1s ease;
 }
 
 .link {
@@ -447,6 +459,14 @@ body {
 /* =================== MEDIA QUERIES ==================== */
 
 @media (max-width: 768px) {
+    *{
+        cursor: default !important; 
+    }
+
+    #custom-cursor{
+        display: none !important;
+    }
+
     .activity-container {
         text-align: left;
         flex-direction: column;
@@ -478,6 +498,7 @@ body {
     .nav-items {
         display: none;
     }
+    
     #nav-hamburger {
         display: block;
         color: var(--color-1);
