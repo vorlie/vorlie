@@ -152,7 +152,17 @@ body {
     margin: 0;
     padding: 5px;
 }
-
+.project-hr{
+    margin: 0 5px 0 5px;
+    width: 100%;
+    border: 0;
+    border-radius: 5px;
+    height: 3px;
+    background-color: var(--color-background);
+}
+.project-details{
+    margin-top: auto;
+}
 .project {
     display: flex;
     flex-direction: column;
@@ -178,7 +188,6 @@ body {
     gap: 5px;
     align-items: left;
     justify-content: left;
-    margin: 0;
     padding: 5px;
     max-width: fit-content;
     border-radius: var(--roundness);
