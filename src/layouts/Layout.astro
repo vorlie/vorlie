@@ -34,7 +34,7 @@ import Navbar from '../components/Navbar.astro';
 		<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
 	</head>
 	<body>
-		
+		<div id="custom-cursor"></div>
 		<SpeedInsights />
 		<Particles />
 		<NoiseBackground />
@@ -45,7 +45,7 @@ import Navbar from '../components/Navbar.astro';
 	  </body>
 </html>
 <script src="../scripts/lanyard/updateLanyard.ts"></script>
-
+<script src="../scripts/cursor.ts"></script>
 <style is:global>
 	::selection{
 		color: var(--color-text-dark);
@@ -94,4 +94,15 @@ import Navbar from '../components/Navbar.astro';
 		max-width: 1200px;
 	}
 
+	#custom-cursor {
+		position: absolute;
+		width: 20px;
+		height: 20px;
+		border-radius: 50%;
+		background-color: var(--color-1);
+		mix-blend-mode: difference;
+		pointer-events: none;
+		z-index: 9999;
+		transition: transform 0.1s ease, background-color 0.1s ease;
+	}
 </style>

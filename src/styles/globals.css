@@ -31,6 +31,9 @@
     --status-color-idle: #faa61a; 
     --status-color-offline: #636366; 
 }
+* {
+    cursor: none; 
+  }
 
 body {
     transition: filter 0.3s ease;
