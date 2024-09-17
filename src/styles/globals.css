@@ -1,39 +1,59 @@
 :root {
+    /* Font Sizes */
     --text-px: 20px; 
-    --header-size: 30px;
-    --header-size-2: 25px;
-    --span-size: 25px;
-    --project-title-size: 20px;
-    --project-desc-size: 15px;
-    --link-hover-transition: 0.3s;
-    --roundness: 16px; 
-    --roundness-2: 8px; 
-    --margin: 10px;
+    --header-size: calc(var(--text-px) + 10px);
+    --header-size-2: calc(var(--text-px) + 5px);
+    --span-size: var(--header-size-2);
+    --project-title-size: var(--text-px);
+    --project-desc-size: calc(var(--text-px) - 5px);
+
+    /* Link Styling */
     --link-color: var(--color-1); 
     --link-hover-color: var(--color-3); 
-    --accent-gradient: var(--color-1);  
+    --link-hover-transition: 0.3s;
+
+    /* Border Radius */
+    --roundness: 16px; 
+    --roundness-2: calc(var(--roundness) / 2);
+
+    /* Margins */
+    --margin: 10px;
+
+    /* Colors */
     --color-background: #101112; 
     --color-main: #16171a;
-    --color-main-background: #202225d0;
-    --color-main-background-secondary: #20222580; 
-    --rn-background-color: var(--color-text); 
-    --rn-background-color-2: #FEEBEA; 
-    --color-1: #EB819D; 
-    --color-2: #BB4160; 
-    --color-3: #A41A4C; 
-    --color-text-secondary: #FEEBEA80; 
-    --color-text: #FDD5DD;
+    --color-main-background: rgba(32, 34, 37, 0.82);
+    --color-main-background-secondary: rgba(32, 34, 37, 0.5); 
+    --color-1: #be81eb; 
+    --color-2: #8f61b0; 
+    --color-3: #5f4175; 
+    
+    /* Text Colors */
+    --color-text: #efe0fa;
     --color-text-dark: var(--color-3); 
-    --color-text-hover: #FFFFFF; 
-    --border-color: #FED8CD80; 
+    --color-text-secondary: rgba(var(--color-text), 0.5);
+    --color-text-hover: #FFFFFF;
+    
+    /* Accent Colors */
+    --accent: var(--color-1);  
+
+    /* Border Color */
+    --border-color: rgba(239, 224, 250, 0.5);
+
+    /* Status Colors */
     --status-color-online: #43b581; 
     --status-color-dnd: #f04747; 
     --status-color-idle: #faa61a; 
     --status-color-offline: #636366; 
+    
+    /* Background Colors */
+    --rn-background-color: var(--color-text); 
+    --rn-background-color-2: var(--color-text-secondary);
 }
-* {
+
+*{
     cursor: none; 
-  }
+}
 
 body {
     transition: filter 0.3s ease;
@@ -77,11 +97,11 @@ body {
 }
 
 .span-color {
-    color: var(--accent-gradient);
+    color: var(--accent);
 }
 
 .span-color a {
-    color: var(--accent-gradient);
+    color: var(--accent);
     text-decoration: none;
 }
 
@@ -118,7 +138,7 @@ body {
     margin: 2px 0;
     font-size: var(--text-px);
     font-weight: 600;
-    color: var(--accent-gradient);
+    color: var(--accent);
 }
 .activityDetails, .activityState, .activityTimestamp {
     margin: 0;
