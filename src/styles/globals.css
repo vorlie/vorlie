@@ -160,11 +160,10 @@ body {
 
 .projects {
     display: flex;
-    flex-direction: row;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 10px;
-    justify-content: center; 
-    margin: 0 auto; 
+    margin: 0 auto;
 }
 
 .project-title {
@@ -172,7 +171,6 @@ body {
     font-weight: 600;
     text-align: left;
     margin: 0;
-    padding: 5px;
     color: var(--color-text);
 }
 
@@ -181,11 +179,11 @@ body {
     font-size: var(--project-desc-size);
     font-weight: 400;
     text-align: left;
+    padding: 5px 0 5px 0 ;
     margin: 0;
-    padding: 5px;
 }
 .project-hr{
-    margin: 0 5px 0 5px;
+    margin: 0;
     width: 100%;
     border: 0;
     border-radius: 5px;
@@ -203,10 +201,9 @@ body {
     align-items: left;
     justify-content: left;
     margin: 0.2rem;
-    padding: 5px;
+    padding: 1rem;
     min-width: 330px;
     border-radius: var(--roundness);
-    padding: 20px;
     background: var(--color-main-background-secondary);
     transition: 0.3s ease;
     &:hover{
@@ -220,7 +217,7 @@ body {
     gap: 5px;
     align-items: left;
     justify-content: left;
-    padding: 5px;
+    padding: 5px 0 5px 0 ;
     max-width: fit-content;
     border-radius: var(--roundness);
 }
@@ -491,14 +488,15 @@ body {
     }
 
     .project {
-        width: 100%; 
-        height: auto; 
+        flex: 1 1 100%;
+        max-width: 100%;
+        padding: 0.9rem;
     }
 
     .nav-items {
         display: none;
     }
-    
+
     #nav-hamburger {
         display: block;
         color: var(--color-1);
