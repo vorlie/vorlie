@@ -3,7 +3,7 @@ import Item from './PCItem';
 
 export const PCSpecification: React.FC = () => (
     <div className="main">
-        <h1 className="header">My pc specification</h1>
+        <h1 className="header">My PC Specs</h1>
         <div className="container">
             <Item
                 imgSrc="https://cdn.mos.cms.futurecdn.net/BekcfeBawwJ5mfZdV7ShMg.png"
