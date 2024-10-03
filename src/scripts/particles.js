@@ -24,7 +24,10 @@ function render(now) {
   if (snowflakes.length < maxSnowflakes)
   snowflakes.push(new Snowflake());
 
-  ctx.fillStyle = ctx.strokeStyle = '#5f4175';
+  const snowflakeColor = getComputedStyle(document.documentElement)
+    .getPropertyValue('--color-bg-overlay').trim(); // Change '--color-3' to your desired variable
+
+  ctx.fillStyle = ctx.strokeStyle = snowflakeColor;
 
   snowflakes.forEach(snowflake => snowflake.update(elapsed, now));
 }

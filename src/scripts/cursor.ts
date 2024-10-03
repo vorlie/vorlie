@@ -11,12 +11,12 @@ if (customCursor) {
 
   document.addEventListener('mousedown', () => {
     customCursor.style.transform = 'scale(2)'; 
-    customCursor.style.backgroundColor = 'var(--color-2)'; 
+    customCursor.style.backgroundColor = 'var(--color-sapphire)'; 
   });
 
   document.addEventListener('mouseup', () => {
     customCursor.style.transform = 'scale(1)'; 
-    customCursor.style.backgroundColor = 'var(--color-1)';
+    customCursor.style.backgroundColor = 'var(--color-lavender)';
   });
 
   const interactiveElements = ['a', 'button', 'input', 'textarea', '[role="button"]'];
@@ -26,11 +26,11 @@ if (customCursor) {
     elements.forEach(element => {
       element.addEventListener('mouseenter', () => {
         customCursor.style.transform = 'scale(1.5)';
-        customCursor.style.backgroundColor = 'var(--color-3)'; 
+        customCursor.style.backgroundColor = 'var(--color-sapphire)'; 
       });
       element.addEventListener('mouseleave', () => {
         customCursor.style.transform = 'scale(1)';
-        customCursor.style.backgroundColor = 'var(--color-1)';
+        customCursor.style.backgroundColor = 'var(--color-lavender)';
         customCursor.style.display = 'block';
       });
     });
