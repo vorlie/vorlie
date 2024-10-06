@@ -46,6 +46,11 @@ import Navbar from '../components/Navbar.astro';
 </html>
 <script src="../scripts/lanyard/updateLanyard.ts"></script>
 <script src="../scripts/cursor.ts"></script>
+<script>
+import redirect from "../scripts/redirect";
+
+	redirect();
+</script>
 <style is:global>
 	::selection{
 		color: var(--color-text-inverted);
