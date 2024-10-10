@@ -11,16 +11,14 @@ export const PCSpecification: React.FC = () => (
                 title="CPU"
                 desc="AMD Ryzen 5 3600"
                 link="https://www.amazon.com/dp/B07STGGQ18"
-                linkText="Buy on Amazon"
-            />
+                linkText="Buy on Amazon"/>
             <Item
                 imgSrc="https://us-east-1.tixte.net/uploads/cx.tixte.co/spc272-spc-spartan-4-max-01b-removebg-preview.png"
                 imgAlt="cpu cooler"
                 title="CPU Cooler"
                 desc="SilentiumPC Spartan 4 MAX"
                 link="https://www.x-kom.pl/p/562914-chlodzenie-procesora-silentiumpc-spartan-4-max-120mm.html"
-                linkText="See on x-kom"
-            />
+                linkText="See on x-kom"/>
             <Item
                 imgSrc="https://dlcdnimgs.asus.com/websites/global/products/afwaj0qnsbp72phf/intro-main.png"
                 imgAlt="motherboard"
@@ -48,32 +46,28 @@ export const PCSpecification: React.FC = () => (
                 title="Storage: NVMe"
                 desc="Goodram PX500 PCIe GEN 3 x4 NVMe 256GB"
                 link="https://www.x-kom.pl/p/1078055-dysk-ssd-goodram-256gb-m2-pcie-nvme-px500-g2.html"
-                linkText="Buy on x-kom"
-            />
+                linkText="Buy on x-kom"/>
             <Item
                 imgSrc="https://us-east-1.tixte.net/uploads/cx.tixte.co/71xUljwiMTL-removebg-preview.png"
                 imgAlt="hdd"
                 title="Storage: HDD"
                 desc="TOSHIBA MQ01ABD100 1TB 2,5"
                 link="https://www.amazon.com/dp/B009AYVNMQ"
-                linkText="Buy on Amazon"
-            />
+                linkText="Buy on Amazon"/>
             <Item
                 imgSrc="https://a.storyblok.com/f/281110/2a55d7361e/1-500w-mwe-white-230v-v2.png/m/960x0/smart"
                 imgAlt="power supply"
                 title="Power Supply"
                 desc="Cooler Master MWE V2 500W 80 Plus"
                 link="https://www.amazon.com/dp/B082NK1QWG"
-                linkText="Buy on Amazon"
-            />
+                linkText="Buy on Amazon"/>
             <Item
                 imgSrc="https://a.storyblok.com/f/281110/5c1192c34c/gallery-2-min.png/m/960x0/smart"
                 imgAlt="pc case"
                 title="PC Case"
                 desc="Cooler Master MasterBox Q300L"
                 link="https://www.amazon.com/dp/B0785GRMPG"
-                linkText="See on Amazon"
-            />
+                linkText="See on Amazon"/>
         </div>
     </div>
 );
