@@ -58,10 +58,6 @@ body {
 
 /* =================== Cursor ==================== */
 
-* {
-    cursor: none;
-}
-
 #custom-cursor {
     position: absolute;
     width: 20px;
@@ -70,8 +66,21 @@ body {
     background-color: var(--color-lavender); /* Cursor color */
     mix-blend-mode: difference;
     pointer-events: none;
+    z-index: 91;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+#custom-cursor-outline {
+    position: absolute;
+    width: 30px; /* Bigger size */
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid var(--color-lavender); /* Outline instead of background */
+    mix-blend-mode: difference;
+    pointer-events: none;
     z-index: 90;
-    transition: transform 0.1s ease, background-color 0.1s ease;
+    transition: transform 0.3s ease;
+    opacity: 0.8;
 }
 
 /* =================== Styling ==================== */
@@ -478,9 +487,6 @@ body {
 /* =================== MEDIA QUERIES ==================== */
 
 @media (max-width: 768px) {
-    *{
-        cursor: default !important; 
-    }
 
     #custom-cursor{
         display: none !important;
