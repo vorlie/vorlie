@@ -13,6 +13,7 @@ import Particles from '../components/particles.astro';
 import NoiseBackground from '../components/NoiseBackground.astro';
 import SpeedInsights  from "@vercel/speed-insights/astro"
 import Navbar from '../components/Navbar.astro';
+import CustomContextMenu from '../components/react/CustomContextMenu';
 ---
 
 <!DOCTYPE html>
@@ -43,6 +44,7 @@ import Navbar from '../components/Navbar.astro';
 		<div class="main-content">
 		  	<slot />
 		</div> 
+		<CustomContextMenu client:load />
 	  </body>
 </html>
 <script src="../scripts/lanyard/updateLanyard.ts"></script>

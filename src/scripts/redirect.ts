@@ -10,6 +10,7 @@ export default function redirect() {
             youtube: 'https://www.youtube.com/@vve1_',
             github: 'https://github.com/vorlie',
             site_source: 'https://github.com/vorlie/vorlie',
+            ohalink: 'https://www.youtube.com/watch?v=xvFZjo5PgG0',
         };
 
         if (keywordMap[keyword]) {
