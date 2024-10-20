@@ -152,10 +152,23 @@ body {
     border-radius: var(--border-radius-small);
 }
 
-.context-menu__hr{
+.context-menu__hr {
     border: 1px solid var(--color-bg-base);
     margin: 4px 8px 4px 8px;
     padding: 0;
+}
+
+.copy-notification {
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--color-accent);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 5px;
+    z-index: 100;
+    opacity: 0.9;
 }
 
 /* =================== Styling ==================== */
@@ -398,6 +411,7 @@ body {
     flex-direction: row;
     align-items: center;
     transition: 0.3s ease-in-out;
+
     &:hover {
         filter: drop-shadow(0 0px 4px var(--color-lavender));
     }
@@ -493,6 +507,7 @@ body {
     transition: 0.3s ease;
     white-space: nowrap;
     flex-shrink: 0;
+
     &:hover {
         color: var(--color-sapphire);
         filter: drop-shadow(0 0px 4px var(--color-sapphire));
