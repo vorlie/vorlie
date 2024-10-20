@@ -608,7 +608,7 @@ body {
 
 @media (max-width: 768px) {
 
-    #custom-cursor {
+    #custom-cursor, #custom-cursor-outline {
         display: none !important;
     }
 
