@@ -87,6 +87,10 @@ export const displayPresence = async (presence: LanyardData | null): Promise<voi
         } else if (activity.assets?.small_image) {
             imageUrl = extractImageUrl(activity.assets.small_image, activity.application_id);
         }
+        // Custom Images
+        if (activity.name.toLowerCase().includes('counter-strike 2')) {
+            imageUrl = "https://cdn2.steamgriddb.com/icon/e1bd06c3f8089e7552aa0552cb387c92/32/512x512.png"
+        }
 
         const nameElement = document.createElement('p');
         nameElement.className = 'activityName';
