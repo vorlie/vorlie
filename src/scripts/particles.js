@@ -20,15 +20,23 @@ function render(now) {
   const elapsed = now - lastNow;
   lastNow = now;
 
+  // Clear the canvas
   ctx.clearRect(0, 0, width, height);
-  if (snowflakes.length < maxSnowflakes)
-  snowflakes.push(new Snowflake());
 
+  // Add new snowflakes if below the max limit
+  if (snowflakes.length < maxSnowflakes) {
+    snowflakes.push(new Snowflake());
+  }
+
+  // Detect the current theme and set the snowflake color accordingly
+  const currentTheme = document.body.getAttribute('data-theme');
   const snowflakeColor = getComputedStyle(document.documentElement)
-    .getPropertyValue('--color-bg-overlay').trim(); 
+    .getPropertyValue(currentTheme === 'dark' ? '--color-bg-particles-dark' : '--color-bg-particles-light')
+    .trim();
 
   ctx.fillStyle = ctx.strokeStyle = snowflakeColor;
 
+  // Update and render each snowflake
   snowflakes.forEach(snowflake => snowflake.update(elapsed, now));
 }
 
