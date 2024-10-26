@@ -26,6 +26,8 @@
     /* Card/container background */
     --color-bg-overlay: #2e303e;
     /* Overlay elements */
+    --color-bg-particles-dark: #2e303e;
+    --color-bg-particles-light: #e6e3e0; 
 
     /* Primary Colors */
     --color-accent-light: #f79483;
@@ -557,6 +559,7 @@ body, .non-selectable {
 .lanyard {
     text-decoration: none;
     color: inherit;
+    width: 142px;
 }
 
 .userinfo {
@@ -584,7 +587,7 @@ body, .non-selectable {
 
 .navbar-inner-container {
     display: flex;
-    justify-content: space-between;
+    justify-content:space-between;
     align-items: center;
     width: 100%;
 }
@@ -596,6 +599,11 @@ body, .non-selectable {
     overflow-x: auto;
     white-space: nowrap;
     padding: 0 5px;
+    width: 142px;
+}
+
+.sub-item{
+    justify-content: right;
 }
 
 .nav-item {
