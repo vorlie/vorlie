@@ -25,7 +25,7 @@ function render(now) {
   snowflakes.push(new Snowflake());
 
   const snowflakeColor = getComputedStyle(document.documentElement)
-    .getPropertyValue('--color-bg-overlay').trim(); // Change '--color-3' to your desired variable
+    .getPropertyValue('--color-bg-overlay').trim(); 
 
   ctx.fillStyle = ctx.strokeStyle = snowflakeColor;
 

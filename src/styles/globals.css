@@ -1,90 +1,183 @@
 :root {
-    /* Catppuccin Mocha Theme (I think.) */
     /* Font Sizes */
     --font-size-base: 20px;
-    /* Base text size */
     --font-size-header: calc(var(--font-size-base) + 10px);
-    /* Main header size */
     --font-size-subheader: calc(var(--font-size-base) + 5px);
-    /* Subheader size */
     --font-size-span: var(--font-size-subheader);
-    /* Span text size */
     --font-size-title: var(--font-size-base);
-    /* Project title size */
     --font-size-desc: calc(var(--font-size-base) - 5px);
-    /* Project description size */
 
     /* Link Styling */
-    --color-link: var(--color-lavender);
-    /* Link color */
-    --color-link-hover: var(--color-sapphire);
-    /* Link hover color */
+    --color-link: var(--color-accent-light);
+    --color-link-hover: var(--color-accent-dark);
     --transition-link-hover: 0.3s;
-    /* Hover transition */
 
     /* Border Radius */
     --border-radius-base: 16px;
-    /* Standard border radius */
     --border-radius-small: calc(var(--border-radius-base) / 2);
-    /* Small border radius */
 
     /* Margins and Spacing */
     --spacing-base: 10px;
-    /* Base margin/spacing */
 
     /* Background Colors */
-    --color-bg-base: #1e1e2e;
-    /* Primary background color */
-    --color-bg-surface: #181825;
-    /* Surface color for cards/containers */
-    --color-bg-overlay: #11111b;
-    /* Overlay background */
+    --color-bg-base: #1c1e26;
+    /* Dark background */
+    --color-bg-surface: #232530;
+    /* Card/container background */
+    --color-bg-overlay: #2e303e;
+    /* Overlay elements */
 
     /* Primary Colors */
-    --color-lavender: #b4befe;
-    /* Lavender (primary accent color) */
-    --color-sapphire: #74c7ec;
-    /* Sapphire (hover and secondary links) */
-    --color-rosewater: #f5e0dc;
-    /* Rosewater (highlight or soft background elements) */
+    --color-accent-light: #f79483;
+    /* Soft coral */
+    --color-accent-dark: #e2a478;
+    /* Muted orange */
+    --color-accent-extra: #e46876;
+    /* Pinkish accent */
 
     /* Text Colors */
-    --color-text-primary: #cdd6f4;
-    /* Main text color */
-    --color-text-secondary: #bac2de;
-    /* Secondary text (muted) */
+    --color-text-primary: #e0def4;
+    /* Light text */
+    --color-text-secondary: #a3a1bd;
+    /* Muted text */
     --color-text-hover: #ffffff;
-    /* Hovered text color */
-    --color-text-inverted: var(--color-sapphire);
-    /* Darker text on light backgrounds */
+    /* Hover text */
+    --color-text-inverted: var(--color-accent-light);
 
     /* Accent Colors */
-    --color-accent: var(--color-lavender);
-    /* Accent elements like buttons, icons */
+    --color-accent: var(--color-accent-light);
 
     /* Border Colors */
-    --color-border: rgba(205, 214, 244, 0.5);
-    /* Border color for dividers/cards */
+    --color-border: rgba(224, 222, 244, 0.5);
 
     /* Status Colors */
-    --color-status-online: #a6e3a1;
-    /* Online status */
-    --color-status-dnd: #f38ba8;
-    /* Do not disturb status */
-    --color-status-idle: #f9e2af;
-    /* Idle status */
-    --color-status-offline: #6c7086;
-    /* Offline status */
+    --color-status-online: #a2c9a3;
+    /* Soft green */
+    --color-status-dnd: #e46876;
+    /* Soft pink/red */
+    --color-status-idle: #f8bd96;
+    /* Light orange */
+    --color-status-offline: #6c6f93;
+    /* Muted purple-gray */
 
     /* Additional Background Colors */
-    --color-bg-highlight: var(--color-rosewater);
-    /* Highlighted background elements */
+    --color-bg-highlight: #363a49;
+    /* Background for highlights */
     --color-bg-muted: var(--color-bg-surface);
-    /* Muted background for disabled elements */
 }
+
+[data-theme='light'] {
+    /* Font Sizes */
+    --font-size-base: 20px;
+    --font-size-header: calc(var(--font-size-base) + 10px);
+    --font-size-subheader: calc(var(--font-size-base) + 5px);
+    --font-size-span: var(--font-size-subheader);
+    --font-size-title: var(--font-size-base);
+    --font-size-desc: calc(var(--font-size-base) - 5px);
+
+    /* Link Styling */
+    --color-link: var(--color-accent-light);
+    --color-link-hover: var(--color-accent-dark);
+    --transition-link-hover: 0.3s;
+
+    /* Border Radius */
+    --border-radius-base: 16px;
+    --border-radius-small: calc(var(--border-radius-base) / 2);
+
+    /* Margins and Spacing */
+    --spacing-base: 10px;
+
+    /* Background Colors */
+    --color-bg-base: #fbf9f3;
+    /* Light background */
+    --color-bg-surface: #f0edea;
+    /* Card/container background */
+    --color-bg-overlay: #e6e3e0;
+    /* Overlay elements */
+
+    /* Primary Colors */
+    --color-accent-light: #e46876;
+    /* Soft pinkish accent */
+    --color-accent-dark: #cc5f63;
+    /* Slightly muted pink */
+    --color-accent-extra: #f79a83;
+    /* Coral accent */
+
+    /* Text Colors */
+    --color-text-primary: #2d2a36;
+    /* Dark text */
+    --color-text-secondary: #59546b;
+    /* Muted gray text */
+    --color-text-hover: #1c1a25;
+    /* Darker hover text */
+    --color-text-inverted: var(--color-accent-light);
+
+    /* Accent Colors */
+    --color-accent: var(--color-accent-light);
+
+    /* Border Colors */
+    --color-border: rgba(89, 84, 107, 0.3);
+
+    /* Status Colors */
+    --color-status-online: #4ba85e;
+    /* Soft green */
+    --color-status-dnd: #f46868;
+    /* Soft pink/red */
+    --color-status-idle: #e68a54;
+    /* Muted orange */
+    --color-status-offline: #86829f;
+    /* Muted gray */
+
+    /* Additional Background Colors */
+    --color-bg-highlight: #f0ebe6;
+    /* Background for highlights */
+    --color-bg-muted: var(--color-bg-surface);
+}
+
+
+/* =================== Styling ==================== */
 
 body {
     transition: filter 0.3s ease;
+    color: var(--color-text-primary);
+    background-color: var(--color-bg-base);
+}
+
+html {
+    scroll-behavior: smooth;
+    font-family: system-ui, sans-serif;
+    opacity: 1;
+}
+
+body, .non-selectable {
+    -webkit-user-select: none;
+    -moz-user-select: none;   
+    -ms-user-select: none;    
+    user-select: none;    
+}
+
+.img-draggable {
+    -webkit-user-drag: auto;
+    pointer-events: auto; 
+}
+
+.activityPointerEventsAllow {
+    pointer-events: auto; 
+}
+
+.main-content{
+    margin: auto;
+    justify-content: center;
+    max-width: 1200px;
+}
+
+::selection{
+    color: var(--color-text-inverted);
+    background: var(--color-bg-muted);
+}
+::-moz-selection{
+    color: var(--color-text-inverted);
+    background: var(--color-bg-muted);
 }
 
 /* =================== Cursor ==================== */
@@ -94,12 +187,12 @@ body {
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background-color: var(--color-lavender);
+    background-color: var(--color-accent-light);
     /* Cursor color */
-    mix-blend-mode: difference;
+    /* mix-blend-mode: color-dodge; */
     pointer-events: none;
     z-index: 91;
-    transition: transform 0.2s ease, background-color 0.2s ease;
+    transition: transform 0.2s ease, background-color 0.2s ease, opacity 0.2s ease;
 }
 
 #custom-cursor-outline {
@@ -108,13 +201,12 @@ body {
     /* Bigger size */
     height: 30px;
     border-radius: 50%;
-    border: 2px solid var(--color-lavender);
+    border: 2px solid var(--color-accent-light);
     /* Outline instead of background */
-    mix-blend-mode: difference;
+    /* mix-blend-mode: color-dodge; */
     pointer-events: none;
     z-index: 90;
-    transition: transform 0.3s ease;
-    opacity: 0.8;
+    transition: transform 0.3s ease, opacity 0.2s ease;
 }
 
 /* =================== Custom Context Menu ==================== */
@@ -122,7 +214,7 @@ body {
 .context-menu {
     position: absolute;
     background-color: var(--color-bg-surface);
-    outline: 2px solid var(--color-lavender);
+    outline: 2px solid var(--color-accent-light);
     outline-offset: 4px;
     border-radius: var(--border-radius-small);
     z-index: 89;
@@ -239,11 +331,24 @@ body {
 }
 
 .activity {
+    white-space: nowrap;
+    overflow: hidden;
     background-color: var(--color-bg-surface);
     /* Surface background color */
     border-radius: var(--border-radius-base);
     padding: 10px 15px;
-    width: 312px;
+    width: 330px;
+    position: relative;
+}
+.activity::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50px; 
+    height: 100%;
+    background: linear-gradient(to left, var(--color-bg-surface), transparent);
+    pointer-events: none;
 }
 
 .activityImage {
@@ -413,7 +518,7 @@ body {
     transition: 0.3s ease-in-out;
 
     &:hover {
-        filter: drop-shadow(0 0px 4px var(--color-lavender));
+        filter: drop-shadow(0 0px 4px var(--color-accent-light));
     }
 }
 
@@ -423,7 +528,7 @@ body {
 }
 
 .subcolor:hover {
-    color: var(--color-sapphire) !important;
+    color: var(--color-accent-extra) !important;
     /* Secondary hover text color */
 }
 
@@ -498,7 +603,7 @@ body {
     align-items: center;
     gap: 5px;
     text-decoration: none;
-    color: var(--color-lavender);
+    color: var(--color-accent-light);
     /* Main link color */
     padding: 8px;
     border-radius: var(--border-radius-base);
@@ -509,8 +614,26 @@ body {
     flex-shrink: 0;
 
     &:hover {
-        color: var(--color-sapphire);
-        filter: drop-shadow(0 0px 4px var(--color-sapphire));
+        color: var(--color-accent-extra);
+        filter: drop-shadow(0 0px 4px var(--color-accent-extra));
+    }
+}
+
+.theme-toggle{
+    text-decoration: none;
+    color: var(--color-accent-light);
+    /* Main link color */
+    padding: 8px;
+    background: none;
+    border: none;
+    border-radius: var(--border-radius-base);
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.3s ease;
+    &:hover {
+        cursor:pointer;
+        color: var(--color-accent-extra);
+        filter: drop-shadow(0 0px 4px var(--color-accent-extra));
     }
 }
 
@@ -608,7 +731,8 @@ body {
 
 @media (max-width: 768px) {
 
-    #custom-cursor, #custom-cursor-outline {
+    #custom-cursor,
+    #custom-cursor-outline {
         display: none !important;
     }
 
@@ -647,7 +771,7 @@ body {
 
     #nav-hamburger {
         display: block;
-        color: var(--color-lavender);
+        color: var(--color-accent-light);
         background: none;
         border: none;
         cursor: pointer;
@@ -656,7 +780,7 @@ body {
         transition: 0.3s ease;
 
         &:hover {
-            color: var(--color-sapphire);
+            color: var(--color-accent-extra);
         }
     }
 }

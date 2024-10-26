@@ -21,7 +21,8 @@ import NavItem from './react/NavItem';
     <div popover id="nav-hamburgertarget" class="hamburger-menu" >
       <!-- <NavItem id="home" link="/" linkText="Home" iconString="house-fill" />
       <NavItem id="credits" link="/credits" linkText="Credits" iconString="info-square-fill" /> -->
-      <!-- <hr />  Social Links -->
+      <button id="themeToggle" class="theme-toggle subcolor" title="Toggle theme"><i class="bi bi-lightbulb"></i> Toggle theme</button>
+      <hr />
       <NavItem id="discord" link="https://vorlie.vercel.app/?link=discord" linkText="Discord" iconString="discord" subClass='subcolor' newPage />
       <NavItem id="github" link="https://vorlie.vercel.app/?link=github" linkText="GitHub" iconString="github" subClass='subcolor' newPage />
       <NavItem id="youtube" link="https://vorlie.vercel.app/?link=youtube" linkText="YouTube" iconString="youtube" subClass='subcolor' newPage />
@@ -30,6 +31,9 @@ import NavItem from './react/NavItem';
       <NavItem id="home" link="/" linkText="Home" iconString="house-fill" title='Home page' />
       <NavItem id="credits" link="/credits" linkText="Credits" iconString="info-square-fill" title='Credits' />
     </div> -->
+    <div class="nav-items">
+      <button id="themeToggle" class="theme-toggle subcolor" title="Toggle theme"><i class="bi bi-lightbulb"></i></button>
+    </div>
     <div class="nav-items">
       <NavItem id="discord" link="https://vorlie.vercel.app/?link=discord" iconString="discord" subClass='subcolor' newPage title='Discord' />
       <NavItem id="github" link="https://vorlie.vercel.app/?link=github" iconString="github" subClass='subcolor' newPage title='GitHub' />

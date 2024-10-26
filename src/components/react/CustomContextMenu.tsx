@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from 'react';
 
-const CustomContextMenu: React.FC = () => {
+interface CustomContextMenuProps {
+  mouseHover?: boolean;
+}
+
+const CustomContextMenu: React.FC<CustomContextMenuProps> = ({mouseHover}) => {
   const [isVisible, setIsVisible] = useState(false);
   const [menuPosition, setMenuPosition] = useState({ x: 0, y: 0 });
   const [linkToCopy, setLinkToCopy] = useState<string | null>(null);
   const [imageSource, setImageSource] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
+  
 
   const handleContextMenu = (e: MouseEvent) => {
     e.preventDefault();
@@ -89,13 +94,21 @@ const CustomContextMenu: React.FC = () => {
             </li>
             {linkToCopy && <hr className="context-menu__hr"></hr>}
             {linkToCopy && (
-              <li className="context-menu__item" onClick={handleCopyLink}>
+              <li 
+                className="context-menu__item" 
+                onClick={handleCopyLink}
+                style={{ cursor: mouseHover ? 'pointer' : 'default' }}
+              >
                 <span className="context-menu__link">Copy Link</span>
               </li>
             )}
             {imageSource && <hr className="context-menu__hr"></hr>}
             {imageSource && (
-              <li className="context-menu__item" onClick={handleViewImage}>
+              <li 
+                className="context-menu__item" 
+                onClick={handleViewImage}
+                style={{ cursor: mouseHover ? 'pointer' : 'default' }}
+              >
                 <span className="context-menu__link">View Image</span>
               </li>
             )}

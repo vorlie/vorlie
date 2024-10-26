@@ -10,14 +10,13 @@ const { description } = Astro.props;
 import "../styles/globals.css";
 
 import Particles from '../components/particles.astro';
-import NoiseBackground from '../components/NoiseBackground.astro';
 import SpeedInsights  from "@vercel/speed-insights/astro"
 import Navbar from '../components/Navbar.astro';
 import CustomContextMenu from '../components/react/CustomContextMenu';
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
@@ -39,58 +38,18 @@ import CustomContextMenu from '../components/react/CustomContextMenu';
 		<div id="custom-cursor-outline"></div>
 		<SpeedInsights />
 		<Particles />
-		<NoiseBackground />
 		<Navbar />
 		<div class="main-content">
 		  	<slot />
 		</div> 
-		<CustomContextMenu client:load />
+		<CustomContextMenu client:load mouseHover />
 	  </body>
 </html>
 <script src="../scripts/lanyard/updateLanyard.ts"></script>
+<script src="../scripts/toggleTheme.ts"></script>
 <script src="../scripts/cursor.ts"></script>
 <script>
 import redirect from "../scripts/redirect";
 
 	redirect();
 </script>
-<style is:global>
-	::selection{
-		color: var(--color-text-inverted);
-		background: var(--color-bg-muted);
-	}
-	::-moz-selection{
-		color: var(--color-text-inverted);
-		background: var(--color-bg-muted);
-	}
-	html {
-		scroll-behavior: smooth;
-		color: var(--color-text-primary);
-		font-family: system-ui, sans-serif;
-		background-color: var(--color-bg-base);
-		opacity: 1;
-	}
-	code {
-		font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-			Bitstream Vera Sans Mono, Courier New, monospace;
-	}
-	body, .non-selectable {
-		-webkit-user-select: none;
-		-moz-user-select: none;   
-		-ms-user-select: none;    
-		user-select: none;    
-	}
-	.img-draggable {
-		-webkit-user-drag: auto;
-		user-drag: auto;
-		pointer-events: auto; 
-	}
-	.activityPointerEventsAllow {
-		pointer-events: auto; 
-	}
-	.main-content{
-		margin: auto;
-		justify-content: center;
-		max-width: 1200px;
-	}
-</style>

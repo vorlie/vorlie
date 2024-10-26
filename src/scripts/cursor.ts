@@ -16,18 +16,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.addEventListener('mousedown', () => {
       customCursor.style.transform = 'scale(2)';
-      customCursor.style.backgroundColor = 'var(--color-sapphire)';
+      customCursor.style.backgroundColor = 'var(--color-accent-extra)';
 
       customCursorOutline.style.transform = 'scale(2)';
-      customCursorOutline.style.borderColor = 'var(--color-sapphire)';
+      customCursorOutline.style.borderColor = 'var(--color-accent-extra)';
     });
 
     document.addEventListener('mouseup', () => {
       customCursor.style.transform = 'scale(1)';
-      customCursor.style.backgroundColor = 'var(--color-lavender)';
+      customCursor.style.backgroundColor = 'var(--color-accent-light)';
 
       customCursorOutline.style.transform = 'scale(1)';
-      customCursorOutline.style.borderColor = 'var(--color-lavender)';
+      customCursorOutline.style.borderColor = 'var(--color-accent-light)';
     });
 
     const interactiveElements = ['a', 'button', 'input', 'textarea', '[role="button"]'];
@@ -37,17 +37,22 @@ document.addEventListener('DOMContentLoaded', () => {
       elements.forEach(element => {
         element.addEventListener('mouseenter', () => {
           customCursor.style.transform = 'scale(1.5)';
-          customCursor.style.backgroundColor = 'var(--color-sapphire)';
+          customCursor.style.backgroundColor = 'var(--color-accent-extra)';
+          customCursor.style.opacity = '0.5';
 
           customCursorOutline.style.transform = 'scale(1.5)';
-          customCursorOutline.style.borderColor = 'var(--color-sapphire)';
+          customCursorOutline.style.borderColor = 'var(--color-accent-extra)';
+          customCursorOutline.style.opacity = '0.5';
+
         });
         element.addEventListener('mouseleave', () => {
           customCursor.style.transform = 'scale(1)';
-          customCursor.style.backgroundColor = 'var(--color-lavender)';
+          customCursor.style.backgroundColor = 'var(--color-accent-light)';
+          customCursor.style.opacity = '1';
 
           customCursorOutline.style.transform = 'scale(1)';
-          customCursorOutline.style.borderColor = 'var(--color-lavender)';
+          customCursorOutline.style.borderColor = 'var(--color-accent-light)';
+          customCursorOutline.style.opacity = '1';
         });
       });
     });

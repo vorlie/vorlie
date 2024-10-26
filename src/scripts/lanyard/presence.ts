@@ -60,9 +60,9 @@ export const displayPresence = async (presence: LanyardData | null): Promise<voi
         let endTimestamp = activity.timestamps?.end;
         let imageUrl = '/images/default.png'; 
         if (activity.name.toLowerCase().includes('spotify') && presence.spotify) {
-            let truncatedName = truncateText(`${presence.spotify.song}`, 28);
-            let truncatedDetails = truncateText(`by ${presence.spotify.artist}`, 25);
-            let truncatedState = truncateText(`on ${presence.spotify.album}`, 25);
+            let truncatedName = `${presence.spotify.song}`;
+            let truncatedDetails = `by ${presence.spotify.artist}`;
+            let truncatedState = `on ${presence.spotify.album}`;
             activityName = truncatedName;
             activityDetails = truncatedDetails;
             activityState = truncatedState;
@@ -115,7 +115,7 @@ export const displayPresence = async (presence: LanyardData | null): Promise<voi
             const detailsTextElement = document.createElement('p');
             detailsTextElement.className = 'activityDetails';
             detailsTextElement.title = activityDetails;
-            detailsTextElement.textContent = truncateText(activityDetails, 25);
+            detailsTextElement.textContent = activityDetails;
             detailsElement.appendChild(detailsTextElement);
         }
 
@@ -123,7 +123,7 @@ export const displayPresence = async (presence: LanyardData | null): Promise<voi
             const stateElement = document.createElement('p');
             stateElement.className = 'activityState';
             stateElement.title = activityState;
-            stateElement.textContent = truncateText(activityState, 25);
+            stateElement.textContent = activityState;
             detailsElement.appendChild(stateElement);
         }
 

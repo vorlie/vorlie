@@ -1,7 +1,7 @@
 // updateLanyard.ts
 import { fetchPresence } from './lanyard';
-import { displayNavbar } from '../lanyard/navbar';
-import { displayPresence } from '../lanyard/presence';
+import { displayNavbar } from './navbar';
+import { displayPresence } from './presence';
 
 
 const updatePresence = async (): Promise<void> => {
