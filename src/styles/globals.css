@@ -337,7 +337,7 @@ body, .non-selectable {
     /* Surface background color */
     border-radius: var(--border-radius-base);
     padding: 10px 15px;
-    width: 330px;
+    width: 312px;
     position: relative;
 }
 .activity::after {

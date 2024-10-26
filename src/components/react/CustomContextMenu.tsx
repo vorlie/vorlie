@@ -86,11 +86,11 @@ const CustomContextMenu: React.FC<CustomContextMenuProps> = ({mouseHover}) => {
         <div className="context-menu" style={{ top: menuPosition.y, left: menuPosition.x }}>
           <ul className="context-menu__list">
             <li className="context-menu__item">
-              <a href="https://vorlie.vercel.app/?link=ohalink" className="context-menu__link">Oh a link?</a>
+              <a href="https://vorlie.pages.dev//?link=ohalink" className="context-menu__link">Oh a link?</a>
             </li>
             <hr className="context-menu__hr"></hr>
             <li className="context-menu__item">
-              <a href="https://vorlie.vercel.app/?link=site_source" className="context-menu__link">Source Code</a>
+              <a href="https://vorlie.pages.dev//?link=site_source" className="context-menu__link">Source Code</a>
             </li>
             {linkToCopy && <hr className="context-menu__hr"></hr>}
             {linkToCopy && (
