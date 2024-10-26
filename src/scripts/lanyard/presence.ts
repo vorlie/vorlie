@@ -44,13 +44,6 @@ export const displayPresence = async (presence: LanyardData | null): Promise<voi
     let hasDisplayableActivity = false;
 
     presence.activities.forEach(async (activity, index) => {
-        const truncateText = (text: string, maxLength: number) => {
-            if (text.length > maxLength) {
-                return text.slice(0, maxLength) + '...';
-            }
-            return text;
-        }
-        
         let isCustomStatus = activity.type === 4;
         let activityDetails = activity.details ?? '';
         let activityState = activity.state ?? '';
