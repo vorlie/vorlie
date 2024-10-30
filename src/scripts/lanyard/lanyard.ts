@@ -12,16 +12,3 @@ export const fetchPresence = async (): Promise<LanyardData | null> => {
         return null;
     }
 };
-
-export const getStatusColor = (status: string): string => {
-    switch (status) {
-        case 'online':
-            return 'var(--color-status-online)';
-        case 'idle':
-            return 'var(--color-status-idle)';
-        case 'dnd':
-            return 'var(--color-status-dnd)';
-        default:
-            return 'var(--color-status-offline)';
-    }
-};
