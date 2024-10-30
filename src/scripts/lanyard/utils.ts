@@ -26,3 +26,16 @@ export const formatDuration = (start: number, end: number): string => {
     const seconds = Math.floor((duration % 60000) / 1000);
     return `${hours > 0 ? hours + ':' : ''}${hours > 0 && minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
 };
+
+export const getStatusColor = (status: string): string => {
+    switch (status) {
+        case 'online':
+            return 'var(--color-status-online)';
+        case 'idle':
+            return 'var(--color-status-idle)';
+        case 'dnd':
+            return 'var(--color-status-dnd)';
+        default:
+            return 'var(--color-status-offline)';
+    }
+};
