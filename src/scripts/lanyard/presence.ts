@@ -108,12 +108,30 @@ function createActivityElement(name: string, imageUrl: string, details: string, 
 
     // Timestamp
     if (start) {
-        const elapsedText = `${formatElapsedTime(start)} elapsed`;
-        const duration = end ? ` (${formatDuration(start, end)})` : '';
         const timestampElement = document.createElement('p');
         timestampElement.className = 'activityTimestamp';
-        timestampElement.textContent = elapsedText + duration;
-        detailsContainer.appendChild(timestampElement);
+    
+        if (end) {
+            const updateTimestamp = () => {
+                const now = Date.now();
+                const remainingTime = end - now;
+    
+                if (remainingTime <= 0) {
+                    timestampElement.textContent = 'Activity has ended';
+                } else {
+                    const elapsedText = `${formatElapsedTime(now, end)} left`;
+                    timestampElement.textContent = elapsedText;
+                }
+            };
+
+            updateTimestamp();
+
+            detailsContainer.appendChild(timestampElement);
+        } else {
+            const elapsedText = `${formatElapsedTime(start)} elapsed`;
+            timestampElement.textContent = elapsedText;
+            detailsContainer.appendChild(timestampElement);
+        }
     }
 
     activityElement.appendChild(detailsContainer);
