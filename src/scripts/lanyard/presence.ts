@@ -1,143 +1,121 @@
 // presence.ts
 import type { LanyardData } from './interfaces';
-
-const extractImageUrl = (url: string, application_id?: string): string => {
-    if (url.startsWith('mp:external/')) {
-        return `https://media.discordapp.net/external/${url.replace('mp:external/', '')}`;
-    } else if (url.startsWith("spotify:")) {
-        return url.replace("spotify:", "https://i.scdn.co/image/");
-    } else if (application_id) {
-        return `https://cdn.discordapp.com/app-assets/${application_id}/${url}.webp`;
-    }
-    return url;
-};
-
-const formatElapsedTime = (start: number, end?: number): string => {
-    const now = Date.now();
-    const elapsed = end ? end - start : now - start;
-    const hours = Math.floor(elapsed / 3600000);
-    const minutes = Math.floor((elapsed % 3600000) / 60000);
-    const seconds = Math.floor((elapsed % 60000) / 1000);
-    return `${hours > 0 ? hours + ':' : ''}${hours > 0 && minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-};
-
-const formatDuration = (start: number, end: number): string => {
-    const duration = end - start;
-    const hours = Math.floor(duration / 3600000);
-    const minutes = Math.floor((duration % 3600000) / 60000);
-    const seconds = Math.floor((duration % 60000) / 1000);
-    return `${hours > 0 ? hours + ':' : ''}${hours > 0 && minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-};
-
+import { extractImageUrl, formatElapsedTime, formatDuration } from './utils';
 
 export const displayPresence = async (presence: LanyardData | null): Promise<void> => {
     const container = document.querySelector('.activity-container');
     if (!container) return;
 
-    container.innerHTML = ''; 
+    container.innerHTML = presence ? '' : 'Loading...';
+    if (!presence) return;
 
-    if (!presence) {
-        container.innerHTML = 'Loading...';
-        return;
-    }
+    const customImages: Record<string, string> = {
+        'counter-strike 2': "https://cdn2.steamgriddb.com/icon/e1bd06c3f8089e7552aa0552cb387c92/32/512x512.png",
+        // More images will be added
+    };
 
     let hasDisplayableActivity = false;
 
-    presence.activities.forEach(async (activity, index) => {
-        let isCustomStatus = activity.type === 4;
-        let activityDetails = activity.details ?? '';
-        let activityState = activity.state ?? '';
-        let activityName = activity.name ?? '';
-        let activityLargeText = activity.assets?.large_text ?? '';
-        let startTimestamp = activity.timestamps?.start;
-        let endTimestamp = activity.timestamps?.end;
-        let imageUrl = '/images/default.png'; 
-        if (activity.name.toLowerCase().includes('spotify') && presence.spotify) {
-            let truncatedName = `${presence.spotify.song}`;
-            let truncatedDetails = `by ${presence.spotify.artist}`;
-            let truncatedState = `on ${presence.spotify.album}`;
-            activityName = truncatedName;
-            activityDetails = truncatedDetails;
-            activityState = truncatedState;
+    presence.activities.forEach((activity) => {
+        const {
+            name = '',
+            details = '',
+            state = '',
+            assets,
+            timestamps,
+            type,
+        } = activity;
+        
+        let imageUrl = customImages[name.toLowerCase()] || '/images/default.png';
+        let activityName = name;
+        let activityDetails = details;
+        let activityState = state;
+        let startTimestamp = timestamps?.start;
+        let endTimestamp = timestamps?.end;
+
+        // Spotify-specific handling
+        if (name.toLowerCase().includes('spotify') && presence.spotify) {
+            activityName = `${presence.spotify.song}`;
+            activityDetails = `by ${presence.spotify.artist}`;
+            activityState = `on ${presence.spotify.album}`;
             startTimestamp = presence.spotify.timestamps.start;
             endTimestamp = presence.spotify.timestamps.end;
         }
 
-        if (isCustomStatus && activity.emoji) {
-            return;
-        }
-        if (isCustomStatus && !activity.emoji) {
-            return;
-        }
-
-        const activityElement = document.createElement('div');
-        activityElement.classList.add('activity');
-
-        hasDisplayableActivity = true;
-
-        if (activity.assets?.large_image) {
-            imageUrl = extractImageUrl(activity.assets.large_image, activity.application_id);
-        } else if (activity.assets?.small_image) {
-            imageUrl = extractImageUrl(activity.assets.small_image, activity.application_id);
-        }
-        // Custom Images
-        if (activity.name.toLowerCase().includes('counter-strike 2')) {
-            imageUrl = "https://cdn2.steamgriddb.com/icon/e1bd06c3f8089e7552aa0552cb387c92/32/512x512.png"
-        }
-
-        const nameElement = document.createElement('p');
-        nameElement.className = 'activityName';
-        nameElement.title = activityName ?? '';
-        nameElement.textContent = activityName ?? '';
-
-        activityElement.appendChild(nameElement);
-
-        const imgElement = document.createElement('img');
-        imgElement.className = 'activityPointerEventsAllow';
-        imgElement.className = 'activityImage';
-        imgElement.src = imageUrl;
-        imgElement.alt = activity.name;
-        imgElement.title = activityLargeText;
-
-        activityElement.appendChild(imgElement);
-
-        const detailsElement = document.createElement('div');
-        detailsElement.className = 'activityDetailsContainer';
-
-        if (activityDetails) {
-            const detailsTextElement = document.createElement('p');
-            detailsTextElement.className = 'activityDetails';
-            detailsTextElement.title = activityDetails;
-            detailsTextElement.textContent = activityDetails;
-            detailsElement.appendChild(detailsTextElement);
-        }
-
-        if (activityState) {
-            const stateElement = document.createElement('p');
-            stateElement.className = 'activityState';
-            stateElement.title = activityState;
-            stateElement.textContent = activityState;
-            detailsElement.appendChild(stateElement);
-        }
-
-        if (startTimestamp) {
-            const elapsedElement = document.createElement('p');
-            elapsedElement.className = 'activityTimestamp';
-            let elapsedText = `${formatElapsedTime(startTimestamp)} elapsed`;
-        
-            if (endTimestamp) {
-                elapsedText += ` (${formatDuration(startTimestamp, endTimestamp)})`;
+        // Update image URL if available in assets
+        if (assets) {
+            const assetUrl = assets.large_image ?? assets.small_image;
+            if (assetUrl) {
+                imageUrl = extractImageUrl(assetUrl, activity.application_id);
             }
-        
-            elapsedElement.textContent = elapsedText;
-            detailsElement.appendChild(elapsedElement);
         }
 
-        activityElement.appendChild(detailsElement);
+        // Skip custom statuses with or without emojis
+        if (type === 4) return;
+
+        // Create and append activity element
+        const activityElement = createActivityElement(activityName, imageUrl, activityDetails, activityState, startTimestamp, endTimestamp);
         container.appendChild(activityElement);
+        hasDisplayableActivity = true;
     });
 
     if (!hasDisplayableActivity) {
         container.innerHTML = 'Not doing anything right now.';
     }
 };
+
+// Helper function to create activity element
+function createActivityElement(name: string, imageUrl: string, details: string, state: string, start: number | undefined, end: number | undefined): HTMLElement {
+    const activityElement = document.createElement('div');
+    activityElement.classList.add('activity');
+
+    // Name element
+    const nameElement = document.createElement('p');
+    nameElement.className = 'activityName';
+    nameElement.title = name;
+    nameElement.textContent = name;
+    activityElement.appendChild(nameElement);
+
+    // Image element
+    const imgElement = document.createElement('img');
+    imgElement.className = 'activityImage activityPointerEventsAllow';
+    imgElement.src = imageUrl;
+    imgElement.alt = name;
+    imgElement.title = name;
+    activityElement.appendChild(imgElement);
+
+    // Details container
+    const detailsContainer = document.createElement('div');
+    detailsContainer.className = 'activityDetailsContainer';
+
+    // Activity details
+    if (details) {
+        const detailsText = document.createElement('p');
+        detailsText.className = 'activityDetails';
+        detailsText.title = details;
+        detailsText.textContent = details;
+        detailsContainer.appendChild(detailsText);
+    }
+
+    // Activity state
+    if (state) {
+        const stateElement = document.createElement('p');
+        stateElement.className = 'activityState';
+        stateElement.title = state;
+        stateElement.textContent = state;
+        detailsContainer.appendChild(stateElement);
+    }
+
+    // Timestamp
+    if (start) {
+        const elapsedText = `${formatElapsedTime(start)} elapsed`;
+        const duration = end ? ` (${formatDuration(start, end)})` : '';
+        const timestampElement = document.createElement('p');
+        timestampElement.className = 'activityTimestamp';
+        timestampElement.textContent = elapsedText + duration;
+        detailsContainer.appendChild(timestampElement);
+    }
+
+    activityElement.appendChild(detailsContainer);
+    return activityElement;
+}
