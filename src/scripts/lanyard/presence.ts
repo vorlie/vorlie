@@ -11,6 +11,7 @@ export const displayPresence = async (presence: LanyardData | null): Promise<voi
 
     const customImages: Record<string, string> = {
         'counter-strike 2': "https://cdn2.steamgriddb.com/icon/e1bd06c3f8089e7552aa0552cb387c92/32/512x512.png",
+        'world of tanks blitz':"https://play-lh.googleusercontent.com/bGox9eeuGjKWkC_EdFuhZIaIFGE1tClqMFa8LdwwNmi2ifTjqXYwxX2zCPa9FVSFYzw",
         // More images will be added
     };
 
