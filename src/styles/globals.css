@@ -338,7 +338,7 @@ body, .non-selectable {
     background-color: var(--color-bg-surface);
     /* Surface background color */
     border-radius: var(--border-radius-base);
-    padding: 10px 15px;
+    padding: 14px;
     width: 312px;
     position: relative;
 }
@@ -367,17 +367,34 @@ body, .non-selectable {
 }
 
 .activityName {
-    margin: 2px 0;
+    margin: 0 0 12px 0;
     font-size: var(--font-size-base);
     font-weight: 600;
     color: var(--color-accent);
-    /* Accent color */
+    line-height: 10px;
 }
 
 .activityDetails,
 .activityState,
 .activityTimestamp {
     margin: 0;
+}
+
+.activityProgressBarContainer {
+    width: 100%;
+    height: 4px;
+    background-color: var(--color-bg-base);
+    margin-top: 4px;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.activityProgressBar {
+    height: 100%;
+    background-color: var(--color-accent);
+    width: 0;
+    border-radius: 2px;
+    transition: width 0.5s ease;
 }
 
 /* =================== PROJECTS ==================== */
@@ -750,6 +767,11 @@ body, .non-selectable {
         margin: 10px auto;
         padding: 10px;
         max-width: 100%;
+    }
+
+    .activityName {
+        margin: 0 0 8px 0;
+        line-height: 14px;
     }
 
     .buttons {

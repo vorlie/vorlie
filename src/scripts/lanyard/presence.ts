@@ -111,30 +111,52 @@ function createActivityElement(name: string, imageUrl: string, details: string, 
     if (start) {
         const timestampElement = document.createElement('p');
         timestampElement.className = 'activityTimestamp';
-    
+
         if (end) {
-            const updateTimestamp = () => {
+            // Progress bar container
+            const progressBarContainer = document.createElement('div');
+            progressBarContainer.className = 'activityProgressBarContainer';
+
+            const progressBar = document.createElement('div');
+            progressBar.className = 'activityProgressBar';
+            progressBarContainer.appendChild(progressBar);
+
+            // Update timestamp and progress
+            const updateTimestampAndProgress = () => {
                 const now = Date.now();
                 const remainingTime = end - now;
-    
+
                 if (remainingTime <= 0) {
                     timestampElement.textContent = 'Activity has ended';
                 } else {
                     const elapsedText = `${formatElapsedTime(now, end)} left`;
                     timestampElement.textContent = elapsedText;
+
+                    const totalDuration = end - start;
+                    const elapsed = now - start;
+                    const progressPercent = Math.min((elapsed / totalDuration) * 100, 100);
+                    progressBar.style.width = `${progressPercent}%`;
                 }
             };
 
-            updateTimestamp();
+            // Initialize timestamp and progress bar
+            updateTimestampAndProgress();
 
+            // Append the timestamp to details container
             detailsContainer.appendChild(timestampElement);
+
+            // Append details container and progress bar in order
+            activityElement.appendChild(detailsContainer);
+            activityElement.appendChild(progressBarContainer);
         } else {
             const elapsedText = `${formatElapsedTime(start)} elapsed`;
             timestampElement.textContent = elapsedText;
             detailsContainer.appendChild(timestampElement);
+            activityElement.appendChild(detailsContainer);
         }
+    } else {
+        activityElement.appendChild(detailsContainer);
     }
 
-    activityElement.appendChild(detailsContainer);
     return activityElement;
 }
