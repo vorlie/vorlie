@@ -286,7 +286,7 @@ body, .non-selectable {
     font-size: var(--font-size-header);
     font-weight: 600;
     text-align: center;
-    margin: var(--spacing-base);
+    margin: var(--spacing-base - 5px);
 }
 
 .text {
@@ -329,7 +329,7 @@ body, .non-selectable {
     gap: 15px;
     align-items: center;
     justify-content: center;
-    margin: 15px 0;
+    margin: 20px;
 }
 
 .activity {
