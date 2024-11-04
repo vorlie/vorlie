@@ -1,3 +1,4 @@
+@import "https://www.nerdfonts.com/assets/css/webfont.css";
 :root {
     /* Font Sizes */
     --font-size-base: 20px;
@@ -271,38 +272,76 @@ body, .non-selectable {
     gap: 5px;
     text-decoration: none;
     color: var(--color-link);
-    /* Link color */
     transition: var(--transition-link-hover);
     white-space: nowrap;
 }
 
 .link:hover {
     color: var(--color-link-hover);
-    /* Link hover color */
     text-decoration: underline;
 }
 
-.header {
-    font-size: var(--font-size-header);
-    font-weight: 600;
-    text-align: center;
-    margin: var(--spacing-base - 5px);
+.underline{
+    text-decoration: underline;
 }
 
 .text {
-    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: var(--spacing-base);
     color: var(--color-text-primary);
-    /* Primary text color */
     font-size: var(--font-size-base);
+    padding: var(--spacing-base);
+    margin: 0 auto;
+    text-align: left;
+    color: var(--color-text-primary);
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.text-container {
+    flex: 1;
+    margin: var(--spacing-base) 0;
+}
+
+.header{
+    text-align: left;
+    margin: 20px 0;
+}
+
+.header-text {
+    font-size: 2.5rem;
+    font-weight: 700;  
+    margin: 20px 0;
+    text-align: left;
+    line-height: 1.2;
+}
+
+
+.body-text {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    color: var(--color-text-secondary);
+}
+
+.skills-list {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 10px;
+    font-size: 1rem;
+    color: var(--color-text-primary);
+}
+
+.skills-list li {
+    padding: 5px 0;
+    text-align: left;
+    font-weight: 500;
 }
 
 .span-size {
     font-size: var(--font-size-span);
-}
-
-.body-text {
-    margin-top: 15px;
-    margin-bottom: 15px;
 }
 
 .fontsize {
@@ -311,12 +350,10 @@ body, .non-selectable {
 
 .span-color {
     color: var(--color-accent);
-    /* Accent color for spans */
 }
 
 .span-color a {
     color: var(--color-accent);
-    /* Accent color for links */
     text-decoration: none;
 }
 
@@ -326,10 +363,9 @@ body, .non-selectable {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 15px;
-    align-items: center;
-    justify-content: center;
-    margin: 20px;
+    gap: var(--spacing-base);
+    align-items: stretch;
+    justify-content: left;
 }
 
 .activity {
@@ -338,8 +374,9 @@ body, .non-selectable {
     background-color: var(--color-bg-surface);
     /* Surface background color */
     border-radius: var(--border-radius-base);
-    padding: 14px;
-    width: 312px;
+    padding: 1rem;
+    width: 354.93px;
+    margin: 0.2rem;
     position: relative;
 }
 .activity::after {
@@ -403,7 +440,7 @@ body, .non-selectable {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 10px;
+    gap: var(--spacing-base);
     margin: 0 auto;
 }
 
@@ -478,7 +515,7 @@ body, .non-selectable {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 10px;
+    gap: var(--spacing-base);
     margin: 0 auto;
 }
 
@@ -755,6 +792,26 @@ body, .non-selectable {
 /* =================== MEDIA QUERIES ==================== */
 
 @media (max-width: 768px) {
+    .text {
+        flex-direction: column;
+        padding: var(--spacing-base); 
+    }
+
+    .text-container {
+        flex: none; 
+        margin: 0;
+    }
+    .header-text {
+        font-size: 2rem; 
+    }
+
+    .body-text {
+        font-size: 1rem; 
+    }
+
+    .skills-list {
+        font-size: 0.9rem; 
+    }
 
     #custom-cursor,
     #custom-cursor-outline {
@@ -764,9 +821,13 @@ body, .non-selectable {
     .activity-container {
         text-align: left;
         flex-direction: column;
-        margin: 10px auto;
-        padding: 10px;
-        max-width: 100%;
+        align-items: center;
+    }
+
+    .activity {
+        width: calc(100% - 40px);
+        align-items: center;
+        justify-content: center;
     }
 
     .activityName {

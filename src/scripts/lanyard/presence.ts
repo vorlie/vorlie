@@ -61,7 +61,7 @@ export const displayPresence = async (presence: LanyardData | null): Promise<voi
     });
 
     if (!hasDisplayableActivity) {
-        container.innerHTML = 'Not doing anything right now.';
+        container.innerHTML = '';
     }
 };
 

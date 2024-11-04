@@ -2,7 +2,7 @@ import React from 'react';
 import Item from './PCItem';
 
 export const PCSpecification: React.FC = () => (
-    <div className="main">
+    <div className="pc-spec">
         <h1 className="header">My PC Specs</h1>
         <div className="container">
             <Item
