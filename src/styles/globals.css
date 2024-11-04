@@ -1,4 +1,3 @@
-@import "https://www.nerdfonts.com/assets/css/webfont.css";
 :root {
     /* Font Sizes */
     --font-size-base: 20px;
@@ -140,6 +139,13 @@
 
 /* =================== Styling ==================== */
 
+@font-face {
+    font-family: '0xProtoNerdFont';
+    src: url('../fonts/0xProtoNerdFont-Regular.ttf') format('ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
 body {
     transition: filter 0.3s ease;
     color: var(--color-text-primary);
@@ -148,7 +154,7 @@ body {
 
 html {
     scroll-behavior: smooth;
-    font-family: system-ui, sans-serif;
+    font-family: "0xProtoNerdFont", sans-serif;
     opacity: 1;
 }
 
