@@ -664,7 +664,7 @@ body, .non-selectable {
     overflow-x: auto;
     white-space: nowrap;
     padding: 0 5px;
-    width: 142px;
+    min-width: 142px;
 }
 
 .sub-item{

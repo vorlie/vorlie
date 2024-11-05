@@ -1,5 +1,18 @@
 ---
 import NavItem from './react/NavItem';
+
+const anilistSVG = `
+  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+    <path fill="currentColor" d="M24 17.53v2.421c0 .71-.391 1.101-1.1 1.101h-5l-.057-.165L11.84 3.736c.106-.502.46-.788 1.053-.788h2.422c.71 0 1.1.391 1.1 1.1v12.38H22.9c.71 0 1.1.392 1.1 1.101zM11.034 2.947l6.337 18.104h-4.918l-1.052-3.131H6.019l-1.077 3.131H0L6.361 2.948h4.673zm-.66 10.96l-1.69-5.014l-1.541 5.015h3.23z"/>
+  </svg>
+`;
+
+const lastfmSVG = `
+  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 256 256">
+    <path fill="currentColor" d="M252 160a44.05 44.05 0 0 1-44 44h-17.43a60.2 60.2 0 0 1-54.37-34.63l-30.15-64.59A36.13 36.13 0 0 0 73.43 84H64a36 36 0 0 0-36 36v24a36 36 0 0 0 36 36h8a28 28 0 0 0 25.68-16.8a12 12 0 1 1 22 9.6A52 52 0 0 1 72 204h-8a60.07 60.07 0 0 1-60-60v-24a60.07 60.07 0 0 1 60-60h9.43a60.2 60.2 0 0 1 54.37 34.63l30.2 64.59A36.13 36.13 0 0 0 190.57 180H208a20 20 0 0 0 0-40h-20a40 40 0 0 1 0-80h20a36 36 0 0 1 36 36a12 12 0 0 1-24 0a12 12 0 0 0-12-12h-20a16 16 0 0 0 0 32h20a44.05 44.05 0 0 1 44 44"/>
+  </svg>
+`;
+
 ---
 <script src="../scripts/toggleHamburger.ts"></script>
 <div class="navbar">
@@ -19,22 +32,20 @@ import NavItem from './react/NavItem';
       <i class="bi bi-list fontsize2"></i>
     </button>
     <div popover id="nav-hamburgertarget" class="hamburger-menu" >
-      <!-- <NavItem id="home" link="/" linkText="Home" iconString="house-fill" />
-      <NavItem id="credits" link="/credits" linkText="Credits" iconString="info-square-fill" /> -->
       <NavItem id="discord" link="https://vorlie.pages.dev/?link=discord" linkText="Discord" iconString="discord" subClass='subcolor' newPage />
       <NavItem id="github" link="https://vorlie.pages.dev/?link=github" linkText="GitHub" iconString="github" subClass='subcolor' newPage />
       <NavItem id="youtube" link="https://vorlie.pages.dev/?link=youtube" linkText="YouTube" iconString="youtube" subClass='subcolor' newPage />
+      <NavItem id="anilist" link="https://vorlie.pages.dev/?link=anilist" linkText="AniList" useSvg svgString={anilistSVG} subClass='subcolor' newPage  />
+      <NavItem id="lastfm" link="https://vorlie.pages.dev/?link=lastfm" linkText="Last.fm" useSvg svgString={lastfmSVG} subClass='subcolor' newPage />
       <hr />
       <button id="themeToggle" class="theme-toggle subcolor" title="Toggle theme"><i class="bi bi-lightbulb"></i> Toggle theme</button>
     </div>
-    <!--<div class="nav-items">
-      <NavItem id="home" link="/" linkText="Home" iconString="house-fill" title='Home page' />
-      <NavItem id="credits" link="/credits" linkText="Credits" iconString="info-square-fill" title='Credits' />
-    </div> -->
     <div class="nav-items">
       <NavItem id="discord" link="https://vorlie.pages.dev/?link=discord" iconString="discord" subClass='subcolor' newPage title='Discord' />
       <NavItem id="github" link="https://vorlie.pages.dev/?link=github" iconString="github" subClass='subcolor' newPage title='GitHub' />
       <NavItem id="youtube" link="https://vorlie.pages.dev/?link=youtube" iconString="youtube" subClass='subcolor' newPage title='YouTube' />
+      <NavItem id="anilist" link="https://vorlie.pages.dev/?link=anilist" useSvg svgString={anilistSVG} subClass='subcolor' newPage title='AniList' />
+      <NavItem id="lastfm" link="https://vorlie.pages.dev/?link=lastfm" useSvg svgString={lastfmSVG} subClass='subcolor' newPage title='Last.fm' />
     </div>
     <div class="nav-items sub-item">
       <button id="themeToggle2" class="theme-toggle subcolor" title="Toggle theme"><i class="bi bi-lightbulb"></i></button>

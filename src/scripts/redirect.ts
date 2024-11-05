@@ -11,6 +11,8 @@ export default function redirect() {
             github: 'https://github.com/vorlie',
             site_source: 'https://github.com/vorlie/vorlie',
             ohalink: 'https://www.youtube.com/watch?v=xvFZjo5PgG0',
+            anilist: 'https://anilist.co/user/vorlie',
+            lastfm: 'https://www.last.fm/user/vorlie',
         };
 
         if (keywordMap[keyword]) {
