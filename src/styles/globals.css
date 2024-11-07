@@ -433,6 +433,7 @@ body, .non-selectable {
     width: 25px; 
     height: 25px;
     border-radius: 50%;
+    background-color: var(--color-bg-surface);
     border: 3px solid var(--color-bg-surface);
 }
 
