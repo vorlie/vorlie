@@ -433,13 +433,13 @@ body, .non-selectable {
     width: 25px; 
     height: 25px;
     border-radius: 50%;
-    border: 2px solid var(--color-bg-surface);
+    border: 3px solid var(--color-bg-surface);
 }
 
 .activityDetailsContainer {
     display: flex;
-    flex-direction: column; /* Stack details and state vertically */
-    justify-content: center; /* Ensure the details are centered */
+    flex-direction: column;
+    justify-content: center;
     vertical-align: top;
     margin-left: 10px;
 }
