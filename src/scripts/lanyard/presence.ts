@@ -27,7 +27,9 @@ export const displayPresence = async (presence: LanyardData | null): Promise<voi
             type,
         } = activity;
         
-        let imageUrl = customImages[name.toLowerCase()] || '/images/default.png';
+        let largeImageUrl = customImages[name.toLowerCase()] || '/images/default.png';
+        let largeImageText = null;
+        let smallImageText = null;
         let activityName = name;
         let activityDetails = details;
         let activityState = state;
@@ -45,9 +47,17 @@ export const displayPresence = async (presence: LanyardData | null): Promise<voi
 
         // Update image URL if available in assets
         if (assets) {
-            const assetUrl = assets.large_image ?? assets.small_image;
+            const assetUrl = assets.large_image;
+            const largeText = assets.large_text;
+            const smallText = assets.small_text;
             if (assetUrl) {
-                imageUrl = extractImageUrl(assetUrl, activity.application_id);
+                largeImageUrl = extractImageUrl(assetUrl, activity.application_id);
+            }
+            if (largeText) {
+                largeImageText = largeText;
+            }
+            if (smallText) {
+                smallImageText = smallText;
             }
         }
 
@@ -55,7 +65,8 @@ export const displayPresence = async (presence: LanyardData | null): Promise<voi
         if (type === 4) return;
 
         // Create and append activity element
-        const activityElement = createActivityElement(activityName, imageUrl, activityDetails, activityState, startTimestamp, endTimestamp);
+        const smallImageUrl = assets?.small_image ? extractImageUrl(assets.small_image, activity.application_id) : null;
+        const activityElement = createActivityElement(activityName, largeImageUrl, largeImageText, smallImageUrl, smallImageText ,activityDetails, activityState, startTimestamp, endTimestamp);
         container.appendChild(activityElement);
         hasDisplayableActivity = true;
     });
@@ -66,7 +77,16 @@ export const displayPresence = async (presence: LanyardData | null): Promise<voi
 };
 
 // Helper function to create activity element
-function createActivityElement(name: string, imageUrl: string, details: string, state: string, start: number | undefined, end: number | undefined): HTMLElement {
+function createActivityElement(
+    name: string, 
+    largeImageUrl: string, 
+    largeImageText: string | null,
+    smallImageUrl: string | null, 
+    smallImageText: string | null,
+    details: string, state: string, 
+    start: number | undefined, 
+    end: number | undefined
+): HTMLElement {
     const activityElement = document.createElement('div');
     activityElement.classList.add('activity');
 
@@ -77,13 +97,33 @@ function createActivityElement(name: string, imageUrl: string, details: string, 
     nameElement.textContent = name;
     activityElement.appendChild(nameElement);
 
-    // Image element
+    // Wrapper for image and details containers
+    const activityWrapper = document.createElement('div');
+    activityWrapper.className = 'activityWrapper';
+
+    // Image container
+    const imageContainer = document.createElement('div');
+    imageContainer.className = 'activityImageContainer';
+    
+    // Large Image element
     const imgElement = document.createElement('img');
     imgElement.className = 'activityImage activityPointerEventsAllow';
-    imgElement.src = imageUrl;
+    imgElement.src = largeImageUrl;
     imgElement.alt = name;
-    imgElement.title = name;
-    activityElement.appendChild(imgElement);
+    imgElement.title = largeImageText || name;
+    imageContainer.appendChild(imgElement);
+
+    // Small Image overlay (if available)
+    if (smallImageUrl) {
+        const smallImgElement = document.createElement('img');
+        smallImgElement.className = 'activitySmallImage';
+        smallImgElement.src = smallImageUrl;
+        smallImgElement.alt = smallImageText || name;
+        smallImgElement.title = smallImageText || name;
+        imageContainer.appendChild(smallImgElement);
+    }
+
+    activityWrapper.appendChild(imageContainer);
 
     // Details container
     const detailsContainer = document.createElement('div');
@@ -107,12 +147,16 @@ function createActivityElement(name: string, imageUrl: string, details: string, 
         detailsContainer.appendChild(stateElement);
     }
 
-    // Timestamp
+    // Timestamp and progress bar handling
     if (start) {
         const timestampElement = document.createElement('p');
         timestampElement.className = 'activityTimestamp';
 
         if (end) {
+            // Create a new wrapper for the progress bar
+            const progressWrapper = document.createElement('div');
+            progressWrapper.className = 'activityWrapper'; // Duplicate wrapper
+
             // Progress bar container
             const progressBarContainer = document.createElement('div');
             progressBarContainer.className = 'activityProgressBarContainer';
@@ -142,17 +186,24 @@ function createActivityElement(name: string, imageUrl: string, details: string, 
             // Initialize timestamp and progress bar
             updateTimestampAndProgress();
 
-            // Append the timestamp to details container
+            // Append the timestamp to the details container
             detailsContainer.appendChild(timestampElement);
 
-            // Append details container and progress bar in order
-            activityElement.appendChild(detailsContainer);
-            activityElement.appendChild(progressBarContainer);
+            // Append the details container to the original wrapper
+            activityWrapper.appendChild(detailsContainer);
+
+            // Append the progress bar container to the progress wrapper
+            progressWrapper.appendChild(progressBarContainer);
+
+            // Append both the original wrapper (image/details) and the new progress wrapper to the activity element
+            activityElement.appendChild(activityWrapper);
+            activityElement.appendChild(progressWrapper);
         } else {
             const elapsedText = `${formatElapsedTime(start)} elapsed`;
             timestampElement.textContent = elapsedText;
             detailsContainer.appendChild(timestampElement);
-            activityElement.appendChild(detailsContainer);
+            activityWrapper.appendChild(detailsContainer);
+            activityElement.appendChild(activityWrapper);
         }
     } else {
         activityElement.appendChild(detailsContainer);
