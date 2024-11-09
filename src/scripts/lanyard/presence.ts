@@ -1,6 +1,6 @@
 // presence.ts
 import type { LanyardData } from './interfaces';
-import { extractImageUrl, formatElapsedTime, formatDuration } from './utils';
+import { extractImageUrl, formatElapsedTime } from './utils';
 
 export const displayPresence = async (presence: LanyardData | null): Promise<void> => {
     const container = document.querySelector('.activity-container');
@@ -9,10 +9,10 @@ export const displayPresence = async (presence: LanyardData | null): Promise<voi
     container.innerHTML = presence ? '' : 'Loading...';
     if (!presence) return;
 
-    const customImages: Record<string, string> = {
+    const largeCustomImages: Record<string, string> = {
         'counter-strike 2': "https://cdn2.steamgriddb.com/icon/e1bd06c3f8089e7552aa0552cb387c92/32/512x512.png",
         'world of tanks blitz':"https://play-lh.googleusercontent.com/bGox9eeuGjKWkC_EdFuhZIaIFGE1tClqMFa8LdwwNmi2ifTjqXYwxX2zCPa9FVSFYzw",
-        // More images will be added
+        'osu!': "https://cdn.discordapp.com/app-assets/367827983903490050/373344233077211136.png"
     };
 
     let hasDisplayableActivity = false;
@@ -27,7 +27,7 @@ export const displayPresence = async (presence: LanyardData | null): Promise<voi
             type,
         } = activity;
         
-        let largeImageUrl = customImages[name.toLowerCase()] || '/images/default.png';
+        let largeImageUrl = largeCustomImages[name.toLowerCase()] || '/images/default.png';
         let largeImageText = null;
         let smallImageText = null;
         let activityName = name;
