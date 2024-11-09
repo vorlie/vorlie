@@ -870,8 +870,8 @@ body, .non-selectable {
 
     .activity {
         width: calc(100% - 40px);
-        align-items: center;
-        justify-content: center;
+        align-items: left;
+        justify-content: left;
     }
 
     .activityName {
