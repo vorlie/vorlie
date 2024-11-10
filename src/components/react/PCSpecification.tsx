@@ -13,11 +13,11 @@ export const PCSpecification: React.FC = () => (
                 link="https://www.amazon.com/dp/B07STGGQ18"
                 linkText="Buy on Amazon"/>
             <Item
-                imgSrc="https://us-east-1.tixte.net/uploads/cx.tixte.co/spc272-spc-spartan-4-max-01b-removebg-preview.png"
+                imgSrc="https://us-east-1.tixte.net/uploads/cx.tixte.co/spc130-spc-fortis3-he1425-01-removebg-preview.png"
                 imgAlt="cpu cooler"
                 title="CPU Cooler"
-                desc="SilentiumPC Spartan 4 MAX"
-                link="https://www.x-kom.pl/p/562914-chlodzenie-procesora-silentiumpc-spartan-4-max-120mm.html"
+                desc="SilentiumPC Fortis 3"
+                link="https://www.x-kom.pl/p/259244-chlodzenie-procesora-silentiumpc-fortis-3-140mm.html"
                 linkText="See on x-kom"/>
             <Item
                 imgSrc="https://dlcdnimgs.asus.com/websites/global/products/afwaj0qnsbp72phf/intro-main.png"
