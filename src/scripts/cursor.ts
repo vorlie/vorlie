@@ -1,8 +1,20 @@
 document.addEventListener('DOMContentLoaded', () => {
   const customCursor = document.getElementById('custom-cursor') as HTMLDivElement;
   const customCursorOutline = document.getElementById('custom-cursor-outline') as HTMLDivElement;
+  const cursorToggleBtn = document.getElementById('cursorToggle') as HTMLButtonElement;
+  const cursorIcon = cursorToggleBtn.querySelector('i');
+
   let mouseX = 0, mouseY = 0;
   let outlineX = 0, outlineY = 0;
+
+  let cursorVisible = localStorage.getItem('cursorVisible') !== 'false';
+
+  // Apply initial visibility state
+  if (!cursorVisible) {
+    customCursor.classList.add('cursor-hidden');
+    customCursorOutline.classList.add('cursor-hidden');
+    cursorIcon?.classList.replace('bi-cursor', 'bi-cursor-fill');
+  }
 
   if (customCursor && customCursorOutline) {
     document.addEventListener('mousemove', (e: MouseEvent) => {
@@ -10,8 +22,27 @@ document.addEventListener('DOMContentLoaded', () => {
       mouseX = e.clientX + window.scrollX;
       mouseY = e.clientY + window.scrollY;
 
-      customCursor.style.left = `${mouseX - cursorSize}px`;
-      customCursor.style.top = `${mouseY - cursorSize}px`;
+      if (cursorVisible) {
+        customCursor.style.left = `${mouseX - cursorSize}px`;
+        customCursor.style.top = `${mouseY - cursorSize}px`;
+      }
+    });
+
+    cursorToggleBtn.addEventListener('click', () => {
+      cursorVisible = !cursorVisible;
+
+      // Toggle display for both cursors
+      customCursor.classList.toggle('cursor-hidden', !cursorVisible);
+      customCursorOutline.classList.toggle('cursor-hidden', !cursorVisible);
+
+      // Toggle icon class between cursor and cursor-fill
+      if (cursorIcon) {
+        cursorIcon.classList.toggle('bi-cursor-fill', !cursorVisible);
+        cursorIcon.classList.toggle('bi-cursor', cursorVisible);
+      }
+
+      // Save the current state to localStorage
+      localStorage.setItem('cursorVisible', cursorVisible.toString());
     });
 
     document.addEventListener('mousedown', () => {

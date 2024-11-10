@@ -725,7 +725,7 @@ body, .non-selectable {
     }
 }
 
-.theme-toggle{
+.theme-toggle, .cursor-toggle{
     text-decoration: none;
     color: var(--color-accent-light);
     /* Main link color */
@@ -741,6 +741,10 @@ body, .non-selectable {
         color: var(--color-accent-extra);
         filter: drop-shadow(0 0px 4px var(--color-accent-extra));
     }
+}
+
+.cursor-hidden{
+    display: none;
 }
 
 #nav-hamburger {
