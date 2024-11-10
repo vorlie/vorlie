@@ -408,7 +408,6 @@ body, .non-selectable {
 
 .activityWrapper {
     display: flex;
-    align-items: center;
 }
 
 .activityImageContainer {
@@ -416,6 +415,7 @@ body, .non-selectable {
     position: relative;
     width: 60px;
     height: 60px;
+    margin-top: auto;
     flex-shrink: 0;
 }
 
@@ -440,7 +440,6 @@ body, .non-selectable {
 .activityDetailsContainer {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     vertical-align: top;
     margin-left: 10px;
 }
@@ -451,7 +450,6 @@ body, .non-selectable {
     font-weight: 600;
     color: var(--color-accent);
     line-height: 10px;
-    
 }
 
 .activityDetails,
