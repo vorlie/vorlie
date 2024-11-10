@@ -12,7 +12,6 @@ export const displayPresence = async (presence: LanyardData | null): Promise<voi
     const largeCustomImages: Record<string, string> = {
         'counter-strike 2': "https://cdn2.steamgriddb.com/icon/e1bd06c3f8089e7552aa0552cb387c92/32/512x512.png",
         'world of tanks blitz':"https://play-lh.googleusercontent.com/bGox9eeuGjKWkC_EdFuhZIaIFGE1tClqMFa8LdwwNmi2ifTjqXYwxX2zCPa9FVSFYzw",
-        'osu!': "https://cdn.discordapp.com/app-assets/367827983903490050/373344233077211136.png"
     };
 
     let hasDisplayableActivity = false;
@@ -87,6 +86,10 @@ function createActivityElement(
     start: number | undefined, 
     end: number | undefined
 ): HTMLElement {
+    if (!largeImageUrl && !smallImageUrl) {
+        console.warn(`No images for activity: ${name}`);
+        // Optionally set a default or placeholder here if needed
+    }
     const activityElement = document.createElement('div');
     activityElement.classList.add('activity');
 
@@ -206,7 +209,8 @@ function createActivityElement(
             activityElement.appendChild(activityWrapper);
         }
     } else {
-        activityElement.appendChild(detailsContainer);
+        activityWrapper.appendChild(detailsContainer);
+        activityElement.appendChild(activityWrapper);
     }
 
     return activityElement;
