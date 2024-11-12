@@ -5,7 +5,7 @@ export default function redirect() {
     if (keyword) {
 
         const keywordMap: { [key: string]: string } = {
-            discord: 'https://discord.gg/ujYCjUwu6U',
+            discord: 'https://discord.gg/yUueAFyAmN',
             miko_support: 'https://discord.gg/yUueAFyAmN',
             youtube: 'https://www.youtube.com/@vve1_',
             github: 'https://github.com/vorlie',
