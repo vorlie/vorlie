@@ -616,7 +616,7 @@ body, .non-selectable {
     transition: 0.3s ease-in-out;
 
     &:hover {
-        filter: drop-shadow(0 0px 4px var(--color-accent-light));
+        filter: drop-shadow(0 0px 4px var(--color-accent-extra));
     }
 }
 
