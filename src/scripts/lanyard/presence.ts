@@ -107,13 +107,16 @@ function createActivityElement(
     // Image container
     const imageContainer = document.createElement('div');
     imageContainer.className = 'activityImageContainer';
-    
+
+    imageContainer.style.setProperty('--image-url', `url(${largeImageUrl})`);
+
     // Large Image element
     const imgElement = document.createElement('img');
     imgElement.className = 'activityImage activityPointerEventsAllow';
     imgElement.src = largeImageUrl;
     imgElement.alt = name;
     imgElement.title = largeImageText || name;
+    imgElement.loading = 'lazy';
     imageContainer.appendChild(imgElement);
 
     // Small Image overlay (if available)
@@ -123,6 +126,7 @@ function createActivityElement(
         smallImgElement.src = smallImageUrl;
         smallImgElement.alt = smallImageText || name;
         smallImgElement.title = smallImageText || name;
+        smallImgElement.loading = 'lazy';
         imageContainer.appendChild(smallImgElement);
     }
 

@@ -404,6 +404,7 @@ body, .non-selectable {
     height: 100%;
     background: linear-gradient(to left, var(--color-bg-surface), transparent);
     pointer-events: none;
+    z-index: 3;
 }
 
 .activityWrapper {
@@ -424,6 +425,26 @@ body, .non-selectable {
     height: 100%;
     object-fit: cover;
     border-radius: var(--border-radius-small);
+    position: relative;
+    z-index: 1; 
+}
+
+.activityImageContainer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: var(--image-url);
+    background-size: cover;
+    background-position: center;
+    filter: blur(15px);
+    transform: scale(1.1); 
+    opacity: 0.6; 
+    border-radius: var(--border-radius-small);
+    z-index: 0; 
+    pointer-events: none;
 }
 
 .activitySmallImage {
@@ -433,8 +454,11 @@ body, .non-selectable {
     width: 25px; 
     height: 25px;
     border-radius: 50%;
-    background-color: var(--color-bg-surface);
-    border: 3px solid var(--color-bg-surface);
+    background-color: transparent; 
+    border: 3px solid transparent; 
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 2; 
 }
 
 .activityDetailsContainer {
@@ -450,6 +474,12 @@ body, .non-selectable {
     font-weight: 600;
     color: var(--color-accent);
     line-height: 10px;
+}
+.activityName,
+.activityDetails,
+.activityState,
+.activityTimestamp {
+    z-index: 2 !important; 
 }
 
 .activityDetails,
@@ -919,5 +949,21 @@ body, .non-selectable {
         &:hover {
             color: var(--color-accent-extra);
         }
+    }
+    
+    .activityImageContainer::before {
+        transform: scale(0.9); 
+    }
+
+    .activitySmallImage {
+        width: 20px;
+        height: 20px;
+        bottom: -4px;
+        right: -4px;
+    }
+
+    .activityImageContainer::before  {
+        will-change: transform, filter; 
+        transform: translateZ(0);
     }
 }
