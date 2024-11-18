@@ -33,8 +33,8 @@ https://cx.tixte.co/visual-refresh-bannerImg.png
 }
 */
 
-.barWithAppLauncherButton_cf58b5 {
-    right: unset; 
+.visual-refresh [class*="barWithAppLauncherButton_"] {
+    right: 16; 
 }
 
 /* Rounded corners */
