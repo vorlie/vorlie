@@ -34,7 +34,7 @@ https://cx.tixte.co/visual-refresh-bannerImg.png
 */
 
 .visual-refresh [class*="barWithAppLauncherButton_"] {
-    right: 16; 
+    right: 16px; 
 }
 
 /* Rounded corners */
