@@ -23,14 +23,18 @@ https://cx.tixte.co/visual-refresh-bannerImg.png
     width: unset;
 }
 
-/* Move user typing and slowmode notif above the chatbox*/
+/* Move user typing and slowmode notif above the chatbox
 .visual-refresh [class*="typing_"]{
     margin-bottom: 65px;
-    /*
     border-radius: 8px;
     background-color: oklab(0.274773 0.00249799 -0.00878797);
     border: 1px solid oklab(0.541247 0.00383598 -0.0133453 / 0.06);
-    */
+   
+}
+*/
+
+.barWithAppLauncherButton_cf58b5 {
+    right: unset; 
 }
 
 /* Rounded corners */
