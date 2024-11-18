@@ -1,0 +1,46 @@
+/* Hides sharp corners 
+https://cx.tixte.co/visual-refresh-panels.png
+*/
+.visual-refresh [class*="panels_"]
+{
+    overflow: hidden;
+}
+
+/* Removes padding from title bar which 
+blocked most of the buttons from being clickable
+(the one where you have minimize, maximize and close buttons)
+*/
+.visual-refresh [class*="titleBar_"]
+{
+    padding-bottom: 0;
+}
+
+/* Unzooms the banner (i think thats the correct word)
+https://cx.tixte.co/visual-refresh-bannerImg.png
+*/
+.visual-refresh [class*="bannerImg_"]
+{
+    width: unset;
+}
+
+/* Move user typing and slowmode notif above the chatbox*/
+.visual-refresh [class*="typing_"]{
+    margin-bottom: 65px;
+    /*
+    border-radius: 8px;
+    background-color: oklab(0.274773 0.00249799 -0.00878797);
+    border: 1px solid oklab(0.541247 0.00383598 -0.0133453 / 0.06);
+    */
+}
+
+/* Rounded corners */
+.visual-refresh [class*="memberInner_"],
+.visual-refresh [class*="interactive_"],
+.visual-refresh [class*="item_"],
+.visual-refresh [class*="searchBar_"],
+.visual-refresh [class*="link_"],
+.visual-refresh [class*="button_adca65"],
+.visual-refresh [class*="avatarWrapper_"]
+{
+    border-radius: 10px;
+}
