@@ -33,6 +33,18 @@ https://cx.tixte.co/visual-refresh-bannerImg.png
 }
 */
 
+[class*="notice_"] {
+    position: absolute;
+    top: 44px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 14px;
+    pointer-events: all;
+    max-width: 90%;
+    width: 70%;
+    min-width: 37%;
+}
+
 .visual-refresh [class*="barWithAppLauncherButton_"] {
     right: 16px; 
 }
