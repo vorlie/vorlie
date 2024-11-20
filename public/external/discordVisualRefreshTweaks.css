@@ -52,7 +52,7 @@ https://cx.tixte.co/visual-refresh-bannerImg.png
     top: var(--vorlie-notice-top);
     left: var(--vorlie-notice-left);
     transform: var(--vorlie-notice-transform);
-    border-radius: var(--vorlie-notice-radius);
+    border-radius: var(--vorlie-radius);
     max-width: var(--vorlie-notice-max-width);
     width: var(--vorlie-notice-width);
     min-width: var(--vorlie-notice-min-width);
