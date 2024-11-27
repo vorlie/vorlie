@@ -1,0 +1,19 @@
+@import url('/external/discordVisualRefreshCustomAccents.css');
+
+:where(.visual-refresh).theme-dark .lookLink_dd4f85.colorPrimary_dd4f85, 
+:where(.visual-refresh).theme-dark .lookLink_dd4f85.colorLink_dd4f85 {
+    color: var(--text-link);
+}
+
+.premiumIndicator_ede133 {
+    background-color: var(--pink);
+}
+
+:where(.visual-refresh) .slider_c7a159 .barFill_c7a159, 
+:where(.visual-refresh) .mini_c7a159 .barFill_c7a159.checked_cebd1c {
+    background-color: var(--redesign-input-control-selected);
+}
+
+.checked_cebd1c {
+    background-color: var(--redesign-input-control-selected) !important;
+}
