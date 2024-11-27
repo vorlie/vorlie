@@ -20,7 +20,7 @@
     --custom-highlight-color: var(--primary-color-light); /* Custom secondary highlight color */
     --text-link: var(--primary-color-light); /* Color for clickable links */
     --text-brand: var(--primary-color-light); /* Text color for branding */
-    --mention-foreground: var(--primary-color-light); /* Mentioned user text color */
-    --mention-background: hsla(var(--primary-hue), var(--primary-saturation), 50%, 0.18); /* Mention highlight background */
+    --mention-foreground: var(--primary-color-light) !important; /* Mentioned user text color */
+    --mention-background: hsla(var(--primary-hue), var(--primary-saturation), 50%, 0.18) !important; /* Mention highlight background */
 }
 

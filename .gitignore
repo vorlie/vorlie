@@ -24,3 +24,4 @@ pnpm-debug.log*
 # testing files/backup
 backup.txt
 dontinclude/
+test.css
