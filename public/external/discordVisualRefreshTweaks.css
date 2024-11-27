@@ -66,6 +66,10 @@ https://cx.tixte.co/visual-refresh-bannerImg.png
     border-radius: var(--vorlie-radius);
 }
 
+.anchor_af404b{
+    text-decoration: none;
+}
+
 /* Style top-left margins and border radius for messages */
 [class*="message_"]{
     margin-left: var(--vorlie-margin);
