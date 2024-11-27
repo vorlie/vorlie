@@ -1,19 +1,26 @@
+
+/* Main brand color — used as the base for derived colors */
 :root {
-    --primary-color: #e32264; /* Main brand color */
-    --primary-color-light: hsl(var(--primary-hue), var(--primary-saturation), 70%); /* Light shade */
-    --primary-color-dark: hsl(var(--primary-hue), var(--primary-saturation), 40%); /* Dark shade */
+    --primary-color: #e32264; /* Change this to your desired main color (e.g., blue) */
 
+    /* Derived color settings (adjust HSL values if needed) */
     --primary-hue: 345; /* Extracted hue */
-    --primary-saturation: 75%; /* Extracted saturation */
-    --primary-lightness: 50%; /* Base lightness */
+    --primary-saturation: 75%; /* Saturation level for derived colors */
+    --primary-lightness: 50%; /* Base lightness for primary color */
 
-    --bg-brand: var(--primary-color);
-    --brand-500: var(--primary-color-dark);
-    --button-filled-brand-background: var(--primary-color);
-    --redesign-input-control-selected: var(--primary-color-light);
-    --pink: var(--primary-color-light);
-    --text-link: var(--primary-color-light) !important;
-    --text-brand: var(--primary-color-light) !important;
-    --mention-foreground: var(--primary-color-light) !important;
-    --mention-background: hsla(var(--primary-hue), var(--primary-saturation), 50%, 0.18) !important;
+    /* Automatically generated shades based on primary-color */
+    --primary-color-light: hsl(var(--primary-hue), var(--primary-saturation), 70%); /* Lighter version */
+    --primary-color-dark: hsl(var(--primary-hue), var(--primary-saturation), 40%); /* Darker version */
+
+    /* Specific use-case variables */
+    --bg-brand: var(--primary-color); /* Background for branded elements */
+    --brand-500: var(--primary-color-dark); /* Dark shade for accents */
+    --button-filled-brand-background: var(--primary-color); /* Button background color */
+    --redesign-input-control-selected: var(--primary-color-light); /* Highlight color for inputs */
+    --custom-highlight-color: var(--primary-color-light); /* Custom secondary highlight color */
+    --text-link: var(--primary-color-light); /* Color for clickable links */
+    --text-brand: var(--primary-color-light); /* Text color for branding */
+    --mention-foreground: var(--primary-color-light); /* Mentioned user text color */
+    --mention-background: hsla(var(--primary-hue), var(--primary-saturation), 50%, 0.18); /* Mention highlight background */
 }
+

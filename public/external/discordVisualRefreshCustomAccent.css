@@ -6,7 +6,7 @@
 }
 
 .premiumIndicator_ede133 {
-    background-color: var(--pink);
+    background-color: var(--custom-highlight-color);
 }
 
 :where(.visual-refresh) .slider_c7a159 .barFill_c7a159, 
