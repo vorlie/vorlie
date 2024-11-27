@@ -1,7 +1,7 @@
 
 /* Main brand color — used as the base for derived colors */
 :root {
-    --primary-color: #e32264; /* Change this to your desired main color (e.g., blue) */
+    --primary-color: #e32264; /* Change this to your desired main color (e.g., Razzmatazz) */
 
     /* Derived color settings (adjust HSL values if needed) */
     --primary-hue: 345; /* Extracted hue */
