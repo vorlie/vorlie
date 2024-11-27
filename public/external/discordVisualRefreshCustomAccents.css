@@ -4,7 +4,7 @@
     --primary-color: #e32264; /* Change this to your desired main color (e.g., Razzmatazz) */
 
     /* Derived color settings (adjust HSL values if needed) */
-    --primary-hue: 345; /* Extracted hue */
+    --primary-hue: 345; /* Hue for generating lighter/darker shades */
     --primary-saturation: 75%; /* Saturation level for derived colors */
     --primary-lightness: 50%; /* Base lightness for primary color */
 
