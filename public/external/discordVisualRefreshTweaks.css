@@ -67,7 +67,10 @@ https://cx.tixte.co/visual-refresh-bannerImg.png
 }
 
 .anchor_af404b{
-    text-decoration: none;
+    text-decoration: none !important;
+}
+.anchorUnderlineOnHover_af404b{
+    text-decoration: underline !important;
 }
 
 /* Style top-left margins and border radius for messages */
