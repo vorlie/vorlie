@@ -1,42 +1,29 @@
 :root{
     --vorlie-margin: 5px;
     --vorlie-radius: 10px;
-
     --vorlie-notice-top: 44px;
     --vorlie-notice-left: 50%;
     --vorlie-notice-transform: translateX(-50%);
     --vorlie-notice-max-width: 90%;
     --vorlie-notice-width: 45%;
     --vorlie-notice-min-width: 37%;
-
     --vorlie-applauncher-right: 16px;
 }
 
-/* Hides sharp corners 
-https://cx.tixte.co/visual-refresh-panels.png
-*/
 .visual-refresh [class*="panels_"]
 {
     overflow: hidden;
 }
 
-/* Removes padding from title bar which 
-blocked most of the buttons from being clickable
-(the one where you have minimize, maximize and close buttons)
-*/
 .visual-refresh [class*="titleBar_"]
 {
     padding-bottom: 0;
 }
 
-/* Unzooms the banner (i think thats the correct word)
-https://cx.tixte.co/visual-refresh-bannerImg.png
-*/
 .visual-refresh [class*="bannerImg_"]
 {
     width: unset;
 }
-
 
 [class*="notice_"] {
     position: absolute;
@@ -53,7 +40,6 @@ https://cx.tixte.co/visual-refresh-bannerImg.png
     right: var(--vorlie-applauncher-right); 
 }
 
-/* Rounded corners */
 .visual-refresh [class*="memberInner_"],
 .visual-refresh [class*="interactive_"],
 .visual-refresh [class*="searchBar_"],
@@ -66,14 +52,6 @@ https://cx.tixte.co/visual-refresh-bannerImg.png
     border-radius: var(--vorlie-radius);
 }
 
-.anchor_af404b{
-    text-decoration: none !important;
-}
-.anchorUnderlineOnHover_af404b:hover{
-    text-decoration: underline !important;
-}
-
-/* Style top-left margins and border radius for messages */
 [class*="message_"]{
     margin-left: var(--vorlie-margin);
     margin-right: var(--vorlie-margin);
