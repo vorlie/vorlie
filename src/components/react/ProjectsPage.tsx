@@ -19,6 +19,20 @@ export const ProjectsPage: React.FC = () => (
                 ]}
             />
             <Project
+                title="YoutubeDL-CSharp"
+                desc="C# version of my python YoutubeDL app"
+                links={[
+                    { href: "https://github.com/vorlie/YoutubeDL-CSharp", text: "Repository" }
+                ]}
+            />
+            <Project
+                title="MikoCheat"
+                desc="Basic Counter-Strike 2 cheats written in C# for educational purposes. Uses ImGui.NET, ClickableTransparentOverlay, and swed64 for overlays and memory manipulation."
+                links={[
+                    { href: "https://github.com/vorlie/MikoCheat", text: "Repository" }
+                ]}
+            />
+            <Project
                 title="ImageConverter"
                 desc="A convenient tool for converting between JPEG, WebP, PNG, GIF, BMP, and TIFF formats. Also supports resizing."
                 links={[
