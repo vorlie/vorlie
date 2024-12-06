@@ -29,7 +29,8 @@ export const ProjectsPage: React.FC = () => (
                 title="MikoCheat"
                 desc="Basic Counter-Strike 2 cheats written in C# for educational purposes. Uses ImGui.NET, ClickableTransparentOverlay, and swed64 for overlays and memory manipulation."
                 links={[
-                    { href: "https://github.com/vorlie/MikoCheat", text: "Repository" }
+                    { href: "https://github.com/vorlie/MikoCheat", text: "Repository" },
+                    { href: "https://github.com/vorlie/MikoCheat/releases", text: "Releases" }
                 ]}
             />
             <Project
