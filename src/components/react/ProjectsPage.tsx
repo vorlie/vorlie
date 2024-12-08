@@ -9,6 +9,7 @@ export const ProjectsPage: React.FC = () => (
                 title="Iota Player"
                 desc="A feature-rich music player application with playlist management, playback controls, song information display, volume and progress tracking, Discord integration, and more."
                 links={[{ href: "https://github.com/vorlie/IotaPlayer", text: "Repository" }]}
+                language='Python'
             />
             <Project
                 title="YoutubeDL"
@@ -17,6 +18,7 @@ export const ProjectsPage: React.FC = () => (
                     { href: "https://github.com/vorlie/YoutubeDL", text: "Repository" },
                     { href: "https://github.com/vorlie/YoutubeDL/releases/", text: "Releases" }
                 ]}
+                language='Python'
             />
             <Project
                 title="YoutubeDL-CSharp"
@@ -24,6 +26,7 @@ export const ProjectsPage: React.FC = () => (
                 links={[
                     { href: "https://github.com/vorlie/YoutubeDL-CSharp", text: "Repository" }
                 ]}
+                language='C#'
             />
             <Project
                 title="MikoCheat"
@@ -32,6 +35,7 @@ export const ProjectsPage: React.FC = () => (
                     { href: "https://github.com/vorlie/MikoCheat", text: "Repository" },
                     { href: "https://github.com/vorlie/MikoCheat/releases", text: "Releases" }
                 ]}
+                language='C#'
             />
             <Project
                 title="ImageConverter"
@@ -40,6 +44,7 @@ export const ProjectsPage: React.FC = () => (
                     { href: "https://github.com/vorlie/ImageFormatConverter", text: "Repository" },
                     { href: "https://github.com/vorlie/ImageFormatConverter/releases", text: "Releases" }
                 ]}
+                language='Python'
             />
             <Project
                 title="FFmpegMerger"
@@ -48,6 +53,7 @@ export const ProjectsPage: React.FC = () => (
                     { href: "https://github.com/vorlie/FFmpegMerger", text: "Repository" },
                     { href: "https://github.com/vorlie/FFmpegMerger/releases", text: "Releases" }
                 ]}
+                language='Python'
             />
             <Project
                 title="multi-tool"
@@ -56,6 +62,7 @@ export const ProjectsPage: React.FC = () => (
                     { href: "https://github.com/vorlie/multi-tool", text: "Repository" },
                     { href: "https://github.com/vorlie/multi-tool/releases", text: "Releases" }
                 ]}
+                language='Python, HTML/CSS/JS'
             />
             <Project
                 title="NotepadV"
@@ -64,6 +71,7 @@ export const ProjectsPage: React.FC = () => (
                     { href: "https://github.com/vorlie/NotepadV", text: "Repository" },
                     { href: "https://github.com/vorlie/NotepadV/releases", text: "Releases" }
                 ]}
+                language='Python'
             />
         </div>
     </div>

@@ -572,6 +572,12 @@ body, .non-selectable {
     filter: drop-shadow(0 4px 6px var(--color-bg-surface));
 }
 
+.project-info {
+    display: flex;
+    justify-content: space-between; /* Space out the links and language */
+    align-items: center;
+}
+
 .project-links {
     display: flex;
     flex-direction: row;
@@ -581,6 +587,16 @@ body, .non-selectable {
     padding: 5px 0;
     max-width: fit-content;
     border-radius: var(--border-radius-base);
+}
+
+.project-language {
+    margin: 0;
+    color: var(--color-accent);
+    /* Accent color for the language text */
+    font-size: var(--font-size-desc);
+    font-weight: 600;
+    padding: 5px 0;
+    text-align: right;
 }
 
 /* =================== PC SPECIFICATION ==================== */
