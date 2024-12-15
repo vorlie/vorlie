@@ -8,7 +8,8 @@ export const ProjectsPage: React.FC = () => (
             <Project
                 title="Iota Player"
                 desc="A feature-rich music player application with playlist management, playback controls, song information display, volume and progress tracking, Discord integration, and more."
-                links={[{ href: "https://github.com/vorlie/IotaPlayer", text: "Repository" },
+                links={[
+                    { href: "https://github.com/vorlie/IotaPlayer", text: "Repository" },
                     { href: "https://github.com/vorlie/IotaPlayer/releases/", text: "Releases" }
                 ]}
                 language='Python'

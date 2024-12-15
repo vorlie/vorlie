@@ -23,6 +23,7 @@
     --color-bg-base: #1c1e26;
     /* Dark background */
     --color-bg-surface: #232530;
+    --color-bg-surface-alpha: #23253094;
     /* Card/container background */
     --color-bg-overlay: #2e303e;
     /* Overlay elements */
@@ -93,6 +94,7 @@
     --color-bg-base: #fbf9f3;
     /* Light background */
     --color-bg-surface: #f0edea;
+    --color-bg-surface-alpha: #f0edea94;
     /* Card/container background */
     --color-bg-overlay: #e6e3e0;
     /* Overlay elements */
@@ -454,10 +456,10 @@ body, .non-selectable {
     width: 25px; 
     height: 25px;
     border-radius: 50%;
-    background-color: transparent; 
+    background-color: var(--color-bg-surface-alpha); 
     border: 3px solid transparent; 
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(1px);
     z-index: 2; 
 }
 
