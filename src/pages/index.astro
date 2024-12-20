@@ -47,17 +47,7 @@ import { ProjectsPage } from '../components/react/ProjectsPage';
     <ProjectsPage />
     <PCSpecification />
     <div class="footer">
-        <div class="footer-container">
-            <div class="footer-inner-container commit-info">
-                <h1 class="footer-heading">Build Info</h1>
-                <hr class="footer-hr">
-                <div class="footer-items">
-                    <p class="footer-text">Commit: <a id="commit-hash" href="#" target="_blank"></a></p>
-                    <p class="footer-text">Message: <span id="commit-message"></span></p>
-                    <p class="footer-text">Author: <a id="commit-author" href="#" target="_blank"></a></p>
-                </div>
-            </div>
-        </div>
+        <p class="footer-text"><a class="link" id="commit-hash" href="#" target="_blank"></a> • <span id="commit-message"></span> • <a class="link" id="commit-author" href="#" target="_blank"></a></p>
     </div>
     </Layout>
     <script>
@@ -65,16 +55,11 @@ import { ProjectsPage } from '../components/react/ProjectsPage';
         try {
             const response = await fetch('https://api.github.com/repos/vorlie/vorlie/commits/main');
             const data = await response.json();
-            const commitHash = data.sha.substring(0, 20);
+            const commitHash = data.sha.substring(0, 7);
             let commitMessage = data.commit.message;
             const commitAuthor = data.commit.author.name;
             const commitUrl = data.html_url;
             const authorUrl = data.author.html_url;
-    
-            // Truncate commit message to 50 characters
-            if (commitMessage.length > 28) {
-                commitMessage = commitMessage.substring(0, 28) + '...';
-            }
     
             const commitElement = document.getElementById('commit-hash');
             if (commitElement) {

@@ -840,49 +840,15 @@ body, .non-selectable {
 .footer {
     display: flex;
     flex-direction: row;
-    justify-content: left;
-    background-color: var(--color-bg-surface);
-    /* Surface background color */
-    border-radius: var(--border-radius-base);
+    justify-content: center;
     padding: 10px;
     margin-top: var(--spacing-base);
-}
-
-.footer-container {
-    display: flex;
-}
-
-.footer-hr {
-    margin: 0;
-    width: 100%;
-    border: 0;
-    border-radius: 5px;
-    height: 3px;
-    margin-bottom: 5px;
-    background-color: var(--color-bg-base);
-}
-
-.footer-inner-container {
-    display: flex;
-    flex-direction: column;
-    margin: 0 5px;
-}
-
-.footer-heading {
-    font-size: var(--font-size-base);
-    color: var(--color-accent-light);
-    font-weight: 600;
-    margin: 0 0 5px 0;
 }
 
 .footer-text {
     font-size: calc(var(--font-size-base) - 5);
     margin: 0;
-    padding:0;
-}
-
-#commit-hash, #commit-message, #commit-author {
-    color: var(--color-accent-light);
+    padding: 0;
 }
 
 .footer-items {
