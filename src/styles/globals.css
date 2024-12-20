@@ -840,7 +840,7 @@ body, .non-selectable {
 .footer {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: left;
     background-color: var(--color-bg-surface);
     /* Surface background color */
     border-radius: var(--border-radius-base);
@@ -853,33 +853,39 @@ body, .non-selectable {
 }
 
 .footer-hr {
+    margin: 0;
     width: 100%;
-    margin: 5px 0;
     border: 0;
     border-radius: 5px;
     height: 3px;
-    background-color: rgba(253, 213, 221, 0.5);
+    margin-bottom: 5px;
+    background-color: var(--color-bg-base);
 }
 
 .footer-inner-container {
     display: flex;
     flex-direction: column;
-    margin: 0 15px;
-    width: 125px;
+    margin: 0 5px;
 }
 
-.footer-text {
+.footer-heading {
     font-size: var(--font-size-base);
+    color: var(--color-accent-light);
+    font-weight: 600;
     margin: 0 0 5px 0;
 }
 
-.discordbot,
-.social {
-    align-items: center;
-    text-align: center;
+.footer-text {
+    font-size: calc(var(--font-size-base) - 5);
+    margin: 0;
+    padding:0;
 }
 
-.footer-links {
+#commit-hash, #commit-message, #commit-author {
+    color: var(--color-accent-light);
+}
+
+.footer-items {
     display: flex;
     flex-direction: column;
     gap: 5px;
