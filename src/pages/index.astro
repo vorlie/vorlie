@@ -52,45 +52,47 @@ import { ProjectsPage } from '../components/react/ProjectsPage';
                 <h1 class="footer-heading">Build Info</h1>
                 <hr class="footer-hr">
                 <div class="footer-items">
-                    <p class="footer-text">Commit: <span id="commit-hash"></span></p>
+                    <p class="footer-text">Commit: <a id="commit-hash" href="#" target="_blank"></a></p>
                     <p class="footer-text">Message: <span id="commit-message"></span></p>
-                    <p class="footer-text">Author: <span id="commit-author"></span></p>
+                    <p class="footer-text">Author: <a id="commit-author" href="#" target="_blank"></a></p>
                 </div>
             </div>
         </div>
     </div>
-</Layout>
-<script>
-async function getCommitHash() {
-    try {
-        const response = await fetch('https://api.github.com/repos/vorlie/vorlie/commits/main');
-        const data = await response.json();
-        const commitHash = data.sha.substring(0, 6);
-        let commitMessage = data.commit.message;
-        const commitAuthor = data.commit.author.name;
-
-        // Truncate commit message to 50 characters
-        if (commitMessage.length > 20) {
-            commitMessage = commitMessage.substring(0, 20) + '...';
+    </Layout>
+    <script>
+    async function getCommitHash() {
+        try {
+            const response = await fetch('https://api.github.com/repos/vorlie/vorlie/commits/main');
+            const data = await response.json();
+            const commitHash = data.sha.substring(0, 20);
+            let commitMessage = data.commit.message;
+            const commitAuthor = data.commit.author.name;
+            const commitUrl = data.html_url;
+            const authorUrl = data.author.html_url;
+    
+            // Truncate commit message to 50 characters
+            if (commitMessage.length > 28) {
+                commitMessage = commitMessage.substring(0, 28) + '...';
+            }
+    
+            const commitElement = document.getElementById('commit-hash');
+            if (commitElement) {
+                commitElement.textContent = commitHash;
+                (commitElement as HTMLAnchorElement).href = commitUrl;
+            }
+            const commitMsg = document.getElementById('commit-message');
+            if (commitMsg) {
+                commitMsg.textContent = commitMessage;
+            }
+            const commitAuth = document.getElementById('commit-author');
+            if (commitAuth) {
+                commitAuth.textContent = commitAuthor;
+                (commitAuth as HTMLAnchorElement).href = authorUrl;
+            }
+        } catch (error) {
+            console.error('Error fetching commit hash:', error);
         }
-
-        const commitElement = document.getElementById('commit-hash');
-        if (commitElement) {
-            commitElement.textContent = commitHash;
-        }
-        const commitMsg = document.getElementById('commit-message');
-        if (commitMsg) {
-            commitMsg.textContent = commitMessage;
-            commitMsg.title = data.commit.message;
-        }
-        const commitAuth = document.getElementById('commit-author');
-        if (commitAuth) {
-            commitAuth.textContent = commitAuthor;
-        }
-    } catch (error) {
-        console.error('Error fetching commit hash:', error);
     }
-}
-
-getCommitHash();
+    getCommitHash();
 </script>
