@@ -32,6 +32,15 @@ export const ProjectsPage: React.FC = () => (
                 language='C#'
             />
             <Project
+                title="iotas-notepad"
+                desc="Electron-based notepad. Made it because I was bored."
+                links={[
+                    { href: "https://github.com/vorlie/iotas-notepad", text: "Repository" },
+                    { href: "https://github.com/vorlie/iotas-notepad/releases/", text: "Releases" }
+                ]}
+                language='HTML/CSS/JS'
+            />
+            <Project
                 title="MikoCheat"
                 desc="Basic Counter-Strike 2 cheats written in C# for educational purposes. Uses ImGui.NET, ClickableTransparentOverlay, and swed64 for overlays and memory manipulation."
                 links={[
