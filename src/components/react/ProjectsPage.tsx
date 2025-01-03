@@ -33,7 +33,7 @@ export const ProjectsPage: React.FC = () => (
             />
             <Project
                 title="iotas-notepad"
-                desc="Electron-based notepad. Made it because I was bored."
+                desc="Iota's Notepad is a simple note-taking application built with Electron"
                 links={[
                     { href: "https://github.com/vorlie/iotas-notepad", text: "Repository" },
                     { href: "https://github.com/vorlie/iotas-notepad/releases/", text: "Releases" }
