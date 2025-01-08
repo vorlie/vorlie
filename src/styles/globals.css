@@ -139,6 +139,28 @@
 }
 
 
+/* =================== iframe ==================== */
+
+.iframeDiv { 
+    width: 100px; 
+    height: 50px;
+    background-color: var(--color-bg-surface); 
+    display: flex;
+    align-items: center;
+    border-radius: var(--border-radius-small);
+}
+.iframeImage {
+    width: 30px; 
+    height: 30px; 
+    border-radius: 20%;
+    margin-left: 8px;
+    margin-right: 5px;
+}
+.iframeName {
+    font-size: var(--font-size-base); 
+    color: var(--color-text-primary);
+}
+
 /* =================== Styling ==================== */
 
 @font-face {

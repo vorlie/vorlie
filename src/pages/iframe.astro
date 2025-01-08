@@ -1,0 +1,31 @@
+---
+import "../styles/globals.css";
+---
+
+<astro>
+    <a class="iframeLink" href="https://vorlie.pages.dev/" target="_blank">
+        <div class="iframeDiv">
+            <img class="iframeImage" id="iframeImage" src=""/>
+            <p class="iframeName" id="iframeName"></p>
+        </div>
+    </a>
+</astro>
+<script src="../scripts/lanyard/iframe.ts"></script>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap');
+    body {
+        background-color: #c0c0c0;
+        font-family: 'Comic Sans MS', cursive, sans-serif;
+        padding: 0;
+        margin: 0;
+        font-family: "Sour Gummy", serif;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+        font-variation-settings:
+            "wdth" 100;
+    }
+    .iframeLink{
+        text-decoration: none;
+    }
+</style>
