@@ -6,6 +6,16 @@ export const ProjectsPage: React.FC = () => (
         <h1 className="header" id='projects'>Here are some of my projects</h1>
         <div className="projects">
             <Project
+                title="LifeDrain"
+                desc="Attacking hostile mobs will heal you"
+                links={[
+                    { href: "https://github.com/vorlie/Lifedrain/", text: "Repository" },
+                    { href: "https://github.com/vorlie/Lifedrain-notepad/releases/", text: "Releases" },
+                    { href: "https://modrinth.com/mod/lifedrain/", text: "Modrinth" }
+                ]}
+                language='Java'
+            />
+            <Project
                 title="Iota's Notepad"
                 desc="Iota's Notepad is a simple note-taking application built with Electron"
                 links={[
