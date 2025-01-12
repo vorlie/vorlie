@@ -7,7 +7,7 @@ export const ProjectsPage: React.FC = () => (
         <div className="projects">
             <Project
                 title="LifeDrain"
-                desc="Attacking hostile mobs will heal you"
+                desc="LifeDrain adds a simple but powerful mechanic to Minecraft: stealing life from hostile mobs. Every time you attack, you'll heal yourself based on the damage dealt, making combat a way to stay alive rather than just survive."
                 links={[
                     { href: "https://github.com/vorlie/Lifedrain/", text: "Repository" },
                     { href: "https://github.com/vorlie/Lifedrain-notepad/releases/", text: "Releases" },
