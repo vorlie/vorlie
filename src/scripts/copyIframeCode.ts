@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (copyButton) {
         copyButton.addEventListener('click', async () => {
             console.log('Button clicked');
-            const iframeCode = '<iframe src="https://vorlie.pages.dev/iframe/" height="50" width="100" frameborder="0" loading="lazy"></iframe>';
+            const iframeCode = '<iframe src="https://vorlie.pages.dev/iframe/" height="31" width="88" frameborder="0" loading="lazy"></iframe>';
             try {
                 if (navigator.clipboard) {
                     await navigator.clipboard.writeText(iframeCode);
