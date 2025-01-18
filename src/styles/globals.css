@@ -142,23 +142,25 @@
 /* =================== iframe ==================== */
 
 .iframeDiv { 
-    width: 100px; 
-    height: 50px;
+    width: 88px; 
+    height: 31px;
     background-color: var(--color-bg-surface); 
     display: flex;
     align-items: center;
-    border-radius: var(--border-radius-small);
+    /*border-radius: var(--border-radius-small);*/
 }
 .iframeImage {
-    width: 30px; 
-    height: 30px; 
+    width: 24px; 
+    height: 24px; 
     border-radius: 20%;
-    margin-left: 8px;
-    margin-right: 5px;
+    margin-left: 4px;
+    margin-right: 4px;
 }
 .iframeName {
-    font-size: var(--font-size-base); 
+    font-size: var(--font-size-small); 
     color: var(--color-text-primary);
+    margin: 0;
+    padding: 0;
 }
 
 /* =================== Styling ==================== */
