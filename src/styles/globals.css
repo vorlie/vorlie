@@ -148,6 +148,29 @@
     gap: 10px;
 }
 
+.eightyEightByThirtyOneButtonContainer{
+    margin-top: calc(var(--spacing-base) - 5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;    
+}
+
+.eightyEightByThirtyOneButton{
+    padding: 5px 10px;
+    background-color: var(--color-bg-surface);
+    border-radius: var(--border-radius-small);
+    border: 0;
+    color: var(--color-text-primary);
+    transition: 0.3s ease;
+    cursor: pointer;
+    text-decoration: none;
+    &:hover {
+        background-color: var(--color-bg-overlay);
+    }
+    &:active {
+        background-color: var(--color-bg-highlight);
+    }
+}
 /* =================== iframe ==================== */
 
 .iframeDiv { 
