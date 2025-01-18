@@ -48,6 +48,13 @@ export const PCSpecification: React.FC = () => (
                 link="https://www.x-kom.pl/p/1078055-dysk-ssd-goodram-256gb-m2-pcie-nvme-px500-g2.html"
                 linkText="Buy on x-kom"/>
             <Item
+                imgSrc="https://us-east-1.tixte.net/uploads/cx.tixte.co/pr_2020_9_9_11_23_36_983_00-removebg-preview.png"
+                imgAlt="ssd"
+                title="Storage: SSD"
+                desc='GOODRAM 1TB 2,5" SATA SSD CX400'
+                link="https://www.x-kom.pl/p/590340-dysk-ssd-goodram-1tb-25-sata-ssd-cx400.html"
+                linkText="Buy on x-kom"/>
+            <Item
                 imgSrc="https://us-east-1.tixte.net/uploads/cx.tixte.co/71xUljwiMTL-removebg-preview.png"
                 imgAlt="hdd"
                 title="Storage: HDD"
