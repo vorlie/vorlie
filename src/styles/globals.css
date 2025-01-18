@@ -138,6 +138,15 @@
     --color-bg-muted: var(--color-bg-surface);
 }
 
+/* =================== 88x31's ==================== */
+
+.eightyEightByThirtyOne{
+    margin-top: var(--spacing-base);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
 
 /* =================== iframe ==================== */
 
@@ -866,7 +875,7 @@ body, .non-selectable {
     flex-direction: row;
     justify-content: center;
     padding: 10px;
-    margin-top: var(--spacing-base);
+
 }
 
 .footer-text {
