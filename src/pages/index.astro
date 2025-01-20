@@ -3,8 +3,8 @@ import Layout from "../layouts/Layout.astro";
 
 import { PCSpecification } from "../components/react/PCSpecification";
 import { ProjectsPage } from '../components/react/ProjectsPage';
-import EightyEightByThirtyOne from '../components/EightyEightByThirtyOne.astro';
-import AudioVisualizer from "../components/AudioVisualizer.astro";
+import EightyEightByThirtyOneMobile from '../components/EightyEightByThirtyOneMobile.astro';
+import EightyEightByThirtyOneDesktop from '../components/EightyEightByThirtyOneDesktop.astro';
 ---
 
 <Layout title="Vorlie | Home" description="A place to my social media and stuff">
@@ -19,9 +19,8 @@ import AudioVisualizer from "../components/AudioVisualizer.astro";
                 Oh, and let's not forget my guilty pleasure: anime! Some of my all-time favorites include <a class="link underline" href="https://anilist.co/anime/269/BLEACH/">Bleach</a>, 
                 <a class="link underline" href="https://anilist.co/anime/116589/86-Eighty-Six/">86: Eighty Six</a>, and <a class="link underline" href="https://anilist.co/anime/150672/Oshi-no-Ko/">Oshi No Ko</a>. Prepare for epic battles and plot twists galore!
             </p>
-            <AudioVisualizer />
+            <EightyEightByThirtyOneDesktop /> <!-- Desktop version -->
         </div>
-    
         <div class="text-container">
             <p class="body-text">
                 When I'm not glued to my screen coding, you might find me lost in the world of <span class="span-color">music</span>, conquering virtual realms in <span class="span-color">games</span>, or binge-watching <span class="span-color">anime</span>.
@@ -42,6 +41,7 @@ import AudioVisualizer from "../components/AudioVisualizer.astro";
                 <li><span class="span-color"><span class="nf">&#xed46; </span>React</span> (with React being my sidekick in this superhero duo)</li>     
                 <li><span class="span-color"><span class="nf">&#xe648; </span>CSharp</span> (my go-to language for creating Windows applications, still learning though)</li>        
             </ul>
+            <EightyEightByThirtyOneMobile /> <!-- Mobile version -->
         </div>
     </div>
     
@@ -49,7 +49,6 @@ import AudioVisualizer from "../components/AudioVisualizer.astro";
     </div>
     <ProjectsPage />
     <PCSpecification />
-    <EightyEightByThirtyOne />
     <div class="footer">
         <p class="footer-text"><a class="link" id="commit-hash" href="#" target="_blank"></a> • <span id="commit-message"></span> • <a class="link" id="commit-author" href="#" target="_blank"></a></p>
     </div>

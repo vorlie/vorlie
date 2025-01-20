@@ -144,15 +144,25 @@
     margin-top: var(--spacing-base);
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: left;
     gap: 5px;
+}
+.eightyEightByThirtyOneTitle{
+    font-size: var(--font-size-base + 5px);
+    font-weight: 700;
+    color: var(--color-accent);
+    margin: 0;
 }
 
 .eightyEightByThirtyOneButtonContainer{
     margin-top: calc(var(--spacing-base) - 5px);
     display: flex;
-    align-items: center;
-    justify-content: center;    
+    align-items: left;
+    justify-content: left;    
+}
+
+.mobile{
+    display: none;
 }
 
 .eightyEightByThirtyOneButton{
@@ -1001,6 +1011,13 @@ input[type="range"]::-moz-range-thumb:hover, input[type="range"]::-webkit-slider
 /* =================== MEDIA QUERIES ==================== */
 
 @media (max-width: 768px) {
+    .desktop{
+        display: none;
+    }
+    .mobile{
+        display: block;
+        margin-bottom: 10px;
+    }
     .header-text-sec {
         text-align: center;
     }
