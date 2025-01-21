@@ -12,7 +12,7 @@ interface ItemProps {
 const Item: React.FC<ItemProps> = ({ imgSrc, imgAlt, title, desc, link, linkText }) => (
     <div className="container-item">
         <div className="item-img">
-            <img className="img" src={imgSrc} alt={imgAlt} />
+            <img className="img" src={imgSrc} alt={imgAlt} loading='lazy' />
         </div>
         <div className="item-details">
             <p className="item-title">{title}</p>

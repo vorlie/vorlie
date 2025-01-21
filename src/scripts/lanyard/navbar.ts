@@ -11,13 +11,15 @@ const generateNavbarHTML = ({ display_name = '', username }: DiscordUser): strin
 const updateAvatar = (avatarUrl: string, statusColor: string, avatarImg: HTMLImageElement) => {
     avatarImg.src = avatarUrl;
     avatarImg.alt = 'User Avatar';
-    avatarImg.style.borderColor = statusColor;
+    avatarImg.style.borderColor = statusColor
+    avatarImg.loading = 'lazy';
 };
 
 const updateAvatarDecoration = (asset: string | undefined, avatarDecoImg: HTMLImageElement) => {
     if (asset) {
         avatarDecoImg.src = `https://cdn.discordapp.com/avatar-decoration-presets/${asset}.png`;
         avatarDecoImg.style.display = 'block';
+        avatarDecoImg.loading = 'lazy';
     } else {
         avatarDecoImg.style.display = 'none';
     }
