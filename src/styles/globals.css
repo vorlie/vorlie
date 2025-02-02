@@ -773,7 +773,6 @@ body, .non-selectable {
     background-color: var(--color-bg-surface);
     border-radius: var(--border-radius-base);
     padding: 10px;
-    overflow-x: auto;
     transition: background 0.3s ease-in-out, backdrop-filter 0.3s ease-in-out;
 }
 
