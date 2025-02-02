@@ -15,6 +15,16 @@ const lastfmSVG = `
 
 ---
 <script src="../scripts/toggleHamburger.ts"></script>
+<script>
+  window.addEventListener("scroll", function () {
+    const navbar = document.querySelector(".navbar") as HTMLDivElement;
+    if (window.scrollY > 10) {
+        navbar.classList.add("sticky");
+    } else {
+        navbar.classList.remove("sticky");
+    }
+});
+</script>
 <div class="navbar">
   <div class="navbar-inner-container">
     <a class="lanyard" href="https://discord.com/users/614807913302851594">

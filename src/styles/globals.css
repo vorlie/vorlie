@@ -764,14 +764,22 @@ body, .non-selectable {
 }
 
 .navbar {
+    position: sticky;
+    top: 10px; /* Adds margin at the top when sticky */
+    z-index: 1000;
     display: flex;
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 10px auto 0 auto; /* Adds initial margin at the top */
     background-color: var(--color-bg-surface);
-    /* Surface background color */
     border-radius: var(--border-radius-base);
     padding: 10px;
     overflow-x: auto;
+    transition: background 0.3s ease-in-out, backdrop-filter 0.3s ease-in-out;
+}
+
+.navbar.sticky {
+    background-color: var(--color-bg-surface-alpha);
+    backdrop-filter: blur(30px);
 }
 
 .navbar-inner-container {
@@ -1011,6 +1019,10 @@ input[type="range"]::-moz-range-thumb:hover, input[type="range"]::-webkit-slider
 /* =================== MEDIA QUERIES ==================== */
 
 @media (max-width: 768px) {
+    .navbar.sticky {
+        background-color: var(--color-bg-surface);
+    }
+
     .desktop{
         display: none;
     }
