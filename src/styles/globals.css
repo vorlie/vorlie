@@ -925,24 +925,28 @@ body,
     transform: translateX(150px);
     opacity: 0;
     transition: transform 0.4s ease-out, opacity 0.4s ease-out;
+    transition-delay: 0ms;
 }
 
 .projects-page {
     transform: translateX(150px);
     opacity: 0;
-    transition: transform 0.8s ease-out, opacity 0.8s ease-out;
+    transition: transform 0.4s ease-out, opacity 0.4s ease-out;
+    transition-delay: 200ms;
 }
 
 .pc-spec {
     transform: translateX(150px);
     opacity: 0;
-    transition: transform 1.2s ease-out, opacity 1.2s ease-out;
+    transition: transform 0.4s ease-out, opacity 0.4s ease-out;
+    transition-delay: 400ms;
 }
 
 .footer {
     transform: translateX(150px);
     opacity: 0;
-    transition: transform 1.6s ease-out, opacity 1.6s ease-out;
+    transition: transform 0.4s ease-out, opacity 0.4s ease-out;
+    transition-delay: 600ms;
 }
 
 .main-container.loaded,
