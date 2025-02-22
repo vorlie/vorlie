@@ -8,48 +8,52 @@ import EightyEightByThirtyOneDesktop from '../components/EightyEightByThirtyOneD
 ---
 
 <Layout title="Vorlie | Home" description="A place to my social media and stuff">
-    <div class="text">
-        <div class="text-container">
-            <h1 class="header header-text">
-                Hello, I'm <span class="span-color">Charlie</span>, a friendly coder.
-            </h1>
-            <p class="body-text">
-                I focus on writing code and building projects across various technologies. Outside of development, I have an interest in gaming, music, and anime.  
-                <br><br>
-                When I'm not coding, I spend time listening to <span class="span-color">music</span>, playing <span class="span-color">games</span>, or watching <span class="span-color">anime</span>.  
-            </p>
-            <EightyEightByThirtyOneDesktop /> <!-- Desktop version -->
-        </div>
+    <div class="main-container">
+        <div class="text">
+            <div class="text-container">
+                <h1 class="header header-text">
+                    Hello, I'm <span class="span-color">Charlie</span>, a friendly coder.
+                </h1>
+                <p class="body-text">
+                    I focus on writing code and building projects across various technologies. Outside of development, I have an interest in gaming, music, and anime.  
+                    <br><br>
+                    When I'm not coding, I spend time listening to <span class="span-color">music</span>, playing <span class="span-color">games</span>, or watching <span class="span-color">anime</span>.  
+                </p>
+                <EightyEightByThirtyOneDesktop /> <!-- Desktop version -->
+            </div>
+            
+            <div class="text-container">
+                <p class="body-text">
+                    Feel free to check out my <a class="link underline" href="#projects">projects</a>. I'm always open to collaboration.
+                    <br>
+                    If you'd like to discuss development or anything else, feel free to reach out.
+                </p>
         
-        <div class="text-container">
-            <p class="body-text">
-                Feel free to check out my <a class="link underline" href="#projects">projects</a>. I'm always open to collaboration.
-                <br>
-                If you'd like to discuss development or anything else, feel free to reach out.
-            </p>
-    
-            <p class="body-text">Technologies I work with:</p>
-            <ul class="skills-list">
-                <li><span class="span-color"><span class="nf">&#xf06e6; </span>TypeScript</span> (kind of—let's not talk about that)</li>
-                <li><span class="span-color"><span class="nf">&#xe235; </span>Python</span> (the snake, not the film!)</li>
-                <li><span class="span-color"><span class="nf">&#xe736; </span>HTML</span> (the foundation of the web)</li>
-                <li><span class="span-color"><span class="nf">&#xe749; </span>CSS</span> (making things pretty since forever)</li>
-                <li><span class="span-color"><span class="nf">&#xf031e; </span>JavaScript</span> (the magic behind interactivity)</li>
-                <li><span class="span-color"><span class="nf">&#xe6b3; </span>Astro</span> (for faster websites and fun)</li>
-                <li><span class="span-color"><span class="nf">&#xed46; </span>React</span> (with React being my sidekick in this superhero duo)</li>     
-                <li><span class="span-color"><span class="nf">&#xe648; </span>CSharp</span> (my go-to language for creating Windows applications, still learning though)</li>        
-            </ul>
-            <EightyEightByThirtyOneMobile /> <!-- Mobile version -->
+                <p class="body-text">Technologies I work with:</p>
+                <ul class="skills-list">
+                    <li><span class="span-color"><span class="nf">&#xf06e6; </span>TypeScript</span> (kind of—let's not talk about that)</li>
+                    <li><span class="span-color"><span class="nf">&#xe235; </span>Python</span> (the snake, not the film!)</li>
+                    <li><span class="span-color"><span class="nf">&#xe736; </span>HTML</span> (the foundation of the web)</li>
+                    <li><span class="span-color"><span class="nf">&#xe749; </span>CSS</span> (making things pretty since forever)</li>
+                    <li><span class="span-color"><span class="nf">&#xf031e; </span>JavaScript</span> (the magic behind interactivity)</li>
+                    <li><span class="span-color"><span class="nf">&#xe6b3; </span>Astro</span> (for faster websites and fun)</li>
+                    <li><span class="span-color"><span class="nf">&#xed46; </span>React</span> (with React being my sidekick in this superhero duo)</li>     
+                    <li><span class="span-color"><span class="nf">&#xe648; </span>CSharp</span> (my go-to language for creating Windows applications, still learning though)</li>        
+                </ul>
+                <EightyEightByThirtyOneMobile /> <!-- Mobile version -->
+            </div>
         </div>
     </div>
-    
     <div class="activity-container">
     </div>
+
     <ProjectsPage />
     <PCSpecification />
+
     <div class="footer">
         <p class="footer-text"><a class="link" id="commit-hash" href="#" target="_blank"></a> • <span id="commit-message"></span> • <a class="link" id="commit-author" href="#" target="_blank"></a></p>
     </div>
+    
     </Layout>
     <script>
     async function getCommitHash() {
