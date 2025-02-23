@@ -255,7 +255,7 @@ body,
     /* Cursor color */
     /* mix-blend-mode: color-dodge; */
     pointer-events: none;
-    z-index: 91;
+    z-index: 92;
     transition: transform 0.2s ease, background-color 0.2s ease, opacity 0.2s ease;
 }
 
@@ -269,7 +269,7 @@ body,
     /* Outline instead of background */
     /* mix-blend-mode: color-dodge; */
     pointer-events: none;
-    z-index: 90;
+    z-index: 91;
     transition: transform 0.3s ease, opacity 0.2s ease;
 }
 
@@ -774,7 +774,7 @@ body,
     position: sticky;
     top: 10px;
     /* Adds margin at the top when sticky */
-    z-index: 1000;
+    z-index: 90;
     display: flex;
     max-width: 1200px;
     margin: 10px auto 0 auto;
