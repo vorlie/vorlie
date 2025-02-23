@@ -921,32 +921,24 @@ body,
 
 /* =================== Entrance Animations ==================== */
 .main-container,
-.activity-container {
-    transform: translateX(150px);
-    opacity: 0;
-    transition: transform 0.4s ease-out, opacity 0.4s ease-out;
-    transition-delay: 0ms;
+.activity-container,
+.projects-page,
+.pc-spec,
+.footer {
+  opacity: 0;
+  transition: opacity 0.4s ease-out; 
 }
 
 .projects-page {
-    transform: translateX(150px);
-    opacity: 0;
-    transition: transform 0.4s ease-out, opacity 0.4s ease-out;
-    transition-delay: 200ms;
+  transition-delay: 200ms;
 }
 
 .pc-spec {
-    transform: translateX(150px);
-    opacity: 0;
-    transition: transform 0.4s ease-out, opacity 0.4s ease-out;
-    transition-delay: 400ms;
+  transition-delay: 400ms;
 }
 
 .footer {
-    transform: translateX(150px);
-    opacity: 0;
-    transition: transform 0.4s ease-out, opacity 0.4s ease-out;
-    transition-delay: 600ms;
+  transition-delay: 600ms;
 }
 
 .main-container.loaded,
@@ -954,8 +946,7 @@ body,
 .projects-page.loaded,
 .pc-spec.loaded,
 .footer.loaded {
-    transform: translateX(0);
-    opacity: 1;
+  opacity: 1;
 }
 
 /* =================== AUDIO VISUALIZER ==================== */
@@ -1098,6 +1089,15 @@ input[type="range"]::-webkit-slider-thumb:hover {
 }
 
 @media (max-width: 768px) {
+
+    .main-container,
+    .activity-container,
+    .projects-page,
+    .pc-spec,
+    .footer {
+      left: 0 !important;
+    }
+
     .navbar.sticky {
         background-color: var(--color-bg-surface);
     }
