@@ -126,7 +126,15 @@ function importTheme(event: Event): void {
 
     reader.onload = () => {
         try {
-            theme = JSON.parse(reader.result as string);
+            const parsed = JSON.parse(reader.result as string);
+
+            // Extract the first theme inside the JSON (assumes only one theme is imported at a time)
+            const themeName = Object.keys(parsed)[0];
+            if (!themeName || typeof parsed[themeName] !== "object") {
+                throw new Error("Invalid theme format");
+            }
+
+            theme = parsed[themeName]; // Set the extracted theme object
             applyTheme(theme);
             generateInputs();
         } catch (e) {
