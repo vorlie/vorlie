@@ -1119,7 +1119,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
     gap: 5px;
     padding: 10px;
     border-radius: calc(var(--border-radius-small) + 3px);
-    color: var(--color-text);
+    color: var(--color-text-primary);
     transition: 0.3s ease-in-out;
     background: var(--color-bg-base);
 }
@@ -1127,7 +1127,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
 .theme-input label {
     font-size: 0.9rem;
     font-weight: bold;
-    color: var(--color-text);
+    color: var(--color-text-primary);
 }
 
 .input-container {
@@ -1151,7 +1151,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
     padding: 5px;
     border: none;
     background: var(--color-bg-overlay);
-    color: var(--color-text);
+    color: var(--color-text-primary);
     border-radius: var(--border-radius-small);
     text-align: left;
 }
@@ -1161,7 +1161,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
     padding: 5px;
     border: none;
     background: var(--color-bg-base);
-    color: var(--color-text);
+    color: var(--color-text-primary);
     border-radius: var(--border-radius-small);
     text-align: left;
 }
