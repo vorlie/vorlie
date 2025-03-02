@@ -281,7 +281,7 @@ body,
     outline: 2px solid var(--color-accent-light);
     outline-offset: 4px;
     border-radius: var(--border-radius-small);
-    z-index: 89;
+    z-index: 100;
 }
 
 .context-menu__list {
@@ -1068,6 +1068,121 @@ input[type="range"]::-moz-range-thumb {
 input[type="range"]::-moz-range-thumb:hover,
 input[type="range"]::-webkit-slider-thumb:hover {
     background-color: var(--color-accent-extra);
+}
+
+/* =================== THEME EDITOR ==================== */
+.theme-sidebar-title{
+    margin: 0;
+}
+
+.theme-editor-container {
+    display: flex;
+    height: 840px;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.theme-sidebar {
+    width: 500px;
+    background: var(--color-bg-surface);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    border-radius: var(--border-radius-base);
+    overflow-y: auto;
+}
+
+.theme-inputs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    width: 100%;
+}
+
+.theme-preview {
+    flex-grow: 1;
+    border-radius: var(--border-radius-base);
+    overflow: hidden;
+}
+
+.theme-controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.theme-input {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    gap: 5px;
+    padding: 10px;
+    border-radius: calc(var(--border-radius-small) + 3px);
+    color: var(--color-text);
+    transition: 0.3s ease-in-out;
+    background: var(--color-bg-base);
+}
+
+.theme-input label {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: var(--color-text);
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.theme-input input[type="color"] {
+    width: 34px;
+    height: 34px;
+    border: none; 
+    background: transparent;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.theme-input input[type="text"]{
+    flex-grow: 1;
+    padding: 5px;
+    border: none;
+    background: var(--color-bg-overlay);
+    color: var(--color-text);
+    border-radius: var(--border-radius-small);
+    text-align: left;
+}
+
+.theme-controls input[type="text"] {
+    flex-grow: 1;
+    padding: 5px;
+    border: none;
+    background: var(--color-bg-base);
+    color: var(--color-text);
+    border-radius: var(--border-radius-small);
+    text-align: left;
+}
+
+.importThemeButton, .exportThemeButton, .resetThemeButton {
+    padding: 5px 10px;
+    background-color: var(--color-bg-base);
+    border-radius: var(--border-radius-small);
+    border: 0;
+    color: var(--color-text-primary);
+    transition: 0.3s ease;
+    cursor: pointer;
+    text-decoration: none;
+
+    &:hover {
+        background-color: var(--color-bg-overlay);
+    }
+
+    &:active {
+        background-color: var(--color-bg-highlight);
+    }
 }
 
 /* =================== MEDIA QUERIES ==================== */
