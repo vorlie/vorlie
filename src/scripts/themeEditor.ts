@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function applyTheme(theme: Theme): void {
     const preview = document.getElementById("theme-preview");
-    
+
     if (!preview) {
         console.error("theme-preview element not found!");
         return;
@@ -109,6 +109,25 @@ function generateInputs(): void {
 function updateTheme(key: string, value: string): void {
     theme[key] = value;
     applyTheme(theme);
+
+    // Find the corresponding inputs and update them
+    const container = document.getElementById("themeInputs");
+    if (!container) return;
+
+    container.querySelectorAll(".theme-input").forEach((div) => {
+        const element = div as HTMLElement; // Explicitly cast to HTMLElement
+        const label = element.querySelector("label");
+    
+        if (label && label.textContent === key) {
+            const colorInput = element.querySelector("input[type='color']") as HTMLInputElement;
+            const textInput = element.querySelector("input[type='text']") as HTMLInputElement;
+    
+            if (colorInput) colorInput.value = value;
+            if (textInput) textInput.value = value;
+    
+            element.style.backgroundColor = value;
+        }
+    });
 }
 
 function resetTheme(): void {
