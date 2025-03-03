@@ -94,7 +94,7 @@ function generateInputs(): void {
         colorInput.addEventListener("input", (e) => {
             const value = (e.target as HTMLInputElement).value;
             updateTheme(key, value);
-            div.style.backgroundColor = value;
+            //div.style.backgroundColor = value;
         });
 
         const textInput = document.createElement("input");
@@ -103,7 +103,7 @@ function generateInputs(): void {
         textInput.addEventListener("input", (e) => {
             const value = (e.target as HTMLInputElement).value;
             updateTheme(key, value);
-            div.style.backgroundColor = value;
+            //div.style.backgroundColor = value;
         });
 
         inputContainer.appendChild(colorInput);
