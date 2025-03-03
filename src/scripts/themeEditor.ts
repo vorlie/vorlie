@@ -24,7 +24,8 @@ const defaultTheme: Theme = {
 };
 
 function loadTheme(): Theme {
-    return { ...defaultTheme };
+    const savedTheme = localStorage.getItem("customTheme");
+    return savedTheme ? JSON.parse(savedTheme) : { ...defaultTheme };
 }
 
 let theme: Theme = loadTheme();
@@ -60,8 +61,8 @@ function applyTheme(theme: Theme): void {
         document.documentElement.style.setProperty(key, theme[key]);
     });
 
-    // Save theme to localStorage
-    localStorage.setItem("theme", JSON.stringify(theme));
+    // Save custom theme to localStorage separately
+    localStorage.setItem("customTheme", JSON.stringify(theme));
 }
 
 function generateInputs(): void {
@@ -115,13 +116,13 @@ function updateTheme(key: string, value: string): void {
     if (!container) return;
 
     container.querySelectorAll(".theme-input").forEach((div) => {
-        const element = div as HTMLElement; // Explicitly cast to HTMLElement
+        const element = div as HTMLElement;
         const label = element.querySelector("label");
-    
+
         if (label && label.textContent === key) {
             const colorInput = element.querySelector("input[type='color']") as HTMLInputElement;
             const textInput = element.querySelector("input[type='text']") as HTMLInputElement;
-    
+
             if (colorInput) colorInput.value = value;
             if (textInput) textInput.value = value;
         }
