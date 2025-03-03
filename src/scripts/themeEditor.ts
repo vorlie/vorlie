@@ -44,6 +44,13 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("importTheme")?.addEventListener("change", importTheme);
     document.getElementById("exportThemeButton")?.addEventListener("click", exportTheme);
     document.getElementById("resetThemeButton")?.addEventListener("click", resetTheme);
+    
+
+    if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+        const themeEditor = document.querySelector(".theme-editor-container") as HTMLElement;
+    
+        themeEditor.innerHTML = "<h2 style='text-align:center; color:red;'>This page is only accessible on PC.</h2>";
+    }
 });
 
 function applyTheme(theme: Theme): void {
