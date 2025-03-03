@@ -124,8 +124,6 @@ function updateTheme(key: string, value: string): void {
     
             if (colorInput) colorInput.value = value;
             if (textInput) textInput.value = value;
-    
-            element.style.backgroundColor = value;
         }
     });
 }
