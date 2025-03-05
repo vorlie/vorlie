@@ -1083,7 +1083,6 @@ input[type="range"]::-webkit-slider-thumb:hover {
 }
 
 .theme-sidebar {
-    width: 500px;
     background: var(--color-bg-surface);
     padding: 20px;
     display: flex;
@@ -1098,6 +1097,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
     grid-template-columns: repeat(2, 1fr);
     gap: 15px;
     width: 100%;
+    padding-bottom: 40px;
 }
 
 .theme-preview {

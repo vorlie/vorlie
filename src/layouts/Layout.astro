@@ -41,8 +41,15 @@ import CustomContextMenu from '../components/react/CustomContextMenu';
 		  	<slot />
 		</div> 
 		<CustomContextMenu client:load mouseHover />
-	  </body>
+	</body>
 </html>
+<script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js' onload="kofiWidgetOverlay.draw('vorlie', {
+	'type': 'floating-chat',
+	'floating-chat.donateButton.text': 'Support Me',
+	'floating-chat.donateButton.background-color': '#ff5f5f',
+	'floating-chat.donateButton.text-color': '#fff'
+});">
+</script>
 <script src="../scripts/lanyard/updateLanyard.ts"></script>
 <script src="../scripts/toggleTheme.ts"></script>
 <script src="../scripts/cursor.ts"></script>
