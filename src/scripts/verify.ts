@@ -94,18 +94,35 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
         const message = document.createElement('div');
         message.classList.add('user-info');
-
+    
+        // Add response message
         const responseMessage = document.createElement('p');
         responseMessage.classList.add('response-message');
         responseMessage.innerText = 'Please log in to verify your account.';
-
+    
+        // Add a message telling the user to join the server before logging in
+        const joinServerMessage = document.createElement('p');
+        joinServerMessage.classList.add('join-server-message');
+        joinServerMessage.innerText = 'Make sure you join our Discord server before logging in:';
+    
+        // Create the Discord invite link
+        const discordInviteButton = document.createElement('a');
+        discordInviteButton.href = 'https://vorlie.pages.dev/?link=miko_support';  // Replace with your server's invite link
+        discordInviteButton.classList.add('discord-button');
+        discordInviteButton.innerText = 'Join Our Discord Server';
+    
+        // Create the login button
         const loginButton = document.createElement('a');
         loginButton.href = 'https://miko-worker.berealmoon.workers.dev/login';
         loginButton.classList.add('discord-button');
         loginButton.innerText = 'Login with Discord';
-
+    
+        // Append elements to the message container
         message.appendChild(responseMessage);
+        message.appendChild(joinServerMessage);
+        message.appendChild(discordInviteButton);
         message.appendChild(loginButton);
+    
         container?.appendChild(message);
-    }
+    }    
 });
