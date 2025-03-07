@@ -19,7 +19,7 @@ if (typeof localStorage !== 'undefined') {
     if (storedUser) {
         user = JSON.parse(storedUser);
         verificationStatus = user && user.verified
-            ? "You are verified! Head over to the #verify channel to claim your role."
+            ? "You are verified!"
             : null;
         verifiedDate = user ? new Date(Number(user.verifiedAt) * 1000).toLocaleString() : null;
     } else {
@@ -45,7 +45,7 @@ if (typeof localStorage !== 'undefined') {
             // Update user info
             user = userData;
             verificationStatus = user.verified
-                ? "You are verified! Head over to the #verify channel to claim your role."
+                ? "You are verified!"
                 : null;
             verifiedDate = new Date(Number(user.verifiedAt) * 1000).toLocaleString();
         }
