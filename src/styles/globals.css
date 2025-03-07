@@ -1197,12 +1197,6 @@ input[type="range"]::-webkit-slider-thumb:hover {
     margin: 20px auto;
 }
 
-h1 {
-    font-size: 1.5rem;
-    color: #333;
-    margin: 0;
-}
-
 .discord-button {
     padding: 10px 20px;
     font-size: 1rem;
