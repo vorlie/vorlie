@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
         // Create the login button
         const loginButton = document.createElement('a');
-        loginButton.href = 'https://miko-worker.berealmoon.workers.dev/login';
+        loginButton.href = 'https://miko-worker.berealmoon.workers.dev/v1/login';
         loginButton.classList.add('discord-button');
         loginButton.innerText = 'Login with Discord';
     

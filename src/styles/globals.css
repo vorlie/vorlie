@@ -20,31 +20,23 @@
     --spacing-base: 10px;
 
     /* Background Colors */
-    --color-bg-base: #1c1e26;
-    /* Dark background */
-    --color-bg-surface: #232530;
-    --color-bg-surface-alpha: #23253094;
-    /* Card/container background */
-    --color-bg-overlay: #2e303e;
-    /* Overlay elements */
+    --color-bg-base: #1c1e26; /* Dark background */
+    --color-bg-surface: #232530; /* Card/container background */
+    --color-bg-surface-alpha: #23253094; /* Card/container background */
+    --color-bg-overlay: #2e303e; /* Overlay elements */
     --color-bg-particles-dark: #2e303e;
     --color-bg-particles-light: #e6e3e0;
 
     /* Primary Colors */
-    --color-accent-light: #f79483;
-    /* Soft coral */
-    --color-accent-dark: #e2a478;
-    /* Muted orange */
-    --color-accent-extra: #e46876;
-    /* Pinkish accent */
+    --color-accent-light: #f79483; /* Soft coral */
 
+    --color-accent-dark: #e2a478; /* Muted orange */
+    --color-accent-extra: #e46876; /* Pinkish accent */
+    
     /* Text Colors */
-    --color-text-primary: #e0def4;
-    /* Light text */
-    --color-text-secondary: #a3a1bd;
-    /* Muted text */
-    --color-text-hover: #ffffff;
-    /* Hover text */
+    --color-text-primary: #e0def4; /* Light text */
+    --color-text-secondary: #a3a1bd; /* Muted text */
+    --color-text-hover: #ffffff; /* Hover text */
     --color-text-inverted: var(--color-accent-light);
 
     /* Accent Colors */
@@ -54,87 +46,47 @@
     --color-border: rgba(224, 222, 244, 0.5);
 
     /* Status Colors */
-    --color-status-online: #a2c9a3;
-    /* Soft green */
-    --color-status-dnd: #e46876;
-    /* Soft pink/red */
-    --color-status-idle: #f8bd96;
-    /* Light orange */
-    --color-status-offline: #6c6f93;
-    /* Muted purple-gray */
+    --color-status-online: #a2c9a3; /* Soft green */
+    --color-status-dnd: #e46876; /* Soft pink/red */
+    --color-status-idle: #f8bd96; /* Light orange */
+    --color-status-offline: #6c6f93; /* Muted purple-gray */
 
-    /* Additional Background Colors */
     --color-bg-highlight: #363a49;
-    /* Background for highlights */
     --color-bg-muted: var(--color-bg-surface);
 }
 
 [data-theme='light'] {
-    /* Font Sizes */
     --font-size-base: 20px;
     --font-size-header: calc(var(--font-size-base) + 10px);
     --font-size-subheader: calc(var(--font-size-base) + 5px);
     --font-size-span: var(--font-size-subheader);
     --font-size-title: var(--font-size-base);
     --font-size-desc: calc(var(--font-size-base) - 5px);
-
-    /* Link Styling */
     --color-link: var(--color-accent-light);
     --color-link-hover: var(--color-accent-dark);
     --transition-link-hover: 0.3s;
-
-    /* Border Radius */
     --border-radius-base: 16px;
     --border-radius-small: calc(var(--border-radius-base) / 2);
-
-    /* Margins and Spacing */
     --spacing-base: 10px;
-
-    /* Background Colors */
+    
     --color-bg-base: #fbf9f3;
-    /* Light background */
     --color-bg-surface: #f0edea;
     --color-bg-surface-alpha: #f0edea94;
-    /* Card/container background */
     --color-bg-overlay: #e6e3e0;
-    /* Overlay elements */
-
-    /* Primary Colors */
     --color-accent-light: #e46876;
-    /* Soft pinkish accent */
     --color-accent-dark: #cc5f63;
-    /* Slightly muted pink */
     --color-accent-extra: #f79a83;
-    /* Coral accent */
-
-    /* Text Colors */
     --color-text-primary: #2d2a36;
-    /* Dark text */
     --color-text-secondary: #59546b;
-    /* Muted gray text */
     --color-text-hover: #1c1a25;
-    /* Darker hover text */
     --color-text-inverted: var(--color-accent-light);
-
-    /* Accent Colors */
     --color-accent: var(--color-accent-light);
-
-    /* Border Colors */
     --color-border: rgba(89, 84, 107, 0.3);
-
-    /* Status Colors */
     --color-status-online: #4ba85e;
-    /* Soft green */
     --color-status-dnd: #f46868;
-    /* Soft pink/red */
     --color-status-idle: #e68a54;
-    /* Muted orange */
     --color-status-offline: #86829f;
-    /* Muted gray */
-
-    /* Additional Background Colors */
     --color-bg-highlight: #f0ebe6;
-    /* Background for highlights */
     --color-bg-muted: var(--color-bg-surface);
 }
 
