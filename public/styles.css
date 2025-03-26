@@ -13,7 +13,7 @@
 
 @font-face {
 	font-family: '0xProtoNerdFont';
-	src: url('https://vorlie.pages.dev/fonts/0xProtoNerdFont-Regular.ttf') format('truetype');
+	src: url('/fonts/0xProtoNerdFont-Regular.ttf') format('truetype');
 	font-weight: normal;
 	font-style: normal;
 }
