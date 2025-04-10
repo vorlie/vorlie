@@ -107,13 +107,13 @@ document.addEventListener('DOMContentLoaded', () => {
     
         // Create the Discord invite link
         const discordInviteButton = document.createElement('a');
-        discordInviteButton.href = 'https://vorlie.pages.dev/?link=miko_support';  // Replace with your server's invite link
+        discordInviteButton.href = 'https://vorlie.pl/?link=miko_support';  // Replace with your server's invite link
         discordInviteButton.classList.add('discord-button');
         discordInviteButton.innerText = 'Join Our Discord Server';
     
         // Create the login button
         const loginButton = document.createElement('a');
-        loginButton.href = 'https://miko-worker.berealmoon.workers.dev/v1/login';
+        loginButton.href = 'https://api.vorlie.pl/v1/login';
         loginButton.classList.add('discord-button');
         loginButton.innerText = 'Login with Discord';
     
