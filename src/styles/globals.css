@@ -1,5 +1,5 @@
 :root {
-    /* Font Sizes */
+    /* --- Font Sizes (Unchanged) --- */
     --font-size-base: 20px;
     --font-size-header: calc(var(--font-size-base) + 10px);
     --font-size-subheader: calc(var(--font-size-base) + 5px);
@@ -7,87 +7,111 @@
     --font-size-title: var(--font-size-base);
     --font-size-desc: calc(var(--font-size-base) - 5px);
 
-    /* Link Styling */
+    /* --- Link Styling (Dependencies Updated Below) --- */
     --color-link: var(--color-accent-light);
     --color-link-hover: var(--color-accent-dark);
-    --transition-link-hover: 0.3s;
+    --transition-link-hover: 0.3s; /* Unchanged */
 
-    /* Border Radius */
+    /* --- Border Radius (Unchanged) --- */
     --border-radius-base: 16px;
     --border-radius-small: calc(var(--border-radius-base) / 2);
 
-    /* Margins and Spacing */
+    /* --- Margins and Spacing (Unchanged) --- */
     --spacing-base: 10px;
+
+    /* === Dark Theme Color Scheme (Accents Updated) === */
 
     /* Background Colors */
-    --color-bg-base: #1c1e26; /* Dark background */
-    --color-bg-surface: #232530; /* Card/container background */
-    --color-bg-surface-alpha: #23253094; /* Card/container background */
-    --color-bg-overlay: #2e303e; /* Overlay elements */
-    --color-bg-particles-dark: #2e303e;
-    --color-bg-particles-light: #e6e3e0;
+    --color-bg-base: #10152D;
+    --color-bg-surface: #283044; /* Keeping this as the Muted Blue/Gray */
+    --color-bg-surface-alpha: rgba(93, 109, 150, 0.58);
+    --color-bg-overlay: #5D6D96;
+    --color-bg-particles-dark: #5D6D96;
+    --color-bg-particles-light: #B8BAC2;
+    --color-bg-highlight: #B8BAC2;
+    --color-bg-muted: var(--color-bg-surface);
 
-    /* Primary Colors */
-    --color-accent-light: #f79483; /* Soft coral */
-
-    --color-accent-dark: #e2a478; /* Muted orange */
-    --color-accent-extra: #e46876; /* Pinkish accent */
-    
-    /* Text Colors */
-    --color-text-primary: #e0def4; /* Light text */
-    --color-text-secondary: #a3a1bd; /* Muted text */
-    --color-text-hover: #ffffff; /* Hover text */
-    --color-text-inverted: var(--color-accent-light);
-
-    /* Accent Colors */
+    /* Accent Colors *** UPDATED *** */
+    --color-accent-light: #DD4552; /* Keep original Reddish-Pink */
+    --color-accent-dark: #C73F4C; /* Darker Reddish-Pink for link hover */
+    --color-accent-extra: #4B5A7F; /* Darker Muted Blue/Gray for cursor */
     --color-accent: var(--color-accent-light);
 
+    /* Text Colors */
+    --color-text-primary: #FEFEFE;
+    --color-text-secondary: #B8BAC2;
+    --color-text-hover: #FEFEFE;
+    --color-text-inverted: var(--color-accent-light);
+
     /* Border Colors */
-    --color-border: rgba(224, 222, 244, 0.5);
+    --color-border: rgba(184, 186, 194, 0.5);
 
-    /* Status Colors */
-    --color-status-online: #a2c9a3; /* Soft green */
-    --color-status-dnd: #e46876; /* Soft pink/red */
-    --color-status-idle: #f8bd96; /* Light orange */
-    --color-status-offline: #6c6f93; /* Muted purple-gray */
+    /* Status Colors (Kept original) */
+    --color-status-online: #a2c9a3;
+    --color-status-dnd: #e46876;
+    --color-status-idle: #f8bd96;
+    --color-status-offline: #6c6f93;
 
-    --color-bg-highlight: #363a49;
-    --color-bg-muted: var(--color-bg-surface);
 }
 
+/* --- Light theme remains unchanged --- */
 [data-theme='light'] {
+    /* --- Font Sizes (Unchanged) --- */
     --font-size-base: 20px;
     --font-size-header: calc(var(--font-size-base) + 10px);
     --font-size-subheader: calc(var(--font-size-base) + 5px);
     --font-size-span: var(--font-size-subheader);
     --font-size-title: var(--font-size-base);
     --font-size-desc: calc(var(--font-size-base) - 5px);
+
+    /* --- Link Styling (Dependencies Updated Below) --- */
     --color-link: var(--color-accent-light);
     --color-link-hover: var(--color-accent-dark);
-    --transition-link-hover: 0.3s;
+    --transition-link-hover: 0.3s; /* Unchanged */
+
+    /* --- Border Radius (Unchanged) --- */
     --border-radius-base: 16px;
     --border-radius-small: calc(var(--border-radius-base) / 2);
+
+    /* --- Margins and Spacing (Unchanged) --- */
     --spacing-base: 10px;
-    
-    --color-bg-base: #fbf9f3;
-    --color-bg-surface: #f0edea;
-    --color-bg-surface-alpha: #f0edea94;
-    --color-bg-overlay: #e6e3e0;
-    --color-accent-light: #e46876;
-    --color-accent-dark: #cc5f63;
-    --color-accent-extra: #f79a83;
-    --color-text-primary: #2d2a36;
-    --color-text-secondary: #59546b;
-    --color-text-hover: #1c1a25;
-    --color-text-inverted: var(--color-accent-light);
+
+    /* === Light Theme Color Scheme === */
+
+    /* Background Colors */
+    --color-bg-base: #FEFEFE;
+    --color-bg-surface: #B8BAC2;
+    --color-bg-surface-alpha: rgba(184, 186, 194, 0.58);
+    --color-bg-overlay: #B8BAC2;
+    --color-bg-particles-dark: #5D6D96;
+    --color-bg-particles-light: #FEFEFE;
+    --color-bg-highlight: #B8BAC2;
+    --color-bg-muted: var(--color-bg-surface);
+
+    /* Accent Colors */
+    --color-accent-light: #DD4552;
+    /* Keeping accent-dark consistent with dark theme's secondary role for simplicity */
+    /* If you prefer a darker red here too, use #C73F4C */
+    --color-accent-dark: #5D6D96;
+    /* Keeping accent-extra consistent with dark theme's secondary role */
+    /* If you prefer a darker blue here too, use #4B5A7F */
+    --color-accent-extra: #5D6D96;
     --color-accent: var(--color-accent-light);
-    --color-border: rgba(89, 84, 107, 0.3);
+
+    /* Text Colors */
+    --color-text-primary: #10152D;
+    --color-text-secondary: #5D6D96;
+    --color-text-hover: #10152D;
+    --color-text-inverted: var(--color-accent-light);
+
+    /* Border Colors */
+    --color-border: rgba(93, 109, 150, 0.3);
+
+    /* Status Colors (Kept original) */
     --color-status-online: #4ba85e;
     --color-status-dnd: #f46868;
     --color-status-idle: #e68a54;
     --color-status-offline: #86829f;
-    --color-bg-highlight: #f0ebe6;
-    --color-bg-muted: var(--color-bg-surface);
 }
 
 /* =================== 88x31's ==================== */
@@ -877,20 +901,20 @@ body,
 .projects-page,
 .pc-spec,
 .footer {
-  opacity: 0;
-  transition: opacity 0.4s ease-out; 
+    opacity: 0;
+    transition: opacity 0.4s ease-out;
 }
 
 .projects-page {
-  transition-delay: 200ms;
+    transition-delay: 200ms;
 }
 
 .pc-spec {
-  transition-delay: 400ms;
+    transition-delay: 400ms;
 }
 
 .footer {
-  transition-delay: 600ms;
+    transition-delay: 600ms;
 }
 
 .main-container.loaded,
@@ -898,7 +922,7 @@ body,
 .projects-page.loaded,
 .pc-spec.loaded,
 .footer.loaded {
-  opacity: 1;
+    opacity: 1;
 }
 
 /* =================== AUDIO VISUALIZER ==================== */
@@ -1023,7 +1047,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
 }
 
 /* =================== THEME EDITOR ==================== */
-.theme-sidebar-title{
+.theme-sidebar-title {
     margin: 0;
 }
 
@@ -1092,13 +1116,13 @@ input[type="range"]::-webkit-slider-thumb:hover {
 .theme-input input[type="color"] {
     width: 34px;
     height: 34px;
-    border: none; 
+    border: none;
     background: transparent;
     cursor: pointer;
     flex-shrink: 0;
 }
 
-.theme-input input[type="text"]{
+.theme-input input[type="text"] {
     flex-grow: 1;
     padding: 5px;
     border: none;
@@ -1118,7 +1142,9 @@ input[type="range"]::-webkit-slider-thumb:hover {
     text-align: left;
 }
 
-.importThemeButton, .exportThemeButton, .resetThemeButton {
+.importThemeButton,
+.exportThemeButton,
+.resetThemeButton {
     padding: 5px 10px;
     background-color: var(--color-bg-base);
     border-radius: var(--border-radius-small);
@@ -1240,7 +1266,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
     .projects-page,
     .pc-spec,
     .footer {
-      left: 0 !important;
+        left: 0 !important;
     }
 
     .navbar.sticky {
