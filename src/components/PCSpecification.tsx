@@ -34,7 +34,7 @@ const PCSpecification: React.FC = () => {
   };
 
   return (
-    <section className="my-8 bg-gray-800/60 rounded-lg shadow overflow-hidden">
+    <section className="my-8 bg-gray-800/50 rounded-lg shadow overflow-hidden">
 
       <button
         type="button"
