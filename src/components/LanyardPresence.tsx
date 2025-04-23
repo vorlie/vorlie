@@ -173,6 +173,8 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
 
   const { discord_status, activities, spotify, discord_user } = presenceData;
   const avatarUrl = getAvatarUrl(discord_user.id, discord_user.avatar);
+  const decorationAsset = discord_user.avatar_decoration_data?.asset;
+  const decorationUrl = `https://cdn.discordapp.com/avatar-decoration-presets/${decorationAsset}.png`;
   const customStatus = activities.find((act) => act.type === 4);
   const statusText =
     discord_status === "dnd"
@@ -186,11 +188,18 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
   return (
     <div className="text-gray-100 max-w-lg mx-auto p-0">
       <div className="grid grid-cols-[auto_1fr] gap-x-3 gap-y-1 mb-3 items-center">
-        <img
-          src={avatarUrl}
-          alt={`Awatar ${discord_user.username}`}
-          className="row-span-2 w-12 h-12 rounded-full self-center"
-        />
+        <div className="relative row-span-2 self-center w-12 h-12">
+          <img
+            src={avatarUrl}
+            alt={`${discord_user.username}'s Avatar`}
+            className="w-full h-full rounded-full"
+          />
+          <img
+            src={decorationUrl}
+            alt="Avatar Decoration"
+            className="absolute inset-0 w-full h-full pointer-events-none transform scale-122"
+          />
+        </div>
         <p className="text-lg font-semibold truncate self-end leading-tight">
           {discord_user.global_name || discord_user.username}
         </p>

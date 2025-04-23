@@ -36,11 +36,16 @@ export interface Activity {
         size?: [number, number];
     } | null;
     assets?: {
-        large_image?: string | null; // image ID
+        large_image?: string | null; 
         large_text?: string | null;
-        small_image?: string | null; // image ID
+        small_image?: string | null;
         small_text?: string | null;
     } | null;
+}
+
+export interface AvatarDecoration {
+    asset: string;
+    sku_id: number;
 }
 
 export interface DiscordUser {
@@ -49,9 +54,9 @@ export interface DiscordUser {
     avatar: string | null;
     discriminator: string;
     bot: boolean;
-    global_name: string | null; // New username system display name
-    avatar_decoration_data: any | null; // Consider defining further if needed
-    display_name: string | null; // Server nickname, may not be present via Lanyard
+    global_name: string | null; 
+    avatar_decoration_data?: AvatarDecoration;
+    display_name: string | null; 
     public_flags: number;
 }
 
@@ -66,7 +71,7 @@ export interface PresenceData {
     discord_user: DiscordUser;
     discord_status: DiscordStatus;
     activities: Activity[];
-    kv: Record<string, string>; // For custom key-value pairs if used
+    kv: Record<string, string>;
 }
 
 // For the WebSocket messages
