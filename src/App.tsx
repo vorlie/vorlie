@@ -37,7 +37,7 @@ function App() {
     async function getCommitHash() {
       try {
         const response = await fetch(
-          `https://api.github.com/repos/${GITHUB_REPO}/commits/main`
+          `https://api.github.com/repos/${GITHUB_REPO}/commits/v2`
         );
         if (!response.ok) {
           throw new Error(
