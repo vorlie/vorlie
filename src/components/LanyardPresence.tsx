@@ -236,8 +236,11 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
                     className="text-green-400 hover:underline font-semibold break-words"
                     title={`Listen to ${spotify.song} by ${spotify.artist} on Spotify`}
                   >
-                    {spotify.artist} - {spotify.song}
+                    {spotify.song}
                   </a>
+                </p>
+                <p className="text-gray-400 text-xs truncate">
+                  by {spotify.artist}
                 </p>
                 <p className="text-gray-400 text-xs truncate">
                   on {spotify.album}
