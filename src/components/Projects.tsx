@@ -2,13 +2,41 @@
 import React from "react";
 import Project from "./Project";
 
-import { FaJava, FaPython } from "react-icons/fa";
+import { FaJava, FaPython, FaReact } from "react-icons/fa";
 import { SiElectron, SiJavascript } from "react-icons/si";
 
 const projectData = [
   {
+    title: "Markdown Notepad",
+    desc: "Simple markdown editor with live preview. Built with React and MUI.", 
+    links: [
+      { href: "https://github.com/vorlie/markdown-editor", text: "Repository" },
+      { href: "https://md.vorlie.pl", text: "Website" },
+    ],
+    language: "React",
+  },
+  {
+    title: "API Documentation",
+    desc: "API Documentation for my own API. Built with React and TailwindCSS. It is a simple documentation site that provides information about the API endpoints, request/response formats, and usage examples.", 
+    links: [
+      { href: "https://github.com/vorlie/api-docs", text: "Repository" },
+      { href: "https://docs.vorlie.pl", text: "Website" },
+    ],
+    language: "React",
+  },
+  {
+    title: "Vorlie API",
+    desc: "My own API which provides endpoints for anime interactive actions (e.g. hug, poke, kiss).", 
+    links: [
+      { href: "https://github.com/vorlie/miko_worker", text: "Repository" },
+      { href: "https://api.vorlie.pl", text: "API URL" },
+      { href: "https://docs.vorlie.pl", text: "API Docs" },
+    ],
+    language: "JavaScript",
+  },
+  {
     title: "LifeDrain",
-    desc: "LifeDrain adds a simple but powerful mechanic to Minecraft: stealing life from hostile mobs. Every time you attack, you'll heal yourself based on the damage dealt, making combat a way to stay alive rather than just survive.", // Oryginalny opis
+    desc: "LifeDrain adds a simple but powerful mechanic to Minecraft: stealing life from hostile mobs. Every time you attack, you'll heal yourself based on the damage dealt, making combat a way to stay alive rather than just survive.", 
     links: [
       { href: "https://github.com/vorlie/Lifedrain/", text: "Repository" },
       {
@@ -33,7 +61,7 @@ const projectData = [
   },
   {
     title: "Iota Player",
-    desc: "A feature-rich music player application with playlist management, playback controls, song information display, volume and progress tracking, Discord integration, and more.", // Oryginalny opis
+    desc: "A feature-rich music player application with playlist management, playback controls, song information display, volume and progress tracking, Discord integration, and more.", 
     links: [
       { href: "https://github.com/vorlie/IotaPlayer", text: "Repository" },
       {
@@ -77,6 +105,7 @@ const languageIconMap: { [key: string]: React.ReactNode } = {
   Electron: <SiElectron className="text-cyan-400" />,
   Python: <FaPython className="text-yellow-400" />,
   JavaScript: <SiJavascript className="text-yellow-300" />,
+  React: <FaReact className="text-cyan-400" />,
 };
 
 const ProjectsPage: React.FC = () => (
