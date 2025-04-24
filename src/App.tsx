@@ -7,7 +7,7 @@ import Buttons88x31 from "./components/Buttons88x31";
 
 import redirect from "./utils/redirect";
 
-import { FaReact, FaPython, FaHtml5, FaCss3Alt, FaJs } from "react-icons/fa";
+import { FaReact, FaPython, FaHtml5, FaCss3Alt, FaJs, FaJava } from "react-icons/fa";
 import { SiTypescript, SiAstro } from "react-icons/si";
 
 const ProjectsPage = () => (
@@ -144,6 +144,10 @@ function App() {
                   <li className="flex items-center gap-2 hover:text-white transition-colors">
                     <FaReact className="text-cyan-400 w-5 h-5 flex-shrink-0" />{" "}
                     React
+                  </li>
+                  <li className="flex items-center gap-2 hover:text-white transition-colors">
+                    <FaJava className="text-orange-400 w-5 h-5 flex-shrink-0" />{" "}
+                    Java
                   </li>
                 </ul>
               </section>
