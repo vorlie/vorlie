@@ -186,82 +186,102 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
   );
 
   return (
-    <div className="text-gray-100 max-w-lg mx-auto p-0">
-      <div className="grid grid-cols-[auto_1fr] gap-x-3 gap-y-1 mb-3 items-center">
-        <div className="relative row-span-2 self-center w-12 h-12">
-          <img
-            src={avatarUrl}
-            alt={`${discord_user.username}'s Avatar`}
-            className="w-full h-full rounded-full"
-          />
-          <img
-            src={decorationUrl}
-            alt="Avatar Decoration"
-            className="absolute inset-0 w-full h-full pointer-events-none transform scale-122"
-          />
-        </div>
-        <p className="text-lg font-semibold truncate self-end leading-tight">
-          {discord_user.global_name || discord_user.username}
-        </p>
-        <div className="text-sm text-gray-400 truncate self-start leading-tight">
-          <span className={`${statusTextColors[discord_status]} font-medium`}>
-            {statusText}
-          </span>
-          {customStatus && customStatus.state && (
-            <span className="ml-2">
-              {customStatus.emoji?.name} {customStatus.state}
+    <div className="">
+      <img
+        src="/images/banner.jpeg"
+        alt="User Banner"
+        className="rounded w-full h-24 object-cover [-webkit-mask-image:linear-gradient(to_right,rgba(0,0,0,0)_0%,rgba(0,0,0,1)_90%)] [mask-image:linear-gradient(to_right,rgba(0,0,0,0)_0%,rgba(0,0,0,1)_90%)]"
+      />
+
+      <div className="relative">
+        <div className="grid grid-cols-[auto_1fr] gap-x-4 gap-y-1 mb-3 items-start mt-[-5rem]">
+          <div className="relative row-span-2 self-start w-16 h-16rounded-full">
+            {" "}
+            <img
+              src={avatarUrl}
+              alt={`${discord_user.username}'s Avatar`}
+              className="w-full h-full rounded-full object-cover"
+            />
+            <img
+              src={decorationUrl}
+              alt="Avatar Decoration"
+              className="absolute inset-0 w-full h-full pointer-events-none transform scale-[1.20]"
+            />
+          </div>
+
+          <p className="text-lg font-semibold truncate self-center leading-tight">
+            {" "}
+            {discord_user.global_name || discord_user.username}
+          </p>
+
+          <div className="text-sm text-gray-400 truncate self-start leading-tight">
+            <span className={`${statusTextColors[discord_status]} font-medium`}>
+              {statusText}
             </span>
-          )}
+            {customStatus && customStatus.state && (
+              <span className="ml-2">
+                {customStatus.emoji?.name} {customStatus.state}
+              </span>
+            )}
+          </div>
         </div>
-      </div>
-      <hr className="border-gray-700 my-3" />
-      <div className="space-y-3 text-sm">
-        {spotify && spotify.track_id && (
-          <div className="bg-gray-700/50 rounded p-2">
-            <div className="flex items-center gap-3">
-              {spotify.album_art_url && (
-                <img
-                  src={spotify.album_art_url}
-                  alt={`${spotify.album} cover`}
-                  className="w-10 h-10 rounded flex-shrink-0"
-                />
-              )}
-              <div className="flex-grow overflow-hidden">
-                <p className="text-gray-300">
-                  Listening to{" "}
+        <hr className="border-transparent my-4" />{" "}
+        <div className="space-y-3 text-sm">
+          {spotify && spotify.track_id && (
+            <div className="bg-gray-700/50 rounded p-2">
+              <div className="flex items-center gap-3">
+                {spotify.album_art_url && (
+                  <img
+                    src={spotify.album_art_url}
+                    alt={`${spotify.album} cover`}
+                    className="w-10 h-10 rounded flex-shrink-0"
+                  />
+                )}
+                <div className="flex-grow overflow-hidden">
                   <a
                     href={`https://open.spotify.com/track/${spotify.track_id}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-green-400 hover:underline font-semibold break-words"
+                    className="text-green-400 hover:underline font-semibold break-words block truncate"
                     title={`Listen to ${spotify.song} by ${spotify.artist} on Spotify`}
                   >
                     {spotify.song}
                   </a>
-                </p>
-                <p className="text-gray-400 text-xs truncate">
-                  by {spotify.artist}
-                </p>
-                <p className="text-gray-400 text-xs truncate">
-                  on {spotify.album}
-                </p>
+                  <p
+                    className="text-gray-400 text-xs truncate"
+                    title={spotify.artist}
+                  >
+                    by {spotify.artist}
+                  </p>
+                  <p
+                    className="text-gray-400 text-xs truncate"
+                    title={spotify.album}
+                  >
+                    on {spotify.album}
+                  </p>
+                </div>
               </div>
+              {spotify.timestamps?.start && (
+                <ActivityTimestamp
+                  startTime={spotify.timestamps.start}
+                  endTime={spotify.timestamps.end}
+                />
+              )}
             </div>
-            {spotify.timestamps?.start && (
-              <ActivityTimestamp
-                startTime={spotify.timestamps.start}
-                endTime={spotify.timestamps.end}
-              />
-            )}
-          </div>
-        )}
-        {otherActivities.length > 0 && (
-          <div className="space-y-2">{otherActivities.map(renderActivity)}</div>
-        )}
+          )}
 
-        {!spotify && otherActivities.length === 0 && (
-          <p className="text-gray-400 italic">No activities to show</p>
-        )}
+          {otherActivities.length > 0 && (
+            <div className="space-y-2">
+              {otherActivities.map(renderActivity)}
+            </div>
+          )}
+
+          {!spotify &&
+            otherActivities.length === 0 &&
+            !customStatus && (
+              <p className="text-gray-400 italic">No current activities</p>
+            )}
+        </div>
       </div>
     </div>
   );
