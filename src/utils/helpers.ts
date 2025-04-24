@@ -1,6 +1,6 @@
 // src/utils/helpers.ts
 export const extractImageUrl = (url: string, application_id?: string): string => {
-    const fallback = '/images/default.png'; // Definiuj fallback
+    const fallback = '/images/default.png'; 
     if (!url) return fallback;
 
     try {
@@ -11,7 +11,7 @@ export const extractImageUrl = (url: string, application_id?: string): string =>
         } else if (application_id) {
             return `https://cdn.discordapp.com/app-assets/${application_id}/${url}.png`;
         }
-        return fallback; // Bezpieczniejszy fallback, jeśli format jest nieznany
+        return fallback;
     } catch (error) {
         console.error("Error extracting image URL:", error);
         return fallback;

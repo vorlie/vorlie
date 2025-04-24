@@ -50,7 +50,7 @@ const Buttons88x31: React.FC = () => {
     try {
       await navigator.clipboard.writeText(myButtonCode);
       console.log("Button code copied to clipboard!");
-      setNotificationText("Button code copied to clipboard!"); // Changed to English
+      setNotificationText("Button code copied to clipboard!");
       setShowNotification(true);
       setTimeout(() => setShowNotification(false), 3000);
     } catch (error) {

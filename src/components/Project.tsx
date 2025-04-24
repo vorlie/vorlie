@@ -1,9 +1,4 @@
 import React from 'react';
-
-// Możesz zaimportować ikony dla języków, jeśli chcesz
-// import { FaPython, FaJs, FaReact } from 'react-icons/fa';
-// import { SiTypescript, SiCsharp, SiGo } from 'react-icons/si';
-
 interface ProjectProps {
     title: string;
     desc: string;
