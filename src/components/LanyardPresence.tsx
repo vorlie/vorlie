@@ -167,7 +167,7 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
 
   if (!presenceData) {
     return (
-      <div className="h-24 text-gray-500 animate-pulse">Ładuję status...</div>
+      <div className="h-24 text-gray-500 animate-pulse">Loading...</div>
     );
   }
 
