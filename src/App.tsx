@@ -4,6 +4,7 @@ import LanyardPresence from "./components/LanyardPresence";
 import Projects from "./components/Projects";
 import PCSpecification from "./components/PCSpecification";
 import Buttons88x31 from "./components/Buttons88x31";
+import TicTacToe from './components/TicTacToe';
 
 import redirect from "./utils/redirect";
 
@@ -165,6 +166,13 @@ function App() {
                   {" "}
                   <LanyardPresence discordId={MY_DISCORD_ID} />
                 </div>
+              </section>
+              <section className="mb-8">
+                {" "}
+                <h2 className="text-2xl font-semibold mb-4 text-white">
+                  Tic Tac Toe
+                </h2>
+                <TicTacToe />
               </section>
               <PCSpecification />
             </aside>
