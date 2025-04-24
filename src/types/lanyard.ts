@@ -48,11 +48,19 @@ export interface AvatarDecoration {
     sku_id: number;
 }
 
+export interface UserClan {
+    tag: string;
+    identity_guild_id: string;
+    badge: string;
+    identity_enabled: boolean;
+}
+
 export interface DiscordUser {
     id: string;
     username: string;
     avatar: string | null;
     discriminator: string;
+    clan : UserClan | null;
     bot: boolean;
     global_name: string | null; 
     avatar_decoration_data?: AvatarDecoration;
