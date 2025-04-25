@@ -45,7 +45,7 @@ import CustomContextMenu from '../components/react/CustomContextMenu';
 </html>
 <script>
     if (window.location.hostname === "vorlie.pages.dev") {
-        if (window.location.pathname === "/theme-editor") {
+        if (window.location.pathname.startsWith("/theme-editor")) {
             window.location.href = "https://old.vorlie.pl/theme-editor" + window.location.search + window.location.hash;
         } else {
             window.location.href = "https://vorlie.pl" + window.location.pathname + window.location.search + window.location.hash;
