@@ -38,11 +38,16 @@ import CustomContextMenu from '../components/react/CustomContextMenu';
 		<Particles />
 		<Navbar />
 		<div class="main-content">
-		  	<slot />
+			<slot />
 		</div> 
 		<CustomContextMenu client:load mouseHover />
 	</body>
 </html>
+<script>
+	if (window.location.hostname === "vorlie.pages.dev") {
+		window.location.href = "https://vorlie.pl" + window.location.pathname + window.location.search + window.location.hash;
+	}
+	</script>
 <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js' onload="kofiWidgetOverlay.draw('vorlie', {
 	'type': 'floating-chat',
 	'floating-chat.donateButton.text': 'Support Me',
