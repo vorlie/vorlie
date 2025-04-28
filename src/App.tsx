@@ -9,7 +9,7 @@ import TicTacToe from './components/TicTacToe';
 import redirect from "./utils/redirect";
 
 import { FaReact, FaPython, FaHtml5, FaCss3Alt, FaJs, FaJava } from "react-icons/fa";
-import { SiTypescript, SiAstro } from "react-icons/si";
+import { SiTypescript, SiAstro, SiTailwindcss } from "react-icons/si";
 
 const ProjectsPage = () => (
   <section id="projects" className="my-12 py-8 border-t border-gray-700">
@@ -145,6 +145,10 @@ function App() {
                   <li className="flex items-center gap-2 hover:text-white transition-colors">
                     <FaReact className="text-cyan-400 w-5 h-5 flex-shrink-0" />{" "}
                     React
+                  </li>
+                  <li className="flex items-center gap-2 hover:text-white transition-colors">
+                    <SiTailwindcss className="text-teal-400 w-5 h-5 flex-shrink-0" />{" "}
+                    Tailwind CSS
                   </li>
                   <li className="flex items-center gap-2 hover:text-white transition-colors">
                     <FaJava className="text-orange-400 w-5 h-5 flex-shrink-0" />{" "}
