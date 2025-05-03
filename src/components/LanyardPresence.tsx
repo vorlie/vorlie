@@ -246,10 +246,9 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
             )}
           </div>
         </div>
-        <hr className="border-transparent my-4" />{" "}
-        <div className="space-y-3 text-sm">
+        <div className="space-y-2 text-sm">
           {spotify && spotify.track_id && (
-            <div className="bg-gray-700/50 rounded p-2">
+            <div className="bg-gray-700/50 rounded p-2 mt-4.5">
               <div className="flex items-center gap-3">
                 {spotify.album_art_url && (
                   <img
@@ -292,7 +291,7 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
           )}
 
           {otherActivities.length > 0 && (
-            <div className="space-y-2">
+            <div className="space-y-4">
               {otherActivities.map(renderActivity)}
             </div>
           )}
