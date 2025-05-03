@@ -7,6 +7,7 @@ import {
 } from "../types/lanyard";
 import { extractImageUrl, getAvatarUrl } from "../utils/helpers";
 import ActivityTimestamp from "./ActivityTimestamp";
+import MarqueeText from "./MarqueeText";
 
 const LANYARD_API_URL = "wss://api.lanyard.rest/socket";
 const OP = {
@@ -234,14 +235,14 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
             )}
           </p>
 
-          <div className="text-sm text-gray-400 truncate self-start leading-tight bg-gray-900/50 rounded px-2 py-1 w-fit">
+          <div className="text-sm text-gray-400 truncate self-start leading-tight bg-gray-900/50 rounded px-2 py-1 w-66">
             <span className={`${statusTextColors[discord_status]} font-medium`}>
               {statusText}
             </span>
             {customStatus && customStatus.state && (
-              <span className="ml-2">
+              <MarqueeText className="max-w-[10rem]" title={customStatus.state}>
                 {customStatus.emoji?.name} {customStatus.state}
-              </span>
+              </MarqueeText>
             )}
           </div>
         </div>
