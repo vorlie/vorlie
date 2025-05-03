@@ -190,7 +190,7 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
   return (
     <div className="">
       <img
-        src="/images/banner.gif"
+        src="https://us-east-1.tixte.net/uploads/cx.tixte.co/banner.gif"
         alt="User Banner"
         className="rounded w-full h-24 object-cover [-webkit-mask-image:linear-gradient(to_right,rgba(0,0,0,0)_0%,rgba(0,0,0,1)_90%)] [mask-image:linear-gradient(to_right,rgba(0,0,0,0)_0%,rgba(0,0,0,1)_90%)]"
       />
