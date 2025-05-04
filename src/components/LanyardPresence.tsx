@@ -196,7 +196,7 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
       />
 
       <div className="relative">
-        <div className="grid grid-cols-[auto_1fr] gap-x-4 gap-y-1 mb-3 items-start mt-[-5rem]">
+        <div className="grid grid-cols-[auto_1fr] gap-x-4 gap-y-1 mb-3 items-start mt-[-5rem] overflow-hidden">
           <div className="relative row-span-2 self-start w-16 h-16rounded-full">
             {" "}
             <img
@@ -246,9 +246,10 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
             )}
           </div>
         </div>
+        <hr className="border-transparent my-4" />{" "}
         <div className="space-y-2 text-sm">
           {spotify && spotify.track_id && (
-            <div className="bg-gray-700/50 rounded p-2 mt-4.5">
+            <div className="bg-gray-700/50 rounded p-2">
               <div className="flex items-center gap-3">
                 {spotify.album_art_url && (
                   <img
