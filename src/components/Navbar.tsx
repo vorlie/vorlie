@@ -10,6 +10,8 @@ function Navbar() {
     {
       label: "Miko",
       children: [
+        { to: "https://discord.gg/yUueAFyAmN", label: "Miko's Shrine" },
+        { to: "https://vorlie.pl/?link=invite_miko", label: "Invite Miko" },
         { to: "/miko/privacy-policy", label: "Privacy Policy" },
         { to: "/miko/terms-of-service", label: "Terms of Service" },
         { to: "/verify", label: "Verify" },
