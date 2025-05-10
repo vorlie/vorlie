@@ -14,6 +14,7 @@ function Verify() {
     null
   );
   const [verifiedDate, setVerifiedDate] = useState<string | null>(null);
+  const [avatarError, setAvatarError] = useState<boolean>(false);
 
   useEffect(() => {
     if (typeof localStorage !== "undefined") {
@@ -55,6 +56,10 @@ function Verify() {
     }
   }, []);
 
+  const handleAvatarError = () => {
+    setAvatarError(true);
+  };
+
   return (
     <div className="mt-8 text-gray-100 flex items-center justify-center">
       <div className="max-w-md w-full rounded-lg shadow-lg bg-gray-800/50 p-4">
@@ -64,11 +69,16 @@ function Verify() {
         {verificationStatus ? (
           <div className="text-center">
             <div className="relative rounded-full overflow-hidden w-24 h-24 mx-auto mb-4">
-              {user?.userId && user?.avatar && (
+              {user?.userId && (
                 <img
-                  src={`https://cdn.discordapp.com/avatars/${user.userId}/${user.avatar}.png`}
+                  src={
+                    !avatarError && user?.avatar
+                      ? `https://cdn.discordapp.com/avatars/${user.userId}/${user.avatar}.png`
+                      : `/images/0.png`
+                  }
                   alt="User Avatar"
                   className="w-full h-full object-cover"
+                  onError={handleAvatarError}
                 />
               )}
             </div>
@@ -98,8 +108,7 @@ function Verify() {
               className="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md transition-colors mb-2"
             >
               Join Our Discord Server
-            </a>
-            {" "}
+            </a>{" "}
             <a
               href="https://api.vorlie.pl/v1/login"
               className="inline-block bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-md transition-colors"
