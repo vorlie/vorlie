@@ -1,4 +1,4 @@
-import React from "react";
+
 function TermsOfService() {
   return (
     <div className="min-h-screen text-gray-100">
