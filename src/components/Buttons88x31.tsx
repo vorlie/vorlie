@@ -5,7 +5,7 @@ const friendButtons = [
   {
     href: "https://vorlie.pl/",
     imgSrc: "/images/vorlie.png",
-    alt: "vorlie button",
+    alt: "vorlie.pl button",
   },
   {
     href: "https://uwu.gal/about-us",
@@ -13,29 +13,34 @@ const friendButtons = [
     alt: "uwu.gal button",
   },
   {
-    href: "https://byeoon.github.io/",
+    href: "https://byeoon.dev/",
     imgSrc: "/images/byoon.png",
-    alt: "byeoon button",
+    alt: "byeoon.dev button",
   },
   {
     href: "https://pre1ude.dev",
     imgSrc: "https://pre1ude.dev/blankie.png",
-    alt: "pre1ude button",
+    alt: "pre1ude.dev button",
   },
   {
     href: "https://deepy.me/",
     imgSrc: "/images/deepy.png",
-    alt: "deepy button",
+    alt: "deepy.me button",
   },
   {
     href: "https://specifix.dev/",
     imgSrc: "/images/specifix.png",
-    alt: "specifix button",
+    alt: "specifix.dev button",
   },
   {
     href: "https://megu.dev/",
     imgSrc: "https://uwu.gal/static/images/friends/megudev.png",
     alt: "megu.dev button",
+  },
+  {
+    href: "https://dvop.fyi/",
+    imgSrc: "https:///dvop.fyi/images/frank.png",
+    alt: "dvop.fyi button",
   },
 ];
 
