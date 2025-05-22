@@ -14,7 +14,7 @@ function App() {
 
   return (
     <Router>
-      <div className="min-h-screen bg-cover bg-center bg-fixed" style={{ backgroundImage: "url('/images/blurred-bg.png')" }}>
+      <div className="min-h-screen bg-cover bg-center bg-fixed" style={{ backgroundImage: "url('/images/bg.png')" }}>
         <div className="min-h-screen bg-gray-900/50 text-gray-100 p-6 md:p-12">
           <div className="max-w-6xl mx-auto relative z-10">
             <Navbar />
