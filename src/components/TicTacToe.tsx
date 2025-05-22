@@ -117,42 +117,67 @@ const TicTacToe: React.FC = () => {
   const winnerInfo = calculateWinner(board);
   const gameOver = !!winnerInfo;
 
+  // Debug: Log board, xIsNext, isBotThinking, mode, winnerInfo
+  // console.log("[DEBUG] Render:", { board, xIsNext, isBotThinking, mode, winnerInfo });
+
   // --- Player's Move Handler ---
   const handlePlayerClick = (i: number) => {
     const currentWinner = calculateWinner(board);
     const gameIsOver = !!currentWinner;
+    // console.log("[DEBUG] handlePlayerClick", { i, board, currentWinner, gameIsOver, mode, xIsNext, isBotThinking });
     if (board[i] || gameIsOver) {
+      // console.log("[DEBUG] Click ignored: Square filled or game over");
       return;
     }
     if (mode === "bot") {
-      if (!xIsNext || isBotThinking) return;
+      if (!xIsNext || isBotThinking) {
+        // console.log("[DEBUG] Click ignored: Not player's turn or bot is thinking");
+        return;
+      }
       const nextBoard = board.slice();
       nextBoard[i] = "X";
       setBoard(nextBoard);
       setXIsNext(false);
+      // console.log("[DEBUG] Player (X) moved", { nextBoard });
     } else {
       // local mode: alternate X and O
       const nextBoard = board.slice();
       nextBoard[i] = xIsNext ? "X" : "O";
       setBoard(nextBoard);
       setXIsNext(!xIsNext);
+      // console.log("[DEBUG] Local move", { nextBoard, nextPlayer: !xIsNext ? "X" : "O" });
     }
   };
 
   // --- Bot's Move Logic ---
   useEffect(() => {
+    // console.log("[DEBUG] useEffect triggered", { mode, board, xIsNext, isBotThinking });
     if (mode !== "bot") return;
     const currentWinner = calculateWinner(board);
     const boardIsFull = !board.includes(null);
     const gameIsOverNow = !!currentWinner || boardIsFull;
+    // console.log("[DEBUG] Bot effect state", { currentWinner, boardIsFull, gameIsOverNow, isBotThinking, xIsNext });
 
-    if (!xIsNext && !gameIsOverNow) {
+    // Always reset bot thinking if the game is over
+    if (gameIsOverNow) {
       if (isBotThinking) {
+        // console.log("[DEBUG] Game over, resetting isBotThinking");
+        setIsBotThinking(false);
+      }
+      return;
+    }
+
+    // Only let the bot move if it's the bot's turn and the game is not over
+    if (!xIsNext) {
+      if (isBotThinking) {
+        // console.log("[DEBUG] Bot is already thinking, skipping");
         return;
       }
       setIsBotThinking(true);
+      // console.log("[DEBUG] Bot is thinking...");
 
       const bestMove = findBestBotMove(board);
+      // console.log("[DEBUG] Bot bestMove", { bestMove });
 
       const timer = setTimeout(() => {
         if (bestMove !== null && board[bestMove] === null) {
@@ -160,19 +185,22 @@ const TicTacToe: React.FC = () => {
           nextBoard[bestMove] = "O";
           setBoard(nextBoard);
           setXIsNext(true);
+          // console.log("[DEBUG] Bot (O) moved", { nextBoard });
         } else {
           setXIsNext(true);
+          // console.log("[DEBUG] Bot turn skipped or invalid move");
         }
         setIsBotThinking(false);
+        // console.log("[DEBUG] Bot finished thinking");
       }, 700);
 
       return () => {
         clearTimeout(timer);
+        // console.log("[DEBUG] Bot move timer cleared");
       };
-    } else if (gameIsOverNow && isBotThinking) {
-      setIsBotThinking(false);
     }
-  }, [board, xIsNext, mode, isBotThinking]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [board, xIsNext, mode]);
 
   // --- Restart Game Handler ---
   const handleRestart = () => {
