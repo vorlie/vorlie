@@ -8,7 +8,7 @@ interface ProjectProps {
 }
 
 const Project: React.FC<ProjectProps> = ({ title, desc, links, language, languageIcon }) => (
-    <div className="bg-gray-800/50 rounded-lg shadow-lg p-5 flex flex-col h-full border-t-2 border-teal-600 transition-shadow duration-300 hover:shadow-xl">
+    <div className="bg-gray-800/50 rounded-lg shadow-lg p-5 flex flex-col h-full transition-shadow duration-300 hover:shadow-xl">
         <div className="flex-grow mb-4">
             <h3 className="text-xl font-semibold text-white mb-1">{title}</h3>
             <p className="text-sm text-gray-300 leading-relaxed">{desc}</p>
@@ -24,7 +24,7 @@ const Project: React.FC<ProjectProps> = ({ title, desc, links, language, languag
                                 href={link.href}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-teal-400 hover:text-teal-300 hover:underline font-medium transition-colors"
+                                className="text-red-400 hover:text-red-300 hover:underline font-medium transition-colors"
                             >
                                 {link.text}
                             </a>

@@ -81,7 +81,7 @@ function Home() {
             {" "}
             <section className="mb-10">
               <h1 className="text-4xl sm:text-5xl font-bold mb-4 text-white leading-tight">
-                Hello, I'm <span className="text-teal-400">Charlie</span>, a
+                Hello, I'm <span className="text-red-400">Charlie</span>, a
                 friendly coder.
               </h1>
               <div className="space-y-4 text-lg text-gray-300 leading-relaxed">
@@ -92,11 +92,11 @@ function Home() {
                 </p>
                 <p>
                   When I'm not coding, I spend time listening to{" "}
-                  <span className="text-teal-400 font-medium">music</span>,
+                  <span className="text-red-400 font-medium">music</span>,
                   playing{" "}
-                  <span className="text-teal-400 font-medium">games</span> or
+                  <span className="text-red-400 font-medium">games</span> or
                   watching{" "}
-                  <span className="text-teal-400 font-medium">anime</span>.
+                  <span className="text-red-400 font-medium">anime</span>.
                 </p>
                 <p className="text-gray-400">
                   Feel free to check out my{" "}

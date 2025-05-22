@@ -8,7 +8,7 @@ import {
 import { extractImageUrl, getAvatarUrl } from "../utils/helpers";
 import ActivityTimestamp from "./ActivityTimestamp";
 import MarqueeText from "./MarqueeText";
-
+import { FaSpotify } from "react-icons/fa";
 const LANYARD_API_URL = "wss://api.lanyard.rest/socket";
 const OP = {
   EVENT: 0,
@@ -167,9 +167,7 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
   };
 
   if (!presenceData) {
-    return (
-      <div className="h-24 text-gray-500 animate-pulse">Loading...</div>
-    );
+    return <div className="h-24 text-gray-500 animate-pulse">Loading...</div>;
   }
 
   const { discord_status, activities, spotify, discord_user } = presenceData;
@@ -263,10 +261,13 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
                     href={`https://open.spotify.com/track/${spotify.track_id}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-green-400 hover:underline font-semibold break-words block truncate"
+                    className="text-red-400 font-semibold break-words block truncate"
                     title={`Listen to ${spotify.song} by ${spotify.artist} on Spotify`}
                   >
-                    {spotify.song}
+                    <span className="inline-flex items-center gap-1 hover:underline">
+                      <FaSpotify size={16} color="currentColor" />
+                      {spotify.song}
+                    </span>
                   </a>
                   <p
                     className="text-gray-400 text-xs truncate"

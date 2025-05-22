@@ -39,7 +39,7 @@ const PCSpecification: React.FC = () => {
       <button
         type="button"
         onClick={toggleExpansion}
-        className="w-full flex justify-between items-center p-5 text-left cursor-pointer focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-opacity-50 rounded-t-lg" // Dodano style dla focusa i zaokrąglenie górne
+        className="w-full flex justify-between items-center p-5 text-left cursor-pointer focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded-t-lg" // Dodano style dla focusa i zaokrąglenie górne
         aria-expanded={isExpanded}
         aria-controls="pc-specs-content"
       >

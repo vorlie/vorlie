@@ -12,7 +12,7 @@ function PrivacyPolicy() {
           </p>
 
           <section className="mb-6">
-            <h2 className="text-xl font-semibold mb-2 text-teal-400">
+            <h2 className="text-xl font-semibold mb-2 text-red-400">
               1. Information Collection
             </h2>
             <p className="text-lg text-gray-300 mb-2">
@@ -26,7 +26,7 @@ function PrivacyPolicy() {
           </section>
 
           <section className="mb-6">
-            <h2 className="text-xl font-semibold mb-2 text-teal-400">
+            <h2 className="text-xl font-semibold mb-2 text-red-400">
               2. Use of Information
             </h2>
             <p className="text-lg text-gray-300 mb-2">
@@ -39,7 +39,7 @@ function PrivacyPolicy() {
           </section>
 
           <section className="mb-6">
-            <h2 className="text-xl font-semibold mb-2 text-teal-400">
+            <h2 className="text-xl font-semibold mb-2 text-red-400">
               3. Information Sharing
             </h2>
             <p className="text-lg text-gray-300">
@@ -49,7 +49,7 @@ function PrivacyPolicy() {
           </section>
 
           <section className="mb-6">
-            <h2 className="text-xl font-semibold mb-2 text-teal-400">
+            <h2 className="text-xl font-semibold mb-2 text-red-400">
               4. Data Security
             </h2>
             <p className="text-lg text-gray-300">
@@ -59,7 +59,7 @@ function PrivacyPolicy() {
           </section>
 
           <section className="mb-6">
-            <h2 className="text-xl font-semibold mb-2 text-teal-400">
+            <h2 className="text-xl font-semibold mb-2 text-red-400">
               5. Your Data Protection Rights (GDPR)
             </h2>
             <p className="text-lg text-gray-300 mb-2">
@@ -114,7 +114,7 @@ function PrivacyPolicy() {
           </section>
 
           <section className="mb-6">
-            <h2 className="text-xl font-semibold mb-2 text-teal-400">
+            <h2 className="text-xl font-semibold mb-2 text-red-400">
               6. Changes to Privacy Policy
             </h2>
             <p className="text-lg text-gray-300">
@@ -125,7 +125,7 @@ function PrivacyPolicy() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold mb-2 text-teal-400">
+            <h2 className="text-xl font-semibold mb-2 text-red-400">
               7. Contact
             </h2>
             <p className="text-lg text-gray-300">

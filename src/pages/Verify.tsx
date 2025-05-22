@@ -84,7 +84,7 @@ function Verify() {
             </div>
             <p className="text-lg text-gray-300 mb-2">
               <strong>Username:</strong> {user?.username} (
-              <span className="text-teal-400">{user?.userId}</span>)
+              <span className="text-red-400">{user?.userId}</span>)
             </p>
             {verifiedDate && (
               <p className="text-sm text-gray-400 mb-4">

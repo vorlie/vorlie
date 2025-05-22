@@ -12,7 +12,7 @@ function TermsOfService() {
           </p>
 
           <section className="mb-6">
-            <h2 className="text-xl font-semibold mb-2 text-teal-400">
+            <h2 className="text-xl font-semibold mb-2 text-red-400">
               1. Acceptance of Terms
             </h2>
             <p className="text-lg text-gray-300">
@@ -23,7 +23,7 @@ function TermsOfService() {
           </section>
 
           <section className="mb-6">
-            <h2 className="text-xl font-semibold mb-2 text-teal-400">
+            <h2 className="text-xl font-semibold mb-2 text-red-400">
               2. Description of Service
             </h2>
             <p className="text-lg text-gray-300">
@@ -34,7 +34,7 @@ function TermsOfService() {
           </section>
 
           <section className="mb-6">
-            <h2 className="text-xl font-semibold mb-2 text-teal-400">
+            <h2 className="text-xl font-semibold mb-2 text-red-400">
               3. User Obligations
             </h2>
             <p className="text-lg text-gray-300 mb-2">
@@ -59,7 +59,7 @@ function TermsOfService() {
           </section>
 
           <section className="mb-6">
-            <h2 className="text-xl font-semibold mb-2 text-teal-400">
+            <h2 className="text-xl font-semibold mb-2 text-red-400">
               4. Changes to Terms
             </h2>
             <p className="text-lg text-gray-300">
@@ -71,7 +71,7 @@ function TermsOfService() {
           </section>
 
           <section className="mb-6">
-            <h2 className="text-xl font-semibold mb-2 text-teal-400">
+            <h2 className="text-xl font-semibold mb-2 text-red-400">
               5. Limitation of Liability
             </h2>
             <p className="text-lg text-gray-300">
@@ -84,7 +84,7 @@ function TermsOfService() {
           </section>
 
           <section className="mb-6">
-            <h2 className="text-xl font-semibold mb-2 text-teal-400">
+            <h2 className="text-xl font-semibold mb-2 text-red-400">
               6. Indemnification
             </h2>
             <p className="text-lg text-gray-300">
@@ -95,7 +95,7 @@ function TermsOfService() {
           </section>
 
           <section className="mb-6">
-            <h2 className="text-xl font-semibold mb-2 text-teal-400">
+            <h2 className="text-xl font-semibold mb-2 text-red-400">
               7. Termination
             </h2>
             <p className="text-lg text-gray-300">
@@ -107,7 +107,7 @@ function TermsOfService() {
           </section>
 
           <section className="mb-6">
-            <h2 className="text-xl font-semibold mb-2 text-teal-400">
+            <h2 className="text-xl font-semibold mb-2 text-red-400">
               8. Severability
             </h2>
             <p className="text-lg text-gray-300">
@@ -118,7 +118,7 @@ function TermsOfService() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold mb-2 text-teal-400">
+            <h2 className="text-xl font-semibold mb-2 text-red-400">
               9. Contact
             </h2>
             <p className="text-lg text-gray-300">

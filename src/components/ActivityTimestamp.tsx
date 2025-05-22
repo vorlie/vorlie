@@ -32,7 +32,7 @@ const ActivityTimestamp: React.FC<ActivityTimestampProps> = ({ startTime, endTim
             {progress !== null && endTime && (
                 <div className="w-full bg-gray-600 rounded-full h-1 mt-1 overflow-hidden">
                     <div
-                        className="bg-gray-400 h-1 rounded-full transition-all duration-1000 ease-linear"
+                        className="bg-red-400 h-1 rounded-full transition-all duration-1000 ease-linear"
                         style={{ width: `${progress}%` }}
                         role="progressbar"
                         aria-valuenow={progress}
