@@ -50,18 +50,15 @@ const Square: React.FC<SquareProps> = ({ value, onSquareClick, disabled }) => {
 
 // --- Function for Bot's Logic ---
 function findBestBotMove(squares: (string | null)[]): number | null {
-  // console.log("[findBestBotMove] Input board:", JSON.stringify(squares));
   const emptyIndices = squares
     .map((sq, idx) => (sq === null ? idx : null))
     .filter((idx) => idx !== null) as number[];
-  // console.log("[findBestBotMove] Empty indices:", emptyIndices);
 
   // 1. Check if Bot ('O') can win in the next move
   for (const i of emptyIndices) {
     const tempBoard = squares.slice();
     tempBoard[i] = "O";
     if (calculateWinner(tempBoard) === "O") {
-      // console.log("[findBestBotMove] Found winning move for O:", i);
       return i; // Winning move
     }
   }
@@ -71,50 +68,42 @@ function findBestBotMove(squares: (string | null)[]): number | null {
     const tempBoard = squares.slice();
     tempBoard[i] = "X";
     if (calculateWinner(tempBoard) === "X") {
-      // console.log("[findBestBotMove] Found blocking move for X:", i);
       return i; // Blocking move
     }
   }
 
   // 3. Try to take the center square if available
   if (squares[4] === null) {
-    // console.log("[findBestBotMove] Taking center:", 4);
     return 4;
   }
 
   // 4. Try to take the opposite corner from the player
-  // If player took a corner, and the opposite is free, take it.
   const corners = [0, 2, 6, 8];
   const opposites: { [key: number]: number } = { 0: 8, 2: 6, 6: 2, 8: 0 };
   for (const corner of corners) {
     if (squares[corner] === "X" && squares[opposites[corner]] === null) {
-      // console.log(`[findBestBotMove] Player has corner ${corner}, taking opposite ${opposites[corner]}`);
       return opposites[corner];
     }
   }
 
-  // 5. Try to take *any* available corner (Prioritized over sides)
+  // 5. Try to take any available corner
   const availableCorners = corners.filter((i) => squares[i] === null);
   if (availableCorners.length > 0) {
-    // Pick a random available corner
     const move =
       availableCorners[Math.floor(Math.random() * availableCorners.length)];
-    // console.log("[findBestBotMove] Taking random available corner:", move);
     return move;
   }
 
-  // 6. Try to take a random available side (Last resort if no better move)
+  // 6. Try to take a random available side
   const sides = [1, 3, 5, 7];
   const availableSides = sides.filter((i) => squares[i] === null);
   if (availableSides.length > 0) {
     const move =
       availableSides[Math.floor(Math.random() * availableSides.length)];
-    // console.log("[findBestBotMove] Taking random available side:", move);
     return move;
   }
 
   const fallbackMove = emptyIndices.length > 0 ? emptyIndices[0] : null;
-  // console.log("[findBestBotMove] No strategic move found, using fallback:", fallbackMove);
   return fallbackMove;
 }
 
@@ -123,85 +112,70 @@ const TicTacToe: React.FC = () => {
   const [board, setBoard] = useState<(string | null)[]>(Array(9).fill(null));
   const [xIsNext, setXIsNext] = useState<boolean>(true);
   const [isBotThinking, setIsBotThinking] = useState<boolean>(false);
-
-  //console.log("--- Render ---", {xIsNext,isBotThinking,board: JSON.stringify(board),});
+  const [mode, setMode] = useState<"bot" | "local">("bot");
 
   const winnerInfo = calculateWinner(board);
   const gameOver = !!winnerInfo;
 
   // --- Player's Move Handler ---
   const handlePlayerClick = (i: number) => {
-    //console.log(`[handlePlayerClick] Square ${i} clicked.`);
     const currentWinner = calculateWinner(board);
     const gameIsOver = !!currentWinner;
-    if (board[i] || gameIsOver || !xIsNext || isBotThinking) {
-      //console.log(`[handlePlayerClick] Ignoring click. Conditions: board[i]=${!!board[i]}, gameIsOver=${gameIsOver}, !xIsNext=${!xIsNext}, isBotThinking=${isBotThinking}`);
+    if (board[i] || gameIsOver) {
       return;
     }
-    const nextBoard = board.slice();
-    nextBoard[i] = "X";
-    //console.log(`[handlePlayerClick] Setting board and xIsNext=false.`);
-    setBoard(nextBoard);
-    setXIsNext(false);
+    if (mode === "bot") {
+      if (!xIsNext || isBotThinking) return;
+      const nextBoard = board.slice();
+      nextBoard[i] = "X";
+      setBoard(nextBoard);
+      setXIsNext(false);
+    } else {
+      // local mode: alternate X and O
+      const nextBoard = board.slice();
+      nextBoard[i] = xIsNext ? "X" : "O";
+      setBoard(nextBoard);
+      setXIsNext(!xIsNext);
+    }
   };
 
   // --- Bot's Move Logic ---
   useEffect(() => {
+    if (mode !== "bot") return;
     const currentWinner = calculateWinner(board);
     const boardIsFull = !board.includes(null);
     const gameIsOverNow = !!currentWinner || boardIsFull;
 
-    // console.log(`[useEffect] Running. xIsNext=${xIsNext}, board changed.`);
-
-    // --- Main condition to trigger bot ---
     if (!xIsNext && !gameIsOverNow) {
-      // --- Check if bot is already thinking ---
       if (isBotThinking) {
-        //console.log("[useEffect] Bot is already thinking, skipping new move trigger.");
         return;
       }
-      // --- End check ---
-
-      //console.log("[useEffect] Bot's turn detected. Setting isBotThinking=true.");
       setIsBotThinking(true);
 
       const bestMove = findBestBotMove(board);
-      //console.log("[useEffect] findBestBotMove returned:", bestMove);
 
       const timer = setTimeout(() => {
-        //console.log("[useEffect] setTimeout callback executing. bestMove:",bestMove);
         if (bestMove !== null && board[bestMove] === null) {
           const nextBoard = board.slice();
           nextBoard[bestMove] = "O";
-          //console.log("[useEffect] setTimeout: Calling setBoard and setXIsNext(true).");
           setBoard(nextBoard);
           setXIsNext(true);
         } else {
-          //console.warn("[useEffect] setTimeout: bestMove was null or square already taken! bestMove:",bestMove);
           setXIsNext(true);
         }
-        console.log("[useEffect] setTimeout: Calling setIsBotThinking(false).");
         setIsBotThinking(false);
       }, 700);
 
       return () => {
-        //console.log("[useEffect] Cleanup for this run: Clearing timeout ID",timer);
         clearTimeout(timer);
       };
-    }
-    else if (gameIsOverNow && isBotThinking) {
-      //console.log("[useEffect] Game ended while bot thinking? Resetting isBotThinking.");
+    } else if (gameIsOverNow && isBotThinking) {
       setIsBotThinking(false);
-    } else {
-      // console.log(`[useEffect] Conditions not met for bot move. !xIsNext=${!xIsNext}, !gameIsOverNow=${!gameIsOverNow}, isBotThinking=${isBotThinking}`);
     }
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [board, xIsNext]);
+  }, [board, xIsNext, mode, isBotThinking]);
 
   // --- Restart Game Handler ---
   const handleRestart = () => {
-    //console.log("[handleRestart] Resetting game.");
     setBoard(Array(9).fill(null));
     setXIsNext(true);
     setIsBotThinking(false);
@@ -210,16 +184,53 @@ const TicTacToe: React.FC = () => {
   // --- Determine Status Message ---
   let status;
   if (winnerInfo && winnerInfo !== "Draw") {
-    status = winnerInfo === "X" ? "You Won!" : "Bot Won!";
+    if (mode === "bot") {
+      status = winnerInfo === "X" ? "You Won!" : "Bot Won!";
+    } else {
+      status = winnerInfo === "X" ? "X Won!" : "O Won!";
+    }
   } else if (winnerInfo === "Draw") {
     status = "It's a Draw!";
-  } else {
+  } else if (mode === "bot") {
     status = isBotThinking ? "Bot is thinking..." : "Your turn (X)";
+  } else {
+    status = xIsNext ? "X's turn" : "O's turn";
   }
 
   // --- Render Component ---
   return (
     <div className="flex flex-col items-center p-4 bg-gray-800/50 rounded-lg shadow-lg">
+      {/* Mode Switch */}
+      <div className="mb-4">
+        <button
+          className={`mr-2 px-3 py-1 rounded ${
+            mode === "bot"
+              ? "bg-teal-600 text-white"
+              : "bg-gray-600 text-gray-200"
+          }`}
+          onClick={() => {
+            setMode("bot");
+            handleRestart();
+          }}
+          disabled={mode === "bot"}
+        >
+          User vs Bot
+        </button>
+        <button
+          className={`px-3 py-1 rounded ${
+            mode === "local"
+              ? "bg-teal-600 text-white"
+              : "bg-gray-600 text-gray-200"
+          }`}
+          onClick={() => {
+            setMode("local");
+            handleRestart();
+          }}
+          disabled={mode === "local"}
+        >
+          User vs User (Local)
+        </button>
+      </div>
       {/* Status Display */}
       <div
         className={`text-xl font-semibold mb-4 h-7 ${
@@ -243,7 +254,11 @@ const TicTacToe: React.FC = () => {
             key={i}
             value={board[i]}
             onSquareClick={() => handlePlayerClick(i)}
-            disabled={!!board[i] || gameOver || isBotThinking || !xIsNext}
+            disabled={
+              !!board[i] ||
+              gameOver ||
+              (mode === "bot" && (isBotThinking || !xIsNext))
+            }
           />
         ))}
       </div>
