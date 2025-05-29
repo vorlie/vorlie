@@ -23,6 +23,7 @@ function App() {
               <Route path="/miko/privacy-policy" element={<PrivacyPolicy />} />
               <Route path="/miko/terms-of-service" element={<TermsOfService />} />
               <Route path="/verify" element={<Verify />} /> {/* Add the new route */}
+              <Route path="*" element={<Home />} />
             </Routes>
           </div>
         </div>
