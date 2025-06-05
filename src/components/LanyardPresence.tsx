@@ -9,6 +9,15 @@ import { extractImageUrl, getAvatarUrl } from "../utils/helpers";
 import ActivityTimestamp from "./ActivityTimestamp";
 import MarqueeText from "./MarqueeText";
 import { FaSpotify } from "react-icons/fa";
+
+declare global {
+  interface Window {
+    twemoji: {
+      parse: (input: string) => string;
+    };
+  }
+}
+
 const LANYARD_API_URL = "wss://api.lanyard.rest/socket";
 const OP = {
   EVENT: 0,
@@ -233,13 +242,37 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
             )}
           </p>
 
-          <div className="text-sm text-gray-400 truncate self-start leading-tight bg-gray-900/50 rounded px-2 py-1 w-66">
+          <div className="text-sm text-gray-400 truncate self-start leading-tight bg-gray-900/50 rounded px-2 py-1 mr-2">
             <span className={`${statusTextColors[discord_status]} font-medium`}>
               {statusText}
             </span>
             {customStatus && customStatus.state && (
               <MarqueeText className="max-w-[10rem]" title={customStatus.state}>
-                {customStatus.emoji?.name} {customStatus.state}
+                {customStatus.emoji?.id ? (
+                  <img
+                    src={`https://cdn.discordapp.com/emojis/${
+                      customStatus.emoji.id
+                    }.webp?size=32&animated=${
+                      customStatus.emoji.animated ? "true" : "false"
+                    }`}
+                    alt={customStatus.emoji.name}
+                    className="inline h-5 align-text-bottom mr-1"
+                    title={customStatus.emoji.name}
+                  />
+                ) : customStatus.emoji?.name ? (
+                  <span
+                    className="mr-1 inline-block align-text-bottom"
+                    ref={(el) => {
+                      if (el && window.twemoji) {
+                        el.innerHTML = window.twemoji.parse(
+                          customStatus.emoji?.name ?? ""
+                        );
+                      }
+                    }}
+                  >
+                  </span>
+                ) : null}
+                {customStatus.state}
               </MarqueeText>
             )}
           </div>

@@ -27,7 +27,7 @@ export const formatTotalDuration = (start: number, end: number): string => {
     return `${hours > 0 ? hours + ':' : ''}${hours > 0 && minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
 };
 
-// Oblicza procent postępu
+
 export const calculateProgressPercent = (start: number, end: number): number | null => {
     const now = Date.now();
     if (now < start || end <= start) return 0;
