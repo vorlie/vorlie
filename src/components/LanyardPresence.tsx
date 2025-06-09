@@ -203,7 +203,7 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
       />
 
       <div className="relative">
-        <div className="grid grid-cols-[auto_1fr] gap-x-4 gap-y-1 mb-3 items-start mt-[-5rem] overflow-hidden">
+        <div className="grid grid-cols-[auto_1fr] gap-x-4 gap-y-1 mb-3 items-start mt-[-5rem]">
           <div className="relative row-span-2 self-start w-16 h-16rounded-full">
             {" "}
             <img
