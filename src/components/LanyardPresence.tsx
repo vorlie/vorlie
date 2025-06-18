@@ -283,7 +283,7 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
                   <img
                     src={spotify.album_art_url}
                     alt={`${spotify.album} cover`}
-                    className="w-10 h-10 rounded flex-shrink-0"
+                    className="w-14 h-14 rounded flex-shrink-0"
                   />
                 )}
                 <div className="flex-grow overflow-hidden">
