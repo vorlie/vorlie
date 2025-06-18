@@ -119,32 +119,30 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
         className="bg-gray-700/50 rounded p-2"
       >
         {" "}
-        <div className="flex items-center gap-3">
+        <div className="flex items-start gap-2">
           {" "}
-          {!largeImageUrl.endsWith("/images/default.png") && (
-            <div className="relative flex-shrink-0">
+          <div className="relative flex-shrink-0">
+            <img
+              src={largeImageUrl}
+              alt={activity.assets?.large_text || activity.name}
+              className="w-14 h-14 rounded object-cover"
+              title={activity.assets?.large_text || activity.name}
+              onError={(e) => {
+                (e.target as HTMLImageElement).style.display = "none";
+              }}
+            />
+            {finalSmallImageUrl && (
               <img
-                src={largeImageUrl}
-                alt={activity.assets?.large_text || activity.name}
-                className="w-10 h-10 rounded object-cover"
-                title={activity.assets?.large_text || activity.name}
+                src={finalSmallImageUrl}
+                alt={activity.assets?.small_text || ""}
+                className="w-4 h-4 rounded-full absolute -bottom-1 -right-1 border-2 border-gray-700/50 bg-gray-700/50"
+                title={activity.assets?.small_text || ""}
                 onError={(e) => {
                   (e.target as HTMLImageElement).style.display = "none";
                 }}
               />
-              {finalSmallImageUrl && (
-                <img
-                  src={finalSmallImageUrl}
-                  alt={activity.assets?.small_text || ""}
-                  className="w-4 h-4 rounded-full absolute -bottom-1 -right-1 border-2 border-gray-700/50 bg-gray-700/50"
-                  title={activity.assets?.small_text || ""}
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).style.display = "none";
-                  }}
-                />
-              )}
-            </div>
-          )}
+            )}
+          </div>
           <div className="text-sm overflow-hidden flex-grow">
             {" "}
             <p
@@ -155,7 +153,7 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
             </p>
             {activity.details && (
               <p className="text-gray-300 truncate" title={activity.details}>
-                {activity.details}
+                  {activity.details}
               </p>
             )}
             {activity.state && (
@@ -269,8 +267,7 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
                         );
                       }
                     }}
-                  >
-                  </span>
+                  ></span>
                 ) : null}
                 {customStatus.state}
               </MarqueeText>
