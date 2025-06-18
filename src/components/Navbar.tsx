@@ -7,6 +7,7 @@ function Navbar() {
 
   const navLinks = [
     { to: "/", label: "Home" },
+    { to: "https://docs.vorlie.pl", label: "API" },
     {
       label: "Miko",
       children: [
