@@ -54,6 +54,12 @@ function findBestBotMove(squares: (string | null)[]): number | null {
     .map((sq, idx) => (sq === null ? idx : null))
     .filter((idx) => idx !== null) as number[];
 
+  const mistakeChance = 0.2; // 20% chance to make a mistake
+  if (Math.random() < mistakeChance && emptyIndices.length > 0) {
+    // Pick a random move (mistake)
+    return emptyIndices[Math.floor(Math.random() * emptyIndices.length)];
+  }
+
   // 1. Check if Bot ('O') can win in the next move
   for (const i of emptyIndices) {
     const tempBoard = squares.slice();
@@ -77,7 +83,24 @@ function findBestBotMove(squares: (string | null)[]): number | null {
     return 4;
   }
 
-  // 4. Try to take the opposite corner from the player
+  // 4. If user has both opposite corners, take a side to avoid trap
+  const oppositeCorners = [
+    [0, 8],
+    [2, 6],
+  ];
+  for (const [a, b] of oppositeCorners) {
+    if (squares[a] === "X" && squares[b] === "X") {
+      const sides = [1, 3, 5, 7];
+      const availableSides = sides.filter((i) => squares[i] === null);
+      if (availableSides.length > 0) {
+        return availableSides[
+          Math.floor(Math.random() * availableSides.length)
+        ];
+      }
+    }
+  }
+
+  // 5. Try to take the opposite corner from the player
   const corners = [0, 2, 6, 8];
   const opposites: { [key: number]: number } = { 0: 8, 2: 6, 6: 2, 8: 0 };
   for (const corner of corners) {
@@ -86,7 +109,7 @@ function findBestBotMove(squares: (string | null)[]): number | null {
     }
   }
 
-  // 5. Try to take any available corner
+  // 6. Try to take any available corner
   const availableCorners = corners.filter((i) => squares[i] === null);
   if (availableCorners.length > 0) {
     const move =
@@ -94,7 +117,7 @@ function findBestBotMove(squares: (string | null)[]): number | null {
     return move;
   }
 
-  // 6. Try to take a random available side
+  // 7. Try to take a random available side
   const sides = [1, 3, 5, 7];
   const availableSides = sides.filter((i) => squares[i] === null);
   if (availableSides.length > 0) {
@@ -199,7 +222,7 @@ const TicTacToe: React.FC = () => {
         // console.log("[DEBUG] Bot move timer cleared");
       };
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [board, xIsNext, mode]);
 
   // --- Restart Game Handler ---
