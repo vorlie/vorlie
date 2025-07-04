@@ -6,6 +6,7 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
 import Verify from "./pages/Verify";
 import Navbar from "./components/Navbar";
+import Chleb from "./pages/Chleb";
 
 function App() {
   useEffect(() => {
@@ -23,6 +24,7 @@ function App() {
               <Route path="/miko/privacy-policy" element={<PrivacyPolicy />} />
               <Route path="/miko/terms-of-service" element={<TermsOfService />} />
               <Route path="/verify" element={<Verify />} /> {/* Add the new route */}
+              <Route path="/przepis-na-chleb" element={<Chleb />} />
               <Route path="*" element={<Home />} />
             </Routes>
           </div>
