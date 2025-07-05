@@ -3,11 +3,17 @@ import { NavLink } from "react-router-dom";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 
 function Navbar() {
-  const [isMikoDropdownOpen, setIsMikoDropdownOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
 
   const navLinks = [
     { to: "/", label: "Home" },
     { to: "https://docs.vorlie.pl", label: "API" },
+    {
+      label: "Projects",
+      children: [
+        { to: "/project/iota-player", label: "Iota Player" }
+      ]
+    },
     {
       label: "Miko",
       children: [
@@ -20,8 +26,8 @@ function Navbar() {
     },
   ];
 
-  const toggleMikoDropdown = () => {
-    setIsMikoDropdownOpen(!isMikoDropdownOpen);
+  const toggleDropdown = (label: string) => {
+    setOpenDropdown(openDropdown === label ? null : label);
   };
 
   return (
@@ -29,23 +35,25 @@ function Navbar() {
       <nav className="max-w-6xl mx-auto px-2 flex justify-start gap-2">
         {navLinks.map((link, index) => {
           if (link.children) {
+            // Check if the current link's dropdown is open
+            const isOpen = openDropdown === link.label;
             return (
               <div key={index} className="relative">
                 <button
-                  onClick={toggleMikoDropdown}
+                  onClick={() => toggleDropdown(link.label)} // Pass the label to toggle this specific dropdown
                   className={`text-gray-300 hover:text-white hover:bg-gray-800 transition-colors px-3 py-2 rounded-md flex items-center gap-1 ${
-                    isMikoDropdownOpen ? "bg-gray-900" : ""
+                    isOpen ? "bg-gray-900" : ""
                   }`}
                 >
                   {link.label}
                   <ChevronDownIcon
                     className={`w-4 h-4 transition-transform ${
-                      isMikoDropdownOpen ? "rotate-180" : ""
+                      isOpen ? "rotate-180" : ""
                     }`}
                     aria-hidden="true"
                   />
                 </button>
-                {isMikoDropdownOpen && (
+                {isOpen && ( // Only render if this specific dropdown is open
                   <div className="absolute left-0 mt-1 w-48 bg-gray-700 rounded-md shadow-lg z-20">
                     {link.children.map((childLink) => (
                       <NavLink
@@ -56,7 +64,7 @@ function Navbar() {
                             isActive ? "bg-gray-900" : ""
                           }`
                         }
-                        onClick={toggleMikoDropdown} // Close dropdown on item click
+                        onClick={() => setOpenDropdown(null)} // Close all dropdowns on item click
                       >
                         {childLink.label}
                       </NavLink>

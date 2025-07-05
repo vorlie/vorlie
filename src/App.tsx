@@ -7,6 +7,7 @@ import TermsOfService from "./pages/TermsOfService";
 import Verify from "./pages/Verify";
 import Navbar from "./components/Navbar";
 import Chleb from "./pages/Chleb";
+import IotaPlayer from "./pages/IotaPlayer";
 
 function App() {
   useEffect(() => {
@@ -23,7 +24,8 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/miko/privacy-policy" element={<PrivacyPolicy />} />
               <Route path="/miko/terms-of-service" element={<TermsOfService />} />
-              <Route path="/verify" element={<Verify />} /> {/* Add the new route */}
+              <Route path="/verify" element={<Verify />} />
+              <Route path="/project/iota-player" element={<IotaPlayer />} />
               <Route path="/przepis-na-chleb" element={<Chleb />} />
               <Route path="*" element={<Home />} />
             </Routes>
