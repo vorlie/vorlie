@@ -35,7 +35,7 @@ function IotaPlayer() {
             Download Linux Installer
           </a>
           <p className="text-gray-400 text-sm mt-2">
-            This will download the one-command installer script. For detailed instructions on how to use it, please refer to the <a href="#installation" className="text-blue-400 hover:underline">Installation section below</a>.
+            This will download (Press Ctrl + S) the one-command installer script. For detailed instructions on how to use it, please refer to the <a href="#installation" className="text-blue-400 hover:underline">Installation section below</a>.
           </p>
         </div>
 
