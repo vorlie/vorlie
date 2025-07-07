@@ -60,7 +60,7 @@ export interface DiscordUser {
     username: string;
     avatar: string | null;
     discriminator: string;
-    clan : UserClan | null;
+    primary_guild : UserClan | null;
     bot: boolean;
     global_name: string | null; 
     avatar_decoration_data?: AvatarDecoration;

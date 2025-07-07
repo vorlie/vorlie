@@ -181,7 +181,7 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
   const avatarUrl = getAvatarUrl(discord_user.id, discord_user.avatar);
   const decorationAsset = discord_user.avatar_decoration_data?.asset;
   const decorationUrl = `https://cdn.discordapp.com/avatar-decoration-presets/${decorationAsset}.png`;
-  const clanIconUrl = `https://cdn.discordapp.com/clan-badges/${discord_user.clan?.identity_guild_id}/${discord_user.clan?.badge}.png?size=16`;
+  const clanIconUrl = `https://cdn.discordapp.com/clan-badges/${discord_user.primary_guild?.identity_guild_id}/${discord_user.primary_guild?.badge}.png?size=16`;
   const customStatus = activities.find((act) => act.type === 4);
   const statusText =
     discord_status === "dnd"
@@ -224,17 +224,17 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
               {discord_user.global_name || discord_user.username}
             </span>
 
-            {discord_user.clan && clanIconUrl && (
+            {discord_user.primary_guild && clanIconUrl && (
               <span className="ml-2 flex items-center bg-gray-900/50 rounded px-2 py-0.5 text-sm font-normal whitespace-nowrap">
                 {" "}
                 <img
                   src={clanIconUrl}
-                  alt={`${discord_user.clan.tag} Clan Icon`}
+                  alt={`${discord_user.primary_guild.tag} Clan Icon`}
                   className="h-4 w-4 mr-1 object-contain"
                 />
                 <span className="font-medium bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-[length:200%_auto] bg-clip-text text-transparent">
                   {" "}
-                  {discord_user.clan.tag}
+                  {discord_user.primary_guild.tag}
                 </span>
               </span>
             )}
