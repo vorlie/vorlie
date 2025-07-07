@@ -6,6 +6,18 @@ import { FaJava, FaPython, FaReact } from "react-icons/fa";
 import { SiElectron, SiJavascript } from "react-icons/si";
 
 const projectData = [
+    {
+    title: "Iota Player",
+    desc: "A feature-rich music player application with playlist management, playback controls, song information display, volume and progress tracking, Discord integration, and more.", 
+    links: [
+      { href: "https://github.com/vorlie/IotaPlayer", text: "Repository" },
+      {
+        href: "https://vorlie.pl/project/iota-player",
+        text: "Homepage",
+      },
+    ],
+    language: "Python",
+  },
   {
     title: "Markdown Notepad",
     desc: "Simple markdown editor with live preview. Built with React and MUI.", 
@@ -29,7 +41,6 @@ const projectData = [
     desc: "My own API which provides endpoints for anime interactive actions (e.g. hug, poke, kiss).", 
     links: [
       { href: "https://github.com/vorlie/miko_worker", text: "Repository" },
-      { href: "https://api.vorlie.pl", text: "API URL" },
       { href: "https://docs.vorlie.pl", text: "API Docs" },
     ],
     language: "JavaScript",
@@ -58,18 +69,6 @@ const projectData = [
       },
     ],
     language: "Electron",
-  },
-  {
-    title: "Iota Player",
-    desc: "A feature-rich music player application with playlist management, playback controls, song information display, volume and progress tracking, Discord integration, and more.", 
-    links: [
-      { href: "https://github.com/vorlie/IotaPlayer", text: "Repository" },
-      {
-        href: "https://github.com/vorlie/IotaPlayer/releases/",
-        text: "Releases",
-      },
-    ],
-    language: "Python",
   },
   {
     title: "YoutubeDL",
