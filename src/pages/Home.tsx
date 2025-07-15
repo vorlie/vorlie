@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import LanyardPresence from "../components/LanyardPresence";
 import Projects from "../components/Projects";
-import PCSpecification from "../components/PCSpecification";
 import Buttons88x31 from "../components/Buttons88x31";
 import TicTacToe from "../components/TicTacToe";
 
@@ -174,7 +173,6 @@ function Home() {
               </h2>
               <TicTacToe />
             </section>
-            <PCSpecification />
           </aside>
         </div>{" "}
         <ProjectsPage />

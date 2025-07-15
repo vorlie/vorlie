@@ -25,7 +25,7 @@ function IotaPlayer() {
           playlist management, powerful playback controls, and deep integration
           with popular services like Discord and YouTube.
         </p>
-        
+
         <div className="mb-8">
           <a
             href="https://raw.githubusercontent.com/vorlie/IotaPlayer/master/linux_installer.sh"
@@ -35,7 +35,13 @@ function IotaPlayer() {
             Download Linux Installer
           </a>
           <p className="text-gray-400 text-sm mt-2">
-            This will download (Press Ctrl + S) the one-command installer script. For detailed instructions on how to use it, please refer to the <a href="#installation" className="text-blue-400 hover:underline">Installation section below</a>.
+            This will download (Press Ctrl + S) the one-command installer
+            script. For detailed instructions on how to use it, please refer to
+            the{" "}
+            <a href="#installation" className="text-blue-400 hover:underline">
+              Installation section below
+            </a>
+            .
           </p>
         </div>
 
@@ -114,7 +120,10 @@ function IotaPlayer() {
           </li>
         </ul>
 
-        <h2 id="installation" className="text-2xl font-semibold mb-4 text-red-300">
+        <h2
+          id="installation"
+          className="text-2xl font-semibold mb-4 text-red-300"
+        >
           Installation
         </h2>
 
@@ -122,12 +131,21 @@ function IotaPlayer() {
           For Linux (Recommended)
         </h3>
         <p className="text-gray-300 mb-2">
-          The <code className="bg-gray-700 rounded px-1 text-gray-100">linux_installer.sh</code> script is the most straightforward way to install or update IotaPlayer on Linux.
-          It handles all necessary steps for you, including:
+          The{" "}
+          <code className="bg-gray-700 rounded px-1 text-gray-100">
+            linux_installer.sh
+          </code>{" "}
+          script is the most straightforward way to install or update IotaPlayer
+          on Linux. It handles all necessary steps for you, including:
         </p>
         <ul className="list-disc list-inside text-gray-300 mb-4 ml-4">
-          <li>Installing required system dependencies (for Arch or Debian/Ubuntu).</li>
-          <li>Setting up a Python virtual environment and installing Python dependencies.</li>
+          <li>
+            Installing required system dependencies (for Arch or Debian/Ubuntu).
+          </li>
+          <li>
+            Setting up a Python virtual environment and installing Python
+            dependencies.
+          </li>
           <li>Building the application with PyInstaller.</li>
           <li>Prompting for an installation directory and copying files.</li>
           <li>Generating a launcher script.</li>
@@ -135,53 +153,62 @@ function IotaPlayer() {
         </ul>
 
         <p className="text-gray-300 mb-2">
-          It supports two modes: <code className="bg-gray-700 rounded px-1 text-gray-100">install</code> for a fresh setup, and <code className="bg-gray-700 rounded px-1 text-gray-100">update</code> to refresh an existing installation.
+          It supports two modes:{" "}
+          <code className="bg-gray-700 rounded px-1 text-gray-100">
+            install
+          </code>{" "}
+          for a fresh setup, and{" "}
+          <code className="bg-gray-700 rounded px-1 text-gray-100">update</code>{" "}
+          to refresh an existing installation.
         </p>
 
         <h4 className="text-lg font-semibold mb-2 text-red-200">How to Use:</h4>
         <p className="text-gray-300 mb-2">
-          1.  <strong>Download the installer script:</strong>
+          1. <strong>Download the installer script:</strong>
         </p>
         <pre className="bg-gray-700 p-3 rounded-md text-gray-100 text-sm overflow-x-auto mb-2">
           <code>
-            curl -O https://raw.githubusercontent.com/vorlie/IotaPlayer/master/linux_installer.sh
+            curl -O
+            https://raw.githubusercontent.com/vorlie/IotaPlayer/master/linux_installer.sh
           </code>
         </pre>
 
         <p className="text-gray-300 mb-2">
-          2.  <strong>Make the script executable:</strong>
+          2. <strong>Make the script executable:</strong>
         </p>
         <pre className="bg-gray-700 p-3 rounded-md text-gray-100 text-sm overflow-x-auto mb-2">
-          <code>
-            chmod +x linux_installer.sh
-          </code>
+          <code>chmod +x linux_installer.sh</code>
         </pre>
 
         <p className="text-gray-300 mb-2">
-          3.  <strong>Run the script:</strong>
+          3. <strong>Run the script:</strong>
         </p>
         <p className="text-gray-300 mb-1 ml-4">
-          - <strong>To install IotaPlayer (first time or fresh install):</strong>
+          -{" "}
+          <strong>To install IotaPlayer (first time or fresh install):</strong>
         </p>
         <pre className="bg-gray-700 p-3 rounded-md text-gray-100 text-sm overflow-x-auto mb-2 ml-4">
-          <code>
-            ./linux_installer.sh install
-          </code>
+          <code>./linux_installer.sh install</code>
         </pre>
         <p className="text-gray-300 mb-2 ml-4">
-          <span className="text-gray-400 italic">(Running <code className="bg-gray-700 px-1 rounded">./linux_installer.sh</code> without any arguments will also default to the install mode.)</span>
+          <span className="text-gray-400 italic">
+            (Running{" "}
+            <code className="bg-gray-700 px-1 rounded">
+              ./linux_installer.sh
+            </code>{" "}
+            without any arguments will also default to the install mode.)
+          </span>
         </p>
 
         <p className="text-gray-300 mb-1 ml-4">
           - <strong>To update an existing installation:</strong>
         </p>
         <pre className="bg-gray-700 p-3 rounded-md text-gray-100 text-sm overflow-x-auto mb-4 ml-4">
-          <code>
-            ./linux_installer.sh update
-          </code>
+          <code>./linux_installer.sh update</code>
         </pre>
         <p className="text-gray-300 mb-4">
-          The script will prompt you for the installation directory and any necessary confirmations during the process.
+          The script will prompt you for the installation directory and any
+          necessary confirmations during the process.
         </p>
 
         <h3 className="text-xl font-semibold mb-2 text-red-200">

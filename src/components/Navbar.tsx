@@ -7,12 +7,11 @@ function Navbar() {
 
   const navLinks = [
     { to: "/", label: "Home" },
+    { to: "/specs", label: "My Rigs" },
     { to: "https://docs.vorlie.pl", label: "API" },
     {
       label: "Projects",
-      children: [
-        { to: "/project/iota-player", label: "Iota Player" }
-      ]
+      children: [{ to: "/project/iota-player", label: "Iota Player" }],
     },
     {
       label: "Miko",

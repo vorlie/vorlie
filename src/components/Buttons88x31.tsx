@@ -60,7 +60,7 @@ const Buttons88x31: React.FC = () => {
       setTimeout(() => setShowNotification(false), 3000);
     } catch (error) {
       console.error("Error copying button code: ", error);
-      setNotificationText("Failed to copy button code."); 
+      setNotificationText("Failed to copy button code.");
       setShowNotification(true);
       setTimeout(() => setShowNotification(false), 3000);
     }
@@ -69,9 +69,7 @@ const Buttons88x31: React.FC = () => {
   return (
     <section className="my-12 text-left">
       {" "}
-      <h2 className="text-2xl font-semibold mb-6 text-white">
-        My Friends
-      </h2>
+      <h2 className="text-2xl font-semibold mb-6 text-white">My Friends</h2>
       <div className="flex flex-wrap gap-2 mb-6">
         {friendButtons.map((button) => (
           <a

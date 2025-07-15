@@ -153,7 +153,7 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
             </p>
             {activity.details && (
               <p className="text-gray-300 truncate" title={activity.details}>
-                  {activity.details}
+                {activity.details}
               </p>
             )}
             {activity.state && (

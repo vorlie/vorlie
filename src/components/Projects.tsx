@@ -6,9 +6,9 @@ import { FaJava, FaPython, FaReact } from "react-icons/fa";
 import { SiElectron, SiJavascript } from "react-icons/si";
 
 const projectData = [
-    {
+  {
     title: "Iota Player",
-    desc: "A feature-rich music player application with playlist management, playback controls, song information display, volume and progress tracking, Discord integration, and more.", 
+    desc: "A feature-rich music player application with playlist management, playback controls, song information display, volume and progress tracking, Discord integration, and more.",
     links: [
       { href: "https://github.com/vorlie/IotaPlayer", text: "Repository" },
       {
@@ -20,7 +20,7 @@ const projectData = [
   },
   {
     title: "Markdown Notepad",
-    desc: "Simple markdown editor with live preview. Built with React and MUI.", 
+    desc: "Simple markdown editor with live preview. Built with React and MUI.",
     links: [
       { href: "https://github.com/vorlie/markdown-editor", text: "Repository" },
       { href: "https://md.vorlie.pl", text: "Website" },
@@ -29,7 +29,7 @@ const projectData = [
   },
   {
     title: "API Documentation",
-    desc: "API Documentation for my own API. Built with React and TailwindCSS. It is a simple documentation site that provides information about the API endpoints, request/response formats, and usage examples.", 
+    desc: "API Documentation for my own API. Built with React and TailwindCSS. It is a simple documentation site that provides information about the API endpoints, request/response formats, and usage examples.",
     links: [
       { href: "https://github.com/vorlie/api-docs", text: "Repository" },
       { href: "https://docs.vorlie.pl", text: "Website" },
@@ -38,7 +38,7 @@ const projectData = [
   },
   {
     title: "Vorlie API",
-    desc: "My own API which provides endpoints for anime interactive actions (e.g. hug, poke, kiss).", 
+    desc: "My own API which provides endpoints for anime interactive actions (e.g. hug, poke, kiss).",
     links: [
       { href: "https://github.com/vorlie/miko_worker", text: "Repository" },
       { href: "https://docs.vorlie.pl", text: "API Docs" },
@@ -47,7 +47,7 @@ const projectData = [
   },
   {
     title: "LifeDrain",
-    desc: "LifeDrain adds a simple but powerful mechanic to Minecraft: stealing life from hostile mobs. Every time you attack, you'll heal yourself based on the damage dealt, making combat a way to stay alive rather than just survive.", 
+    desc: "LifeDrain adds a simple but powerful mechanic to Minecraft: stealing life from hostile mobs. Every time you attack, you'll heal yourself based on the damage dealt, making combat a way to stay alive rather than just survive.",
     links: [
       { href: "https://github.com/vorlie/Lifedrain/", text: "Repository" },
       {

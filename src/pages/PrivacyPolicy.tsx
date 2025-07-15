@@ -1,4 +1,3 @@
-
 function PrivacyPolicy() {
   return (
     <div className="min-h-screen text-gray-100">

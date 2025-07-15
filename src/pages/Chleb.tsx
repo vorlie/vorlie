@@ -119,9 +119,7 @@ function Chleb() {
         </li>
       </ol>
 
-      <h3 className="text-white text-xl font-semibold mb-3">
-        7. Pieczenie:
-      </h3>
+      <h3 className="text-white text-xl font-semibold mb-3">7. Pieczenie:</h3>
       <ol className="list-decimal ml-8 mb-6 text-gray-400" start={17}>
         <li>
           Rozgrzej piekarnik do{" "}
@@ -145,9 +143,7 @@ function Chleb() {
         </li>
       </ol>
 
-      <h3 className="text-white text-xl font-semibold mb-3">
-        8. Studzenie:
-      </h3>
+      <h3 className="text-white text-xl font-semibold mb-3">8. Studzenie:</h3>
       <ol className="list-decimal ml-8 mb-6 text-gray-400" start={22}>
         <li>
           Wyjmij chleb z piekarnika i od razu przełóż na kratkę do studzenia.
