@@ -6,9 +6,10 @@ import ClipItem from './ClipItem';
 interface ClipListProps {
   clips: Clip[];
   emptyHeading: string;
+  onClipClick: (clip: Clip) => void;
 }
 
-const ClipList: React.FC<ClipListProps> = ({ clips, emptyHeading }) => {
+const ClipList: React.FC<ClipListProps> = ({ clips, emptyHeading, onClipClick }) => {
   const count = clips.length;
   let heading = emptyHeading;
 
@@ -29,7 +30,11 @@ const ClipList: React.FC<ClipListProps> = ({ clips, emptyHeading }) => {
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {clips.map(clip => (
-            <ClipItem key={clip.id} clip={clip} />
+            <ClipItem
+              key={clip.id}
+              clip={clip}
+              onClipClick={onClipClick} // Pass the handler to each ClipItem
+            />
           ))}
         </div>
       )}

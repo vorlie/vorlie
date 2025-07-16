@@ -1,37 +1,36 @@
 // src/pages/Clips.tsx
 import React, { useState, useEffect, useMemo } from "react";
-import ClipList from "../components/ClipList";
-import SearchInput from "../components/SearchInput";
-import { Clip } from "../data/clipsData";
+import ClipList from '../components/ClipList';
+import SearchInput from '../components/SearchInput';
+import VideoModal from '../components/VideoModal';
+import { Clip } from '../data/clipsData';
 
-// Helper function for filtering
+
+// Helper function to filter clips
 const filterClips = (clips: Clip[], searchText: string): Clip[] => {
   if (!searchText) {
     return clips;
   }
   const lowerCaseSearchText = searchText.toLowerCase();
-  return clips.filter(
-    (clip) =>
-      clip.title.toLowerCase().includes(lowerCaseSearchText) ||
-      clip.description.toLowerCase().includes(lowerCaseSearchText) ||
-      clip.platform.toLowerCase().includes(lowerCaseSearchText) ||
-      (clip.tags &&
-        clip.tags.some((tag: string) =>
-          tag.toLowerCase().includes(lowerCaseSearchText)
-        ))
+  return clips.filter(clip =>
+    clip.title.toLowerCase().includes(lowerCaseSearchText) ||
+    clip.description.toLowerCase().includes(lowerCaseSearchText) ||
+    clip.platform.toLowerCase().includes(lowerCaseSearchText) ||
+    (clip.tags && clip.tags.some(tag => tag.toLowerCase().includes(lowerCaseSearchText)))
   );
 };
 
 const Clips: React.FC = () => {
-  const [allClips, setAllClips] = useState<Clip[]>([]); // State to hold fetched clips
-  const [loading, setLoading] = useState(true); // State for loading indicator
-  const [error, setError] = useState<string | null>(null); // State for errors
-  const [searchText, setSearchText] = useState("");
+  const [allClips, setAllClips] = useState<Clip[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [searchText, setSearchText] = useState('');
+  const [selectedClip, setSelectedClip] = useState<Clip | null>(null); // State to hold the clip for the modal
 
   useEffect(() => {
     const fetchClips = async () => {
       try {
-        const response = await fetch("https://api.vorlie.pl/clips.json");
+        const response = await fetch('https://api.vorlie.pl/clips.json');
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -51,6 +50,16 @@ const Clips: React.FC = () => {
     return filterClips(allClips, searchText);
   }, [allClips, searchText]);
 
+  // Handler to open the modal
+  const handleClipClick = (clip: Clip) => {
+    setSelectedClip(clip);
+  };
+
+  // Handler to close the modal
+  const handleCloseModal = () => {
+    setSelectedClip(null);
+  };
+
   if (loading) {
     return (
       <div className="container mx-auto p-4 pt-4 text-white text-center">
@@ -63,9 +72,7 @@ const Clips: React.FC = () => {
     return (
       <div className="container mx-auto p-4 pt-4 text-red-500 text-center">
         <p className="text-xl">Error loading clips: {error}</p>
-        <p className="text-lg text-gray-400">
-          Please try again later or check the console for more details.
-        </p>
+        <p className="text-lg text-gray-400">Please try again later or check the console for more details.</p>
       </div>
     );
   }
@@ -76,9 +83,8 @@ const Clips: React.FC = () => {
         Clips and Highlights
       </h1>
       <p className="text-lg text-gray-300 mb-8 text-center md:text-left max-w-3xl mx-auto md:mx-0">
-        This page showcases some of my favorite clips and highlights from
-        various streams and gaming sessions. Use the search bar to find specific
-        moments!
+        This page showcases some of my favorite clips and highlights from various
+        streams and gaming sessions. Use the search bar to find specific moments!
       </p>
 
       <SearchInput
@@ -89,12 +95,12 @@ const Clips: React.FC = () => {
 
       <ClipList
         clips={filteredClips}
-        emptyHeading={
-          searchText
-            ? `No matches found for "${searchText}"`
-            : "No clips available yet."
-        }
+        emptyHeading={searchText ? `No matches found for "${searchText}"` : "No clips available yet."}
+        onClipClick={handleClipClick} // Pass the click handler to ClipList
       />
+
+      {/* Render the modal if a clip is selected */}
+      <VideoModal clip={selectedClip} onClose={handleCloseModal} />
     </div>
   );
 };
