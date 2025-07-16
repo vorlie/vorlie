@@ -27,10 +27,18 @@ const VideoModal: React.FC<VideoModalProps> = ({ clip, onClose }) => {
       }
 
       // 2. Handle YouTube embeds
-      if (platform === 'YouTube' && (url.hostname.includes('https://www.youtube.com/watch?v=7r4ahP3PP545') || url.hostname.includes('https://www.youtube.com/watch?v=7r4ahP3PP546'))) {
-        const videoId = url.searchParams.get('v') || url.pathname.split('/').pop();
+      if (platform === 'YouTube' && (url.hostname.includes('youtube.com') || url.hostname.includes('youtu.be'))) {
+        let videoId = null;
+        if (url.hostname.includes('youtu.be')) {
+          // For short URLs like https://youtu.be/VIDEO_ID
+          videoId = url.pathname.split('/').pop();
+        } else {
+          // For standard URLs like https://www.youtube.com/watch?v=VIDEO_ID
+          videoId = url.searchParams.get('v');
+        }
+
         if (videoId) {
-          return { type: 'iframe', src: `https://www.youtube.com/watch?v=7r4ahP3PP547{videoId}?autoplay=1&rel=0` };
+          return { type: 'iframe', src: `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0` };
         }
       }
 
