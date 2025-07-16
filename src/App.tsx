@@ -9,6 +9,7 @@ import Navbar from "./components/Navbar";
 import Chleb from "./pages/Chleb";
 import IotaPlayer from "./pages/IotaPlayer";
 import PCSpecs from "./pages/PCSpecs";
+import Clips from "./pages/Clips";
 
 function App() {
   useEffect(() => {
@@ -27,6 +28,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/specs" element={<PCSpecs />} />
+              <Route path="/clips" element={<Clips />} />
               <Route path="/miko/privacy-policy" element={<PrivacyPolicy />} />
               <Route
                 path="/miko/terms-of-service"
