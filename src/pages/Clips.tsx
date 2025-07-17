@@ -16,7 +16,8 @@ const filterClips = (clips: Clip[], searchText: string): Clip[] => {
     clip.title.toLowerCase().includes(lowerCaseSearchText) ||
     clip.description.toLowerCase().includes(lowerCaseSearchText) ||
     clip.platform.toLowerCase().includes(lowerCaseSearchText) ||
-    (clip.tags && clip.tags.some(tag => tag.toLowerCase().includes(lowerCaseSearchText)))
+    (clip.tags && clip.tags.some(tag => tag.toLowerCase().includes(lowerCaseSearchText))) ||
+    clip.game.toLowerCase().includes(lowerCaseSearchText)
   );
 };
 
