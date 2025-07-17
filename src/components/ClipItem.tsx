@@ -35,6 +35,7 @@ const ClipItem: React.FC<ClipItemProps> = ({ clip, onClipClick }) => {
         </p>
         <div className="flex justify-between items-center text-sm text-gray-400 mt-auto">
           <span>{clip.platform} - {clip.date}</span>
+          <span>{clip.game}</span>
         </div>
         {clip.tags && clip.tags.length > 0 && (
           <div className="mt-2 flex flex-wrap gap-1">
