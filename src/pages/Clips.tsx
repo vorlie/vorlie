@@ -47,6 +47,22 @@ const Clips: React.FC = () => {
     fetchClips();
   }, []);
 
+  // Handle URL parameters for deep linking
+  useEffect(() => {
+    if (allClips.length > 0) {
+      const params = new URLSearchParams(window.location.search);
+      const clipId = params.get('id');
+
+      if (clipId) {
+        const foundClip = allClips.find(clip => clip.id === clipId);
+        if (foundClip) {
+          setSelectedClip(foundClip);
+          window.history.replaceState(null, '', window.location.pathname);
+        }
+      }
+    }
+  }, [allClips]);
+
   const filteredClips = useMemo(() => {
     return filterClips(allClips, searchText);
   }, [allClips, searchText]);
@@ -54,11 +70,13 @@ const Clips: React.FC = () => {
   // Handler to open the modal
   const handleClipClick = (clip: Clip) => {
     setSelectedClip(clip);
+    window.history.pushState(null, '', `?id=${clip.id}`);
   };
 
   // Handler to close the modal
   const handleCloseModal = () => {
     setSelectedClip(null);
+    window.history.replaceState(null, '', window.location.pathname);
   };
 
   if (loading) {
