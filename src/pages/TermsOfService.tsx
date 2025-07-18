@@ -115,22 +115,6 @@ function TermsOfService() {
               and enforceable.
             </p>
           </section>
-
-          <section>
-            <h2 className="text-xl font-semibold mb-2 text-red-400">
-              9. Contact
-            </h2>
-            <p className="text-lg text-gray-300">
-              If you have any questions about these Terms, please contact us at{" "}
-              <a
-                href="mailto:vorlie0961@gmail.com"
-                className="text-blue-400 hover:underline"
-              >
-                vorlie0961@gmail.com
-              </a>
-              .
-            </p>
-          </section>
         </div>
       </div>
     </div>

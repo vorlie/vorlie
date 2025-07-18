@@ -100,16 +100,6 @@ function PrivacyPolicy() {
                 right to withdraw your consent at any time.
               </li>
             </ul>
-            <p className="text-lg text-gray-300">
-              To exercise any of these rights, please contact us at{" "}
-              <a
-                href="mailto:vorlie0961@gmail.com"
-                className="text-blue-400 hover:underline"
-              >
-                vorlie0961@gmail.com
-              </a>
-              . We will respond to your request within one month.
-            </p>
           </section>
 
           <section className="mb-6">
@@ -120,23 +110,6 @@ function PrivacyPolicy() {
               We reserve the right to modify this Privacy Policy at any time. We
               will notify users of any changes by updating the "Last Updated"
               date at the top of this document.
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-xl font-semibold mb-2 text-red-400">
-              7. Contact
-            </h2>
-            <p className="text-lg text-gray-300">
-              If you have any questions about this Privacy Policy, please
-              contact us at{" "}
-              <a
-                href="mailto:vorlie0961@gmail.com"
-                className="text-blue-400 hover:underline"
-              >
-                vorlie0961@gmail.com
-              </a>
-              .
             </p>
           </section>
         </div>
