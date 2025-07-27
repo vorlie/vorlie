@@ -19,7 +19,6 @@ const ClipItem: React.FC<ClipItemProps> = ({ clip, onClipClick }) => {
           alt={clip.title}
           className="w-full h-full object-cover"
         />
-        {/* Play icon overlay remains */}
         <div className="absolute inset-0 flex items-center justify-center backdrop-blur-sm bg-opacity-40 opacity-0 hover:opacity-100 transition-opacity duration-300">
           <svg className="h-16 w-16 text-white" fill="currentColor" viewBox="0 0 24 24">
             <path d="M8 5v14l11-7z" />

@@ -1,6 +1,6 @@
 // src/components/VideoModal.tsx
 import React, { useEffect, useCallback } from "react";
-import { Clip } from '../data/clipsData'; // Adjust path as needed
+import { Clip } from '../data/clipsData';
 
 interface VideoModalProps {
   clip: Clip | null; // Nullable, as the modal might not be open
