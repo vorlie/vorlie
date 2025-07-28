@@ -794,7 +794,7 @@ function IotaPlayer() {
             rel="noopener noreferrer"
             className="text-blue-400 hover:underline"
           >
-            MIT License
+            GNU General Public License v3.0
           </a>
           .
         </p>
