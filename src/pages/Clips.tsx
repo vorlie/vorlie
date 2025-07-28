@@ -111,7 +111,7 @@ const Clips: React.FC = () => {
 
   if (error) {
     return (
-      <div className="container mx-auto p-4 pt-4 text-red-500 text-center">
+      <div className="container mx-auto p-4 pt-4 text-blue-500 text-center">
         <p className="text-xl">Error loading clips: {error}</p>
         <p className="text-lg text-gray-400">
           Please try again later or check the console for more details.

@@ -1,11 +1,11 @@
 function Chleb() {
   return (
     <div className="font-sans max-w-4xl mx-auto p-5">
-      <h1 className="text-left text-red-400 text-3xl font-bold mb-6">
+      <h1 className="text-left text-blue-400 text-3xl font-bold mb-6">
         Przepis na Domowy Chleb
       </h1>
 
-      <h2 className="text-red-400 text-2xl font-semibold mb-4">Składniki:</h2>
+      <h2 className="text-blue-400 text-2xl font-semibold mb-4">Składniki:</h2>
       <ul className="list-disc ml-8 mb-6 text-gray-400">
         <li>
           1 kg mąki pszennej (najlepiej typ 00* albo typ 450, około 6-6.5
@@ -24,7 +24,7 @@ function Chleb() {
         <li>3 płaskie łyżeczki cukru</li>
       </ul>
 
-      <h2 className="text-red-400 text-2xl font-semibold mb-4">
+      <h2 className="text-blue-400 text-2xl font-semibold mb-4">
         Instrukcje krok po kroku:
       </h2>
 

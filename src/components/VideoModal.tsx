@@ -132,7 +132,7 @@ const VideoModal: React.FC<VideoModalProps> = ({ clip, onClose }) => {
               href={clip.videoUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-red-500 hover:underline mt-2 inline-block"
+              className="text-blue-500 hover:underline mt-2 inline-block"
             >
               Open Video in New Tab
             </a>

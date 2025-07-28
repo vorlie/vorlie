@@ -291,7 +291,7 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
                     href={`https://open.spotify.com/track/${spotify.track_id}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-red-400 font-semibold break-words block truncate"
+                    className="text-blue-400 font-semibold break-words block truncate"
                     title={`Listen to ${spotify.song} by ${spotify.artist} on Spotify`}
                   >
                     <span className="inline-flex items-center gap-1 hover:underline">

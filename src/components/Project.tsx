@@ -30,7 +30,7 @@ const Project: React.FC<ProjectProps> = ({
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-red-400 hover:text-red-300 hover:underline font-medium transition-colors"
+                className="text-blue-400 hover:text-blue-300 hover:underline font-medium transition-colors"
               >
                 {link.text}
               </a>

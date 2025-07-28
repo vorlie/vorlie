@@ -256,7 +256,7 @@ const TicTacToe: React.FC = () => {
         <button
           className={`mr-2 px-3 py-1 rounded ${
             mode === "bot"
-              ? "bg-red-400 text-white"
+              ? "bg-blue-400 text-white"
               : "bg-gray-600 text-gray-200"
           }`}
           onClick={() => {

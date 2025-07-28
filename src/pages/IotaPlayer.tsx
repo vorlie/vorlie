@@ -18,7 +18,7 @@ function IotaPlayer() {
   return (
     <main className="flex flex-col lg:flex-row gap-8 p-8">
       <section className="lg:w-2/3">
-        <h1 className="text-4xl font-bold mb-6 text-red-400">Iota Player</h1>
+        <h1 className="text-4xl font-bold mb-6 text-blue-400">Iota Player</h1>
         <p className="text-gray-300 mb-4">
           Iota Player is a feature-rich desktop music player for Windows and
           Linux. It's meticulously designed for users who desire seamless
@@ -30,7 +30,7 @@ function IotaPlayer() {
           <a
             href="https://raw.githubusercontent.com/vorlie/IotaPlayer/master/linux_installer.sh"
             download="linux_installer.sh" // Suggests a filename for download
-            className="inline-block bg-red-400 hover:bg-red-500 text-white font-bold py-2 px-4 rounded-lg text-md transition-colors duration-200"
+            className="inline-block bg-blue-400 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded-lg text-md transition-colors duration-200"
           >
             Download Linux Installer
           </a>
@@ -45,7 +45,7 @@ function IotaPlayer() {
           </p>
         </div>
 
-        <h2 className="text-2xl font-semibold mb-4 text-red-300">
+        <h2 className="text-2xl font-semibold mb-4 text-blue-300">
           Core Features
         </h2>
         <ul className="list-disc list-inside text-gray-300 mb-6 space-y-2">
@@ -122,12 +122,12 @@ function IotaPlayer() {
 
         <h2
           id="installation"
-          className="text-2xl font-semibold mb-4 text-red-300"
+          className="text-2xl font-semibold mb-4 text-blue-300"
         >
           Installation
         </h2>
 
-        <h3 className="text-xl font-semibold mb-2 text-red-200">
+        <h3 className="text-xl font-semibold mb-2 text-blue-200">
           For Linux (Recommended)
         </h3>
         <p className="text-gray-300 mb-2">
@@ -162,7 +162,7 @@ function IotaPlayer() {
           to refresh an existing installation.
         </p>
 
-        <h4 className="text-lg font-semibold mb-2 text-red-200">How to Use:</h4>
+        <h4 className="text-lg font-semibold mb-2 text-blue-200">How to Use:</h4>
         <p className="text-gray-300 mb-2">
           1. <strong>Download the installer script:</strong>
         </p>
@@ -211,14 +211,14 @@ function IotaPlayer() {
           necessary confirmations during the process.
         </p>
 
-        <h3 className="text-xl font-semibold mb-2 text-red-200">
+        <h3 className="text-xl font-semibold mb-2 text-blue-200">
           Manual Installation for Linux (and other platforms)
         </h3>
         <p className="text-gray-300 mb-2">
           If you prefer to install from source, follow these steps:
         </p>
 
-        <h4 className="text-lg font-medium mb-1 text-red-100">
+        <h4 className="text-lg font-medium mb-1 text-blue-100">
           1. System Requirements:
         </h4>
         <ul className="list-disc list-inside text-gray-300 mb-2 ml-4">
@@ -237,7 +237,7 @@ function IotaPlayer() {
           </li>
         </ul>
 
-        <h4 className="text-lg font-medium mb-1 text-red-100">
+        <h4 className="text-lg font-medium mb-1 text-blue-100">
           2. Install System Dependencies:
         </h4>
         <p className="text-gray-300 mb-1">
@@ -284,7 +284,7 @@ function IotaPlayer() {
           potential Qt errors.
         </p>
 
-        <h4 className="text-lg font-medium mb-1 text-red-100">
+        <h4 className="text-lg font-medium mb-1 text-blue-100">
           3. Clone the Repository:
         </h4>
         <pre className="bg-gray-700 p-3 rounded-md text-gray-100 text-sm overflow-x-auto mb-2">
@@ -294,7 +294,7 @@ function IotaPlayer() {
           </code>
         </pre>
 
-        <h4 className="text-lg font-medium mb-1 text-red-100">
+        <h4 className="text-lg font-medium mb-1 text-blue-100">
           4. Set up a Virtual Environment (Recommended):
         </h4>
         <pre className="bg-gray-700 p-3 rounded-md text-gray-100 text-sm overflow-x-auto mb-2">
@@ -304,21 +304,21 @@ function IotaPlayer() {
           </code>
         </pre>
 
-        <h4 className="text-lg font-medium mb-1 text-red-100">
+        <h4 className="text-lg font-medium mb-1 text-blue-100">
           5. Install Python Dependencies:
         </h4>
         <pre className="bg-gray-700 p-3 rounded-md text-gray-100 text-sm overflow-x-auto mb-2">
           <code>pip3 install -r requirements.txt --ignore-requires-python</code>
         </pre>
 
-        <h4 className="text-lg font-medium mb-1 text-red-100">
+        <h4 className="text-lg font-medium mb-1 text-blue-100">
           6. Run the Application:
         </h4>
         <pre className="bg-gray-700 p-3 rounded-md text-gray-100 text-sm overflow-x-auto mb-4">
           <code>python main.py</code>
         </pre>
 
-        <h3 className="text-xl font-semibold mb-2 text-red-200">For Windows</h3>
+        <h3 className="text-xl font-semibold mb-2 text-blue-200">For Windows</h3>
         <p className="text-gray-300 mb-4">
           On Windows, the recommended method is to download the latest{" "}
           <code className="bg-gray-700 rounded px-1 text-gray-100">.exe</code>{" "}
@@ -338,7 +338,7 @@ function IotaPlayer() {
           ensuring you have Python 3.13+ and all required dependencies.
         </p>
 
-        <h2 className="text-2xl font-semibold mb-4 text-red-300">
+        <h2 className="text-2xl font-semibold mb-4 text-blue-300">
           Usage Guide
         </h2>
         <ul className="list-disc list-inside text-gray-300 mb-6 space-y-1">
@@ -365,7 +365,7 @@ function IotaPlayer() {
           </li>
         </ul>
 
-        <h3 className="text-xl font-semibold mb-2 text-red-200">
+        <h3 className="text-xl font-semibold mb-2 text-blue-200">
           Playlist Maker Details
         </h3>
         <p className="text-gray-300 mb-2">
@@ -377,7 +377,7 @@ function IotaPlayer() {
           <code className="bg-gray-700 rounded px-1 text-gray-100">.json</code>{" "}
           playlists.
         </p>
-        <h4 className="text-lg font-medium mb-1 text-red-100">How to Use:</h4>
+        <h4 className="text-lg font-medium mb-1 text-blue-100">How to Use:</h4>
         <ul className="list-disc list-inside text-gray-300 mb-4 ml-4 space-y-1">
           <li>
             <strong>Open Existing Playlist:</strong> Click to load and edit an
@@ -422,7 +422,7 @@ function IotaPlayer() {
           .
         </p>
 
-        <h2 className="text-2xl font-semibold mb-4 text-red-300">
+        <h2 className="text-2xl font-semibold mb-4 text-blue-300">
           Configuration
         </h2>
         <p className="text-gray-300 mb-2">
@@ -445,7 +445,7 @@ function IotaPlayer() {
           . The file is created automatically with default values if it doesn't
           exist.
         </p>
-        <h3 className="text-xl font-semibold mb-2 text-red-200">
+        <h3 className="text-xl font-semibold mb-2 text-blue-200">
           <code>config.json</code> Example:
         </h3>
         <pre className="bg-gray-700 p-3 rounded-md text-gray-100 text-sm overflow-x-auto mb-4">
@@ -487,7 +487,7 @@ function IotaPlayer() {
           .
         </p>
 
-        <h2 className="text-2xl font-semibold mb-4 text-red-300">
+        <h2 className="text-2xl font-semibold mb-4 text-blue-300">
           Troubleshooting
         </h2>
         <ul className="list-disc list-inside text-gray-300 mb-6 space-y-1">
@@ -553,7 +553,7 @@ function IotaPlayer() {
           </li>
         </ul>
 
-        <h2 className="text-2xl font-semibold mb-4 text-red-300">Shortcuts</h2>
+        <h2 className="text-2xl font-semibold mb-4 text-blue-300">Shortcuts</h2>
         <ul className="list-disc list-inside text-gray-300 mb-6 space-y-1">
           <li>
             <strong>Delete Playlist:</strong> Select a playlist and press{" "}
@@ -598,10 +598,10 @@ function IotaPlayer() {
           </li>
         </ul>
 
-        <h2 className="text-2xl font-semibold mb-4 text-red-300">
+        <h2 className="text-2xl font-semibold mb-4 text-blue-300">
           Advanced Topics
         </h2>
-        <h3 className="text-xl font-semibold mb-2 text-red-200">Logging</h3>
+        <h3 className="text-xl font-semibold mb-2 text-blue-200">Logging</h3>
         <p className="text-gray-300 mb-4">
           Logging is configured in{" "}
           <code className="bg-gray-700 rounded px-1 text-gray-100">
@@ -615,7 +615,7 @@ function IotaPlayer() {
           . You can uncomment different logging configurations in the source
           code if needed.
         </p>
-        <h3 className="text-xl font-semibold mb-2 text-red-200">
+        <h3 className="text-xl font-semibold mb-2 text-blue-200">
           Building from Source
         </h3>
         <p className="text-gray-300 mb-4">
@@ -646,7 +646,7 @@ function IotaPlayer() {
           </li>
         </ul>
 
-        <h2 className="text-2xl font-semibold mb-4 text-red-300">Learn More</h2>
+        <h2 className="text-2xl font-semibold mb-4 text-blue-300">Learn More</h2>
         <p className="text-gray-300 mb-4">
           Explore the full feature set, detailed troubleshooting, and advanced
           options by visiting the project's{" "}
@@ -673,7 +673,7 @@ function IotaPlayer() {
       </section>
 
       <aside className="lg:w-1/3 bg-gray-800/50 p-6 rounded-lg shadow-lg h-min">
-        <h2 className="text-2xl font-semibold mb-4 text-red-300">
+        <h2 className="text-2xl font-semibold mb-4 text-blue-300">
           About Iota Player
         </h2>
         <p className="text-gray-300 mb-4">
@@ -682,7 +682,7 @@ function IotaPlayer() {
           ecosystem.
         </p>
 
-        <h2 className="text-2xl font-semibold mb-4 text-red-300">Gallery</h2>
+        <h2 className="text-2xl font-semibold mb-4 text-blue-300">Gallery</h2>
         <details className="mb-6">
           <summary className="text-gray-300 cursor-pointer hover:text-white">
             Show Gallery
@@ -745,7 +745,7 @@ function IotaPlayer() {
           </p>
         </details>
 
-        <h3 className="text-xl font-semibold mb-2 text-red-200">
+        <h3 className="text-xl font-semibold mb-2 text-blue-200">
           Key Technologies & Acknowledgments
         </h3>
         <p className="text-gray-300 mb-2">
