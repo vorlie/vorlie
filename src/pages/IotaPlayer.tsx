@@ -789,7 +789,7 @@ function IotaPlayer() {
         <p className="text-gray-300">
           This project is licensed under the{" "}
           <a
-            href="https://github.com/vorlie/IotaPlayer/blob/master/LICENSE"
+            href="https://github.com/vorlie/IotaPlayer/blob/main/LICENSE"
             target="_blank"
             rel="noopener noreferrer"
             className="text-blue-400 hover:underline"
