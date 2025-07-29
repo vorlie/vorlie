@@ -52,7 +52,7 @@ function IotaPlayer() {
           <li>
             <strong>Playlist Management:</strong> Utilize the dedicated{" "}
             <a
-              href="https://github.com/vorlie/IotaPlayer/blob/master/README.md#playlist-maker"
+              href="https://github.com/vorlie/IotaPlayer/blob/main/README.md#playlist-maker"
               target="_blank"
               rel="noopener noreferrer"
               className="text-blue-400 hover:underline"
@@ -477,7 +477,7 @@ function IotaPlayer() {
           To use the YouTube playlist upload feature, you need to set up Google
           API credentials. For full instructions, please see the{" "}
           <a
-            href="https://github.com/vorlie/IotaPlayer/blob/master/GOOGLE.md"
+            href="https://github.com/vorlie/IotaPlayer/blob/main/GOOGLE.md"
             target="_blank"
             rel="noopener noreferrer"
             className="text-blue-400 hover:underline"
@@ -651,7 +651,7 @@ function IotaPlayer() {
           Explore the full feature set, detailed troubleshooting, and advanced
           options by visiting the project's{" "}
           <a
-            href="https://github.com/vorlie/IotaPlayer/blob/master/README.md"
+            href="https://github.com/vorlie/IotaPlayer/blob/main/README.md"
             target="_blank"
             rel="noopener noreferrer"
             className="text-blue-400 hover:underline"
@@ -734,7 +734,7 @@ function IotaPlayer() {
           <p className="text-gray-300 mt-4">
             For more details and context on these images, you can visit the{" "}
             <a
-              href="https://github.com/vorlie/IotaPlayer/blob/master/README.md#gallery"
+              href="https://github.com/vorlie/IotaPlayer/blob/main/README.md#gallery"
               target="_blank"
               rel="noopener noreferrer"
               className="text-blue-400 hover:underline"
