@@ -54,7 +54,7 @@ function findBestBotMove(squares: (string | null)[]): number | null {
     .map((sq, idx) => (sq === null ? idx : null))
     .filter((idx) => idx !== null) as number[];
 
-  const mistakeChance = 0.2; // 20% chance to make a mistake
+  const mistakeChance = 0.05; // 5% chance to make a mistake
   if (Math.random() < mistakeChance && emptyIndices.length > 0) {
     // Pick a random move (mistake)
     return emptyIndices[Math.floor(Math.random() * emptyIndices.length)];
