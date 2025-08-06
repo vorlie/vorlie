@@ -42,6 +42,11 @@ const friendButtons = [
     imgSrc: "https:///dvop.fyi/images/frank.png",
     alt: "dvop.fyi button",
   },
+  {
+    href: "https://kick.com/osysiak07",
+    imgSrc: "/images/osysiak07.png",
+    alt: "kick.com/osysiak07 button",
+  }
 ];
 
 const myButtonCode =
