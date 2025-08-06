@@ -85,6 +85,7 @@ export const allSystemSpecs: SystemDetails[] = [
       {
         label: "GPU",
         value: "MSI Radeon RX 570 ARMOR OC 4GB GDDR5",
+        notes: "Added recently."
       },
       { label: "RAM", value: "X-Star Tiger Shark DDR3 2x8GB 1600Mhz" },
       { label: "Motherboard", value: "ASUS H81M-PLUS" },
