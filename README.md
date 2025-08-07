@@ -7,7 +7,7 @@
   </a>
   <h3>💯 Other stuff</h3>
   <a href="https://skillicons.dev">
-    <img alt="Other Stuff" src="https://skillicons.dev/icons?i=ae,ps,discord,git,github,regex,vscode,powershell,windows,pytorch&perline=13">
+    <img alt="Other Stuff" src="https://skillicons.dev/icons?i=discord,git,github,regex,vscode,arch&perline=13">
   </a>
 </div>
 
