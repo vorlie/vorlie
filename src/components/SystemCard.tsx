@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 // Import all relevant interfaces from systemSpecs.ts
-import { SystemDetails } from "../data/systemSpecs";
+import { SystemDetails, MonitorDetail } from "../data/systemSpecs";
 
 interface SystemCardProps {
   system: SystemDetails;
@@ -10,7 +10,7 @@ interface SystemCardProps {
 
 interface ListItem {
   label: string;
-  value: string;
+  value: string | MonitorDetail[];
   notes?: string;
   link?: string;
 }
@@ -26,13 +26,31 @@ const ItemList: React.FC<{ items: ListItem[] }> = ({ items }) => (
           {item.label}:
         </span>
         <span className="text-gray-100 font-semibold flex-grow">
-          {item.value}
-          {item.notes && (
+          {Array.isArray(item.value) ? (
+            <ul className="list-disc ml-4">
+              {item.value.map((monitor, i) => (
+                <li key={i}>
+                  {monitor.model}
+                  {monitor.role && ` (${monitor.role})`}
+                  {monitor.size && `, ${monitor.size}`}
+                  {monitor.refreshRate && `, ${monitor.refreshRate}`}
+                  {monitor.notes && (
+                    <span className="ml-2 text-gray-400 text-xs italic">
+                      ({monitor.notes})
+                    </span>
+                  )}
+                </li>
+              ))}
+            </ul>
+          ) : (
+            item.value
+          )}
+          {item.notes && typeof item.value === "string" && (
             <span className="ml-2 text-gray-400 text-xs italic">
               ({item.notes})
             </span>
           )}
-          {item.link && (
+          {item.link && typeof item.value === "string" && (
             <a
               href={item.link}
               target="_blank"

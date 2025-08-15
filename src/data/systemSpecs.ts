@@ -1,14 +1,22 @@
 // src/data/systemSpecs.ts
+
 export interface Component {
   label: string;
-  value: string;
+  value: string | MonitorDetail[];
   notes?: string;
   link?: string;
 }
-
 export interface SoftwareDetail {
   label: string;
   value: string;
+  notes?: string;
+}
+
+export interface MonitorDetail {
+  model: string;
+  role?: string;
+  size?: string;
+  refreshRate?: string;
   notes?: string;
 }
 
@@ -47,7 +55,13 @@ export const allSystemSpecs: SystemDetails[] = [
       { label: "Case", value: "Cooler Master MasterBox Q300L" },
     ],
     peripherals: [
-      { label: "Monitor", value: "AOC 2470W" },
+      {
+        label: "Monitor",
+        value: [
+          { model: "AOC 24G4", role: "Main", size: "24\"", refreshRate: "180Hz" },
+          { model: "AOC 2470W", role: "Secondary", size: "24\"", refreshRate: "60Hz" }
+        ]
+      },
       { label: "Keyboard", value: "SPC Gear GK630K Onyx White" },
       { label: "Mouse", value: "Logitech G102 / G203 Lightsync Lilac" },
       { label: "Headset", value: "SPC Gear Viro Plus Onyx White" },
