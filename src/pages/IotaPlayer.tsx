@@ -30,7 +30,7 @@ function IotaPlayer() {
           <a
             href="https://raw.githubusercontent.com/vorlie/IotaPlayer/master/linux_installer.sh"
             download="linux_installer.sh" // Suggests a filename for download
-            className="inline-block bg-blue-400 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded-lg text-md transition-colors duration-200"
+            className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg text-md transition-colors duration-200"
           >
             Download Linux Installer
           </a>

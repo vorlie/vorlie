@@ -256,7 +256,7 @@ const TicTacToe: React.FC = () => {
         <button
           className={`mr-2 px-3 py-1 rounded ${
             mode === "bot"
-              ? "bg-blue-400 text-white"
+              ? "bg-blue-600 hover:bg-blue-700 text-white"
               : "bg-gray-600 text-gray-200"
           }`}
           onClick={() => {
@@ -270,8 +270,8 @@ const TicTacToe: React.FC = () => {
         <button
           className={`px-3 py-1 rounded ${
             mode === "local"
-              ? "bg-red-400 text-white"
-              : "bg-gray-600 text-gray-200"
+              ? "bg-blue-600 hover:bg-blue-700 text-white"
+              : "bg-gray-600 hover:bg-gray-700 text-gray-200"
           }`}
           onClick={() => {
             setMode("local");
