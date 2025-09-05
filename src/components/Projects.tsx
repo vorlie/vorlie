@@ -7,6 +7,18 @@ import { SiElectron, SiJavascript } from "react-icons/si";
 
 const projectData = [
   {
+    title: "WoT Replay Manager",
+    desc: "The WoT Replay Manager is a desktop application built with Python and PyQt6 that helps you manage and launch your World of Tanks replays.",
+    links: [
+      { href: "https://github.com/vorlie/WoT-Replay-Manager", text: "Repository" },
+      {
+        href: "https://vorlie.pl/project/replay-manager",
+        text: "Homepage",
+      },
+    ],
+    language: "Python",
+  },
+  {
     title: "Iota Player",
     desc: "A feature-rich music player application with playlist management, playback controls, song information display, volume and progress tracking, Discord integration, and more.",
     links: [
