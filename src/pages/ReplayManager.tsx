@@ -171,7 +171,7 @@ function ReplayManager() {
               <code className="bg-gray-700 rounded px-1 text-gray-100">uv</code> is the fastest way to set this up. Open your
               terminal or command prompt and run the following command:
             </p>
-            <pre className="bg-gray-800 p-4 rounded-md text-gray-100 overflow-x-auto my-2">
+            <pre className="bg-gray-700 p-4 rounded-md text-gray-100 overflow-x-auto my-2">
               <code className="bg-gray-700 rounded px-1 text-gray-100">uv venv</code>
             </pre>
 
