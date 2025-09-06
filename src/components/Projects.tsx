@@ -12,7 +12,7 @@ const projectData = [
     links: [
       { href: "https://github.com/vorlie/WoT-Replay-Manager", text: "Repository" },
       {
-        href: "https://vorlie.pl/project/replay-manager",
+        href: "https://wotrm.vorlie.pl/",
         text: "Homepage",
       },
     ],
