@@ -3,16 +3,16 @@ interface ProjectProps {
   title: string;
   desc: string;
   links: { href: string; text: string }[];
-  language: string;
-  languageIcon?: React.ReactNode;
+  languages: string[];
+  languageIcons?: React.ReactNode[];
 }
 
 const Project: React.FC<ProjectProps> = ({
   title,
   desc,
   links,
-  language,
-  languageIcon,
+  languages,
+  languageIcons,
 }) => (
   <div className="bg-gray-800/50 rounded-lg shadow-lg p-5 flex flex-col h-full transition-shadow duration-300 hover:shadow-xl">
     <div className="flex-grow mb-4">
@@ -43,11 +43,20 @@ const Project: React.FC<ProjectProps> = ({
           ))}
         </div>
 
-        <div className="flex items-center gap-1 bg-gray-700 text-gray-300 px-2 py-0.5 rounded-full text-xs whitespace-nowrap">
-          {languageIcon && (
-            <span className="inline-block w-3 h-3">{languageIcon}</span>
-          )}
-          <span>{language}</span>
+        <div className="flex flex-wrap gap-2">
+          {languages.map((lang, index) => (
+            <div
+              key={lang}
+              className="flex items-center gap-1 bg-gray-700 text-gray-300 px-2 py-0.5 rounded-full text-xs whitespace-nowrap"
+            >
+              {languageIcons && languageIcons[index] && (
+                <span className="inline-block w-3 h-3">
+                  {languageIcons[index]}
+                </span>
+              )}
+              <span>{lang}</span>
+            </div>
+          ))}
         </div>
       </div>
     </div>

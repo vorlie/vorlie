@@ -3,20 +3,23 @@ import React from "react";
 import Project from "./Project";
 
 import { FaJava, FaPython, FaReact } from "react-icons/fa";
-import { SiElectron, SiJavascript } from "react-icons/si";
+import { SiElectron, SiJavascript, SiCplusplus, SiRust } from "react-icons/si";
 
 const projectData = [
   {
     title: "WoT Replay Manager",
-    desc: "The WoT Replay Manager is a desktop application built with Python and PyQt6 that helps you manage and launch your World of Tanks replays.",
+    desc: "WoT Replay Manager is a multi-platform companion for organising and viewing your replays alongside your World of Tanks install. Built with C++, Rust and QT6, manage your replays with ease using an intuitive, snappy interface!",
     links: [
-      { href: "https://github.com/vorlie/WoT-Replay-Manager", text: "Repository" },
+      {
+        href: "https://github.com/vorlie/WoT-Replay-Manager",
+        text: "Repository",
+      },
       {
         href: "https://wotrm.vorlie.pl/",
         text: "Homepage",
       },
     ],
-    language: "Python",
+    languages: ["C++", "Rust"],
   },
   {
     title: "Iota Player",
@@ -28,7 +31,7 @@ const projectData = [
         text: "Homepage",
       },
     ],
-    language: "Python",
+    languages: ["Python"],
   },
   {
     title: "Markdown Notepad",
@@ -37,7 +40,7 @@ const projectData = [
       { href: "https://github.com/vorlie/markdown-editor", text: "Repository" },
       { href: "https://md.vorlie.pl", text: "Website" },
     ],
-    language: "React",
+    languages: ["React"],
   },
   {
     title: "API Documentation",
@@ -46,7 +49,7 @@ const projectData = [
       { href: "https://github.com/vorlie/api-docs", text: "Repository" },
       { href: "https://docs.vorlie.pl", text: "Website" },
     ],
-    language: "React",
+    languages: ["React"],
   },
   {
     title: "Vorlie API",
@@ -55,7 +58,7 @@ const projectData = [
       { href: "https://github.com/vorlie/miko_worker", text: "Repository" },
       { href: "https://docs.vorlie.pl", text: "API Docs" },
     ],
-    language: "JavaScript",
+    languages: ["JavaScript"],
   },
   {
     title: "LifeDrain",
@@ -68,7 +71,7 @@ const projectData = [
       },
       { href: "https://modrinth.com/mod/lifedrain/", text: "Modrinth" },
     ],
-    language: "Java",
+    languages: ["Java"],
   },
   {
     title: "Iota's Notepad",
@@ -80,7 +83,7 @@ const projectData = [
         text: "Releases",
       },
     ],
-    language: "Electron",
+    languages: ["Electron"],
   },
   {
     title: "YoutubeDL",
@@ -92,7 +95,7 @@ const projectData = [
         text: "Releases",
       },
     ],
-    language: "Python",
+    languages: ["Python"],
   },
   {
     title: "ImageConverter",
@@ -107,12 +110,14 @@ const projectData = [
         text: "Releases",
       },
     ],
-    language: "Python",
+    languages: ["Python"],
   },
 ];
 
 const languageIconMap: { [key: string]: React.ReactNode } = {
   Java: <FaJava className="text-orange-400" />,
+  "C++": <SiCplusplus className="text-blue-400" />,
+  Rust: <SiRust className="text-orange-500" />,
   Electron: <SiElectron className="text-cyan-400" />,
   Python: <FaPython className="text-yellow-400" />,
   JavaScript: <SiJavascript className="text-yellow-300" />,
@@ -127,8 +132,10 @@ const ProjectsPage: React.FC = () => (
         title={proj.title}
         desc={proj.desc}
         links={proj.links}
-        language={proj.language}
-        languageIcon={languageIconMap[proj.language] || null}
+        languages={proj.languages}
+        languageIcons={proj.languages.map(
+          (lang) => languageIconMap[lang] || null
+        )}
       />
     ))}
   </div>
