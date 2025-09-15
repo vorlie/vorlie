@@ -7,7 +7,7 @@ function TermsOfService() {
             Miko's Terms of Service
           </h1>
           <p className="text-sm text-gray-400 mb-4">
-            <strong>Last Updated:</strong> 15/04/2024 (Day/Month/Year)
+            <strong>Last Updated:</strong> 15/09/2025 (Day/Month/Year)
           </p>
 
           <section className="mb-6">
@@ -59,26 +59,30 @@ function TermsOfService() {
 
           <section className="mb-6">
             <h2 className="text-xl font-semibold mb-2 text-blue-400">
-              4. Changes to Terms
+              4. Data and Privacy
             </h2>
             <p className="text-lg text-gray-300">
-              We reserve the right to modify these Terms at any time. We will
-              notify users of any changes by updating the "Last Updated" date at
-              the top of this document. Continued use of the Bot after any such
-              changes constitutes your acceptance of the new Terms.
+              Miko#3059 respects your privacy and handles data responsibly. The
+              bot does not store user messages or other sensitive data, and all
+              temporary files are immediately deleted after use. For a full
+              understanding of our data collection, handling, and security
+              measures, please review our{" "}
+              <a href="#privacy-policy" className="text-blue-400 underline">
+                Privacy Policy
+              </a>
+              .
             </p>
           </section>
 
           <section className="mb-6">
             <h2 className="text-xl font-semibold mb-2 text-blue-400">
-              5. Limitation of Liability
+              5. Changes to Terms
             </h2>
             <p className="text-lg text-gray-300">
-              We are not liable for any damages that may occur from the use of
-              the Bot. The Bot is provided "as is" without any warranties. This
-              includes, but is not limited to, damages for loss of data, loss of
-              profits, or any other damages arising from the use or inability to
-              use the Bot.
+              We reserve the right to modify these Terms at any time. We will
+              notify users of any changes by updating the "Last Updated" date at
+              the top of this document. Continued use of the Bot after any
+              changes constitutes your acceptance of the new Terms.
             </p>
           </section>
 
