@@ -85,18 +85,23 @@ function Home() {
               </h1>
               <div className="space-y-4 text-lg text-gray-300 leading-relaxed">
                 <p>
-                  I focus on writing code and building projects across various
-                  technologies. Outside of development, I have an interest in
-                  gaming, music, and anime.
+                  <p>
+                    I focus on writing code and building projects across various technologies. While I now have less time for development due to my full-time work, I still enjoy pursuing personal projects.
+                  </p>
                 </p>
                 <p>
-                  When I'm not coding, I spend time listening to{" "}
-                  <span className="text-blue-400 font-medium">music</span>,
-                  playing{" "}
-                  <span className="text-blue-400 font-medium">games</span> or
-                  watching{" "}
+                  Outside of work, I have an interest in{" "}
+                  <span className="text-blue-400 font-medium">games</span>,
+                  <span className="text-blue-400 font-medium">{" "}music</span>,
+                  and{" "}
                   <span className="text-blue-400 font-medium">anime</span>.
                 </p>
+                <section className="mb-10">
+                <h2 className="text-2xl font-semibold mb-4 text-white">Work Experience</h2>
+                <p className="space-y-4 text-lg text-gray-300 leading-relaxed">
+                  Motivated and adaptable warehouse logistics employee with a strong commitment to learning and a proven ability to quickly master new tasks and departments. Recently joined Amazon FC KTW1 in September 2025, already demonstrating a high level of efficiency and versatility in order fulfillment.
+                </p>
+              </section>
                 <p className="text-gray-400">
                   Feel free to check out my{" "}
                   <a href="#projects" className="text-blue-400 hover:underline">
