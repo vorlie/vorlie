@@ -39,6 +39,16 @@ const ItemList: React.FC<{ items: ListItem[] }> = ({ items }) => (
                       ({monitor.notes})
                     </span>
                   )}
+                  {monitor.link && typeof monitor.link === "string" && (
+                    <a
+                      href={monitor.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="ml-2 text-blue-400 hover:text-blue-300 underline"
+                    >
+                      [Link]
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>
@@ -55,7 +65,7 @@ const ItemList: React.FC<{ items: ListItem[] }> = ({ items }) => (
               href={item.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="ml-2 text-blue-400 hover:text-blue-300 underline text-xs"
+              className="ml-2 text-blue-400 hover:text-blue-300 underline"
             >
               [Link]
             </a>

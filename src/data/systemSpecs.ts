@@ -18,6 +18,7 @@ export interface MonitorDetail {
   size?: string;
   refreshRate?: string;
   notes?: string;
+  link?: string;
 }
 
 export interface SystemDetails {
@@ -58,13 +59,29 @@ export const allSystemSpecs: SystemDetails[] = [
       {
         label: "Monitor",
         value: [
-          { model: "AOC 24G4", role: "Main", size: "24\"", refreshRate: "180Hz" },
-          { model: "AOC 2470W", role: "Secondary", size: "24\"", refreshRate: "60Hz" }
-        ]
+          {
+            model: "AOC 24G4XE",
+            role: "Main",
+            size: '24"',
+            refreshRate: "180Hz",
+            link: "https://aoc.com/us/gaming/products/monitors/24g4xe",
+          },
+          {
+            model: "AOC 2470W",
+            role: "Secondary",
+            size: '24"',
+            refreshRate: "60Hz",
+          },
+        ],
       },
       { label: "Keyboard", value: "SPC Gear GK630K Onyx White" },
       { label: "Mouse", value: "Logitech G102 / G203 Lightsync Lilac" },
       { label: "Headset", value: "SPC Gear Viro Plus Onyx White" },
+      {
+        label: "Speakers",
+        value: "Genesis Helium 610BT (2.1, 60W RMS, Bluetooth)",
+        link: "https://pl.genesis-zone.com/produkt/helium-610bt",
+      },
       { label: "Mousepad", value: "KRUX Space XXL" },
       { label: "Controller", value: "DualShock 4 White" },
     ],
@@ -99,13 +116,17 @@ export const allSystemSpecs: SystemDetails[] = [
       {
         label: "GPU",
         value: "MSI Radeon RX 570 ARMOR OC 4GB GDDR5",
-        notes: "Added recently."
+        notes: "Added recently.",
       },
       { label: "RAM", value: "X-Star Tiger Shark DDR3 2x8GB 1600Mhz" },
       { label: "Motherboard", value: "ASUS H81M-PLUS" },
       { label: "Storage (SSD)", value: "Goodram CX400 128GB" },
       { label: "Storage (HDD)", value: 'WD BLUE 500GB 3.5"' },
-      { label: "Power Supply", value: "be quiet! 450W", notes: "I think, didn't look inside to check." },
+      {
+        label: "Power Supply",
+        value: "be quiet! 450W",
+        notes: "I think, didn't look inside to check.",
+      },
       { label: "Case", value: "Some case from Genesis" },
     ],
     softwareAndOS: [
