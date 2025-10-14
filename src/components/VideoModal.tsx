@@ -1,6 +1,6 @@
 // src/components/VideoModal.tsx
 import React, { useEffect, useCallback } from "react";
-import { Clip } from '../data/clipsData';
+import { Clip } from "../data/clipsData";
 
 interface VideoModalProps {
   clip: Clip | null; // Nullable, as the modal might not be open
@@ -10,69 +10,95 @@ interface VideoModalProps {
 const VideoModal: React.FC<VideoModalProps> = ({ clip, onClose }) => {
   // Determine the embed source based on platform/URL type
   // Returns an object { type: 'iframe' | 'video', src: string } or null
-  const getEmbedSource = useCallback((videoUrl: string, platform: 'YouTube' | 'Twitch' | 'Other'): { type: 'iframe' | 'video', src: string } | null => {
-    if (!videoUrl) return null;
+  const getEmbedSource = useCallback(
+    (
+      videoUrl: string,
+      platform: "YouTube" | "Twitch" | "Other"
+    ): { type: "iframe" | "video"; src: string } | null => {
+      if (!videoUrl) return null;
 
-    // List of common video file extensions
-    const videoExtensions = ['.mp4', '.webm',];
+      // List of common video file extensions
+      const videoExtensions = [".mp4", ".webm"];
 
-    try {
-      const url = new URL(videoUrl);
-      const pathname = url.pathname.toLowerCase();
+      try {
+        const url = new URL(videoUrl);
+        const pathname = url.pathname.toLowerCase();
 
-      // 1. Check for direct video file (e.g., .mp4 from a CDN)
-      const isDirectVideoFile = videoExtensions.some(ext => pathname.endsWith(ext));
-      if (isDirectVideoFile) {
-        return { type: 'video', src: videoUrl };
+        // 1. Check for direct video file (e.g., .mp4 from a CDN)
+        const isDirectVideoFile = videoExtensions.some((ext) =>
+          pathname.endsWith(ext)
+        );
+        if (isDirectVideoFile) {
+          return { type: "video", src: videoUrl };
+        }
+
+        // 2. Handle YouTube embeds
+        if (
+          platform === "YouTube" &&
+          (url.hostname.includes("youtube.com") ||
+            url.hostname.includes("youtu.be"))
+        ) {
+          let videoId = null;
+          if (url.hostname.includes("youtu.be")) {
+            // For short URLs like https://youtu.be/VIDEO_ID
+            videoId = url.pathname.split("/").pop();
+          } else {
+            // For standard URLs like https://www.youtube.com/watch?v=VIDEO_ID
+            videoId = url.searchParams.get("v");
+          }
+
+          if (videoId) {
+            return {
+              type: "iframe",
+              src: `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`,
+            };
+          }
+        }
+
+        // 3. Handle Twitch embeds (VODs and Clips)
+        if (
+          platform === "Twitch" &&
+          (url.hostname.includes("twitch.tv") ||
+            url.hostname.includes("clips.twitch.tv"))
+        ) {
+          // For Twitch VODs: https://www.twitch.tv/videos/123456789
+          const videoIdMatch = videoUrl.match(/(?:videos\/)(\d+)/);
+          if (videoIdMatch) {
+            const videoId = videoIdMatch[1];
+            return {
+              type: "iframe",
+              src: `https://player.twitch.tv/?video=${videoId}&parent=${window.location.hostname}&autoplay=true`,
+            };
+          }
+          // For Twitch Clips: https://clips.twitch.tv/ClipID (alphanumeric string)
+          const clipIdMatch = videoUrl.match(
+            /clips\.twitch\.tv\/([a-zA-Z0-9]+)/
+          );
+          if (clipIdMatch) {
+            const clipId = clipIdMatch[1];
+            return {
+              type: "iframe",
+              src: `https://clips.twitch.tv/embed?clip=${clipId}&parent=${window.location.hostname}&autoplay=true`,
+            };
+          }
+        }
+      } catch (e) {
+        console.error("Error parsing video URL or platform:", e);
       }
-
-      // 2. Handle YouTube embeds
-      if (platform === 'YouTube' && (url.hostname.includes('youtube.com') || url.hostname.includes('youtu.be'))) {
-        let videoId = null;
-        if (url.hostname.includes('youtu.be')) {
-          // For short URLs like https://youtu.be/VIDEO_ID
-          videoId = url.pathname.split('/').pop();
-        } else {
-          // For standard URLs like https://www.youtube.com/watch?v=VIDEO_ID
-          videoId = url.searchParams.get('v');
-        }
-
-        if (videoId) {
-          return { type: 'iframe', src: `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0` };
-        }
-      }
-
-      // 3. Handle Twitch embeds (VODs and Clips)
-      if (platform === 'Twitch' && (url.hostname.includes('twitch.tv') || url.hostname.includes('clips.twitch.tv'))) {
-        // For Twitch VODs: https://www.twitch.tv/videos/123456789
-        const videoIdMatch = videoUrl.match(/(?:videos\/)(\d+)/);
-        if (videoIdMatch) {
-          const videoId = videoIdMatch[1];
-          return { type: 'iframe', src: `https://player.twitch.tv/?video=${videoId}&parent=${window.location.hostname}&autoplay=true` };
-        }
-        // For Twitch Clips: https://clips.twitch.tv/ClipID (alphanumeric string)
-        const clipIdMatch = videoUrl.match(/clips\.twitch\.tv\/([a-zA-Z0-9]+)/);
-        if (clipIdMatch) {
-          const clipId = clipIdMatch[1];
-          return { type: 'iframe', src: `https://clips.twitch.tv/embed?clip=${clipId}&parent=${window.location.hostname}&autoplay=true`};
-        }
-      }
-
-    } catch (e) {
-      console.error("Error parsing video URL or platform:", e);
-    }
-    return null; // Fallback if no specific embed type is found
-  }, []);
+      return null; // Fallback if no specific embed type is found
+    },
+    []
+  );
 
   useEffect(() => {
     const handleEscape = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
+      if (event.key === "Escape") {
         onClose();
       }
     };
-    document.addEventListener('keydown', handleEscape);
+    document.addEventListener("keydown", handleEscape);
     return () => {
-      document.removeEventListener('keydown', handleEscape);
+      document.removeEventListener("keydown", handleEscape);
     };
   }, [onClose]);
 
@@ -100,12 +126,13 @@ const VideoModal: React.FC<VideoModalProps> = ({ clip, onClose }) => {
           ×
         </button>
 
-        <h2 className="text-3xl font-bold text-white mb-4 pr-10">{clip.title}</h2>
+        <h2 className="text-3xl font-bold text-white mb-4 pr-10">
+          {clip.title}
+        </h2>
 
         {embedSource ? (
           <div className="relative pt-[56.25%] mb-4 bg-gray-800 rounded-md overflow-hidden">
-            {/* Conditional rendering based on embedSource.type */}
-            {embedSource.type === 'iframe' ? (
+            {embedSource.type === "iframe" ? (
               <iframe
                 src={embedSource.src}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -113,7 +140,7 @@ const VideoModal: React.FC<VideoModalProps> = ({ clip, onClose }) => {
                 title={clip.title}
                 className="absolute top-0 left-0 w-full h-full border-0"
               ></iframe>
-            ) : ( // Assumes embedSource.type === 'video'
+            ) : (
               <video
                 controls
                 autoPlay // Automatically start playing when opened
@@ -127,7 +154,9 @@ const VideoModal: React.FC<VideoModalProps> = ({ clip, onClose }) => {
           </div>
         ) : (
           <div className="mb-4 text-center text-gray-400">
-            <p>Cannot embed this video directly. You can open it in a new tab:</p>
+            <p>
+              Cannot embed this video directly. You can open it in a new tab:
+            </p>
             <a
               href={clip.videoUrl}
               target="_blank"
@@ -144,12 +173,17 @@ const VideoModal: React.FC<VideoModalProps> = ({ clip, onClose }) => {
         </p>
 
         <div className="flex justify-between items-center text-sm text-gray-400 border-t border-gray-700 pt-4 mt-auto">
-          <span>{clip.platform} - {clip.date}</span>
+          <span>
+            {clip.platform} - {clip.date}
+          </span>
         </div>
         {clip.tags && clip.tags.length > 0 && (
           <div className="mt-2 flex flex-wrap gap-1">
-            {clip.tags.map(tag => (
-              <span key={tag} className="bg-gray-700 text-gray-300 text-xs px-2 py-0.5 rounded-full">
+            {clip.tags.map((tag) => (
+              <span
+                key={tag}
+                className="bg-gray-700 text-gray-300 text-xs px-2 py-0.5 rounded-full"
+              >
                 #{tag}
               </span>
             ))}
