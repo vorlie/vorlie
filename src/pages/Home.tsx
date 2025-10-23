@@ -3,6 +3,7 @@ import LanyardPresence from "../components/LanyardPresence";
 import Projects from "../components/Projects";
 import Buttons88x31 from "../components/Buttons88x31";
 import TicTacToe from "../components/TicTacToe";
+import AmazonShiftTracker from "../components/AmazonShiftTracker";
 
 import {
   FaReact,
@@ -98,9 +99,10 @@ function Home() {
                 </p>
                 <section className="mb-10">
                 <h2 className="text-2xl font-semibold mb-4 text-white">Work Experience</h2>
-                <p className="space-y-4 text-lg text-gray-300 leading-relaxed">
+                <p className="space-y-4 text-lg text-gray-300 leading-relaxed mb-2">
                   Motivated and adaptable warehouse logistics employee with a strong commitment to learning and a proven ability to quickly master new tasks and departments. Recently joined Amazon FC KTW1 in September 2025, already demonstrating a high level of efficiency and versatility in order fulfillment.
                 </p>
+                <AmazonShiftTracker />
               </section>
                 <p className="text-gray-400">
                   Feel free to check out my{" "}
