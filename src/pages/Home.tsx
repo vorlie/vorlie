@@ -104,8 +104,8 @@ function Home() {
                     Work Experience
                   </h2>
                   <p className="space-y-4 text-lg text-gray-300 leading-relaxed mb-2">
-                    Motivated and adaptable warehouse logistics worker with a
-                    focus on efficiency and learning. Currently at PACK, quickly
+                    Motivated and adaptable Amazon KTW1 worker with a focus on
+                    efficiency and learning. Currently at PACK, quickly
                     mastering new tasks and departments while maintaining high
                     productivity and reliability.
                   </p>
