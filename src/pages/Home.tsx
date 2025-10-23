@@ -87,23 +87,30 @@ function Home() {
               <div className="space-y-4 text-lg text-gray-300 leading-relaxed">
                 <p>
                   <p>
-                    I focus on writing code and building projects across various technologies. While I now have less time for development due to my full-time work, I still enjoy pursuing personal projects.
+                    I focus on writing code and building projects across various
+                    technologies. While I now have less time for development due
+                    to my full-time work, I still enjoy pursuing personal
+                    projects.
                   </p>
                 </p>
                 <p>
                   Outside of work, I have an interest in{" "}
                   <span className="text-blue-400 font-medium">games</span>,
-                  <span className="text-blue-400 font-medium">{" "}music</span>,
-                  and{" "}
+                  <span className="text-blue-400 font-medium"> music</span>, and{" "}
                   <span className="text-blue-400 font-medium">anime</span>.
                 </p>
                 <section className="mb-10">
-                <h2 className="text-2xl font-semibold mb-4 text-white">Work Experience</h2>
-                <p className="space-y-4 text-lg text-gray-300 leading-relaxed mb-2">
-                  Motivated and adaptable warehouse logistics employee with a strong commitment to learning and a proven ability to quickly master new tasks and departments. Recently joined Amazon FC KTW1 in September 2025, already demonstrating a high level of efficiency and versatility in order fulfillment.
-                </p>
-                <AmazonShiftTracker />
-              </section>
+                  <h2 className="text-2xl font-semibold mb-4 text-white">
+                    Work Experience
+                  </h2>
+                  <p className="space-y-4 text-lg text-gray-300 leading-relaxed mb-2">
+                    Motivated and adaptable warehouse logistics worker with a
+                    focus on efficiency and learning. Currently at PACK, quickly
+                    mastering new tasks and departments while maintaining high
+                    productivity and reliability.
+                  </p>
+                  <AmazonShiftTracker />
+                </section>
                 <p className="text-gray-400">
                   Feel free to check out my{" "}
                   <a href="#projects" className="text-blue-400 hover:underline">
