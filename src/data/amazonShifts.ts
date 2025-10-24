@@ -228,6 +228,14 @@ export const MONTHLY_SHIFT_ROSTERS: Record<number, { [key: number]: string }> =
   {
     // October 2025
     9: {
+      1: "Night Shift",
+      2: "Night Shift",
+      3: "Night Shift",
+      8: "Night Shift",
+      14: "Night Shift",
+      15: "Night Shift",
+      16: "Night Shift",
+      17: "Night Shift",
       23: "Day Shift",
       24: "Day Shift",
       29: "Day Shift (8h)",
