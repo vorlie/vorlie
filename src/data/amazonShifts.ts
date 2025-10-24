@@ -48,27 +48,41 @@ export const shiftsData: Record<string, ShiftTemplate> = {
       },
       {
         id: 3,
+        time: "09:45",
+        label: "Work Resume",
+        type: "work_start",
+        isUnpaid: false,
+      },
+      {
+        id: 4,
         time: "12:00",
         label: "Lunch Break (Unpaid)",
         type: "unpaid_break",
         isUnpaid: true,
       },
       {
-        id: 4,
+        id: 5,
         time: "12:30",
         label: "Work Resume",
         type: "work_start",
         isUnpaid: false,
       },
       {
-        id: 5,
+        id: 6,
         time: "14:45",
         label: "Work Break (15 min)",
         type: "paid_break",
         isUnpaid: false,
       },
       {
-        id: 6,
+        id: 7,
+        time: "15:00",
+        label: "Work Resume",
+        type: "work_start",
+        isUnpaid: false,
+      },
+      {
+        id: 8,
         time: "17:30",
         label: "Work End (Clock Out)",
         type: "work_end",
@@ -95,27 +109,41 @@ export const shiftsData: Record<string, ShiftTemplate> = {
       },
       {
         id: 3,
+        time: "09:45",
+        label: "Work Resume",
+        type: "work_start",
+        isUnpaid: false,
+      },
+      {
+        id: 4,
         time: "12:00",
         label: "Lunch Break (Unpaid)",
         type: "unpaid_break",
         isUnpaid: true,
       },
       {
-        id: 4,
+        id: 5,
         time: "12:30",
         label: "Work Resume",
         type: "work_start",
         isUnpaid: false,
       },
       {
-        id: 5,
+        id: 6,
         time: "14:45",
         label: "Work Break (15 min)",
         type: "paid_break",
         isUnpaid: false,
       },
       {
-        id: 6,
+        id: 7,
+        time: "15:00",
+        label: "Work Resume",
+        type: "work_start",
+        isUnpaid: false,
+      },
+      {
+        id: 8,
         time: "15:30",
         label: "Work End (Clock Out)",
         type: "work_end",
@@ -142,27 +170,41 @@ export const shiftsData: Record<string, ShiftTemplate> = {
       },
       {
         id: 3,
+        time: "21:15",
+        label: "Work Resume",
+        type: "work_start",
+        isUnpaid: false,
+      },
+      {
+        id: 4,
         time: "00:00",
         label: "Dinner Break (Unpaid)",
         type: "unpaid_break",
         isUnpaid: true,
       },
       {
-        id: 4,
+        id: 5,
         time: "00:30",
         label: "Work Resume",
         type: "work_start",
         isUnpaid: false,
       },
       {
-        id: 5,
+        id: 6,
         time: "03:00",
         label: "Work Break (15 min)",
         type: "paid_break",
         isUnpaid: false,
       },
       {
-        id: 6,
+        id: 7,
+        time: "03:15",
+        label: "Work Resume",
+        type: "work_start",
+        isUnpaid: false,
+      },
+      {
+        id: 8,
         time: "05:00",
         label: "Work End (Clock Out)",
         type: "work_end",
@@ -180,7 +222,7 @@ export const SHIFT_TEMPLATES: ShiftTemplate[] = [
 ];
 
 // MONTHLY SCHEDULE DEFINITION
-// Assign the shift type ('Day Shift' or 'Night Shift') to specific day numbers of the current month.
+// Assign the shift type ('Day Shift', 'Day Shift (8h)' or 'Night Shift') to specific day numbers of the current month.
 // Any day not listed is considered a free day.
 export const MONTHLY_SHIFT_ROSTERS: Record<number, { [key: number]: string }> =
   {
