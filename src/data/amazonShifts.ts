@@ -76,6 +76,53 @@ export const shiftsData: Record<string, ShiftTemplate> = {
       },
     ],
   }),
+  "Day Shift (8h)": defineShiftTemplate({
+    name: "Day Shift (07:00 - 15:30)",
+    segments: [
+      {
+        id: 1,
+        time: "07:00",
+        label: "Work Start",
+        type: "work_start",
+        isUnpaid: false,
+      },
+      {
+        id: 2,
+        time: "09:30",
+        label: "Work Break (15 min)",
+        type: "paid_break",
+        isUnpaid: false,
+      },
+      {
+        id: 3,
+        time: "12:00",
+        label: "Lunch Break (Unpaid)",
+        type: "unpaid_break",
+        isUnpaid: true,
+      },
+      {
+        id: 4,
+        time: "12:30",
+        label: "Work Resume",
+        type: "work_start",
+        isUnpaid: false,
+      },
+      {
+        id: 5,
+        time: "14:45",
+        label: "Work Break (15 min)",
+        type: "paid_break",
+        isUnpaid: false,
+      },
+      {
+        id: 6,
+        time: "15:30",
+        label: "Work End (Clock Out)",
+        type: "work_end",
+        isUnpaid: false,
+      },
+    ],
+  }),
   "Night Shift": defineShiftTemplate({
     name: "Night Shift (18:30 - 05:00)",
     segments: [
@@ -128,6 +175,7 @@ export const shiftsData: Record<string, ShiftTemplate> = {
 // Convert the object map into a prioritized array for internal use
 export const SHIFT_TEMPLATES: ShiftTemplate[] = [
   shiftsData["Day Shift"],
+  shiftsData["Day Shift (8h)"],
   shiftsData["Night Shift"],
 ];
 
@@ -140,8 +188,8 @@ export const MONTHLY_SHIFT_ROSTERS: Record<number, { [key: number]: string }> =
     9: {
       23: "Day Shift",
       24: "Day Shift",
-      29: "Day Shift",
-      30: "Night Shift",
+      29: "Day Shift (8h)",
+      30: "Day Shift",
       31: "Day Shift",
     },
     // November 2025

@@ -6,6 +6,13 @@ import {
   shiftsData,
 } from "../data/amazonShifts";
 
+const shiftColors: Record<string, string> = {
+  "Day Shift": "bg-slate-500 text-white",
+  "Day Shift (8h)": "bg-slate-600 text-white",
+  "Night Shift": "bg-slate-700 text-white",
+  off: "bg-gray-700 text-gray-400",
+};
+
 const timeToMinutes = (time: string, referenceStart: string): number => {
   const [refHour, refMinute] = referenceStart.split(":").map(Number);
   const [hour, minute] = time.split(":").map(Number);
@@ -307,7 +314,6 @@ const AmazonShiftTracker: React.FC = () => {
                   0
                 ).getDate();
 
-                // Blank cells before 1st of the month
                 const blanks = Array.from(
                   { length: firstDayOfMonth },
                   (_, i) => (
@@ -318,21 +324,20 @@ const AmazonShiftTracker: React.FC = () => {
                   )
                 );
 
-                // Actual day cells
                 const dayCells = Array.from({ length: daysInMonth }, (_, i) => {
                   const day = i + 1;
-                  const hasShift = displayRoster[day];
+                  const shiftType = displayRoster[day] || "off";
+                  const colorClass = shiftColors[shiftType] || shiftColors.off;
                   const isToday =
                     day === today.getDate() &&
                     displayMonthIndex === today.getMonth();
+
                   return (
                     <div
                       key={day}
-                      className={`p-2 rounded ${
-                        hasShift
-                          ? "bg-blue-600 text-white font-medium"
-                          : "bg-gray-700 text-gray-400"
-                      } ${isToday ? "ring-2 ring-yellow-400" : ""}`}
+                      className={`p-2 rounded font-medium ${colorClass} ${
+                        isToday ? "ring-2 ring-blue-400" : ""
+                      }`}
                     >
                       {day}
                     </div>
@@ -341,6 +346,24 @@ const AmazonShiftTracker: React.FC = () => {
 
                 return [...blanks, ...dayCells];
               })()}
+            </div>
+            <div className="flex justify-center gap-4 text-sm text-gray-300 mt-4">
+              <div className="flex items-center gap-2">
+                <span className="w-3 h-3 bg-blue-400 rounded"></span> Today
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="w-3 h-3 bg-slate-500 rounded"></span> Day Shift
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="w-3 h-3 bg-slate-600 rounded"></span> Day Shift (8h)
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="w-3 h-3 bg-slate-700 rounded"></span> Night
+                Shift
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="w-3 h-3 bg-gray-700 rounded"></span> Day Off
+              </div>
             </div>
           </div>
         )}
