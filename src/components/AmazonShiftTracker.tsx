@@ -183,8 +183,7 @@ const AmazonShiftTracker: React.FC = () => {
       <div className="w-full max-w-lg mx-auto p-6 bg-gray-800/70 rounded-xl text-center shadow-lg">
         <h1 className="text-2xl font-bold text-green-400">Free Day</h1>
         <p className="text-gray-300 mt-2">
-          No shift scheduled for {currentMonth} {currentDateNum}. Enjoy your
-          day.
+          No shift scheduled for {currentMonth} {currentDateNum}.
         </p>
         <p className="text-xs text-gray-500 mt-4">
           Current time: {currentDate.toLocaleTimeString()}
@@ -355,7 +354,8 @@ const AmazonShiftTracker: React.FC = () => {
                 <span className="w-3 h-3 bg-slate-500 rounded"></span> Day Shift
               </div>
               <div className="flex items-center gap-2">
-                <span className="w-3 h-3 bg-slate-600 rounded"></span> Day Shift (8h)
+                <span className="w-3 h-3 bg-slate-600 rounded"></span> Day Shift
+                (8h)
               </div>
               <div className="flex items-center gap-2">
                 <span className="w-3 h-3 bg-slate-700 rounded"></span> Night
