@@ -54,10 +54,7 @@ const AmazonShiftTracker: React.FC = () => {
     MONTHLY_SHIFT_ROSTERS[nextMonthIndex] ||
     {};
 
-  const scheduledShiftName =
-    roster[currentDateNum] ||
-    MONTHLY_SHIFT_ROSTERS[nextMonthIndex]?.[currentDateNum] ||
-    null;
+  const scheduledShiftName = roster[currentDateNum] || null;
 
   // --- Logic that depends on a scheduled shift ---
   // Default to a shift for calculated values, but only use if scheduledShiftName is present
