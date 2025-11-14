@@ -244,7 +244,7 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
       <img
         src="https://us-east-1.tixte.net/uploads/cx.tixte.co/banner.gif"
         alt="User Banner"
-        className="rounded w-full h-24 object-cover [-webkit-mask-image:linear-gradient(to_right,rgba(0,0,0,0)_30%,rgba(0,0,0,1)_90%)] [mask-image:linear-gradient(to_right,rgba(0,0,0,0)_30%,rgba(0,0,0,1)_90%)]"
+        className="rounded w-full h-24 object-cover [-webkit-mask-image:linear-gradient(to_right,rgba(0,0,0,0)_00%,rgba(0,0,0,1)_90%)] [mask-image:linear-gradient(to_right,rgba(0,0,0,0)_00%,rgba(0,0,0,1)_90%)]"
       />
 
       <div className="relative">
