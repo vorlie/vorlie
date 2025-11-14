@@ -55,6 +55,22 @@ export interface UserClan {
   identity_enabled: boolean;
 }
 
+export interface DisplayNameStyles {
+  colors: {
+    0: number;
+  };
+  effect_id: number;
+  font_id: number;
+}
+
+export interface Nameplate {
+  label: string;
+  sku_id: string;
+  asset: string; // e.g., "nameplates/nameplates_v2/spirit_moon/"
+  expires_at: string | null;
+  palette: string; // e.g., "violet"
+}
+
 export interface DiscordUser {
   id: string;
   username: string;
@@ -66,6 +82,10 @@ export interface DiscordUser {
   avatar_decoration_data?: AvatarDecoration;
   display_name: string | null;
   public_flags: number;
+  collectibles?: {
+    nameplate?: Nameplate;
+  };
+  display_name_styles?: DisplayNameStyles;
 }
 
 export type DiscordStatus = "online" | "idle" | "dnd" | "offline";

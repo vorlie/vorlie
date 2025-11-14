@@ -35,3 +35,38 @@ export const getAvatarUrl = (
     avatarId.startsWith("a_") ? "gif" : "png"
   }`;
 };
+
+export const getFontClass = (fontId: number | undefined): string => {
+  switch (fontId) {
+    case 2:
+      return "font-tempo";
+    case 3:
+      return "font-sakura";
+    case 4:
+      return "font-jellybean";
+    case 5:
+      return "font-modern";
+    case 6:
+      return "font-medieval";
+    case 7:
+      return "font-8bit";
+    case 8:
+      return "font-vampyre";
+    default:
+      return ""; // ID 1 (gg sans) or any unknown ID
+  }
+};
+
+export const getEffectClass = (effectId: number | undefined): string => {
+  switch (effectId) {
+    case 3:
+      return "effect-neon";
+    default:
+      return "";
+  }
+};
+
+export const decToHex = (dec: number) => {
+  const hex = dec.toString(16);
+  return '#' + '0'.repeat(6 - hex.length) + hex;
+};

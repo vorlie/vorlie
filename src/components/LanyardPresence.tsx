@@ -5,7 +5,7 @@ import {
   LanyardHelloData,
   Activity,
 } from "../types/lanyard";
-import { extractImageUrl, getAvatarUrl } from "../utils/helpers";
+import { extractImageUrl, getAvatarUrl, getFontClass, getEffectClass } from "../utils/helpers";
 import ActivityTimestamp from "./ActivityTimestamp";
 import MarqueeText from "./MarqueeText";
 import { FaSpotify } from "react-icons/fa";
@@ -178,6 +178,14 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
   }
 
   const { discord_status, activities, spotify, discord_user } = presenceData;
+
+  const displayNameStyles = discord_user.display_name_styles;
+  const effectId = displayNameStyles?.effect_id;
+  const fontId = displayNameStyles?.font_id;
+  const fontClass = getFontClass(fontId);
+  const effectClass = getEffectClass(effectId);
+  const displayName = discord_user.global_name || discord_user.username;
+
   const avatarUrl = getAvatarUrl(discord_user.id, discord_user.avatar);
   const decorationAsset = discord_user.avatar_decoration_data?.asset;
   const decorationUrl = `https://cdn.discordapp.com/avatar-decoration-presets/${decorationAsset}.png`;
@@ -192,12 +200,51 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
     (act) => act.type !== 4 && !(act.name === "Spotify" && spotify)
   );
 
+  const usernameElement = (
+    <div
+      className="text-lg font-semibold flex items-center self-center leading-tight"
+    >
+      {effectClass ? (
+        <div className={effectClass}>
+          <span className="glow-layer" aria-hidden="true">
+            {displayName}
+          </span>
+
+          <span className={`text-layer ${fontClass}`}>
+            <span className="truncate" title={displayName}>
+              {displayName}
+            </span>
+          </span>
+        </div>
+      ) : (
+        <span className="truncate" title={displayName}>
+          {displayName}
+        </span>
+      )}
+
+      {discord_user.primary_guild && clanIconUrl && (
+        <span className="ml-2 flex items-center bg-gray-900/50 rounded px-2 py-0.5 text-sm font-normal whitespace-nowrap">
+          {" "}
+          <img
+            src={clanIconUrl}
+            alt={`${discord_user.primary_guild.tag} Clan Icon`}
+            className="h-4 w-4 mr-1 object-contain"
+          />
+          <span className="font-medium bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-[length:200%_auto] bg-clip-text text-transparent">
+            {" "}
+            {discord_user.primary_guild.tag}
+          </span>
+        </span>
+      )}
+    </div>
+  );
+
   return (
     <div className="">
       <img
         src="https://us-east-1.tixte.net/uploads/cx.tixte.co/banner.gif"
         alt="User Banner"
-        className="rounded w-full h-24 object-cover [-webkit-mask-image:linear-gradient(to_right,rgba(0,0,0,0)_0%,rgba(0,0,0,1)_90%)] [mask-image:linear-gradient(to_right,rgba(0,0,0,0)_0%,rgba(0,0,0,1)_90%)]"
+        className="rounded w-full h-24 object-cover [-webkit-mask-image:linear-gradient(to_right,rgba(0,0,0,0)_30%,rgba(0,0,0,1)_90%)] [mask-image:linear-gradient(to_right,rgba(0,0,0,0)_30%,rgba(0,0,0,1)_90%)]"
       />
 
       <div className="relative">
@@ -216,29 +263,7 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
             />
           </div>
 
-          <p className="text-lg font-semibold flex items-center self-center leading-tight">
-            <span
-              className="truncate"
-              title={discord_user.global_name || discord_user.username}
-            >
-              {discord_user.global_name || discord_user.username}
-            </span>
-
-            {discord_user.primary_guild && clanIconUrl && (
-              <span className="ml-2 flex items-center bg-gray-900/50 rounded px-2 py-0.5 text-sm font-normal whitespace-nowrap">
-                {" "}
-                <img
-                  src={clanIconUrl}
-                  alt={`${discord_user.primary_guild.tag} Clan Icon`}
-                  className="h-4 w-4 mr-1 object-contain"
-                />
-                <span className="font-medium bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-[length:200%_auto] bg-clip-text text-transparent">
-                  {" "}
-                  {discord_user.primary_guild.tag}
-                </span>
-              </span>
-            )}
-          </p>
+          {usernameElement}
 
           <div className="text-sm text-gray-400 truncate self-start leading-tight bg-gray-900/50 rounded px-2 py-1 mr-2">
             <span className={`${statusTextColors[discord_status]} font-medium`}>
