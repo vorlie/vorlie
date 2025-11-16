@@ -81,8 +81,18 @@ function Home() {
             {" "}
             <section className="mb-10">
               <h1 className="text-4xl sm:text-5xl font-bold mb-4 text-white leading-tight">
-                Hello, I'm <span className="text-blue-400">Charlie</span>, a
-                friendly coder.
+                Hello, I'm{" "}
+                <div className="effect-neon">
+                  <span className="glow-layer" aria-hidden="true">
+                    Charlie
+                  </span>
+                  <span className="text-layer font-sakura">
+                    <span className="truncate" title="Charlie">
+                      Charlie
+                    </span>
+                  </span>
+                </div>
+                , a friendly coder.
               </h1>
               <div className="space-y-4 text-lg text-gray-300 leading-relaxed">
                 <p>

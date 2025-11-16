@@ -68,7 +68,7 @@
 .effect-neon {
   color: var(--custom-display-name-styles-main-color, white);
   position: relative;
-  display: flex;
+  display: inline-flex;
 }
 
 .effect-neon .glow-layer {
