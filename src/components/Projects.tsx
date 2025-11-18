@@ -8,7 +8,7 @@ import { SiElectron, SiJavascript, SiCplusplus, SiRust } from "react-icons/si";
 const projectData = [
   {
     title: "Snake Shader",
-    desc: " Snake Shader is a modern take on the classic Snake game, built using Pygame for input/window handling and ModernGL for GPU-accelerated graphics.",
+    desc: "Welcome to Snake Shader, a high-performance, retro-futuristic reimplementation of the classic Snake game. We've ditched the basic 2D grids for a fully GPU-accelerated experience using ModernGL and Pygame",
     links: [
       {
         href: "https://github.com/vorlie/snake-shader",
