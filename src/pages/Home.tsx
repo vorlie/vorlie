@@ -3,7 +3,6 @@ import LanyardPresence from "../components/LanyardPresence";
 import Projects from "../components/Projects";
 import Buttons88x31 from "../components/Buttons88x31";
 import TicTacToe from "../components/TicTacToe";
-import AmazonShiftTracker from "../components/AmazonShiftTracker";
 
 import {
   FaReact,
@@ -80,7 +79,7 @@ function Home() {
           <main className="flex-grow lg:w-2/3">
             {" "}
             <section className="mb-10">
-              <h1 className="text-4xl sm:text-5xl font-bold mb-4 text-white leading-tight">
+              <h1 className="text-4xl sm:text-4xl font-bold text-white leading-tight">
                 Hello, I'm{" "}
                 <div className="effect-neon">
                   <span className="glow-layer" aria-hidden="true">
@@ -94,6 +93,7 @@ function Home() {
                 </div>
                 , a friendly coder.
               </h1>
+              <p className="text-gray-400 text-sm mb-4">The Family IT Administrator / The One Who Fixes, Even When "You Just Had to Reset"</p>
               <div className="space-y-4 text-lg text-gray-300 leading-relaxed">
                 <p>
                   <p>
@@ -114,12 +114,8 @@ function Home() {
                     Work Experience
                   </h2>
                   <p className="space-y-4 text-lg text-gray-300 leading-relaxed mb-2">
-                    Motivated and adaptable Amazon KTW1 worker with a focus on
-                    efficiency and learning. Currently at PACK, quickly
-                    mastering new tasks and departments while maintaining high
-                    productivity and reliability.
+                    Working my ass off at Amazon Fulfillment Center.
                   </p>
-                  <AmazonShiftTracker />
                 </section>
                 <p className="text-gray-400">
                   Feel free to check out my{" "}
