@@ -10,5 +10,12 @@ export default defineConfig({
     allowedHosts: [
       'dev.vorlie.pl',
     ],
+    proxy: {
+      '/api': {
+        target: 'https://api.vorlie.pl',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ''),
+      },
+    },
   }
 })

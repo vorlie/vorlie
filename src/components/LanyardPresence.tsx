@@ -5,7 +5,13 @@ import {
   LanyardHelloData,
   Activity,
 } from "../types/lanyard";
-import { extractImageUrl, getAvatarUrl, getFontClass, getEffectClass } from "../utils/helpers";
+import {
+  extractImageUrl,
+  getAvatarUrl,
+  getFontClass,
+  getEffectClass,
+  getBannerUrl,
+} from "../utils/helpers";
 import ActivityTimestamp from "./ActivityTimestamp";
 import MarqueeText from "./MarqueeText";
 import { FaSpotify } from "react-icons/fa";
@@ -39,6 +45,7 @@ const statusTextColors: Record<PresenceData["discord_status"], string> = {
 
 function LanyardPresence({ discordId }: LanyardPresenceProps) {
   const [presenceData, setPresenceData] = useState<PresenceData | null>(null);
+  const [bannerUrl, setBannerUrl] = useState<string | null>(null);
   const socket = useRef<WebSocket | null>(null);
   const heartbeatInterval = useRef<NodeJS.Timeout | null>(null);
 
@@ -98,6 +105,14 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
       cleanup();
     };
     return cleanup;
+  }, [discordId]);
+
+  useEffect(() => {
+    if (discordId) {
+      getBannerUrl(discordId).then((url) => {
+        if (url) setBannerUrl(url);
+      });
+    }
   }, [discordId]);
 
   const renderActivity = (activity: Activity) => {
@@ -201,9 +216,7 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
   );
 
   const usernameElement = (
-    <div
-      className="text-lg font-semibold flex items-center self-center leading-tight"
-    >
+    <div className="text-lg font-semibold flex items-center self-center leading-tight">
       {effectClass ? (
         <div className={effectClass}>
           <span className="glow-layer" aria-hidden="true">
@@ -242,7 +255,7 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
   return (
     <div className="">
       <img
-        src="https://us-east-1.tixte.net/uploads/cx.tixte.co/banner.gif"
+        src={bannerUrl || "https://us-east-1.tixte.net/uploads/cx.tixte.co/banner.gif"}
         alt="User Banner"
         className="rounded w-full h-24 object-cover [-webkit-mask-image:linear-gradient(to_right,rgba(0,0,0,0)_00%,rgba(0,0,0,1)_90%)] [mask-image:linear-gradient(to_right,rgba(0,0,0,0)_00%,rgba(0,0,0,1)_90%)]"
       />

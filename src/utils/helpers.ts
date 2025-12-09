@@ -70,3 +70,16 @@ export const decToHex = (dec: number) => {
   const hex = dec.toString(16);
   return '#' + '0'.repeat(6 - hex.length) + hex;
 };
+
+export const getBannerUrl = async (userId: string): Promise<string | null> => {
+  const url = `/api/v1/user/${userId}/banner`;
+  try {
+    const response = await fetch(url);
+    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+    const data = await response.json();
+    return data.banner_url;
+  } catch (error) {
+    console.error('Error fetching banner:', error);
+    return null;
+  }
+};
