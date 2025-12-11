@@ -53,7 +53,7 @@ export const allSystemSpecs: SystemDetails[] = [
       { label: "Storage (HDD)", value: 'TOSHIBA MQ01ABD100 1TB 2,5"' },
       { label: "CPU Cooler", value: "SilentiumPC Fortis 3" },
       { label: "Power Supply", value: "Cooler Master MWE V2 500W 80 Plus" },
-      { label: "Case", value: "Cooler Master MasterBox Q300L" },
+      { label: "Case", value: "Corsair FRAME 4000D RS ARGB" },
     ],
     peripherals: [
       {
@@ -76,14 +76,15 @@ export const allSystemSpecs: SystemDetails[] = [
       },
       { label: "Keyboard", value: "SPC Gear GK630K Onyx White" },
       { label: "Mouse", value: "Logitech G102 / G203 Lightsync Lilac" },
-      { label: "Headset", value: "SPC Gear Viro Plus Onyx White" },
+      { label: "Headset", value: "SteelSeries Arctis Nova 3x Wireless" },
       {
         label: "Speakers",
         value: "Genesis Helium 610BT (2.1, 60W RMS, Bluetooth)",
         link: "https://pl.genesis-zone.com/produkt/helium-610bt",
       },
       { label: "Mousepad", value: "KRUX Space XXL" },
-      { label: "Controller", value: "DualShock 4 White" },
+      { label: "Controller", value: "XBOX One S Controller White" },
+      { label: "Console", value: "XBOX One S 512GB" },
     ],
     softwareAndOS: [
       {
