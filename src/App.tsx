@@ -10,6 +10,7 @@ import Chleb from "./pages/Chleb";
 import IotaPlayer from "./pages/IotaPlayer";
 import PCSpecs from "./pages/PCSpecs";
 import Clips from "./pages/Clips";
+import Scanner from "./pages/Scanner";
 
 function App() {
   useEffect(() => {
@@ -37,6 +38,7 @@ function App() {
               <Route path="/verify" element={<Verify />} />
               <Route path="/project/iota-player" element={<IotaPlayer />} />
               <Route path="/przepis-na-chleb" element={<Chleb />} />
+              <Route path="/scanner" element={<Scanner />} />
               <Route path="*" element={<Home />} />
             </Routes>
           </div>
