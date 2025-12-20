@@ -129,7 +129,7 @@ export const allSystemSpecs: SystemDetails[] = [
         value: "be quiet! 450W",
         notes: "I think, didn't look inside to check.",
       },
-      { label: "Case", value: "Some case from Genesis" },
+      { label: "Case", value: "Cooler Master MasterBox Q300L" },
     ],
     softwareAndOS: [
       {
