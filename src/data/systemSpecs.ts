@@ -85,6 +85,7 @@ export const allSystemSpecs: SystemDetails[] = [
       { label: "Mousepad", value: "KRUX Space XXL" },
       { label: "Controller", value: "XBOX One S Controller White" },
       { label: "Console", value: "XBOX One S 512GB" },
+      { label: "Network Switch", value: "Mercusys MS105GS 10/100/1000Mbps Switch" },
     ],
     softwareAndOS: [
       {
