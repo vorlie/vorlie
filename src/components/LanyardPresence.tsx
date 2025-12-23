@@ -15,6 +15,7 @@ import {
 import ActivityTimestamp from "./ActivityTimestamp";
 import MarqueeText from "./MarqueeText";
 import { FaSpotify, FaXbox } from "react-icons/fa";
+import useDominantColor from "../hooks/useDominantColor";
 
 declare global {
   interface Window {
@@ -48,6 +49,7 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
   const [bannerUrl, setBannerUrl] = useState<string | null>(null);
   const socket = useRef<WebSocket | null>(null);
   const heartbeatInterval = useRef<NodeJS.Timeout | null>(null);
+  const spotifyColor = useDominantColor(presenceData?.spotify?.album_art_url || null);
 
   useEffect(() => {
     if (!discordId) return;
@@ -206,6 +208,7 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
   const decorationUrl = `https://cdn.discordapp.com/avatar-decoration-presets/${decorationAsset}.png`;
   const clanIconUrl = `https://cdn.discordapp.com/clan-badges/${discord_user.primary_guild?.identity_guild_id}/${discord_user.primary_guild?.badge}.png?size=16`;
   const customStatus = activities.find((act) => act.type === 4);
+  
   const statusText =
     discord_status === "dnd"
       ? "Do not disturb"
@@ -320,8 +323,20 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
         <hr className="border-transparent my-4" />{" "}
         <div className="space-y-2 text-sm">
           {spotify && spotify.track_id && (
-            <div className="bg-blue-400/20 border border-blue-400/30 rounded p-2 ">
-              <div className="flex items-start gap-3">
+            <div
+              className="rounded p-2 transition-colors duration-500"
+              style={{
+                backgroundColor: spotifyColor
+                  ? `rgba(${spotifyColor[0]}, ${spotifyColor[1]}, ${spotifyColor[2]}, 0.2)`
+                  : "oklch(0.60 0.06 227)", // Default gray-700/50 equivalent
+                border: `1px solid ${
+                  spotifyColor
+                    ? `rgba(${spotifyColor[0]}, ${spotifyColor[1]}, ${spotifyColor[2]}, 0.4)`
+                    : "transparent"
+                }`,
+              }}
+            >
+              <div className="flex items-center gap-3">
                 {spotify.album_art_url && (
                   <img
                     src={spotify.album_art_url}
@@ -334,7 +349,12 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
                     href={`https://open.spotify.com/track/${spotify.track_id}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-blue-400 font-semibold break-words block truncate"
+                    className="font-semibold break-words block truncate"
+                    style={{
+                      color: spotifyColor
+                        ? `rgba(${spotifyColor[0]}, ${spotifyColor[1]}, ${spotifyColor[2]}, 1)`
+                        : "oklch(0.77 0.055 227)",
+                    }}
                     title={`Listen to ${spotify.song} by ${spotify.artist} on Spotify`}
                   >
                     <span className="inline-flex items-center gap-1 hover:underline">
@@ -360,6 +380,16 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
                 <ActivityTimestamp
                   startTime={spotify.timestamps.start}
                   endTime={spotify.timestamps.end}
+                  color={
+                    spotifyColor
+                      ? `rgba(${spotifyColor[0]}, ${spotifyColor[1]}, ${spotifyColor[2]}, 1)`
+                      : undefined
+                  }
+                  colorSecondary={
+                    spotifyColor
+                      ? `rgba(${spotifyColor[0]}, ${spotifyColor[1]}, ${spotifyColor[2]}, 0.4)`
+                      : undefined
+                  }
                 />
               )}
             </div>

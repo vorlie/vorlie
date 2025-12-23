@@ -8,11 +8,15 @@ import {
 interface ActivityTimestampProps {
   startTime: number;
   endTime?: number;
+  color?: string;
+  colorSecondary?: string;
 }
 
 const ActivityTimestamp: React.FC<ActivityTimestampProps> = ({
   startTime,
   endTime,
+  color,
+  colorSecondary,
 }) => {
   const [displayTime, setDisplayTime] = useState<string>(
     formatRelativeTime(startTime, endTime)
@@ -37,12 +41,15 @@ const ActivityTimestamp: React.FC<ActivityTimestampProps> = ({
 
   return (
     <div className="mt-1 text-xs text-gray-400">
-      <p>{displayTime}</p>
+      <p style={{ color: color || undefined }} className="text-grey-400">{displayTime}</p>
       {progress !== null && endTime && (
-        <div className="w-full bg-gray-600 rounded-full h-1 mt-1 overflow-hidden">
+        <div className="w-full bg-gray-600 rounded-full h-1 mt-1 overflow-hidden" style={{ backgroundColor: colorSecondary || undefined }}>
           <div
             className="bg-blue-400 h-1 rounded-full transition-all duration-1000 ease-linear"
-            style={{ width: `${progress}%` }}
+            style={{
+              width: `${progress}%`,
+              backgroundColor: color || undefined,
+            }}
             role="progressbar"
             aria-valuenow={progress}
             aria-valuemin={0}
