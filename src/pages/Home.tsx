@@ -12,7 +12,7 @@ import {
   FaJs,
   FaJava,
 } from "react-icons/fa";
-import { SiTypescript, SiAstro, SiTailwindcss } from "react-icons/si";
+import { SiTypescript, SiAstro, SiTailwindcss, SiCplusplus } from "react-icons/si";
 
 interface CommitInfo {
   sha: string;
@@ -160,6 +160,10 @@ function Home() {
                 <li className="flex items-center gap-2 hover:text-white transition-colors">
                   <FaJava className="text-orange-400 w-5 h-5 flex-shrink-0" />{" "}
                   Java
+                </li>
+                <li className="flex items-center gap-2 hover:text-white transition-colors">
+                  <SiCplusplus className="text-purple-400 w-5 h-5 flex-shrink-0" />{" "}
+                  C++
                 </li>
               </ul>
             </section>

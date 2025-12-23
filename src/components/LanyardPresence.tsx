@@ -330,7 +330,7 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
               style={{
                 backgroundColor: spotifyColor
                   ? `rgba(${spotifyColor[0]}, ${spotifyColor[1]}, ${spotifyColor[2]}, 0.2)`
-                  : "oklch(0.60 0.06 227)", // Default gray-700/50 equivalent
+                  : "oklch(0.60 0.06 227)",
                 border: `1px solid ${
                   spotifyColor
                     ? `rgba(${spotifyColor[0]}, ${spotifyColor[1]}, ${spotifyColor[2]}, 0.4)`
