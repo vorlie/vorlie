@@ -109,14 +109,6 @@ function Home() {
                   <span className="text-blue-400 font-medium"> music</span>, and{" "}
                   <span className="text-blue-400 font-medium">anime</span>.
                 </p>
-                <section className="mb-10">
-                  <h2 className="text-2xl font-semibold mb-4 text-white">
-                    Work Experience
-                  </h2>
-                  <p className="space-y-4 text-lg text-gray-300 leading-relaxed mb-2">
-                    Working my ass off at Amazon Fulfillment Center.
-                  </p>
-                </section>
                 <p className="text-gray-400">
                   Feel free to check out my{" "}
                   <a href="#projects" className="text-blue-400 hover:underline">
