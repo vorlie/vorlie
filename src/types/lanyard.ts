@@ -26,6 +26,7 @@ export interface Activity {
   application_id?: string | null;
   details?: string | null;
   state?: string | null;
+  platform?: string | null;
   emoji?: {
     name: string;
     id?: string | null;

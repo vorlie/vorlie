@@ -14,7 +14,7 @@ import {
 } from "../utils/helpers";
 import ActivityTimestamp from "./ActivityTimestamp";
 import MarqueeText from "./MarqueeText";
-import { FaSpotify } from "react-icons/fa";
+import { FaSpotify, FaXbox } from "react-icons/fa";
 
 declare global {
   interface Window {
@@ -211,8 +211,13 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
       ? "Do not disturb"
       : discord_status.charAt(0).toUpperCase() + discord_status.slice(1);
 
+  const xboxActivities = activities.filter((act) => act.platform === "xbox");
+
   const otherActivities = activities.filter(
-    (act) => act.type !== 4 && !(act.name === "Spotify" && spotify)
+    (act) =>
+      act.type !== 4 &&
+      !(act.name === "Spotify" && spotify) &&
+      act.platform !== "xbox"
   );
 
   const usernameElement = (
@@ -315,8 +320,8 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
         <hr className="border-transparent my-4" />{" "}
         <div className="space-y-2 text-sm">
           {spotify && spotify.track_id && (
-            <div className="bg-gray-700/50 rounded p-2">
-              <div className="flex items-center gap-3">
+            <div className="bg-blue-400/20 border border-blue-400/30 rounded p-2 ">
+              <div className="flex items-start gap-3">
                 {spotify.album_art_url && (
                   <img
                     src={spotify.album_art_url}
@@ -360,13 +365,80 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
             </div>
           )}
 
+          {xboxActivities.length > 0 && (
+            <div className="space-y-2">
+              {xboxActivities.map((activity) => (
+                <div
+                  key={activity.id || activity.name}
+                  className="bg-green-900/20 border border-green-900/30 rounded p-2"
+                >
+                  <div className="flex items-start gap-3">
+                    <div className="relative flex-shrink-0">
+                      {activity.assets?.large_image ? (
+                        <img
+                          src={extractImageUrl(
+                            activity.assets.large_image,
+                            activity.application_id || ""
+                          )}
+                          alt={activity.name}
+                          className="w-14 h-14 rounded object-cover"
+                        />
+                      ) : (
+                        <div className="w-14 h-14 rounded bg-green-800 flex items-center justify-center">
+                          <FaXbox size={32} className="text-white" />
+                        </div>
+                      )}
+                      {activity.assets?.small_image && (
+                        <img
+                          src={extractImageUrl(
+                            activity.assets.small_image,
+                            activity.application_id || ""
+                          )}
+                          alt="Small asset"
+                          className="w-5 h-5 rounded-full absolute -bottom-1 -right-1 border-2 border-gray-900"
+                        />
+                      )}
+                    </div>
+                    <div className="flex-grow overflow-hidden">
+                      <p className="text-green-400 font-semibold truncate flex items-center gap-2">
+                        <FaXbox /> Playing on Xbox
+                      </p>
+                      <p className="text-gray-100 font-medium truncate">
+                        {activity.name}
+                      </p>
+                      {activity.details && (
+                        <p className="text-gray-300 text-xs truncate">
+                          {activity.details}
+                        </p>
+                      )}
+                      {activity.state && (
+                        <p className="text-gray-400 text-xs truncate">
+                          {activity.state}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                  {activity.timestamps?.start && (
+                    <ActivityTimestamp
+                      startTime={activity.timestamps.start}
+                      endTime={activity.timestamps.end}
+                    />
+                  )}
+                </div>
+              ))}
+            </div>
+          )}
+
           {otherActivities.length > 0 && (
             <div className="space-y-4">
               {otherActivities.map(renderActivity)}
             </div>
           )}
 
-          {!spotify && otherActivities.length === 0 && !customStatus && (
+          {!spotify &&
+            otherActivities.length === 0 &&
+            xboxActivities.length === 0 &&
+            !customStatus && (
             <p className="text-gray-400 italic">No current activities</p>
           )}
         </div>
