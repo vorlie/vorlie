@@ -177,7 +177,7 @@ function Home() {
               <h2 className="text-2xl font-semibold mb-4 text-white">
                 Stalk me here
               </h2>
-              <div className="bg-gray-800/50 p-4 rounded-lg shadow-lg">
+              <div className="bg-gray-900/90 p-4 rounded-lg shadow-lg">
                 {" "}
                 <LanyardPresence discordId={MY_DISCORD_ID} />
               </div>

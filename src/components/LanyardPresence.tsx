@@ -15,8 +15,9 @@ import {
 } from "../utils/helpers";
 import ActivityTimestamp from "./ActivityTimestamp";
 import MarqueeText from "./MarqueeText";
-import { FaSpotify, FaXbox } from "react-icons/fa";
+import { FaSpotify } from "react-icons/fa";
 import useDominantColor from "../hooks/useDominantColor";
+import { LANYARD_THEMES } from "../data/lanyardThemes";
 
 declare global {
   interface Window {
@@ -43,6 +44,20 @@ const statusTextColors: Record<PresenceData["discord_status"], string> = {
   idle: "text-yellow-400",
   dnd: "text-red-400",
   offline: "text-gray-500",
+};
+
+const statusPulseColors: Record<PresenceData["discord_status"], string> = {
+  online: "74, 222, 128", // green-400
+  idle: "250, 204, 21", // yellow-400
+  dnd: "248, 113, 113", // red-400
+  offline: "107, 114, 128", // gray-500
+};
+
+const statusBgColors: Record<PresenceData["discord_status"], string> = {
+  online: "bg-green-400",
+  idle: "bg-yellow-400",
+  dnd: "bg-red-400",
+  offline: "bg-gray-500",
 };
 
 function LanyardPresence({ discordId }: LanyardPresenceProps) {
@@ -216,13 +231,18 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
       ? "Do not disturb"
       : discord_status.charAt(0).toUpperCase() + discord_status.slice(1);
 
-  const xboxActivities = activities.filter((act) => act.platform === "xbox");
+  const themedActivities = activities
+    .map((act) => ({
+      activity: act,
+      theme: LANYARD_THEMES[act.name],
+    }))
+    .filter((item) => item.theme);
 
   const otherActivities = activities.filter(
     (act) =>
       act.type !== 4 &&
       !(act.name === "Spotify" && spotify) &&
-      act.platform !== "xbox"
+      !LANYARD_THEMES[act.name]
   );
 
   const usernameElement = (
@@ -288,7 +308,20 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
 
           {usernameElement}
 
-          <div className="text-sm text-gray-400 truncate self-start leading-tight bg-gray-900/50 rounded px-2 py-1 mr-2">
+          <div className="text-sm text-gray-400 truncate self-start leading-tight bg-gray-900/50 rounded px-2 py-1 mr-2 flex items-center gap-2">
+            <div className="relative flex items-center justify-center w-2 h-2">
+              <div
+                className={`absolute inset-0 rounded-full status-indicator-pulse`}
+                style={
+                  {
+                    "--pulse-color": statusPulseColors[discord_status],
+                  } as React.CSSProperties
+                }
+              ></div>
+              <div
+                className={`relative w-2 h-2 rounded-full ${statusBgColors[discord_status]}`}
+              ></div>
+            </div>
             <span className={`${statusTextColors[discord_status]} font-medium`}>
               {statusText}
             </span>
@@ -326,19 +359,34 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
         <div className="space-y-2 text-sm">
           {spotify && spotify.track_id && (
             <div
-              className="rounded p-2 transition-colors duration-500"
+              className="rounded p-2 transition-colors duration-500 relative overflow-hidden group"
               style={{
                 backgroundColor: spotifyColor
-                  ? `rgba(${spotifyColor[0]}, ${spotifyColor[1]}, ${spotifyColor[2]}, 0.2)`
-                  : "oklch(0.60 0.06 227)",
+                  ? `rgba(${spotifyColor[0]}, ${spotifyColor[1]}, ${spotifyColor[2]}, 0.4)`
+                  : "oklch(0.60 0.06 227)", // Default gray-700/50 equivalent
                 border: `1px solid ${
                   spotifyColor
-                    ? `rgba(${spotifyColor[0]}, ${spotifyColor[1]}, ${spotifyColor[2]}, 0.4)`
+                    ? `rgba(${spotifyColor[0]}, ${spotifyColor[1]}, ${spotifyColor[2]}, 0.6)`
                     : "transparent"
                 }`,
               }}
             >
-              <div className="flex items-center gap-3">
+              {/* Blurred Background Layer */}
+              {spotify.album_art_url && (
+                <div
+                  className="absolute inset-0 z-0 pointer-events-none transition-transform duration-700 group-hover:scale-110"
+                  style={{
+                    backgroundImage: `url(${spotify.album_art_url})`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                    filter: "blur(20px) brightness(0.5)",
+                    opacity: 0.4,
+                    transform: "scale(1.2)",
+                  }}
+                />
+              )}
+
+              <div className="flex items-center gap-3 relative z-10">
                 {spotify.album_art_url && (
                   <img
                     src={spotify.album_art_url}
@@ -397,14 +445,14 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
             </div>
           )}
 
-          {xboxActivities.length > 0 && (
+          {themedActivities.length > 0 && (
             <div className="space-y-2">
-              {xboxActivities.map((activity) => (
+              {themedActivities.map(({ activity, theme }) => (
                 <div
                   key={activity.id || activity.name}
-                  className="bg-green-900/20 border border-green-900/30 rounded p-2"
+                  className={`${theme.bgClass} border ${theme.borderClass} rounded p-2`}
                 >
-                  <div className="flex items-start gap-3">
+                  <div className="flex items-center gap-3">
                     <div className="relative flex-shrink-0">
                       {activity.assets?.large_image ? (
                         <img
@@ -416,8 +464,11 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
                           className="w-14 h-14 rounded object-cover"
                         />
                       ) : (
-                        <div className="w-14 h-14 rounded bg-green-800 flex items-center justify-center">
-                          <FaXbox size={32} className="text-white" />
+                        <div
+                          className={`w-14 h-14 rounded flex items-center justify-center`}
+                          style={{ backgroundColor: `rgba(${theme.pulseColor}, 0.2)` }}
+                        >
+                          <theme.icon size={32} className={theme.textClass} />
                         </div>
                       )}
                       {activity.assets?.small_image && (
@@ -432,8 +483,10 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
                       )}
                     </div>
                     <div className="flex-grow overflow-hidden">
-                      <p className="text-green-400 font-semibold truncate flex items-center gap-2">
-                        <FaXbox /> Playing on Xbox
+                      <p
+                        className={`${theme.textClass} font-semibold truncate flex items-center gap-2`}
+                      >
+                        <theme.icon /> {theme.label} {theme.name}
                       </p>
                       <p className="text-gray-100 font-medium truncate">
                         {activity.name}
@@ -454,6 +507,7 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
                     <ActivityTimestamp
                       startTime={activity.timestamps.start}
                       endTime={activity.timestamps.end}
+                      color={`rgba(${theme.pulseColor}, 1)`}
                     />
                   )}
                 </div>
@@ -469,7 +523,7 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
 
           {!spotify &&
             otherActivities.length === 0 &&
-            xboxActivities.length === 0 &&
+            themedActivities.length === 0 &&
             !customStatus && (
             <p className="text-gray-400 italic">No current activities</p>
           )}

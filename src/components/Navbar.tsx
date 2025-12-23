@@ -31,7 +31,7 @@ function Navbar() {
   };
 
   return (
-    <div className="bg-gray-800/50 py-2 rounded-lg shadow-lg mb-2">
+    <div className="bg-gray-900/50 py-2 rounded-lg shadow-lg mb-2">
       <nav className="w-full max-w-6xl mx-auto px-2 flex flex-wrap gap-2 min-w-0">
         {navLinks.map((link, index) => {
           if (link.children) {
