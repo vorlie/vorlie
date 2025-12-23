@@ -83,3 +83,25 @@ export const getBannerUrl = async (userId: string): Promise<string | null> => {
     return null;
   }
 };
+export const getReadableColor = (color: number[] | null): number[] | null => {
+  if (!color) return null;
+
+  const [r, g, b] = color;
+  // Calculate relative luminance
+  // Formula from WCAG 2.0: https://www.w3.org/TR/WCAG20/#relativeluminancedef
+  const luminance = (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255;
+
+  // If luminance is too low (too dark), lighten the color
+  // Threshold can be adjusted. 0.5 is a middle ground.
+  if (luminance < 0.5) {
+    // Mix with white to lighten
+    // Increase the mix factor to lighten more
+    const mixFactor = 0.6; // 60% white, 40% original color
+    const newR = Math.round(r + (255 - r) * mixFactor);
+    const newG = Math.round(g + (255 - g) * mixFactor);
+    const newB = Math.round(b + (255 - b) * mixFactor);
+    return [newR, newG, newB];
+  }
+
+  return color;
+};

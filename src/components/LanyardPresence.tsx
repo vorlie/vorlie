@@ -11,6 +11,7 @@ import {
   getFontClass,
   getEffectClass,
   getBannerUrl,
+  getReadableColor,
 } from "../utils/helpers";
 import ActivityTimestamp from "./ActivityTimestamp";
 import MarqueeText from "./MarqueeText";
@@ -50,6 +51,7 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
   const socket = useRef<WebSocket | null>(null);
   const heartbeatInterval = useRef<NodeJS.Timeout | null>(null);
   const spotifyColor = useDominantColor(presenceData?.spotify?.album_art_url || null);
+  const readableSpotifyColor = getReadableColor(spotifyColor);
 
   useEffect(() => {
     if (!discordId) return;
@@ -351,8 +353,8 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
                     rel="noopener noreferrer"
                     className="font-semibold break-words block truncate"
                     style={{
-                      color: spotifyColor
-                        ? `rgba(${spotifyColor[0]}, ${spotifyColor[1]}, ${spotifyColor[2]}, 1)`
+                      color: readableSpotifyColor
+                        ? `rgba(${readableSpotifyColor[0]}, ${readableSpotifyColor[1]}, ${readableSpotifyColor[2]}, 1)`
                         : "oklch(0.77 0.055 227)",
                     }}
                     title={`Listen to ${spotify.song} by ${spotify.artist} on Spotify`}
@@ -381,8 +383,8 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
                   startTime={spotify.timestamps.start}
                   endTime={spotify.timestamps.end}
                   color={
-                    spotifyColor
-                      ? `rgba(${spotifyColor[0]}, ${spotifyColor[1]}, ${spotifyColor[2]}, 1)`
+                    readableSpotifyColor
+                      ? `rgba(${readableSpotifyColor[0]}, ${readableSpotifyColor[1]}, ${readableSpotifyColor[2]}, 1)`
                       : undefined
                   }
                   colorSecondary={
