@@ -17,13 +17,13 @@ export interface LanyardTheme {
 export const LANYARD_THEMES: Record<string, LanyardTheme> = {
   Jellyfin: {
     name: "Jellyfin",
-    color: "text-blue-500",
+    color: "text-purple-500",
     pulseColor: "59, 130, 246",
     icon: SiJellyfin,
-    label: "Coding in",
-    bgClass: "bg-blue-900/20",
-    borderClass: "border-blue-900/30",
-    textClass: "text-blue-400",
+    label: "Watching",
+    bgClass: "bg-purple-900/20",
+    borderClass: "border-purple-900/30",
+    textClass: "text-purple-400",
   },
   YouTube: {
     name: "YouTube",
