@@ -1,6 +1,6 @@
 import { IconType } from "react-icons";
 import { FaYoutube, FaXbox, FaReact } from "react-icons/fa";
-import { SiIntellijidea } from "react-icons/si";
+import { SiJellyfin, SiIntellijidea } from "react-icons/si";
 import { VscCode } from "react-icons/vsc";
 
 export interface LanyardTheme {
@@ -15,6 +15,16 @@ export interface LanyardTheme {
 }
 
 export const LANYARD_THEMES: Record<string, LanyardTheme> = {
+  Jellyfin: {
+    name: "Jellyfin",
+    color: "text-blue-500",
+    pulseColor: "59, 130, 246",
+    icon: SiJellyfin,
+    label: "Coding in",
+    bgClass: "bg-blue-900/20",
+    borderClass: "border-blue-900/30",
+    textClass: "text-blue-400",
+  },
   YouTube: {
     name: "YouTube",
     color: "text-red-500",
