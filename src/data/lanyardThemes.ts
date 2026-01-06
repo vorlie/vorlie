@@ -1,5 +1,5 @@
 import { IconType } from "react-icons";
-import { FaYoutube, FaXbox, FaReact } from "react-icons/fa";
+import { FaYoutube, FaXbox, FaReact, FaMusic } from "react-icons/fa";
 import { SiJellyfin, SiIntellijidea } from "react-icons/si";
 import { VscCode } from "react-icons/vsc";
 
@@ -74,5 +74,15 @@ export const LANYARD_THEMES: Record<string, LanyardTheme> = {
     bgClass: "bg-purple-900/20",
     borderClass: "border-purple-900/30",
     textClass: "text-purple-400",
+  },
+  "Iota Player": {
+    name: "Iota Player",
+    color: "text-cyan-400",
+    pulseColor: "34, 211, 238",
+    icon: FaMusic,
+    label: "Listening to",
+    bgClass: "bg-cyan-900/20",
+    borderClass: "border-cyan-900/30",
+    textClass: "text-cyan-400",
   },
 };
