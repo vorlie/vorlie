@@ -36,6 +36,16 @@ export const LANYARD_THEMES: Record<string, LanyardTheme> = {
     borderClass: "border-red-900/30",
     textClass: "text-red-400",
   },
+  "YouTube Music": {
+    name: "YouTube Music",
+    color: "text-red-500",
+    pulseColor: "239, 68, 68",
+    icon: FaYoutubeMusic,
+    label: "Listening to",
+    bgClass: "bg-red-900/20",
+    borderClass: "border-red-900/30",
+    textClass: "text-red-400",
+  },
   Xbox: {
     name: "Xbox",
     color: "text-green-500",
@@ -88,3 +98,7 @@ export const LANYARD_THEMES: Record<string, LanyardTheme> = {
     repoUrl: "https://github.com/vorlie/iotaplayer",
   },
 };
+function FaYoutubeMusic(props: IconBaseProps): ReactNode {
+  throw new Error("Function not implemented.");
+}
+
