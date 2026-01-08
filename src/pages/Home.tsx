@@ -93,18 +93,16 @@ function Home() {
                 </div>
                 , a friendly coder.
               </h1>
-              <p className="text-gray-400 text-sm mb-4">The Family IT Administrator / The One Who Fixes, Even When "You Just Had to Reset"</p>
+              <p className="text-gray-400 text-sm mb-4">Haiii visitors1!!1!!!1</p>
               <div className="space-y-4 text-lg text-gray-300 leading-relaxed">
                 <p>
                   <p>
                     I focus on writing code and building projects across various
-                    technologies. While I now have less time for development due
-                    to my full-time work, I still enjoy pursuing personal
-                    projects.
+                    technologies. I love anime, games, and music.
                   </p>
                 </p>
                 <p>
-                  Outside of work, I have an interest in{" "}
+                  I have an interest in{" "}
                   <span className="text-blue-400 font-medium">games</span>,
                   <span className="text-blue-400 font-medium"> music</span>, and{" "}
                   <span className="text-blue-400 font-medium">anime</span>.
