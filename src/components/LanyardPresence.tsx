@@ -17,7 +17,7 @@ import ActivityTimestamp from "./ActivityTimestamp";
 import MarqueeText from "./MarqueeText";
 import { FaSpotify } from "react-icons/fa";
 import useDominantColor from "../hooks/useDominantColor";
-import { LANYARD_THEMES } from "../data/lanyardThemes";
+import { LANYARD_THEMES, LanyardTheme } from "../data/lanyardThemes";
 
 declare global {
   interface Window {
@@ -231,18 +231,27 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
       ? "Do not disturb"
       : discord_status.charAt(0).toUpperCase() + discord_status.slice(1);
 
+  const getTheme = (act: Activity) => {
+    if (LANYARD_THEMES[act.name]) return LANYARD_THEMES[act.name];
+    if (act.platform === "xbox") return LANYARD_THEMES["Xbox"];
+    return undefined;
+  };
+
   const themedActivities = activities
     .map((act) => ({
       activity: act,
-      theme: LANYARD_THEMES[act.name],
+      theme: getTheme(act),
     }))
-    .filter((item) => item.theme);
+    .filter(
+      (item): item is { activity: Activity; theme: LanyardTheme } =>
+        !!item.theme
+    );
 
   const otherActivities = activities.filter(
     (act) =>
       act.type !== 4 &&
       !(act.name === "Spotify" && spotify) &&
-      !LANYARD_THEMES[act.name]
+      !getTheme(act)
   );
 
   const usernameElement = (
@@ -500,6 +509,16 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
                         <p className="text-gray-400 text-xs truncate">
                           {activity.state}
                         </p>
+                      )}
+                      {theme.repoUrl && (
+                        <a
+                          href={theme.repoUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={`text-xs ${theme.textClass} border ${theme.borderClass} px-2 py-0.5 rounded-full mt-1 inline-block hover:opacity-80 transition-opacity`}
+                        >
+                          View Repository
+                        </a>
                       )}
                     </div>
                   </div>

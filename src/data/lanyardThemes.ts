@@ -12,6 +12,7 @@ export interface LanyardTheme {
   bgClass: string;
   borderClass: string;
   textClass: string;
+  repoUrl?: string;
 }
 
 export const LANYARD_THEMES: Record<string, LanyardTheme> = {
@@ -84,5 +85,6 @@ export const LANYARD_THEMES: Record<string, LanyardTheme> = {
     bgClass: "bg-cyan-900/20",
     borderClass: "border-cyan-900/30",
     textClass: "text-cyan-400",
+    repoUrl: "https://github.com/vorlie/iotaplayer",
   },
 };
