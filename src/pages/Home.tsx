@@ -96,10 +96,8 @@ function Home() {
               <p className="text-gray-400 text-sm mb-4">Haiii visitors1!!1!!!1</p>
               <div className="space-y-4 text-lg text-gray-300 leading-relaxed">
                 <p>
-                  <p>
-                    I focus on writing code and building projects across various
-                    technologies. I love anime, games, and music.
-                  </p>
+                  I focus on writing code and building projects across various
+                  technologies. I love anime, games, and music.
                 </p>
                 <p>
                   I have an interest in{" "}

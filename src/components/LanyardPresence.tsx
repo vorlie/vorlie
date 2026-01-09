@@ -15,7 +15,7 @@ import {
 } from "../utils/helpers";
 import ActivityTimestamp from "./ActivityTimestamp";
 import MarqueeText from "./MarqueeText";
-import { FaSpotify } from "react-icons/fa";
+import { FaSpotify, FaGamepad, FaHeadphones, FaVideo, FaTrophy } from "react-icons/fa";
 import useDominantColor from "../hooks/useDominantColor";
 import { LANYARD_THEMES, LanyardTheme } from "../data/lanyardThemes";
 
@@ -72,7 +72,11 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
     if (!discordId) return;
     const cleanup = () => {
       if (socket.current) {
-        //socket.current.close();
+        socket.current.onclose = null;
+        socket.current.onerror = null;
+        socket.current.onmessage = null;
+        socket.current.onopen = null;
+        socket.current.close();
         socket.current = null;
       }
       if (heartbeatInterval.current) {
@@ -94,7 +98,7 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
               socket.current.send(JSON.stringify({ op: OP.HEARTBEAT }));
             }
           }, helloData.heartbeat_interval);
-          if (socket.current) {
+          if (socket.current && socket.current.readyState === WebSocket.OPEN) {
             socket.current.send(
               JSON.stringify({
                 op: OP.INITIALIZE,
@@ -111,8 +115,7 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
           break;
       }
     };
-    socket.current.onerror = (error) => {
-      console.error("Lanyard WebSocket error:", error);
+    socket.current.onerror = () => {
       cleanup();
     };
     socket.current.onclose = (event) => {
@@ -134,78 +137,7 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
     }
   }, [discordId]);
 
-  const renderActivity = (activity: Activity) => {
-    const largeImageUrl = extractImageUrl(
-      activity.assets?.large_image || "",
-      activity.application_id || ""
-    );
-    const smallImageUrl = extractImageUrl(
-      activity.assets?.small_image || "",
-      activity.application_id || ""
-    );
-    const finalSmallImageUrl = smallImageUrl.endsWith("/images/default.png")
-      ? null
-      : smallImageUrl;
 
-    return (
-      <div
-        key={activity.id || activity.name}
-        className="bg-gray-700/50 rounded p-2"
-      >
-        {" "}
-        <div className="flex items-start gap-2">
-          {" "}
-          <div className="relative flex-shrink-0">
-            <img
-              src={largeImageUrl}
-              alt={activity.assets?.large_text || activity.name}
-              className="w-14 h-14 rounded object-cover"
-              title={activity.assets?.large_text || activity.name}
-              onError={(e) => {
-                (e.target as HTMLImageElement).style.display = "none";
-              }}
-            />
-            {finalSmallImageUrl && (
-              <img
-                src={finalSmallImageUrl}
-                alt={activity.assets?.small_text || ""}
-                className="w-4 h-4 rounded-full absolute -bottom-1 -right-1 border-2 border-gray-700/50 bg-gray-700/50"
-                title={activity.assets?.small_text || ""}
-                onError={(e) => {
-                  (e.target as HTMLImageElement).style.display = "none";
-                }}
-              />
-            )}
-          </div>
-          <div className="text-sm overflow-hidden flex-grow">
-            {" "}
-            <p
-              className="font-semibold text-gray-100 truncate"
-              title={activity.name}
-            >
-              {activity.name}
-            </p>
-            {activity.details && (
-              <p className="text-gray-300 truncate" title={activity.details}>
-                {activity.details}
-              </p>
-            )}
-            {activity.state && (
-              <p className="text-gray-400 truncate" title={activity.state}>
-                {activity.state}
-              </p>
-            )}
-          </div>
-        </div>
-        {activity.timestamps?.start && (
-          <ActivityTimestamp
-            startTime={activity.timestamps.start}
-            endTime={activity.timestamps.end}
-          />
-        )}
-      </div>
-    );
-  };
 
   if (!presenceData) {
     return <div className="h-24 text-gray-500 animate-pulse">Loading...</div>;
@@ -231,28 +163,49 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
       ? "Do not disturb"
       : discord_status.charAt(0).toUpperCase() + discord_status.slice(1);
 
-  const getTheme = (act: Activity) => {
+  const getTheme = (act: Activity): LanyardTheme => {
     if (LANYARD_THEMES[act.name]) return LANYARD_THEMES[act.name];
     if (act.platform === "xbox") return LANYARD_THEMES["Xbox"];
-    return undefined;
+
+    let label = "Playing";
+    let icon = FaGamepad;
+
+    switch (act.type) {
+      case 1: // Streaming
+        label = "Streaming";
+        break;
+      case 2: // Listening
+        label = "Listening to";
+        icon = FaHeadphones;
+        break;
+      case 3: // Watching
+        label = "Watching";
+        icon = FaVideo;
+        break;
+      case 5: // Competing
+        label = "Competing in";
+        icon = FaTrophy;
+        break;
+    }
+
+    return {
+      name: "",
+      label,
+      color: "text-gray-300",
+      pulseColor: "156, 163, 175",
+      bgClass: "bg-gray-800/50",
+      borderClass: "border-gray-700/50",
+      textClass: "text-gray-300",
+      icon,
+    };
   };
 
   const themedActivities = activities
+    .filter((act) => act.type !== 4 && !(act.name === "Spotify" && spotify))
     .map((act) => ({
       activity: act,
       theme: getTheme(act),
-    }))
-    .filter(
-      (item): item is { activity: Activity; theme: LanyardTheme } =>
-        !!item.theme
-    );
-
-  const otherActivities = activities.filter(
-    (act) =>
-      act.type !== 4 &&
-      !(act.name === "Spotify" && spotify) &&
-      !getTheme(act)
-  );
+    }));
 
   const usernameElement = (
     <div className="text-lg font-semibold flex items-center self-center leading-tight">
@@ -534,14 +487,9 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
             </div>
           )}
 
-          {otherActivities.length > 0 && (
-            <div className="space-y-4">
-              {otherActivities.map(renderActivity)}
-            </div>
-          )}
+
 
           {!spotify &&
-            otherActivities.length === 0 &&
             themedActivities.length === 0 &&
             !customStatus && (
             <p className="text-gray-400 italic">No current activities</p>
