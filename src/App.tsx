@@ -23,9 +23,8 @@ function App() {
         className="min-h-screen w-full bg-cover bg-center bg-fixed"
         style={{ backgroundImage: "url('/images/bg.png')" }}
       >
-        <div className="min-h-screen w-full bg-gray-900/70 text-gray-100 p-4 md:p-12">
+        <div className="min-h-screen w-full bg-gray-900/70 text-gray-100 p-4 md:p-12 pb-24">
           <div className="w-full max-w-6xl mx-auto relative z-10">
-            <Navbar />
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/specs" element={<PCSpecs />} />
@@ -42,6 +41,7 @@ function App() {
               <Route path="*" element={<Home />} />
             </Routes>
           </div>
+          <Navbar />
         </div>
       </div>
     </Router>

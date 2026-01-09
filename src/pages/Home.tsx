@@ -1,3 +1,4 @@
+  /* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from "react";
 import LanyardPresence from "../components/LanyardPresence";
 import Projects from "../components/Projects";
@@ -11,6 +12,10 @@ import {
   FaCss3Alt,
   FaJs,
   FaJava,
+  FaGithub,
+  FaDiscord,
+  FaSteam,
+  FaYoutube,
 } from "react-icons/fa";
 import { SiTypescript, SiAstro, SiTailwindcss, SiCplusplus } from "react-icons/si";
 
@@ -22,12 +27,38 @@ interface CommitInfo {
   commitUrl: string;
 }
 
-const ProjectsPage = () => (
-  <section id="projects" className="my-12 py-8 border-t border-gray-700">
-    <h2 className="text-3xl font-bold mb-6 text-white text-center">Projects</h2>
-    <Projects />
-  </section>
-);
+const TypewriterText = ({ texts }: { texts: string[] }) => {
+  const [displayText, setDisplayText] = useState("");
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [typingSpeed, setTypingSpeed] = useState(150);
+
+  useEffect(() => {
+    const handleTyping = () => {
+      const fullText = texts[currentIndex];
+      
+      if (isDeleting) {
+        setDisplayText(fullText.substring(0, displayText.length - 1));
+        setTypingSpeed(50);
+      } else {
+        setDisplayText(fullText.substring(0, displayText.length + 1));
+        setTypingSpeed(150);
+      }
+
+      if (!isDeleting && displayText === fullText) {
+        setTimeout(() => setIsDeleting(true), 2000);
+      } else if (isDeleting && displayText === "") {
+        setIsDeleting(false);
+        setCurrentIndex((prev) => (prev + 1) % texts.length);
+      }
+    };
+
+    const timer = setTimeout(handleTyping, typingSpeed);
+    return () => clearTimeout(timer);
+  }, [displayText, isDeleting, currentIndex, texts, typingSpeed]);
+
+  return <span className="inline-block min-w-[200px]">{displayText}<span className="animate-pulse">|</span></span>;
+};
 
 function Home() {
   const MY_DISCORD_ID = "614807913302851594";
@@ -75,120 +106,132 @@ function Home() {
     <div className="min-h-scree text-gray-100">
       <div className="max-w-6xl mx-auto relative z-10 ">
         {" "}
-        <div className="flex flex-col lg:flex-row gap-10 lg:gap-16">
-          <main className="flex-grow lg:w-2/3">
-            {" "}
-            <section className="mb-10">
-              <h1 className="text-4xl sm:text-4xl font-bold text-white leading-tight">
-                Hello, I'm{" "}
-                <div className="effect-neon">
-                  <span className="glow-layer" aria-hidden="true">
-                    Charlie
-                  </span>
-                  <span className="text-layer font-sakura">
-                    <span className="truncate" title="Charlie">
-                      Charlie
+        <div className="flex flex-col gap-8">
+          {/* Top Section: Hero & Status */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {/* Hero Card */}
+            <main className="lg:col-span-2">
+              <section className="h-full flex flex-col justify-start bg-gray-900/60 backdrop-blur-md border border-gray-700/50 rounded-2xl shadow-xl p-8 relative overflow-hidden group">
+                <div className="relative z-10 w-full">
+                  <h1 className="text-4xl sm:text-5xl font-bold text-white leading-tight mb-4">
+                    Hello, I'm{" "}
+                    <div className="effect-neon inline-block">
+                      <span className="glow-layer" aria-hidden="true">
+                        Charlie
+                      </span>
+                      <span className="text-layer font-sakura">
+                        <span className="truncate" title="Charlie">
+                          Charlie
+                        </span>
+                      </span>
+                    </div>
+                    <span className="block text-2xl sm:text-3xl mt-2 text-gray-300 font-normal">
+                      <TypewriterText texts={["a friendly coder.", "a web developer.", "an osu! player.", "a tech enthusiast."]} />
                     </span>
-                  </span>
-                </div>
-                , a friendly coder.
-              </h1>
-              <p className="text-gray-400 text-sm mb-4">Haiii visitors1!!1!!!1</p>
-              <div className="space-y-4 text-lg text-gray-300 leading-relaxed">
-                <p>
-                  I focus on writing code and building projects across various
-                  technologies. I love anime, games, and music.
-                </p>
-                <p>
-                  I have an interest in{" "}
-                  <span className="text-blue-400 font-medium">games</span>,
-                  <span className="text-blue-400 font-medium"> music</span>, and{" "}
-                  <span className="text-blue-400 font-medium">anime</span>.
-                </p>
-                <p className="text-gray-400">
-                  Feel free to check out my{" "}
-                  <a href="#projects" className="text-blue-400 hover:underline">
-                    projects
-                  </a>
-                  {". "}
-                  I'm always open to collaboration.
-                </p>
-              </div>
-            </section>
-            <section className="mb-10">
-              <h2 className="text-2xl font-semibold mb-4 text-white">
-                Technologies I Use:
-              </h2>
-              <ul className="grid grid-cols-2 sm:grid-cols-3 gap-x-4 gap-y-2 text-gray-300">
-                {" "}
-                <li className="flex items-center gap-2 hover:text-white transition-colors">
-                  <SiTypescript className="text-blue-400 w-5 h-5 flex-shrink-0" />{" "}
-                  TypeScript
-                </li>
-                <li className="flex items-center gap-2 hover:text-white transition-colors">
-                  <FaPython className="text-yellow-400 w-5 h-5 flex-shrink-0" />{" "}
-                  Python
-                </li>
-                <li className="flex items-center gap-2 hover:text-white transition-colors">
-                  <FaHtml5 className="text-orange-500 w-5 h-5 flex-shrink-0" />{" "}
-                  HTML
-                </li>
-                <li className="flex items-center gap-2 hover:text-white transition-colors">
-                  <FaCss3Alt className="text-blue-500 w-5 h-5 flex-shrink-0" />{" "}
-                  CSS
-                </li>
-                <li className="flex items-center gap-2 hover:text-white transition-colors">
-                  <FaJs className="text-yellow-300 w-5 h-5 flex-shrink-0" />{" "}
-                  JavaScript
-                </li>
-                <li className="flex items-center gap-2 hover:text-white transition-colors">
-                  <SiAstro className="text-orange-400 w-5 h-5 flex-shrink-0" />{" "}
-                  Astro
-                </li>
-                <li className="flex items-center gap-2 hover:text-white transition-colors">
-                  <FaReact className="text-cyan-400 w-5 h-5 flex-shrink-0" />{" "}
-                  React
-                </li>
-                <li className="flex items-center gap-2 hover:text-white transition-colors">
-                  <SiTailwindcss className="text-teal-400 w-5 h-5 flex-shrink-0" />{" "}
-                  Tailwind CSS
-                </li>
-                <li className="flex items-center gap-2 hover:text-white transition-colors">
-                  <FaJava className="text-orange-400 w-5 h-5 flex-shrink-0" />{" "}
-                  Java
-                </li>
-                <li className="flex items-center gap-2 hover:text-white transition-colors">
-                  <SiCplusplus className="text-purple-400 w-5 h-5 flex-shrink-0" />{" "}
-                  C++
-                </li>
-              </ul>
-            </section>
-            <Buttons88x31 />
-          </main>
+                  </h1>
+                  <p className="text-gray-400 text-sm mb-6 font-mono bg-gray-900/50 inline-block px-3 py-1 rounded-full">
+                    Haiii visitors1!!1!!!1
+                  </p>
+                  
+                  {/* Social Icons */}
+                  <div className="flex gap-4 mb-6">
+                    {[
+                      { Icon: FaGithub, href: "https://github.com/vorlie", color: "hover:text-white" },
+                      { Icon: FaDiscord, href: "https://discord.gg/yUueAFyAmN", color: "hover:text-indigo-400" },
+                      { Icon: FaSteam, href: "https://steamcommunity.com/id/s9suk3_41z3n/", color: "hover:text-blue-500" },
+                      { Icon: FaYoutube, href: "https://www.youtube.com/@vve1_", color: "hover:text-red-500" },
+                    ].map(({ Icon, href, color }, index) => (
+                      <a
+                        key={index}
+                        href={href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`text-gray-400 transition-all duration-300 transform hover:scale-110 ${color}`}
+                      >
+                        <Icon size={24} />
+                      </a>
+                    ))}
+                  </div>
 
-          <aside className="lg:w-1/3 flex-shrink-0">
-            {" "}
-            <section className="mb-8 top-8">
-              {" "}
-              <h2 className="text-2xl font-semibold mb-4 text-white">
-                Stalk me here
-              </h2>
-              <div className="bg-gray-900/90 p-4 rounded-lg shadow-lg">
-                {" "}
-                <LanyardPresence discordId={MY_DISCORD_ID} />
-              </div>
-            </section>
-            <section className="mb-8">
-              {" "}
-              <h2 className="text-2xl font-semibold mb-4 text-white">
-                Tic Tac Toe
-              </h2>
-              <TicTacToe />
-            </section>
-          </aside>
+                  <div className="space-y-4 text-lg text-gray-300 leading-relaxed max-w-xl">
+                    <p>
+                      I focus on writing code and building projects across various
+                      technologies. I love anime, games, and music.
+                    </p>
+                    <p>
+                      I have an interest in{" "}
+                      <span className="text-blue-400 font-medium bg-blue-400/10 px-1 rounded">games</span>,
+                      <span className="text-blue-400 font-medium bg-blue-400/10 px-1 rounded"> music</span>, and{" "}
+                      <span className="text-blue-400 font-medium bg-blue-400/10 px-1 rounded">anime</span>.
+                    </p>
+                  </div>
+                  <div className="mt-8">
+                     <Buttons88x31 />
+                  </div>
+                </div>
+
+                {/* Floating Mascot */}
+                <div className="md:block absolute -bottom-4 -right-4 w-64 h-64 pointer-events-none opacity-90 z-0">
+                  <img 
+                    src="/images/evernight_chibi.gif" 
+                    alt="Chibi Mascot" 
+                    className="w-full h-full object-contain drop-shadow-[0_0_15px_rgba(230,204,213,1)]"
+                    onError={(e) => {
+                      e.currentTarget.style.display = 'none';
+                    }}
+                  />
+                </div>
+              </section>
+            </main>
+
+            {/* Sidebar: Status & TicTacToe */}
+            <aside className="space-y-8">
+              <section className="bg-gray-900/60 backdrop-blur-md border border-gray-700/50 rounded-2xl shadow-xl p-6">
+                <div className="">
+                  <LanyardPresence discordId={MY_DISCORD_ID} />
+                </div>
+              </section>
+              
+              <section className="bg-gray-900/60 backdrop-blur-md border border-gray-700/50 rounded-2xl shadow-xl p-6">
+                 <h2 className="text-xl font-semibold mb-4 text-white">
+                  Tic Tac Toe
+                </h2>
+                <TicTacToe />
+              </section>
+            </aside>
+          </div>
+
+          {/* Technologies Section */}
+          <section className="bg-gray-900/60 backdrop-blur-md border border-gray-700/50 rounded-2xl shadow-xl p-8">
+            <h2 className="text-2xl font-semibold mb-6 text-white border-b border-gray-700/50 pb-2">
+              Technologies I Use
+            </h2>
+            <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+              {[
+                { Icon: SiTypescript, color: "text-blue-400", label: "TypeScript" },
+                { Icon: FaPython, color: "text-yellow-400", label: "Python" },
+                { Icon: FaHtml5, color: "text-orange-500", label: "HTML" },
+                { Icon: FaCss3Alt, color: "text-blue-500", label: "CSS" },
+                { Icon: FaJs, color: "text-yellow-300", label: "JavaScript" },
+                { Icon: SiAstro, color: "text-orange-400", label: "Astro" },
+                { Icon: FaReact, color: "text-cyan-400", label: "React" },
+                { Icon: SiTailwindcss, color: "text-teal-400", label: "Tailwind" },
+                { Icon: FaJava, color: "text-orange-400", label: "Java" },
+                { Icon: SiCplusplus, color: "text-purple-400", label: "C++" },
+              ].map(({ Icon, color, label }) => (
+                <li key={label} className="flex items-center gap-3 p-3 rounded-xl hover:bg-white/5 transition-all duration-300 group cursor-default border border-transparent hover:border-white/10">
+                  <Icon className={`${color} w-6 h-6 group-hover:scale-110 transition-transform duration-300`} />
+                  <span className="text-gray-300 group-hover:text-white font-medium">{label}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
         </div>{" "}
-        <ProjectsPage />
-        <footer className="mt-16 pt-8 border-t border-gray-700 text-center text-gray-500 text-sm">
+        <section id="projects" className="bg-gray-900/60 backdrop-blur-md border border-gray-700/50 rounded-2xl shadow-xl p-8 mt-8">
+          <h2 className="text-3xl font-bold mb-6 text-white text-center">Projects</h2>
+          <Projects />
+        </section>
+        <footer className="mt-8 pb-12 border-gray-700 text-center text-gray-500 text-sm">
           {commitInfo ? (
             <p>
               Last commit:{" "}

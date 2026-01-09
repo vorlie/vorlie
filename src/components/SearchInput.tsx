@@ -18,7 +18,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
-        className="flex-grow p-3 rounded-lg bg-gray-700 text-white placeholder-gray-400 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200"
+        className="flex-grow p-3 rounded-xl bg-gray-900/90 text-white placeholder-gray-400 border border-gray-700/50 hover:border-white/10 focus:outline-none focus:border-white/20 transition-all duration-300"
       />
   );
 };

@@ -14,7 +14,7 @@ const Project: React.FC<ProjectProps> = ({
   languages,
   languageIcons,
 }) => (
-  <div className="bg-gray-800/50 rounded-lg shadow-lg p-5 flex flex-col h-full transition-shadow duration-300 hover:shadow-xl">
+  <div className="rounded-xl p-5 flex flex-col h-full hover:bg-white/5 transition-all duration-300 group cursor-default border border-transparent hover:border-white/10">
     <div className="flex-grow mb-4">
       <h3 className="text-xl font-semibold text-white mb-1">{title}</h3>
       <p className="text-sm text-gray-300 leading-relaxed">{desc}</p>

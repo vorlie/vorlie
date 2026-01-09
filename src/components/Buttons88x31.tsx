@@ -99,7 +99,7 @@ const Buttons88x31: React.FC = () => {
       <div className="mb-4">
         <button
           onClick={handleCopyClick}
-          className="bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium px-5 py-2 rounded-md shadow transition-all duration-200 ease-in-out transform focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-opacity-75"
+          className="bg-gray-900/90 rounded-xl text-white text-sm font-medium px-5 py-2 hover:bg-white/5 transition-all duration-300 group cursor-default border border-transparent hover:border-white/10"
         >
           Copy my button code
         </button>

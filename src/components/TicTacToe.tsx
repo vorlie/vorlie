@@ -250,14 +250,14 @@ const TicTacToe: React.FC = () => {
 
   // --- Render Component ---
   return (
-    <div className="flex flex-col items-center p-4 bg-gray-800/50 rounded-lg shadow-lg">
+    <div className="flex flex-col items-center">
       {/* Mode Switch */}
       <div className="mb-4">
         <button
           className={`mr-2 px-3 py-1 rounded ${
             mode === "bot"
-              ? "bg-blue-600 hover:bg-blue-700 text-white"
-              : "bg-gray-600 text-gray-200"
+              ? "border-white bg-gray-900/90 rounded-xl text-white text-sm font-medium px-5 py-2 hover:bg-white/5 transition-all duration-300 group cursor-default border border-transparent hover:border-white/10"
+              : "bg-gray-900/90 rounded-xl text-white text-sm font-medium px-2 py-2 hover:bg-white/5 transition-all duration-300 group cursor-default border border-transparent hover:border-white/10"
           }`}
           onClick={() => {
             setMode("bot");
@@ -270,8 +270,8 @@ const TicTacToe: React.FC = () => {
         <button
           className={`px-3 py-1 rounded ${
             mode === "local"
-              ? "bg-blue-600 hover:bg-blue-700 text-white"
-              : "bg-gray-600 hover:bg-gray-700 text-gray-200"
+              ? "border-white bg-gray-900/90 rounded-xl text-white text-sm font-medium px-5 py-2 hover:bg-white/5 transition-all duration-300 group cursor-default border border-transparent hover:border-white/10"
+              : "bg-gray-900/90 rounded-xl text-white text-sm font-medium px-2 py-2 hover:bg-white/5 transition-all duration-300 group cursor-default border border-transparent hover:border-white/10"
           }`}
           onClick={() => {
             setMode("local");

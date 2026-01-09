@@ -57,7 +57,7 @@ export const LANYARD_THEMES: Record<string, LanyardTheme> = {
     textClass: "text-green-400",
   },
   "Google Antigravity": {
-    name: "Google Antigravity",
+    name: "Antigravity",
     color: "text-blue-400",
     pulseColor: "96, 165, 250",
     icon: FaReact,

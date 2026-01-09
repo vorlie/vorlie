@@ -121,26 +121,27 @@ const Clips: React.FC = () => {
   }
 
   return (
-    <div className="container mx-auto p-4 pt-4 text-white">
-      <h1 className="text-4xl font-extrabold mb-4 text-center md:text-left">
-        Clips and Highlights
-      </h1>
-      <p className="text-lg text-gray-300 mb-8 text-center md:text-left max-w-3xl mx-auto md:mx-0">
-        This page showcases some of my favorite clips and highlights from
-        various streams and gaming sessions. Use the search bar to find specific
-        moments!
-      </p>
+    <div className="min-h-screen text-gray-100">
+      <div className="max-w-6xl mx-auto relative z-10 p-4 md:p-8">
+        <h1 className="text-4xl font-extrabold mb-4 text-white">
+          Clips and Highlights
+        </h1>
+        <p className="text-lg text-gray-300 mb-8 max-w-3xl">
+          This page showcases some of my favorite clips and highlights from
+          various streams and gaming sessions. Use the search bar to find specific
+          moments!
+        </p>
 
-      <div className="flex items-center gap-2">
-        <select
-          value={sortOrder}
-          onChange={(e) => setSortOrder(e.target.value as "newest" | "oldest")}
-          className="bg-gray-700 text-white rounded-lg p-3 border border-gray-600"
-          aria-label="Sort clips"
-        >
-          <option value="newest">Newest First</option>
-          <option value="oldest">Oldest First</option>
-        </select>
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 mb-8">
+          <select
+            value={sortOrder}
+            onChange={(e) => setSortOrder(e.target.value as "newest" | "oldest")}
+            className="bg-gray-900/90 rounded-xl text-white text-sm font-medium px-4 py-3 hover:bg-white/5 transition-all duration-300 border border-gray-700/50 hover:border-white/10 focus:outline-none focus:border-white/20"
+            aria-label="Sort clips"
+          >
+            <option value="newest">Newest First</option>
+            <option value="oldest">Oldest First</option>
+          </select>
         <SearchInput
           value={searchText}
           onChange={setSearchText}
@@ -160,6 +161,7 @@ const Clips: React.FC = () => {
 
       {/* Render the modal if a clip is selected */}
       <VideoModal clip={selectedClip} onClose={handleCloseModal} />
+      </div>
     </div>
   );
 };

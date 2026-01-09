@@ -84,11 +84,11 @@ const SystemCard: React.FC<SystemCardProps> = ({ system }) => {
   };
 
   return (
-    <section className="my-6 bg-gray-800/50 rounded-lg shadow-lg overflow-hidden">
+    <section className="my-6 bg-gray-900/60 backdrop-blur-md border border-gray-700/50 rounded-2xl shadow-xl overflow-hidden transition-all duration-300 hover:border-gray-600/50">
       <button
         type="button"
         onClick={toggleExpansion}
-        className="w-full flex justify-between items-center p-5 text-left cursor-pointer focus:outline-none rounded-lg hover:bg-gray-800/60 transition-colors"
+        className="w-full flex justify-between items-center p-6 text-left cursor-pointer focus:outline-none hover:bg-white/5 transition-all duration-300"
         aria-expanded={isExpanded}
         aria-controls={`system-specs-content-${system.name.replace(
           /\s/g,
