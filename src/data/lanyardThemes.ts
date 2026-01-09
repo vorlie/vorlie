@@ -1,6 +1,6 @@
 import { IconType } from "react-icons";
 import { FaYoutube, FaXbox, FaReact, FaMusic } from "react-icons/fa";
-import { SiJellyfin, SiIntellijidea } from "react-icons/si";
+import { SiYoutubemusic, SiJellyfin, SiIntellijidea } from "react-icons/si";
 import { VscCode } from "react-icons/vsc";
 
 export interface LanyardTheme {
@@ -40,7 +40,7 @@ export const LANYARD_THEMES: Record<string, LanyardTheme> = {
     name: "YouTube Music",
     color: "text-red-500",
     pulseColor: "239, 68, 68",
-    icon: FaYoutubeMusic,
+    icon: SiYoutubemusic,
     label: "Listening to",
     bgClass: "bg-red-900/20",
     borderClass: "border-red-900/30",
@@ -98,7 +98,4 @@ export const LANYARD_THEMES: Record<string, LanyardTheme> = {
     repoUrl: "https://github.com/vorlie/iotaplayer",
   },
 };
-function FaYoutubeMusic(props: IconBaseProps): ReactNode {
-  throw new Error("Function not implemented.");
-}
 
