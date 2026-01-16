@@ -14,28 +14,28 @@ const Project: React.FC<ProjectProps> = ({
   languages,
   languageIcons,
 }) => (
-  <div className="rounded-xl p-5 flex flex-col h-full hover:bg-white/5 transition-all duration-300 group cursor-default border border-transparent hover:border-white/10">
+  <div className="bg-m3-surface-container/50 border border-m3-outline/5 rounded-[24px] p-6 flex flex-col h-full hover:bg-m3-on-surface/5 transition-all duration-300 group cursor-default border border-transparent hover:border-m3-outline/20">
     <div className="flex-grow mb-4">
-      <h3 className="text-xl font-semibold text-white mb-1">{title}</h3>
-      <p className="text-sm text-gray-300 leading-relaxed">{desc}</p>
+      <h3 className="text-xl font-bold text-m3-on-surface mb-2 tracking-tight">{title}</h3>
+      <p className="text-sm text-m3-on-surface-variant leading-relaxed font-medium">{desc}</p>
     </div>
 
     <div>
-      <hr className="border-t border-gray-700 my-3" />
-      <div className="flex flex-wrap justify-between items-center gap-y-2 text-sm">
-        <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+      <hr className="border-t border-m3-outline/10 my-4" />
+      <div className="flex flex-wrap justify-between items-center gap-y-3 text-sm">
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
           {links.map((link, index) => (
             <React.Fragment key={link.href}>
               <a
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-blue-400 hover:text-blue-300 hover:underline font-medium transition-colors"
+                className="text-m3-primary hover:text-m3-primary/80 font-bold transition-colors"
               >
                 {link.text}
               </a>
               {index < links.length - 1 && (
-                <span className="text-gray-500" aria-hidden="true">
+                <span className="text-m3-on-surface-variant/50" aria-hidden="true">
                   &bull;
                 </span>
               )}
@@ -47,10 +47,10 @@ const Project: React.FC<ProjectProps> = ({
           {languages.map((lang, index) => (
             <div
               key={lang}
-              className="flex items-center gap-1 bg-gray-700 text-gray-300 px-2 py-0.5 rounded-full text-xs whitespace-nowrap"
+              className="flex items-center gap-1.5 bg-m3-primary/10 text-m3-primary px-3 py-1 rounded-full text-xs font-bold border border-m3-primary/20 whitespace-nowrap"
             >
               {languageIcons && languageIcons[index] && (
-                <span className="inline-block w-3 h-3">
+                <span className="inline-block w-3.5 h-3.5 opacity-80">
                   {languageIcons[index]}
                 </span>
               )}

@@ -72,17 +72,17 @@ const Buttons88x31: React.FC = () => {
   };
 
   return (
-    <section className="my-12 text-left">
+    <section className="my-10 text-left">
       {" "}
-      <h2 className="text-2xl font-semibold mb-6 text-white">My Friends</h2>
-      <div className="flex flex-wrap gap-2 mb-6">
+      <h2 className="text-2xl font-bold mb-6 text-m3-on-surface tracking-tight">My Friends</h2>
+      <div className="flex flex-wrap gap-3 mb-8">
         {friendButtons.map((button) => (
           <a
             key={button.href}
             href={button.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block transition-transform duration-200"
+            className="inline-block transition-all duration-300 transform hover:scale-110 hover:-translate-y-1"
             title={button.alt}
           >
             <img
@@ -91,7 +91,7 @@ const Buttons88x31: React.FC = () => {
               width="88"
               height="31"
               loading="lazy"
-              className="block"
+              className="block rounded-[8px] shadow-sm border border-m3-outline/10"
             />
           </a>
         ))}
@@ -99,7 +99,7 @@ const Buttons88x31: React.FC = () => {
       <div className="mb-4">
         <button
           onClick={handleCopyClick}
-          className="bg-gray-900/90 rounded-xl text-white text-sm font-medium px-5 py-2 hover:bg-white/5 transition-all duration-300 group cursor-default border border-transparent hover:border-white/10"
+          className="bg-m3-primary-container text-m3-on-primary-container text-sm font-bold px-6 py-2.5 rounded-full hover:bg-m3-primary hover:text-m3-on-primary transition-all duration-300 shadow-sm hover:shadow-md cursor-pointer border border-m3-primary/20"
         >
           Copy my button code
         </button>

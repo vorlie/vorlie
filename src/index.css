@@ -1,18 +1,25 @@
-@import url('https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&family=Chicle&family=Creepster&family=Metal+Mania&family=MuseoModerno:ital,wght@0,100..900;1,100..900&family=Pixelify+Sans:wght@400..700&family=Zilla+Slab:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Cherry+Bomb+One&family=Chicle&family=Creepster&family=Metal+Mania&family=MuseoModerno:ital,wght@0,100..900;1,100..900&family=Pixelify+Sans:wght@400..700&family=Zilla+Slab:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
 @import "tailwindcss";
 
+@layer base {
+  html {
+    font-family: 'Google Sans', 'Roboto', sans-serif;
+  }
+}
+
 @theme {
-  --color-blue-50: oklch(0.98 0.01 227);
-  --color-blue-100: oklch(0.95 0.02 227);
-  --color-blue-200: oklch(0.90 0.035 227);
-  --color-blue-300: oklch(0.85 0.045 227);
-  --color-blue-400: oklch(0.77 0.055 227);
-  --color-blue-500: oklch(0.70 0.063 227);
-  --color-blue-600: oklch(0.60 0.06 227);
-  --color-blue-700: oklch(0.50 0.055 227);
-  --color-blue-800: oklch(0.40 0.05 227);
-  --color-blue-900: oklch(0.30 0.045 227);
-  --color-blue-950: oklch(0.20 0.04 227);
+  --color-m3-surface: var(--color-m3-surface, #1C1B1F);
+  --color-m3-surface-container: var(--color-m3-surface-container, #211F26);
+  --color-m3-surface-variant: var(--color-m3-surface-variant, #49454F);
+  --color-m3-primary: var(--color-m3-primary, #D0BCFF);
+  --color-m3-on-primary: var(--color-m3-on-primary, #381E72);
+  --color-m3-primary-container: var(--color-m3-primary-container, #4F378B);
+  --color-m3-on-primary-container: var(--color-m3-on-primary-container, #EADDFF);
+  --color-m3-secondary: var(--color-m3-secondary, #CCC2DC);
+  --color-m3-on-secondary: var(--color-m3-on-secondary, #332D41);
+  --color-m3-outline: var(--color-m3-outline, #938F99);
+  --color-m3-on-surface: var(--color-m3-on-surface, #E6E1E5);
+  --color-m3-on-surface-variant: var(--color-m3-on-surface-variant, #CAC4D0);
 }
 
 :root {

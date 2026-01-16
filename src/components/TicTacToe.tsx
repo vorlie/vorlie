@@ -33,11 +33,11 @@ interface SquareProps {
 }
 const Square: React.FC<SquareProps> = ({ value, onSquareClick, disabled }) => {
   const textClass =
-    value === "X" ? "text-red-400" : value === "O" ? "text-blue-400" : "";
+    value === "X" ? "text-red-400" : value === "O" ? "text-m3-primary" : "";
   return (
     <button
       type="button"
-      className={`w-16 h-16 sm:w-20 sm:h-20 bg-gray-700 border border-gray-600/50 rounded m-1 flex items-center justify-center leading-none text-3xl sm:text-4xl font-bold focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-teal-500 disabled:opacity-60 disabled:cursor-not-allowed hover:enabled:bg-gray-600 transition-colors duration-150 ${textClass}`}
+      className={`w-16 h-16 sm:w-20 sm:h-20 bg-m3-surface border border-m3-outline/20 rounded-[12px] m-1 flex items-center justify-center leading-none text-3xl sm:text-4xl font-bold focus:outline-none focus:ring-2 focus:ring-m3-primary/30 disabled:opacity-50 disabled:cursor-not-allowed hover:enabled:bg-m3-surface-variant transition-all duration-200 ${textClass}`}
       onClick={onSquareClick}
       disabled={disabled}
       aria-label={`Square ${value ? `contains ${value}` : "empty"}`}
@@ -252,54 +252,54 @@ const TicTacToe: React.FC = () => {
   return (
     <div className="flex flex-col items-center">
       {/* Mode Switch */}
-      <div className="mb-4">
+      <div className="flex bg-m3-surface rounded-full p-1 mb-6 border border-m3-outline/10 shadow-inner">
         <button
-          className={`mr-2 px-3 py-1 rounded ${
+          className={`px-4 py-1.5 rounded-full text-xs font-bold transition-all duration-200 ${
             mode === "bot"
-              ? "border-white bg-gray-900/90 rounded-xl text-white text-sm font-medium px-5 py-2 hover:bg-white/5 transition-all duration-300 group cursor-default border border-transparent hover:border-white/10"
-              : "bg-gray-900/90 rounded-xl text-white text-sm font-medium px-2 py-2 hover:bg-white/5 transition-all duration-300 group cursor-default border border-transparent hover:border-white/10"
+              ? "bg-m3-primary-container text-m3-on-primary-container shadow-sm"
+              : "text-m3-on-surface-variant hover:text-m3-on-surface"
           }`}
           onClick={() => {
             setMode("bot");
             handleRestart();
           }}
-          disabled={mode === "bot"}
         >
-          User vs Bot
+          USER VS BOT
         </button>
         <button
-          className={`px-3 py-1 rounded ${
+          className={`px-4 py-1.5 rounded-full text-xs font-bold transition-all duration-200 ${
             mode === "local"
-              ? "border-white bg-gray-900/90 rounded-xl text-white text-sm font-medium px-5 py-2 hover:bg-white/5 transition-all duration-300 group cursor-default border border-transparent hover:border-white/10"
-              : "bg-gray-900/90 rounded-xl text-white text-sm font-medium px-2 py-2 hover:bg-white/5 transition-all duration-300 group cursor-default border border-transparent hover:border-white/10"
+              ? "bg-m3-primary-container text-m3-on-primary-container shadow-sm"
+              : "text-m3-on-surface-variant hover:text-m3-on-surface"
           }`}
           onClick={() => {
             setMode("local");
             handleRestart();
           }}
-          disabled={mode === "local"}
         >
-          User vs User (Local)
+          LOCAL PVP
         </button>
       </div>
+
       {/* Status Display */}
       <div
-        className={`text-xl font-semibold mb-4 h-7 ${
+        className={`text-base font-black uppercase tracking-widest mb-6 h-6 ${
           winnerInfo && winnerInfo === "X"
             ? "text-green-400"
             : winnerInfo && winnerInfo === "O"
-            ? "text-red-400"
+            ? "text-m3-primary"
             : winnerInfo === "Draw"
             ? "text-yellow-400"
             : isBotThinking
-            ? "text-gray-400 animate-pulse"
-            : "text-gray-100"
+            ? "text-m3-on-surface-variant animate-pulse"
+            : "text-m3-on-surface-variant opacity-80"
         }`}
       >
         {status}
       </div>
+
       {/* Game Board */}
-      <div className="grid grid-cols-3">
+      <div className="grid grid-cols-3 bg-m3-surface-variant/20 p-2 rounded-[16px] border border-m3-outline/5">
         {board.map((_, i) => (
           <Square
             key={i}
@@ -313,12 +313,13 @@ const TicTacToe: React.FC = () => {
           />
         ))}
       </div>
+
       {/* Restart Button */}
       {gameOver && (
         <button
           type="button"
           onClick={handleRestart}
-          className="mt-4 px-5 py-2 bg-teal-600 hover:bg-teal-700 text-white font-semibold rounded-md shadow transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-teal-500"
+          className="mt-8 px-8 py-3 bg-m3-primary text-m3-on-primary font-black uppercase tracking-tighter rounded-full shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-200 focus:outline-none focus:ring-4 focus:ring-m3-primary/30"
         >
           {" "}
           Play Again?{" "}

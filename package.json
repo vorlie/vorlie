@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
+    "@material/material-color-utilities": "^0.3.0",
     "@tailwindcss/vite": "^4.1.4",
     "colorthief": "^2.6.0",
     "html5-qrcode": "^2.3.8",

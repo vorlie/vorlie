@@ -22,10 +22,10 @@ const ItemList: React.FC<{ items: ListItem[] }> = ({ items }) => (
         key={`${item.label}-${index}`}
         className="flex flex-col md:flex-row md:items-baseline md:space-x-2"
       >
-        <span className="text-gray-400 font-medium w-32 flex-shrink-0">
+        <span className="text-m3-on-surface-variant font-bold w-32 flex-shrink-0 text-sm uppercase tracking-tight">
           {item.label}:
         </span>
-        <span className="text-gray-100 font-semibold flex-grow">
+        <span className="text-m3-on-surface font-semibold flex-grow">
           {Array.isArray(item.value) ? (
             <ul className="list-disc ml-4">
               {item.value.map((monitor, i) => (
@@ -84,29 +84,29 @@ const SystemCard: React.FC<SystemCardProps> = ({ system }) => {
   };
 
   return (
-    <section className="my-6 bg-gray-900/60 backdrop-blur-md border border-gray-700/50 rounded-2xl shadow-xl overflow-hidden transition-all duration-300 hover:border-gray-600/50">
+    <section className="my-6 bg-m3-surface-container border border-m3-outline/10 rounded-[24px] shadow-sm overflow-hidden transition-all duration-300 hover:border-m3-outline/20">
       <button
         type="button"
         onClick={toggleExpansion}
-        className="w-full flex justify-between items-center p-6 text-left cursor-pointer focus:outline-none hover:bg-white/5 transition-all duration-300"
+        className="w-full flex justify-between items-center p-6 text-left cursor-pointer focus:outline-none hover:bg-m3-on-surface/5 transition-all duration-200"
         aria-expanded={isExpanded}
         aria-controls={`system-specs-content-${system.name.replace(
           /\s/g,
           "-"
         )}`}
       >
-        <h3 className="text-2xl font-bold text-white">{system.name}</h3>
-        <span className="text-gray-400 transition-transform duration-300 ease-in-out transform hover:scale-110">
+        <h3 className="text-2xl font-bold text-m3-on-surface tracking-tight">{system.name}</h3>
+        <span className="text-m3-on-surface-variant transition-transform duration-300 ease-in-out">
           {isExpanded ? (
-            <FaChevronUp size="1em" />
+            <FaChevronUp size="1.2em" />
           ) : (
-            <FaChevronDown size="1em" />
+            <FaChevronDown size="1.2em" />
           )}
         </span>
       </button>
 
       {system.description && (
-        <p className="px-5 pb-3 text-gray-300 text-sm">{system.description}</p>
+        <p className="px-6 pb-4 text-m3-on-surface-variant text-sm font-medium">{system.description}</p>
       )}
 
       <div
@@ -115,30 +115,28 @@ const SystemCard: React.FC<SystemCardProps> = ({ system }) => {
           isExpanded ? "max-h-[2500px]" : "max-h-0"
         }`}
       >
-        <div className="px-5 pb-5 pt-3 border-t border-gray-700">
+        <div className="px-6 pb-6 pt-2 border-t border-m3-outline/10">
           {/* Core PC Specifications Section */}
-          <h4 className="text-xl font-semibold text-gray-200 mb-3 border-b border-gray-700 pb-2">
+          <h4 className="text-lg font-bold text-m3-primary mt-4 mb-4 uppercase tracking-wider text-xs">
             Core PC Specifications
           </h4>
-          <ItemList items={system.specs} /> {/* Using the generic ItemList */}
+          <ItemList items={system.specs} />
           {/* Peripherals Section (conditionally rendered) */}
           {system.peripherals && system.peripherals.length > 0 && (
             <>
-              <h4 className="text-xl font-semibold text-gray-200 mt-6 mb-3 border-b border-gray-700 pb-2">
+              <h4 className="text-lg font-bold text-m3-primary mt-8 mb-4 uppercase tracking-wider text-xs">
                 Peripherals
               </h4>
-              <ItemList items={system.peripherals} />{" "}
-              {/* Using the generic ItemList */}
+              <ItemList items={system.peripherals} />
             </>
           )}
           {/* Software & Operating Systems Section (conditionally rendered) */}
           {system.softwareAndOS && system.softwareAndOS.length > 0 && (
             <>
-              <h4 className="text-xl font-semibold text-gray-200 mt-6 mb-3 border-b border-gray-700 pb-2">
+              <h4 className="text-lg font-bold text-m3-primary mt-8 mb-4 uppercase tracking-wider text-xs">
                 Software & Operating Systems
               </h4>
-              <ItemList items={system.softwareAndOS} />{" "}
-              {/* Using the generic ItemList */}
+              <ItemList items={system.softwareAndOS} />
             </>
           )}
         </div>

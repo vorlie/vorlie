@@ -5,12 +5,12 @@ import { allSystemSpecs } from "../data/systemSpecs";
 
 const PCSpecs: React.FC = () => {
   return (
-    <div className="min-h-screen text-gray-100">
+    <div className="min-h-screen bg-m3-surface text-m3-on-surface">
       <div className="max-w-6xl mx-auto relative z-10 p-4 md:p-8">
-        <h1 className="text-4xl font-extrabold mb-4 text-white">
+        <h1 className="text-4xl font-bold mb-4 text-m3-on-surface tracking-tight">
           My Tech Arsenal
         </h1>
-        <p className="text-lg text-gray-300 mb-8">
+        <p className="text-lg text-m3-on-surface-variant mb-8 font-medium">
           Here's a detailed look at the computing systems I currently use for
           various purposes, from gaming and development.
         </p>
@@ -19,7 +19,7 @@ const PCSpecs: React.FC = () => {
           <SystemCard key={index} system={system} />
         ))}
 
-        <p className="text-gray-400 mt-8 text-sm">
+        <p className="text-m3-on-surface-variant mt-8 text-sm opacity-70">
           Details are kept as up-to-date as possible, reflecting upgrades and
           changes.
         </p>

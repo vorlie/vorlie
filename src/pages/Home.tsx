@@ -103,17 +103,17 @@ function Home() {
   }, [GITHUB_REPO]);
 
   return (
-    <div className="min-h-scree text-gray-100">
-      <div className="max-w-6xl mx-auto relative z-10 ">
+    <div className="min-h-screen text-m3-on-surface">
+      <div className="max-w-6xl mx-auto relative z-10 px-4 py-8">
         {" "}
-        <div className="flex flex-col gap-8">
+        <div className="flex flex-col gap-6">
           {/* Top Section: Hero & Status */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {/* Hero Card */}
             <main className="lg:col-span-2">
-              <section className="h-full flex flex-col justify-start bg-gray-900/60 backdrop-blur-md border border-gray-700/50 rounded-2xl shadow-xl p-8 relative overflow-hidden group">
+              <section className="h-full flex flex-col justify-start bg-m3-surface-container border border-m3-outline/10 rounded-[32px] shadow-sm p-8 relative overflow-hidden group">
                 <div className="relative z-10 w-full">
-                  <h1 className="text-4xl sm:text-5xl font-bold text-white leading-tight mb-4">
+                  <h1 className="text-4xl sm:text-5xl font-bold text-m3-on-surface leading-tight mb-4 tracking-tight">
                     Hello, I'm{" "}
                     <div className="effect-neon inline-block">
                       <span className="glow-layer" aria-hidden="true">
@@ -125,28 +125,28 @@ function Home() {
                         </span>
                       </span>
                     </div>
-                    <span className="block text-2xl sm:text-3xl mt-2 text-gray-300 font-normal">
+                    <span className="block text-2xl sm:text-3xl mt-2 text-m3-on-surface-variant font-medium">
                       <TypewriterText texts={["a friendly coder.", "a web developer.", "an osu! player.", "a tech enthusiast."]} />
                     </span>
                   </h1>
-                  <p className="text-gray-400 text-sm mb-6 font-mono bg-gray-900/50 inline-block px-3 py-1 rounded-full">
+                  <p className="text-m3-primary text-sm mb-6 font-mono bg-m3-primary/10 inline-block px-4 py-1.5 rounded-full font-semibold">
                     Haiii visitors1!!1!!!1
                   </p>
                   
                   {/* Social Icons */}
-                  <div className="flex gap-4 mb-6">
+                  <div className="flex gap-3 mb-6">
                     {[
-                      { Icon: FaGithub, href: "https://github.com/vorlie", color: "hover:text-white" },
-                      { Icon: FaDiscord, href: "https://discord.gg/yUueAFyAmN", color: "hover:text-indigo-400" },
-                      { Icon: FaSteam, href: "https://steamcommunity.com/id/s9suk3_41z3n/", color: "hover:text-blue-500" },
-                      { Icon: FaYoutube, href: "https://www.youtube.com/@vve1_", color: "hover:text-red-500" },
+                      { Icon: FaGithub, href: "https://github.com/vorlie", color: "hover:bg-m3-on-surface/10" },
+                      { Icon: FaDiscord, href: "https://discord.gg/yUueAFyAmN", color: "hover:bg-m3-on-surface/10" },
+                      { Icon: FaSteam, href: "https://steamcommunity.com/id/s9suk3_41z3n/", color: "hover:bg-m3-on-surface/10" },
+                      { Icon: FaYoutube, href: "https://www.youtube.com/@vve1_", color: "hover:bg-m3-on-surface/10" },
                     ].map(({ Icon, href, color }, index) => (
                       <a
                         key={index}
                         href={href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={`text-gray-400 transition-all duration-300 transform hover:scale-110 ${color}`}
+                        className={`p-3 rounded-full text-m3-on-surface-variant transition-all duration-300 transform hover:scale-110 ${color}`}
                       >
                         <Icon size={24} />
                       </a>
@@ -160,9 +160,9 @@ function Home() {
                     </p>
                     <p>
                       I have an interest in{" "}
-                      <span className="text-blue-400 font-medium bg-blue-400/10 px-1 rounded">games</span>,
-                      <span className="text-blue-400 font-medium bg-blue-400/10 px-1 rounded"> music</span>, and{" "}
-                      <span className="text-blue-400 font-medium bg-blue-400/10 px-1 rounded">anime</span>.
+                      <span className="text-m3-primary font-bold bg-m3-primary/10 px-2 py-0.5 rounded-full border border-m3-primary/10">games</span>,
+                      <span className="text-m3-primary font-bold bg-m3-primary/10 px-2 py-0.5 rounded-full border border-m3-primary/10"> music</span>, and{" "}
+                      <span className="text-m3-primary font-bold bg-m3-primary/10 px-2 py-0.5 rounded-full border border-m3-primary/10">anime</span>.
                     </p>
                   </div>
                   <div className="mt-8">
@@ -185,15 +185,15 @@ function Home() {
             </main>
 
             {/* Sidebar: Status & TicTacToe */}
-            <aside className="space-y-8">
-              <section className="bg-gray-900/60 backdrop-blur-md border border-gray-700/50 rounded-2xl shadow-xl p-6">
+            <aside className="space-y-6">
+              <section className="bg-m3-surface-container border border-m3-outline/10 rounded-[32px] shadow-sm p-6">
                 <div className="">
                   <LanyardPresence discordId={MY_DISCORD_ID} />
                 </div>
               </section>
               
-              <section className="bg-gray-900/60 backdrop-blur-md border border-gray-700/50 rounded-2xl shadow-xl p-6">
-                 <h2 className="text-xl font-semibold mb-4 text-white">
+              <section className="bg-m3-surface-container border border-m3-outline/10 rounded-[32px] shadow-sm p-6">
+                 <h2 className="text-xl font-bold mb-4 text-m3-on-surface tracking-tight">
                   Tic Tac Toe
                 </h2>
                 <TicTacToe />
@@ -202,8 +202,8 @@ function Home() {
           </div>
 
           {/* Technologies Section */}
-          <section className="bg-gray-900/60 backdrop-blur-md border border-gray-700/50 rounded-2xl shadow-xl p-8">
-            <h2 className="text-2xl font-semibold mb-6 text-white border-b border-gray-700/50 pb-2">
+          <section className="bg-m3-surface-container border border-m3-outline/10 rounded-[32px] shadow-sm p-8">
+            <h2 className="text-2xl font-bold mb-6 text-m3-on-surface tracking-tight border-b border-m3-outline/10 pb-4">
               Technologies I Use
             </h2>
             <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
@@ -219,19 +219,19 @@ function Home() {
                 { Icon: FaJava, color: "text-orange-400", label: "Java" },
                 { Icon: SiCplusplus, color: "text-purple-400", label: "C++" },
               ].map(({ Icon, color, label }) => (
-                <li key={label} className="flex items-center gap-3 p-3 rounded-xl hover:bg-white/5 transition-all duration-300 group cursor-default border border-transparent hover:border-white/10">
+                <li key={label} className="flex items-center gap-3 p-4 rounded-[20px] hover:bg-m3-on-surface/5 transition-all duration-300 group cursor-default border border-transparent hover:border-m3-outline/10">
                   <Icon className={`${color} w-6 h-6 group-hover:scale-110 transition-transform duration-300`} />
-                  <span className="text-gray-300 group-hover:text-white font-medium">{label}</span>
+                  <span className="text-m3-on-surface-variant group-hover:text-m3-on-surface font-semibold">{label}</span>
                 </li>
               ))}
             </ul>
           </section>
         </div>{" "}
-        <section id="projects" className="bg-gray-900/60 backdrop-blur-md border border-gray-700/50 rounded-2xl shadow-xl p-8 mt-8">
-          <h2 className="text-3xl font-bold mb-6 text-white text-center">Projects</h2>
+        <section id="projects" className="bg-m3-surface-container border border-m3-outline/10 rounded-[32px] shadow-sm p-8 mt-8">
+          <h2 className="text-3xl font-bold mb-6 text-m3-on-surface text-center tracking-tight">Projects</h2>
           <Projects />
         </section>
-        <footer className="mt-8 pb-12 border-gray-700 text-center text-gray-500 text-sm">
+        <footer className="mt-8 pb-32 border-m3-outline/10 text-center text-m3-on-surface-variant text-sm font-medium">
           {commitInfo ? (
             <p>
               Last commit:{" "}
@@ -239,30 +239,30 @@ function Home() {
                 href={commitInfo.commitUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-gray-300"
+                className="hover:text-m3-primary transition-colors duration-200"
               >
-                <code>{commitInfo.sha}</code>
+                <code className="bg-m3-on-surface/5 px-2 py-0.5 rounded-md">{commitInfo.sha}</code>
               </a>
-              <span className="mx-1">&bull;</span>
-              <span title={commitInfo.message}>{commitInfo.message}</span>{" "}
-              <span className="mx-1">&bull;</span> by
+              <span className="mx-2 opacity-50">&bull;</span>
+              <span title={commitInfo.message} className="opacity-80">{commitInfo.message}</span>{" "}
+              <span className="mx-2 opacity-50">&bull;</span> by
               <a
                 href={commitInfo.authorUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="ml-1 hover:text-gray-300"
+                className="ml-1 hover:text-m3-primary transition-colors duration-200"
               >
                 {commitInfo.authorName}
               </a>
             </p>
           ) : commitError ? (
-            <p className="text-blue-500">
+            <p className="text-red-400">
               Oops! Something went wrong: {commitError}
             </p>
           ) : (
-            <p>Loading commit info...</p>
+            <p className="opacity-50">Loading commit info...</p>
           )}
-          <p className="mt-2">
+          <p className="mt-4 opacity-50">
             © {new Date().getFullYear()} Charlie. All rights reserved.
           </p>
         </footer>

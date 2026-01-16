@@ -32,66 +32,82 @@ function Navbar() {
 
   return (
     <div className="fixed bottom-6 left-0 right-0 z-50 px-4 flex justify-center pointer-events-none">
-      <nav className="pointer-events-auto w-full max-w-4xl bg-gray-900/80 backdrop-blur-xl border border-gray-700/50 rounded-2xl shadow-2xl px-6 py-3 flex items-center justify-between transition-all duration-300 hover:border-gray-600/50">
+      <nav className="pointer-events-auto w-full max-w-4xl bg-m3-surface-container border border-m3-outline/20 rounded-[28px] shadow-lg px-6 py-3 flex items-center justify-between transition-all duration-300">
         <div className="flex flex-wrap gap-2 justify-center w-full sm:justify-start">
-        {navLinks.map((link, index) => {
-          if (link.children) {
-            // Check if the current link's dropdown is open
-            const isOpen = openDropdown === link.label;
-            return (
-              <div key={index} className="relative group">
-                <button
-                  onClick={() => toggleDropdown(link.label)} // Pass the label to toggle this specific dropdown
-                  className={`text-gray-300 hover:text-white hover:bg-gray-800 transition-colors px-3 py-2 rounded-lg flex items-center gap-1 font-medium text-sm ${
-                    isOpen ? "bg-gray-800 text-white" : ""
-                  }`}
+          {navLinks.map((link, index) => {
+            if (link.children) {
+              const isOpen = openDropdown === link.label;
+              return (
+                <div key={index} className="relative group">
+                  <button
+                    onClick={() => toggleDropdown(link.label)}
+                    className={`text-sm font-medium px-4 py-2 rounded-full flex items-center gap-1 transition-all duration-200 ${
+                      isOpen 
+                        ? "bg-m3-primary-container text-m3-on-primary-container" 
+                        : "text-m3-on-surface-variant hover:bg-m3-on-surface/10"
+                    }`}
+                  >
+                    {link.label}
+                    <ChevronDownIcon
+                      className={`w-4 h-4 transition-transform duration-300 ${
+                        isOpen ? "rotate-0" : "rotate-180"
+                      }`}
+                      aria-hidden="true"
+                    />
+                  </button>
+                  {isOpen && (
+                    <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-4 w-56 bg-m3-surface-container border border-m3-outline/20 rounded-[24px] shadow-2xl z-50 overflow-hidden transform origin-bottom animate-vertical-slide-in">
+                      <div className="p-2 space-y-1">
+                        {link.children.map((childLink) => (
+                          <NavLink
+                            key={childLink.to}
+                            to={childLink.to}
+                            className={({ isActive }) =>
+                              `block px-4 py-3 text-sm font-medium rounded-[16px] transition-all duration-200 ${
+                                isActive 
+                                  ? "bg-m3-secondary text-m3-on-secondary" 
+                                  : "text-m3-on-surface-variant hover:bg-m3-on-surface/10"
+                              }`
+                            }
+                            onClick={() => setOpenDropdown(null)}
+                          >
+                            {childLink.label}
+                          </NavLink>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              );
+            } else {
+              const isExternal = link.to.startsWith("http");
+              return isExternal ? (
+                <a
+                  key={link.to}
+                  href={link.to}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-m3-on-surface-variant hover:bg-m3-on-surface/10 text-sm font-medium px-4 py-2 rounded-full transition-all duration-200"
                 >
                   {link.label}
-                  <ChevronDownIcon
-                    className={`w-4 h-4 transition-transform ${
-                      isOpen ? "rotate-0" : "rotate-180"
-                    }`}
-                    aria-hidden="true"
-                  />
-                </button>
-                {isOpen && ( // Only render if this specific dropdown is open
-                  <div className="absolute bottom-full left-0 mb-3 w-48 bg-gray-800/95 backdrop-blur-xl border border-gray-700/50 rounded-xl shadow-xl z-50 overflow-hidden transform origin-bottom transition-all duration-200">
-                    <div className="p-1">
-                      {link.children.map((childLink) => (
-                        <NavLink
-                          key={childLink.to}
-                          to={childLink.to}
-                          className={({ isActive }) =>
-                            `block text-gray-300 hover:text-white hover:bg-white/10 transition-colors px-3 py-2 text-sm rounded-lg ${
-                              isActive ? "bg-white/10 text-white" : ""
-                            }`
-                          }
-                          onClick={() => setOpenDropdown(null)} // Close all dropdowns on item click
-                        >
-                          {childLink.label}
-                        </NavLink>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </div>
-            );
-          } else {
-            return (
-              <NavLink
-                key={link.to}
-                to={link.to}
-                className={({ isActive }) =>
-                  `text-gray-300 hover:text-white hover:bg-gray-800 transition-colors px-3 py-2 rounded-lg font-medium text-sm ${
-                    isActive ? "bg-gray-800 text-white" : ""
-                  }`
-                }
-              >
-                {link.label}
-              </NavLink>
-            );
-          }
-        })}
+                </a>
+              ) : (
+                <NavLink
+                  key={link.to}
+                  to={link.to}
+                  className={({ isActive }) =>
+                    `text-sm font-medium px-4 py-2 rounded-full transition-all duration-200 ${
+                      isActive 
+                        ? "bg-m3-primary-container text-m3-on-primary-container" 
+                        : "text-m3-on-surface-variant hover:bg-m3-on-surface/10"
+                    }`
+                  }
+                >
+                  {link.label}
+                </NavLink>
+              );
+            }
+          })}
         </div>
       </nav>
     </div>

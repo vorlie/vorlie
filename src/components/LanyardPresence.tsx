@@ -11,7 +11,6 @@ import {
   getFontClass,
   getEffectClass,
   getBannerUrl,
-  getReadableColor,
 } from "../utils/helpers";
 import ActivityTimestamp from "./ActivityTimestamp";
 import MarqueeText from "./MarqueeText";
@@ -66,7 +65,6 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
   const socket = useRef<WebSocket | null>(null);
   const heartbeatInterval = useRef<NodeJS.Timeout | null>(null);
   const spotifyColor = useDominantColor(presenceData?.spotify?.album_art_url || null);
-  const readableSpotifyColor = getReadableColor(spotifyColor);
 
   useEffect(() => {
     if (!discordId) return;
@@ -191,11 +189,11 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
     return {
       name: "",
       label,
-      color: "text-gray-300",
-      pulseColor: "156, 163, 175",
-      bgClass: "bg-gray-800/50",
-      borderClass: "border-gray-700/50",
-      textClass: "text-gray-300",
+      color: "text-m3-on-surface-variant",
+      pulseColor: "208, 188, 255", // primary
+      bgClass: "bg-m3-surface-container",
+      borderClass: "border-m3-outline/10",
+      textClass: "text-m3-on-surface-variant",
       icon,
     };
   };
@@ -208,7 +206,7 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
     }));
 
   const usernameElement = (
-    <div className="text-lg font-semibold flex items-center self-center leading-tight">
+    <div className="text-xl font-bold flex items-center self-center leading-tight tracking-tight text-m3-on-surface">
       {effectClass ? (
         <div className={effectClass}>
           <span className="glow-layer" aria-hidden="true">
@@ -228,14 +226,14 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
       )}
 
       {discord_user.primary_guild && clanIconUrl && (
-        <span className="ml-2 flex items-center bg-gray-900/50 rounded px-2 py-0.5 text-sm font-normal whitespace-nowrap">
+        <span className="ml-2 flex items-center bg-m3-surface rounded-full px-3 py-1 text-xs font-bold whitespace-nowrap border border-m3-outline/10 shadow-sm">
           {" "}
           <img
             src={clanIconUrl}
             alt={`${discord_user.primary_guild.tag} Clan Icon`}
-            className="h-4 w-4 mr-1 object-contain"
+            className="h-3.5 w-3.5 mr-1.5 object-contain"
           />
-          <span className="font-medium bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-[length:200%_auto] bg-clip-text text-transparent">
+          <span className="font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-red-400 bg-clip-text text-transparent">
             {" "}
             {discord_user.primary_guild.tag}
           </span>
@@ -246,15 +244,17 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
 
   return (
     <div className="">
-      <img
-        src={bannerUrl || "https://us-east-1.tixte.net/uploads/cx.tixte.co/banner.gif"}
-        alt="User Banner"
-        className="rounded w-full h-24 object-cover [-webkit-mask-image:linear-gradient(to_right,rgba(0,0,0,0)_00%,rgba(0,0,0,1)_90%)] [mask-image:linear-gradient(to_right,rgba(0,0,0,0)_00%,rgba(0,0,0,1)_90%)]"
-      />
+      <div className="relative overflow-hidden rounded-[20px] h-24 mb-4">
+        <img
+          src={bannerUrl || "https://us-east-1.tixte.net/uploads/cx.tixte.co/banner.gif"}
+          alt="User Banner"
+          className="w-full h-full object-cover [-webkit-mask-image:linear-gradient(to_bottom,rgba(0,0,0,1)_50%,rgba(0,0,0,0)_100%)] [mask-image:linear-gradient(to_bottom,rgba(0,0,0,1)_50%,rgba(0,0,0,0)_100%)] opacity-60"
+        />
+      </div>
 
       <div className="relative">
-        <div className="grid grid-cols-[auto_1fr] gap-x-4 gap-y-1 mb-3 items-start mt-[-5rem]">
-          <div className="relative row-span-2 self-start w-16 h-16rounded-full">
+        <div className="grid grid-cols-[auto_1fr] gap-x-4 gap-y-1 mb-4 items-start mt-[-4rem]">
+          <div className="relative row-span-2 self-start w-16 h-16 rounded-full border-4 border-m3-surface-container shadow-lg">
             {" "}
             <img
               src={avatarUrl}
@@ -264,13 +264,13 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
             <img
               src={decorationUrl}
               alt="Avatar Decoration"
-              className="absolute inset-0 w-full h-full pointer-events-none transform scale-[1.20]"
+              className="absolute inset-0 w-full h-full pointer-events-none transform scale-[1.25]"
             />
           </div>
 
           {usernameElement}
 
-          <div className="text-sm text-gray-400 truncate self-start leading-tight bg-gray-900/50 rounded px-2 py-1 mr-2 flex items-center gap-2">
+          <div className="text-xs text-m3-on-surface-variant truncate self-start leading-tight bg-m3-surface rounded-full px-3 py-1.5 mr-2 flex items-center gap-2 border border-m3-outline/10 shadow-sm">
             <div className="relative flex items-center justify-center w-2 h-2">
               <div
                 className={`absolute inset-0 rounded-full status-indicator-pulse`}
@@ -284,11 +284,11 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
                 className={`relative w-2 h-2 rounded-full ${statusBgColors[discord_status]}`}
               ></div>
             </div>
-            <span className={`${statusTextColors[discord_status]} font-medium`}>
+            <span className={`${statusTextColors[discord_status]} font-bold uppercase tracking-wider`}>
               {statusText}
             </span>
             {customStatus && customStatus.state && (
-              <MarqueeText className="max-w-[10rem]" title={customStatus.state}>
+              <MarqueeText className="max-w-[8rem] font-bold" title={customStatus.state}>
                 {customStatus.emoji?.id ? (
                   <img
                     src={`https://cdn.discordapp.com/emojis/${
@@ -297,7 +297,7 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
                       customStatus.emoji.animated ? "true" : "false"
                     }`}
                     alt={customStatus.emoji.name}
-                    className="inline h-5 align-text-bottom mr-1"
+                    className="inline h-4 align-text-bottom mr-1"
                     title={customStatus.emoji.name}
                   />
                 ) : customStatus.emoji?.name ? (
@@ -317,104 +317,78 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
             )}
           </div>
         </div>
-        <hr className="border-transparent my-4" />{" "}
-        <div className="space-y-2 text-sm">
+        <hr className="border-m3-outline/10 my-6" />{" "}
+        <div className="space-y-3 text-sm">
           {spotify && spotify.track_id && (
             <div
-              className="rounded p-2 transition-colors duration-500 relative overflow-hidden group"
+              className="rounded-[20px] p-4 transition-all duration-500 relative overflow-hidden group border shadow-sm"
               style={{
                 backgroundColor: spotifyColor
-                  ? `rgba(${spotifyColor[0]}, ${spotifyColor[1]}, ${spotifyColor[2]}, 0.4)`
-                  : "oklch(0.60 0.06 227)", // Default gray-700/50 equivalent
-                border: `1px solid ${
-                  spotifyColor
-                    ? `rgba(${spotifyColor[0]}, ${spotifyColor[1]}, ${spotifyColor[2]}, 0.6)`
-                    : "transparent"
-                }`,
+                  ? `rgba(${spotifyColor[0]}, ${spotifyColor[1]}, ${spotifyColor[2]}, 0.15)`
+                  : "var(--color-m3-surface-container)",
+                borderColor: spotifyColor
+                  ? `rgba(${spotifyColor[0]}, ${spotifyColor[1]}, ${spotifyColor[2]}, 0.3)`
+                  : "var(--color-m3-outline)",
               }}
             >
-              {/* Blurred Background Layer */}
-              {spotify.album_art_url && (
-                <div
-                  className="absolute inset-0 z-0 pointer-events-none transition-transform duration-700 group-hover:scale-110"
-                  style={{
-                    backgroundImage: `url(${spotify.album_art_url})`,
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                    filter: "blur(20px) brightness(0.5)",
-                    opacity: 0.4,
-                    transform: "scale(1.2)",
-                  }}
-                />
-              )}
-
-              <div className="flex items-center gap-3 relative z-10">
+              <div className="flex items-center gap-4 relative z-10">
                 {spotify.album_art_url && (
-                  <img
-                    src={spotify.album_art_url}
-                    alt={`${spotify.album} cover`}
-                    className="w-14 h-14 rounded flex-shrink-0"
-                  />
+                  <div className="relative flex-shrink-0 group">
+                    <img
+                      src={spotify.album_art_url}
+                      alt={`${spotify.album} cover`}
+                      className="w-16 h-16 rounded-[12px] shadow-md transition-transform duration-300 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-m3-primary/20 opacity-0 group-hover:opacity-100 transition-opacity rounded-[12px] flex items-center justify-center">
+                      <FaSpotify className="text-white drop-shadow-lg" size={24} />
+                    </div>
+                  </div>
                 )}
                 <div className="flex-grow overflow-hidden">
                   <a
                     href={`https://open.spotify.com/track/${spotify.track_id}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="font-semibold break-words block truncate"
-                    style={{
-                      color: readableSpotifyColor
-                        ? `rgba(${readableSpotifyColor[0]}, ${readableSpotifyColor[1]}, ${readableSpotifyColor[2]}, 1)`
-                        : "oklch(0.77 0.055 227)",
-                    }}
+                    className="font-bold text-base block truncate hover:underline text-m3-on-surface tracking-tight"
                     title={`Listen to ${spotify.song} by ${spotify.artist} on Spotify`}
                   >
-                    <span className="inline-flex items-center gap-1 hover:underline">
-                      <FaSpotify size={16} color="currentColor" />
-                      {spotify.song}
-                    </span>
+                    {spotify.song}
                   </a>
                   <p
-                    className="text-gray-400 text-xs truncate"
+                    className="text-m3-on-surface-variant text-sm font-semibold truncate opacity-80"
                     title={spotify.artist}
                   >
-                    by {spotify.artist}
+                    {spotify.artist}
                   </p>
                   <p
-                    className="text-gray-400 text-xs truncate"
+                    className="text-m3-on-surface-variant text-xs truncate opacity-60"
                     title={spotify.album}
                   >
-                    on {spotify.album}
+                    {spotify.album}
                   </p>
                 </div>
               </div>
               {spotify.timestamps?.start && (
-                <ActivityTimestamp
-                  startTime={spotify.timestamps.start}
-                  endTime={spotify.timestamps.end}
-                  color={
-                    readableSpotifyColor
-                      ? `rgba(${readableSpotifyColor[0]}, ${readableSpotifyColor[1]}, ${readableSpotifyColor[2]}, 1)`
-                      : undefined
-                  }
-                  colorSecondary={
-                    spotifyColor
-                      ? `rgba(${spotifyColor[0]}, ${spotifyColor[1]}, ${spotifyColor[2]}, 0.4)`
-                      : undefined
-                  }
-                />
+                <div className="mt-3">
+                  <ActivityTimestamp
+                    startTime={spotify.timestamps.start}
+                    endTime={spotify.timestamps.end}
+                    color="var(--color-m3-primary)"
+                    colorSecondary="var(--color-m3-on-surface-variant)"
+                  />
+                </div>
               )}
             </div>
           )}
 
           {themedActivities.length > 0 && (
-            <div className="space-y-2">
+            <div className="space-y-3">
               {themedActivities.map(({ activity, theme }) => (
                 <div
                   key={activity.id || activity.name}
-                  className={`${theme.bgClass} border ${theme.borderClass} rounded p-2`}
+                  className={`bg-m3-surface-container border border-m3-outline/10 rounded-[20px] p-4 shadow-sm hover:border-m3-outline/30 transition-all duration-300`}
                 >
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-4">
                     <div className="relative flex-shrink-0">
                       {activity.assets?.large_image ? (
                         <img
@@ -423,14 +397,13 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
                             activity.application_id || ""
                           )}
                           alt={activity.name}
-                          className="w-14 h-14 rounded object-cover"
+                          className="w-16 h-16 rounded-[12px] object-cover shadow-sm"
                         />
                       ) : (
                         <div
-                          className={`w-14 h-14 rounded flex items-center justify-center`}
-                          style={{ backgroundColor: `rgba(${theme.pulseColor}, 0.2)` }}
+                          className={`w-16 h-16 rounded-[12px] flex items-center justify-center bg-m3-primary/10`}
                         >
-                          <theme.icon size={32} className={theme.textClass} />
+                          <theme.icon size={32} className="text-m3-primary" />
                         </div>
                       )}
                       {activity.assets?.small_image && (
@@ -440,26 +413,26 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
                             activity.application_id || ""
                           )}
                           alt="Small asset"
-                          className="w-5 h-5 rounded-full absolute -bottom-1 -right-1 border-2 border-gray-900"
+                          className="w-6 h-6 rounded-full absolute -bottom-1 -right-1 border-2 border-m3-surface-container shadow-md"
                         />
                       )}
                     </div>
                     <div className="flex-grow overflow-hidden">
                       <p
-                        className={`${theme.textClass} font-semibold truncate flex items-center gap-2`}
+                        className={`text-m3-primary text-xs font-black uppercase tracking-widest flex items-center gap-2 mb-0.5`}
                       >
-                        <theme.icon /> {theme.label} {theme.name}
+                        <theme.icon size={12} /> {theme.label} {theme.name}
                       </p>
-                      <p className="text-gray-100 font-medium truncate">
+                      <p className="text-m3-on-surface font-bold text-base truncate tracking-tight">
                         {activity.name}
                       </p>
                       {activity.details && (
-                        <p className="text-gray-300 text-xs truncate">
+                        <p className="text-m3-on-surface-variant text-sm font-medium truncate opacity-80">
                           {activity.details}
                         </p>
                       )}
                       {activity.state && (
-                        <p className="text-gray-400 text-xs truncate">
+                        <p className="text-m3-on-surface-variant text-xs truncate opacity-60">
                           {activity.state}
                         </p>
                       )}
@@ -468,7 +441,7 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
                           href={theme.repoUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className={`text-xs ${theme.textClass} border ${theme.borderClass} px-2 py-0.5 rounded-full mt-1 inline-block hover:opacity-80 transition-opacity`}
+                          className="text-[10px] font-black uppercase tracking-wider text-m3-primary bg-m3-primary/10 border border-m3-primary/20 px-3 py-1 rounded-full mt-2 inline-block hover:bg-m3-primary hover:text-m3-on-primary transition-all duration-200"
                         >
                           View Repository
                         </a>
@@ -476,23 +449,25 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
                     </div>
                   </div>
                   {activity.timestamps?.start && (
-                    <ActivityTimestamp
-                      startTime={activity.timestamps.start}
-                      endTime={activity.timestamps.end}
-                      color={`rgba(${theme.pulseColor}, 1)`}
-                    />
+                    <div className="mt-3">
+                      <ActivityTimestamp
+                        startTime={activity.timestamps.start}
+                        endTime={activity.timestamps.end}
+                        color="var(--color-m3-primary)"
+                      />
+                    </div>
                   )}
                 </div>
               ))}
             </div>
           )}
 
-
-
           {!spotify &&
             themedActivities.length === 0 &&
             !customStatus && (
-            <p className="text-gray-400 italic">No current activities</p>
+            <div className="text-center py-6">
+               <p className="text-m3-on-surface-variant italic font-medium opacity-50">No current activities</p>
+            </div>
           )}
         </div>
       </div>

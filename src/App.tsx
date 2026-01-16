@@ -12,18 +12,22 @@ import PCSpecs from "./pages/PCSpecs";
 import Clips from "./pages/Clips";
 import Scanner from "./pages/Scanner";
 
+import useDynamicColor from "./hooks/useDynamicColor";
+
 function App() {
   useEffect(() => {
     redirect();
   }, []);
 
+  useDynamicColor("/images/background.png");
+
   return (
     <Router>
       <div
-        className="min-h-screen w-full bg-cover bg-center bg-fixed"
-        style={{ backgroundImage: "url('/images/bg.png')" }}
+        className="min-h-screen w-full bg-cover bg-center bg-fixed transition-colors duration-500"
+        style={{ backgroundImage: "url('/images/background.png')" }}
       >
-        <div className="min-h-screen w-full bg-gray-900/70 text-gray-100 p-4 md:p-12 pb-24">
+        <div className="min-h-screen w-full text-m3-on-surface p-4 md:p-12 pb-24 bg-m3-surface/30">
           <div className="w-full max-w-6xl mx-auto relative z-10">
             <Routes>
               <Route path="/" element={<Home />} />

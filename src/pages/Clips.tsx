@@ -121,12 +121,12 @@ const Clips: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen text-gray-100">
-      <div className="max-w-6xl mx-auto relative z-10 p-4 md:p-8">
-        <h1 className="text-4xl font-extrabold mb-4 text-white">
+    <div className="min-h-screen bg-m3-surface text-m3-on-surface">
+      <div className="max-w-6xl mx-auto relative z-10 p-4 md:p-8 text-m3-on-surface">
+        <h1 className="text-4xl font-bold mb-4 tracking-tight">
           Clips and Highlights
         </h1>
-        <p className="text-lg text-gray-300 mb-8 max-w-3xl">
+        <p className="text-lg text-m3-on-surface-variant mb-8 max-w-3xl font-medium">
           This page showcases some of my favorite clips and highlights from
           various streams and gaming sessions. Use the search bar to find specific
           moments!
@@ -136,11 +136,11 @@ const Clips: React.FC = () => {
           <select
             value={sortOrder}
             onChange={(e) => setSortOrder(e.target.value as "newest" | "oldest")}
-            className="bg-gray-900/90 rounded-xl text-white text-sm font-medium px-4 py-3 hover:bg-white/5 transition-all duration-300 border border-gray-700/50 hover:border-white/10 focus:outline-none focus:border-white/20"
+            className="bg-m3-surface-container border border-m3-outline/20 rounded-[16px] text-m3-on-surface text-sm font-semibold px-4 py-3 hover:bg-m3-on-surface/5 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-m3-primary/30"
             aria-label="Sort clips"
           >
-            <option value="newest">Newest First</option>
-            <option value="oldest">Oldest First</option>
+            <option value="newest" className="bg-m3-surface-container">Newest First</option>
+            <option value="oldest" className="bg-m3-surface-container">Oldest First</option>
           </select>
         <SearchInput
           value={searchText}
