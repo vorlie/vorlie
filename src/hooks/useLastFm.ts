@@ -55,12 +55,30 @@ export const useLastFm = () => {
         const artistsData = await artistsRes.json();
         
         if (artistsData.topartists) {
-          const artists = artistsData.topartists.artist.map((a: any) => ({
-            name: a.name,
-            playcount: a.playcount,
-            image: a.image[3]["#text"] || "/images/placeholder_music.png",
-            url: a.url,
-          }));
+          const artists = artistsData.topartists.artist.map((a: any) => {
+            // Last.fm returns empty strings or placeholder icons for many artists
+            // We'll check for valid images and create a fallback
+            let imageUrl = a.image[3]["#text"] || a.image[2]["#text"] || "";
+            
+            // Filter out Last.fm's default placeholder icons
+            if (!imageUrl || imageUrl.includes("2a96cbd8b46e442fc41c2b86b821562f")) {
+              // Create a simple SVG fallback with first letter
+              const initial = a.name.charAt(0).toUpperCase();
+              imageUrl = `data:image/svg+xml,${encodeURIComponent(`
+                <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
+                  <rect width="200" height="200" fill="%23${Math.floor(Math.random()*16777215).toString(16).padStart(6, '0')}"/>
+                  <text x="50%" y="50%" dominant-baseline="central" text-anchor="middle" font-family="sans-serif" font-size="80" font-weight="bold" fill="white">${initial}</text>
+                </svg>
+              `)}`;
+            }
+            
+            return {
+              name: a.name,
+              playcount: a.playcount,
+              image: imageUrl,
+              url: a.url,
+            };
+          });
           setTopArtists(artists);
         }
       } catch (error) {
