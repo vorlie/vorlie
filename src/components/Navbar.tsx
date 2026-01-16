@@ -8,7 +8,9 @@ function Navbar() {
   const navLinks = [
     { to: "/", label: "Home" },
     { to: "/specs", label: "My Rigs" },
+    { to: "/music", label: "Music" },
     { to: "/clips", label: "Clips" },
+    { to: "/rat", label: "Rats" },
     { to: "https://docs.vorlie.pl", label: "API" },
     {
       label: "Projects",

@@ -9,8 +9,9 @@ const Rats: React.FC = () => {
 
   return (
     <div className="flex flex-col items-center justify-center py-12 px-4 animate-in fade-in duration-700">
-      <h1 className="text-4xl font-black mb-12 text-m3-primary tracking-tighter uppercase italic">RATS</h1>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-6xl">
+      <div className="max-w-6xl w-full bg-m3-surface-container/60 backdrop-blur-xl rounded-[48px] p-8 sm:p-12 border border-m3-outline/10 shadow-sm relative z-10 flex flex-col items-center">
+        <h1 className="text-4xl font-black mb-12 text-m3-primary tracking-tighter uppercase italic">RATS</h1>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
         {ratImages.map((src, index) => (
           <div 
             key={index} 
@@ -31,6 +32,7 @@ const Rats: React.FC = () => {
             <div className="absolute inset-0 bg-m3-primary/0 group-hover:bg-m3-primary/5 transition-colors duration-500 pointer-events-none"></div>
           </div>
         ))}
+        </div>
       </div>
     </div>
   );

@@ -19,8 +19,9 @@ const Music: React.FC = () => {
   }
 
   return (
-    <div className="py-8 px-4 sm:px-0 animate-in fade-in duration-1000">
-      <header className="mb-12 text-center sm:text-left">
+    <div className="py-8 px-4 sm:px-6 animate-in fade-in duration-1000">
+      <div className="max-w-6xl mx-auto bg-m3-surface-container rounded-[48px] p-8 sm:p-12 border border-m3-outline/10 shadow-sm relative z-10">
+        <header className="mb-12 text-center sm:text-left">
         <h1 className="text-5xl font-black text-m3-primary tracking-tighter uppercase italic mb-2">
           Music Deep Dive
         </h1>
@@ -132,6 +133,7 @@ const Music: React.FC = () => {
             ))}
           </div>
         </section>
+      </div>
       </div>
     </div>
   );
