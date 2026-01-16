@@ -121,46 +121,52 @@ const Clips: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-m3-surface text-m3-on-surface">
+    <div className="min-h-screen bg-m3-surface rounded-[32px] text-m3-on-surface">
       <div className="max-w-6xl mx-auto relative z-10 p-4 md:p-8 text-m3-on-surface">
         <h1 className="text-4xl font-bold mb-4 tracking-tight">
           Clips and Highlights
         </h1>
         <p className="text-lg text-m3-on-surface-variant mb-8 max-w-3xl font-medium">
           This page showcases some of my favorite clips and highlights from
-          various streams and gaming sessions. Use the search bar to find specific
-          moments!
+          various streams and gaming sessions. Use the search bar to find
+          specific moments!
         </p>
 
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 mb-8">
           <select
             value={sortOrder}
-            onChange={(e) => setSortOrder(e.target.value as "newest" | "oldest")}
+            onChange={(e) =>
+              setSortOrder(e.target.value as "newest" | "oldest")
+            }
             className="bg-m3-surface-container border border-m3-outline/20 rounded-[16px] text-m3-on-surface text-sm font-semibold px-4 py-3 hover:bg-m3-on-surface/5 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-m3-primary/30"
             aria-label="Sort clips"
           >
-            <option value="newest" className="bg-m3-surface-container">Newest First</option>
-            <option value="oldest" className="bg-m3-surface-container">Oldest First</option>
+            <option value="newest" className="bg-m3-surface-container">
+              Newest First
+            </option>
+            <option value="oldest" className="bg-m3-surface-container">
+              Oldest First
+            </option>
           </select>
-        <SearchInput
-          value={searchText}
-          onChange={setSearchText}
-          placeholder="Search by title, description, platform, or tags..."
+          <SearchInput
+            value={searchText}
+            onChange={setSearchText}
+            placeholder="Search by title, description, platform, or tags..."
+          />
+        </div>
+
+        <ClipList
+          clips={filteredClips}
+          emptyHeading={
+            searchText
+              ? `No matches found for "${searchText}"`
+              : "No clips available yet."
+          }
+          onClipClick={handleClipClick} // Pass the click handler to ClipList
         />
-      </div>
 
-      <ClipList
-        clips={filteredClips}
-        emptyHeading={
-          searchText
-            ? `No matches found for "${searchText}"`
-            : "No clips available yet."
-        }
-        onClipClick={handleClipClick} // Pass the click handler to ClipList
-      />
-
-      {/* Render the modal if a clip is selected */}
-      <VideoModal clip={selectedClip} onClose={handleCloseModal} />
+        {/* Render the modal if a clip is selected */}
+        <VideoModal clip={selectedClip} onClose={handleCloseModal} />
       </div>
     </div>
   );

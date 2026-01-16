@@ -108,21 +108,23 @@ const Buttons88x31: React.FC = () => {
         role="status"
         aria-live="polite"
         className={`
-                    fixed bottom-5 left-1/2 transform -translate-x-1/2 z-50
-                    px-4 py-2 rounded-md shadow-lg text-sm font-medium
-                    transition-opacity duration-300 ease-in-out
-                    ${
-                      showNotification
-                        ? "opacity-100"
-                        : "opacity-0 pointer-events-none"
-                    }
-                    ${
-                      notificationText.includes("Failed")
-                        ? "bg-red-600 text-white"
-                        : "bg-green-600 text-white"
-                    }
-                `}
+          fixed top-8 right-8 z-[100]
+          px-6 py-3 rounded-2xl shadow-xl text-sm font-black tracking-tight
+          transition-all duration-500 ease-in-out border border-m3-outline/10
+          flex items-center gap-3
+          ${
+            showNotification
+              ? "opacity-100 translate-y-0 scale-100"
+              : "opacity-0 -translate-y-4 scale-95 pointer-events-none"
+          }
+          ${
+            notificationText.includes("Failed")
+              ? "bg-m3-error-container text-m3-on-error-container"
+              : "bg-m3-primary-container text-m3-on-primary-container"
+          }
+        `}
       >
+        <div className={`w-2 h-2 rounded-full ${notificationText.includes("Failed") ? 'bg-m3-error' : 'bg-m3-primary'} shadow-sm animate-pulse`}></div>
         {notificationText}
       </div>
     </section>

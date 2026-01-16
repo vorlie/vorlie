@@ -1,128 +1,78 @@
 function PrivacyPolicy() {
   return (
-    <div className="min-h-screen text-gray-100">
-      <div className="max-w-6xl mx-auto">
-        <div className="max-w-6xl mx-auto py-4">
-          <h1 className="text-3xl font-bold mb-4 text-white text-center md:text-left">
-            Miko's Privacy Policy
-          </h1>
-          <p className="text-sm text-gray-400 mb-4">
-            <strong>Last Updated:</strong> 15/09/2025 (Day/Month/Year)
-          </p>
+    <div className="min-h-screen py-12 px-4 sm:px-6 text-m3-on-surface">
+      <div className="max-w-4xl mx-auto bg-m3-surface-container rounded-[40px] p-8 sm:p-16 shadow-sm border border-m3-outline/10">
+        <h1 className="text-4xl sm:text-5xl font-black mb-4 text-m3-primary tracking-tight text-center sm:text-left">
+          Privacy Policy
+        </h1>
+        <p className="text-sm font-black uppercase tracking-widest text-m3-on-surface-variant opacity-50 mb-12 text-center sm:text-left">
+          Last Updated: 15/09/2025
+        </p>
 
-          <section className="mb-6">
-            <h2 className="text-xl font-semibold mb-2 text-blue-400">
-              1. Information Collection
-            </h2>
-            <p className="text-lg text-gray-300 mb-2">
-              Miko#3059 may collect the following types of information, which
-              are necessary for its functionality:
-            </p>
-            <ul className="list-disc list-inside text-gray-300">
-              <li>
-                User IDs, Server IDs, and Channel IDs for basic bot
-                functionality
-              </li>
-              <li>
-                Member counts for server statistics and the bot's status display
-              </li>
-            </ul>
-            <p className="mt-2 text-lg text-gray-300">
-              We do not collect or store the content of messages, user presence
-              data, or any other personally identifiable information beyond
-              basic IDs required for command functionality.
-            </p>
+        <div className="space-y-12">
+          <section className="group">
+            <div className="flex items-center gap-4 mb-4">
+              <span className="text-2xl font-black text-m3-primary/30 group-hover:text-m3-primary transition-colors">01</span>
+              <h2 className="text-2xl font-black text-m3-on-surface tracking-tight">Information Collection</h2>
+            </div>
+            <div className="sm:ml-12 border-l-2 border-m3-primary/10 pl-6 group-hover:border-m3-primary/30 transition-colors">
+              <p className="text-lg text-m3-on-surface-variant font-medium leading-relaxed mb-4">
+                Miko#3059 collects minimally necessary data for operation:
+              </p>
+              <ul className="grid gap-3 list-none mb-6">
+                {[
+                  "User, Server, and Channel IDs.",
+                  "Member counts for statistics and status display."
+                ].map(item => (
+                  <li key={item} className="flex items-start gap-3 text-m3-on-surface-variant/80 font-bold">
+                    <span className="w-1.5 h-1.5 rounded-full bg-m3-primary mt-2"></span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <p className="text-lg text-m3-on-surface-variant font-medium opacity-80 italic">
+                We do not collect or store message content or personally identifiable information.
+              </p>
+            </div>
           </section>
 
-          <section className="mb-6">
-            <h2 className="text-xl font-semibold mb-2 text-blue-400">
-              2. Use of Information
-            </h2>
-            <p className="text-lg text-gray-300 mb-2">
-              The information collected is used to:
-            </p>
-            <ul className="list-disc list-inside text-gray-300">
-              <li>Provide and improve the Bot's functionality</li>
-              <li>Respond to user inquiries and support requests</li>
-            </ul>
+          <section className="group">
+            <div className="flex items-center gap-4 mb-4">
+              <span className="text-2xl font-black text-m3-primary/30 group-hover:text-m3-primary transition-colors">02</span>
+              <h2 className="text-2xl font-black text-m3-on-surface tracking-tight">Data Security</h2>
+            </div>
+            <div className="sm:ml-12 border-l-2 border-m3-primary/10 pl-6 group-hover:border-m3-primary/30 transition-colors">
+              <ul className="grid gap-3 list-none">
+                {[
+                  "Processing is performed in-memory without permanent storage.",
+                  "Temporary files are immediately deleted after use.",
+                  "No permanent storage of user-submitted content or images.",
+                  "Prepared statements protect against SQL vulnerabilities."
+                ].map(item => (
+                  <li key={item} className="flex items-start gap-3 text-m3-on-surface-variant/80 font-bold">
+                    <span className="w-1.5 h-1.5 rounded-full bg-m3-primary mt-2"></span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </section>
 
-          <section className="mb-6">
-            <h2 className="text-xl font-semibold mb-2 text-blue-400">
-              3. Data Handling and Security
-            </h2>
-            <p className="text-lg text-gray-300 mb-2">
-              We take your privacy seriously. All data processing is designed to
-              be as secure as possible:
-            </p>
-            <ul className="list-disc list-inside text-gray-300">
-              <li>
-                Image processing and other data manipulations are performed
-                in-memory, without permanent storage.
-              </li>
-              <li>
-                Temporary files created during processing are immediately
-                deleted after being sent to the user.
-              </li>
-              <li>
-                No permanent storage of user-submitted content or processed
-                images occurs.
-              </li>
-              <li>
-                Sensitive database operations use prepared statements to prevent
-                SQL injection and other vulnerabilities.
-              </li>
-            </ul>
+          <section className="group">
+            <div className="flex items-center gap-4 mb-4">
+              <span className="text-2xl font-black text-m3-primary/30 group-hover:text-m3-primary transition-colors">03</span>
+              <h2 className="text-2xl font-black text-m3-on-surface tracking-tight">User Rights</h2>
+            </div>
+            <div className="sm:ml-12 border-l-2 border-m3-primary/10 pl-6 group-hover:border-m3-primary/30 transition-colors">
+               <p className="text-lg text-m3-on-surface-variant font-medium leading-relaxed mb-4">
+                 You retain full rights to your data (Access, Rectification, Deletion). Since we only store basic Discord IDs, requests can be handled via our support channels.
+               </p>
+            </div>
           </section>
-
-          <section className="mb-6">
-            <h2 className="text-xl font-semibold mb-2 text-blue-400">
-              4. Information Sharing
-            </h2>
-            <p className="text-lg text-gray-300">
-              We do not share your information with third parties, except as
-              required by law or to protect our rights.
-            </p>
-          </section>
-
-          <section className="mb-6">
-            <h2 className="text-xl font-semibold mb-2 text-blue-400">
-              5. User Rights
-            </h2>
-            <p className="text-lg text-gray-300 mb-2">
-              You have the right to access, rectify, or delete your personal
-              data that we may hold. Since we only store basic IDs, we provide a
-              clear process for data requests:
-            </p>
-            <ul className="list-disc list-inside text-gray-300">
-              <li>
-                <strong>Data Access and Deletion:</strong> You can request
-                access to or deletion of your data by contacting us through our
-                support channels.
-              </li>
-              <li>
-                <strong>Right to Object:</strong> You have the right to object
-                to our processing of your personal data, under certain
-                conditions.
-              </li>
-              <li>
-                <strong>Right to Withdraw Consent:</strong> If you have provided
-                consent to the processing of your personal data, you have the
-                right to withdraw your consent at any time.
-              </li>
-            </ul>
-          </section>
-
-          <section className="mb-6">
-            <h2 className="text-xl font-semibold mb-2 text-blue-400">
-              6. Changes to Privacy Policy
-            </h2>
-            <p className="text-lg text-gray-300">
-              We reserve the right to modify this Privacy Policy at any time. We
-              will notify users of any changes by updating the "Last Updated"
-              date at the top of this document.
-            </p>
-          </section>
+        </div>
+        
+        <div className="mt-16 pt-8 border-t border-m3-outline/10 text-center">
+            <p className="text-xs font-black uppercase tracking-[0.3em] text-m3-on-surface-variant opacity-30">© {new Date().getFullYear()} vorlie</p>
         </div>
       </div>
     </div>

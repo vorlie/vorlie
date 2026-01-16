@@ -5,7 +5,7 @@ import { allSystemSpecs } from "../data/systemSpecs";
 
 const PCSpecs: React.FC = () => {
   return (
-    <div className="min-h-screen bg-m3-surface text-m3-on-surface">
+    <div className="min-h-screen bg-m3-surface rounded-[32px] text-m3-on-surface">
       <div className="max-w-6xl mx-auto relative z-10 p-4 md:p-8">
         <h1 className="text-4xl font-bold mb-4 text-m3-on-surface tracking-tight">
           My Tech Arsenal

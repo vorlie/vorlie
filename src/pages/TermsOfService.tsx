@@ -1,124 +1,90 @@
 function TermsOfService() {
   return (
-    <div className="min-h-screen text-gray-100">
-      <div className="max-w-6xl mx-auto">
-        <div className="max-w-6xl mx-auto py-4">
-          <h1 className="text-3xl font-bold mb-4 text-white text-center md:text-left">
-            Miko's Terms of Service
-          </h1>
-          <p className="text-sm text-gray-400 mb-4">
-            <strong>Last Updated:</strong> 15/09/2025 (Day/Month/Year)
-          </p>
+    <div className="min-h-screen py-12 px-4 sm:px-6 text-m3-on-surface">
+      <div className="max-w-4xl mx-auto bg-m3-surface-container rounded-[40px] p-8 sm:p-16 shadow-sm border border-m3-outline/10">
+        <h1 className="text-4xl sm:text-5xl font-black mb-4 text-m3-primary tracking-tight text-center sm:text-left">
+          Terms of Service
+        </h1>
+        <p className="text-sm font-black uppercase tracking-widest text-m3-on-surface-variant opacity-50 mb-12 text-center sm:text-left">
+          Last Updated: 15/09/2025
+        </p>
 
-          <section className="mb-6">
-            <h2 className="text-xl font-semibold mb-2 text-blue-400">
-              1. Acceptance of Terms
-            </h2>
-            <p className="text-lg text-gray-300">
+        <div className="space-y-12">
+          <section className="group">
+            <div className="flex items-center gap-4 mb-4">
+              <span className="text-2xl font-black text-m3-primary/30 group-hover:text-m3-primary transition-colors">01</span>
+              <h2 className="text-2xl font-black text-m3-on-surface tracking-tight">Acceptance of Terms</h2>
+            </div>
+            <p className="text-lg text-m3-on-surface-variant font-medium leading-relaxed sm:ml-12 border-l-2 border-m3-primary/10 pl-6 group-hover:border-m3-primary/30 transition-colors">
               By using Miko#3059 (the "Bot"), you agree to be bound by these
               Terms of Service ("Terms"). If you do not agree to these Terms,
               please do not use the Bot.
             </p>
           </section>
 
-          <section className="mb-6">
-            <h2 className="text-xl font-semibold mb-2 text-blue-400">
-              2. Description of Service
-            </h2>
-            <p className="text-lg text-gray-300">
+          <section className="group">
+            <div className="flex items-center gap-4 mb-4">
+              <span className="text-2xl font-black text-m3-primary/30 group-hover:text-m3-primary transition-colors">02</span>
+              <h2 className="text-2xl font-black text-m3-on-surface tracking-tight">Description of Service</h2>
+            </div>
+            <p className="text-lg text-m3-on-surface-variant font-medium leading-relaxed sm:ml-12 border-l-2 border-m3-primary/10 pl-6 group-hover:border-m3-primary/30 transition-colors">
               Miko#3059 is a versatile Discord bot that provides a range of
               features and services for users to enjoy. The Bot is provided "as
               is" without any warranties, express or implied.
             </p>
           </section>
 
-          <section className="mb-6">
-            <h2 className="text-xl font-semibold mb-2 text-blue-400">
-              3. User Obligations
-            </h2>
-            <p className="text-lg text-gray-300 mb-2">
-              By using the Bot, you agree to the following:
-            </p>
-            <ul className="list-disc list-inside text-gray-300">
-              <li>
-                Users must comply with Discord's Terms of Service and Community
-                Guidelines.
-              </li>
-              <li>
-                Users must not use the Bot for any unlawful activities,
-                including but not limited to spamming, harassment, or
-                distributing malware.
-              </li>
-              <li>
-                Users must not abuse or misuse the Bot in any way that could
-                harm the Bot or its functionality.
-              </li>
-              <li>Users must respect the privacy and rights of other users.</li>
-            </ul>
+          <section className="group">
+            <div className="flex items-center gap-4 mb-6">
+              <span className="text-2xl font-black text-m3-primary/30 group-hover:text-m3-primary transition-colors">03</span>
+              <h2 className="text-2xl font-black text-m3-on-surface tracking-tight">User Obligations</h2>
+            </div>
+            <div className="sm:ml-12 border-l-2 border-m3-primary/10 pl-6 group-hover:border-m3-primary/30 transition-colors">
+              <p className="text-lg text-m3-on-surface-variant font-medium mb-4">
+                By using the Bot, you agree to the following:
+              </p>
+              <ul className="grid gap-3 list-none">
+                {[
+                  "Compliance with Discord's Terms and Community Guidelines.",
+                  "Refrain from unlawful activities (spam, harassment, malware).",
+                  "No abuse or misuse of Bot functionality.",
+                  "Respect for the privacy and rights of other users."
+                ].map(item => (
+                  <li key={item} className="flex items-start gap-3 text-m3-on-surface-variant/80 font-bold">
+                    <span className="w-1.5 h-1.5 rounded-full bg-m3-primary mt-2"></span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </section>
 
-          <section className="mb-6">
-            <h2 className="text-xl font-semibold mb-2 text-blue-400">
-              4. Data and Privacy
-            </h2>
-            <p className="text-lg text-gray-300">
-              Miko#3059 respects your privacy and handles data responsibly. The
-              bot does not store user messages or other sensitive data, and all
-              temporary files are immediately deleted after use. For a full
-              understanding of our data collection, handling, and security
-              measures, please review our{" "}
-              <a href="#privacy-policy" className="text-blue-400 underline">
+          <section className="group">
+            <div className="flex items-center gap-4 mb-4">
+              <span className="text-2xl font-black text-m3-primary/30 group-hover:text-m3-primary transition-colors">04</span>
+              <h2 className="text-2xl font-black text-m3-on-surface tracking-tight">Data and Privacy</h2>
+            </div>
+            <p className="text-lg text-m3-on-surface-variant font-medium leading-relaxed sm:ml-12 border-l-2 border-m3-primary/10 pl-6 group-hover:border-m3-primary/30 transition-colors">
+              Miko#3059 respects your privacy and handles data responsibly. We do not store user messages or other sensitive data permanently. For more details, please review our{" "}
+              <a href="#privacy-policy" className="text-m3-primary font-black hover:underline">
                 Privacy Policy
-              </a>
-              .
+              </a>.
             </p>
           </section>
 
-          <section className="mb-6">
-            <h2 className="text-xl font-semibold mb-2 text-blue-400">
-              5. Changes to Terms
-            </h2>
-            <p className="text-lg text-gray-300">
-              We reserve the right to modify these Terms at any time. We will
-              notify users of any changes by updating the "Last Updated" date at
-              the top of this document. Continued use of the Bot after any
-              changes constitutes your acceptance of the new Terms.
+          <section className="group">
+            <div className="flex items-center gap-4 mb-4">
+              <span className="text-2xl font-black text-m3-primary/30 group-hover:text-m3-primary transition-colors">05</span>
+              <h2 className="text-2xl font-black text-m3-on-surface tracking-tight">Termination & Changes</h2>
+            </div>
+            <p className="text-lg text-m3-on-surface-variant font-medium leading-relaxed sm:ml-12 border-l-2 border-m3-primary/10 pl-6 group-hover:border-m3-primary/30 transition-colors">
+              We reserve the right to modify these Terms or terminate access at any time. Continued use of the Bot constitutes acceptance of updated Terms.
             </p>
           </section>
-
-          <section className="mb-6">
-            <h2 className="text-xl font-semibold mb-2 text-blue-400">
-              6. Indemnification
-            </h2>
-            <p className="text-lg text-gray-300">
-              You agree to indemnify and hold harmless the developers of the Bot
-              from any claims, damages, or expenses (including legal fees)
-              arising from your use of the Bot or violation of these Terms.
-            </p>
-          </section>
-
-          <section className="mb-6">
-            <h2 className="text-xl font-semibold mb-2 text-blue-400">
-              7. Termination
-            </h2>
-            <p className="text-lg text-gray-300">
-              We reserve the right to terminate or suspend access to the Bot at
-              any time, without notice, for any reason, including but not
-              limited to a breach of these Terms. Upon termination, your right
-              to use the Bot will immediately cease.
-            </p>
-          </section>
-
-          <section className="mb-6">
-            <h2 className="text-xl font-semibold mb-2 text-blue-400">
-              8. Severability
-            </h2>
-            <p className="text-lg text-gray-300">
-              If any provision of these Terms is found to be invalid or
-              unenforceable, the remaining provisions will continue to be valid
-              and enforceable.
-            </p>
-          </section>
+        </div>
+        
+        <div className="mt-16 pt-8 border-t border-m3-outline/10 text-center">
+            <p className="text-xs font-black uppercase tracking-[0.3em] text-m3-on-surface-variant opacity-30">© {new Date().getFullYear()} vorlie</p>
         </div>
       </div>
     </div>

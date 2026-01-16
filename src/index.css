@@ -189,6 +189,39 @@
   }
 }
 
+@keyframes m3-pulsate {
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+}
+
+@keyframes m3-fade-out {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+.animate-m3-pulsate {
+  animation: m3-pulsate 2s ease-in-out infinite;
+}
+
+.animate-m3-fade-out {
+  animation: m3-fade-out 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
 .status-indicator-pulse {
   animation: status-pulse 2s infinite;
 }
