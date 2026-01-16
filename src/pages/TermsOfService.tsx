@@ -66,7 +66,7 @@ function TermsOfService() {
             </div>
             <p className="text-lg text-m3-on-surface-variant font-medium leading-relaxed sm:ml-12 border-l-2 border-m3-primary/10 pl-6 group-hover:border-m3-primary/30 transition-colors">
               Miko#3059 respects your privacy and handles data responsibly. We do not store user messages or other sensitive data permanently. For more details, please review our{" "}
-              <a href="#privacy-policy" className="text-m3-primary font-black hover:underline">
+              <a href="/miko/privacy-policy" className="text-m3-primary font-black hover:underline">
                 Privacy Policy
               </a>.
             </p>
