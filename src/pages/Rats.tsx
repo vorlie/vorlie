@@ -9,7 +9,7 @@ const Rats: React.FC = () => {
 
   return (
     <div className="flex flex-col items-center justify-center py-12 px-4 animate-in fade-in duration-700">
-      <div className="max-w-6xl w-full bg-m3-surface-container/60 backdrop-blur-xl rounded-[48px] p-8 sm:p-12 border border-m3-outline/10 shadow-sm relative z-10 flex flex-col items-center">
+      <div className="max-w-6xl w-full bg-m3-surface-container rounded-[48px] p-8 sm:p-12 border border-m3-outline/10 shadow-sm relative z-10 flex flex-col items-center">
         <h1 className="text-4xl font-black mb-12 text-m3-primary tracking-tighter uppercase italic">RATS</h1>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
         {ratImages.map((src, index) => (
