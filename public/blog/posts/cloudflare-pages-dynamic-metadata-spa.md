@@ -136,9 +136,4 @@ By moving the metadata logic to the "Edge" (Cloudflare's servers), we get the be
 
 Now, when I share my **Iota Player** or a new **Blog Post**, the preview looks exactly how it should!
 
-### How to use this:
-1.  **Adjust the Intro:** I added a bit about "vorlie" and "Iota Player" based on your code, but feel free to make it more personal.
-2.  **The Regex Section:** In the code block, I truncated the `.replace` chain for readability, but you can paste your full list of replacements back in.
-3.  **Deployment Note:** Remind your readers that this file should be named `_middleware.ts` (or placed in the `/functions` folder) depending on their Cloudflare setup.
-
 
