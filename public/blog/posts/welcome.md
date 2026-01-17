@@ -1,6 +1,6 @@
 ---
 title: "Welcome to My Blog"
-date: "2026-01-17"
+date: "2026-01-16"
 tags: ["announcement", "meta"]
 excerpt: "The first post on my new blog. Here's what you can expect from this space."
 ---

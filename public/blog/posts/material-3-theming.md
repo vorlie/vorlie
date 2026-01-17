@@ -1,6 +1,6 @@
 ---
 title: "Building a Dynamic Material 3 Theme System"
-date: "2026-01-16"
+date: "2026-01-17"
 tags: ["webdev", "material-design", "tutorial"]
 excerpt: "How I implemented Material You theming that extracts colors from my wallpaper and applies them across the entire website."
 ---
