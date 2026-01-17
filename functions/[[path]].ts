@@ -86,7 +86,6 @@ export const onRequest = async (context: any) => {
         if (post) {
           title = `${post.title} | vorlie's blog`;
           description = post.excerpt || description;
-          // You could extract an image from frontmatter if you had one
         }
       }
     } catch (e) {
