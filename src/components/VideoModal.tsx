@@ -111,27 +111,26 @@ const VideoModal: React.FC<VideoModalProps> = ({ clip, onClose }) => {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center  bg-opacity-75 backdrop-blur-sm p-4"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-opacity-75 backdrop-blur-sm p-4"
       onClick={onClose}
     >
       <div
-        className="bg-gray-900 rounded-lg shadow-2xl p-6 w-full max-w-4xl max-h-[90vh] flex flex-col relative"
+        className="bg-m3-surface-container border border-m3-outline/10 rounded-[32px] shadow-2xl p-6 w-full max-w-4xl max-h-[90vh] flex flex-col relative"
         onClick={(e) => e.stopPropagation()}
       >
         <button
           onClick={onClose}
-          className="absolute top-3 right-3 text-gray-400 hover:text-white text-3xl font-bold leading-none z-10"
-          aria-label="Close modal"
-        >
-          ×
+          className="absolute top-6 right-8 text-m3-on-surface hover:text-m3-on-primary text-3xl font-bold leading-none z-10"
+          aria-label="Close modal">
+          <span className="material-symbols-rounded">close</span>
         </button>
 
-        <h2 className="text-3xl font-bold text-white mb-4 pr-10">
+        <h2 className="text-3xl font-bold text-m3-on-surface mb-4 pr-10">
           {clip.title}
         </h2>
 
         {embedSource ? (
-          <div className="relative pt-[56.25%] mb-4 bg-gray-800 rounded-md overflow-hidden">
+          <div className="relative pt-[56.25%] mb-4 bg-m3-surface rounded-[16px] overflow-hidden">
             {embedSource.type === "iframe" ? (
               <iframe
                 src={embedSource.src}
@@ -153,7 +152,7 @@ const VideoModal: React.FC<VideoModalProps> = ({ clip, onClose }) => {
             )}
           </div>
         ) : (
-          <div className="mb-4 text-center text-gray-400">
+          <div className="mb-4 text-center text-m3-on-surface">
             <p>
               Cannot embed this video directly. You can open it in a new tab:
             </p>
@@ -168,11 +167,11 @@ const VideoModal: React.FC<VideoModalProps> = ({ clip, onClose }) => {
           </div>
         )}
 
-        <p className="text-gray-300 text-base mb-4 flex-grow overflow-y-auto pr-2 custom-scrollbar">
+        <p className="text-m3-on-surface text-base mb-4 flex-grow overflow-y-auto pr-2 custom-scrollbar">
           {clip.description}
         </p>
 
-        <div className="flex justify-between items-center text-sm text-gray-400 border-t border-gray-700 pt-4 mt-auto">
+        <div className="flex justify-between items-center text-sm text-m3-on-surface border-t border-m3-outline pt-4 mt-auto">
           <span>
             {clip.platform} - {clip.date}
           </span>
@@ -182,7 +181,7 @@ const VideoModal: React.FC<VideoModalProps> = ({ clip, onClose }) => {
             {clip.tags.map((tag) => (
               <span
                 key={tag}
-                className="bg-gray-700 text-gray-300 text-xs px-2 py-0.5 rounded-full"
+                className="bg-m3-surface text-m3-on-surface text-xs px-2 py-0.5 rounded-full"
               >
                 #{tag}
               </span>
