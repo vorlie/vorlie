@@ -7,7 +7,7 @@ excerpt: "Learn how to use Cloudflare Pages Functions to inject dynamic OpenGrap
 
 # Dynamic SEO Metadata for SPAs using Cloudflare Pages Functions
 
-If you've ever shared a link to your Single Page Application (SPA) on Discord, Twitter, or LinkedIn, only to see a generic "Home" title and no description, you've hit a common snag. Since SPAs render content in the browser, social media bots—which don't usually run JavaScript—just see your empty `index.html` shell.
+If you've ever shared a link to your Single Page Application (SPA) on Discord, Twitter, or LinkedIn, only to see a generic "Home" title and no description, you've hit a common snag. Since SPAs render content in the browser, social media bots-which don't usually run JavaScript-just see your empty `index.html` shell.
 
 In this post, I’ll show you how I solved this for my site using **Cloudflare Pages Functions** to intercept requests and inject dynamic metadata before the HTML even reaches the user.
 
