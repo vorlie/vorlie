@@ -361,10 +361,43 @@
 /* Google Material Symbols Rounded Icon Style */
 
 .material-symbols-rounded {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   font-variation-settings:
   'FILL' 0,
-  'wght' 700,
+  'wght' 600,
   'GRAD' 0,
-  'opsz' 24
+  'opsz' 10
 }
 
+/* Animation for the Desktop Dropdowns */
+@keyframes vertical-slide-in {
+  0% {
+    opacity: 0;
+    transform: translateY(10px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Animation for the Mobile Dropdowns */
+@keyframes mobile-slide-up {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Applying the animations */
+.animate-vertical-slide-in {
+  animation: vertical-slide-in 0.2s cubic-bezier(0, 0, 0.2, 1) forwards;
+}
+
+.animate-mobile-slide-up {
+  animation: mobile-slide-up 0.3s cubic-bezier(0, 0, 0.2, 1) forwards;
+}
