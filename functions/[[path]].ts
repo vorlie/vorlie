@@ -120,35 +120,35 @@ export const onRequest = async (context: any) => {
   // 4. Inject Metadata
   const html = await response.text();
 
-  // Simple regex replacements
+  // Simple regex replacements with more flexible matching
   const injectedHtml = html
     .replace(/<title>.*?<\/title>/, `<title>${title}</title>`)
     .replace(
-      /<meta name="description" content=".*?" \/>/,
+      /<meta name="description" content=".*?"\s*\/?>/,
       `<meta name="description" content="${description.replace(/"/g, "&quot;")}" />`,
     )
     .replace(
-      /<meta property="og:title" content=".*?" \/>/,
+      /<meta property="og:title" content=".*?"\s*\/?>/,
       `<meta property="og:title" content="${title.replace(/"/g, "&quot;")}" />`,
     )
     .replace(
-      /<meta property="og:description" content=".*?" \/>/,
+      /<meta property="og:description" content=".*?"\s*\/?>/,
       `<meta property="og:description" content="${description.replace(/"/g, "&quot;")}" />`,
     )
     .replace(
-      /<meta property="og:url" content=".*?" \/>/,
+      /<meta property="og:url" content=".*?"\s*\/?>/,
       `<meta property="og:url" content="${url.href}" />`,
     )
     .replace(
-      /<meta property="twitter:title" content=".*?" \/>/,
+      /<meta property="twitter:title" content=".*?"\s*\/?>/,
       `<meta property="twitter:title" content="${title.replace(/"/g, "&quot;")}" />`,
     )
     .replace(
-      /<meta property="twitter:description" content=".*?" \/>/,
+      /<meta property="twitter:description" content=".*?"\s*\/?>/,
       `<meta property="twitter:description" content="${description.replace(/"/g, "&quot;")}" />`,
     )
     .replace(
-      /<meta property="twitter:url" content=".*?" \/>/,
+      /<meta property="twitter:url" content=".*?"\s*\/?>/, // Note: twitter:url wasn't in index.html but good to handle if added
       `<meta property="twitter:url" content="${url.href}" />`,
     );
 
