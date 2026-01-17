@@ -43,11 +43,6 @@ const friendButtons = [
     alt: "dvop.fyi button",
   },
   {
-    href: "https://kick.com/osysiak07",
-    imgSrc: "/images/osysiak07.png",
-    alt: "kick.com/osysiak07 button",
-  },
-  {
     href: "https://kyuqdev.pages.dev/",
     imgSrc: "https://kyuqdev.pages.dev/referer/banner.png",
     alt: "kyuqdev.pages.dev button",
@@ -80,7 +75,7 @@ const Buttons88x31: React.FC = () => {
     <section className="my-10 text-left">
       {" "}
       <h2 className="text-2xl font-bold mb-6 text-m3-on-surface tracking-tight">
-        My Friends
+        My Friends and other cute people
       </h2>
       <div className="flex flex-wrap gap-3 mb-8">
         {friendButtons.map((button) => (
