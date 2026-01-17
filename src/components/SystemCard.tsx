@@ -117,14 +117,14 @@ const SystemCard: React.FC<SystemCardProps> = ({ system }) => {
       >
         <div className="px-6 pb-6 pt-2 border-t border-m3-outline/10">
           {/* Core PC Specifications Section */}
-          <h4 className="text-lg font-bold text-m3-primary mt-4 mb-4 uppercase tracking-wider text-xs">
+          <h4 className="text-lg font-bold text-m3-primary mt-4 mb-4 uppercase tracking-wider">
             Core PC Specifications
           </h4>
           <ItemList items={system.specs} />
           {/* Peripherals Section (conditionally rendered) */}
           {system.peripherals && system.peripherals.length > 0 && (
             <>
-              <h4 className="text-lg font-bold text-m3-primary mt-8 mb-4 uppercase tracking-wider text-xs">
+              <h4 className="text-lg font-bold text-m3-primary mt-8 mb-4 uppercase tracking-wider">
                 Peripherals
               </h4>
               <ItemList items={system.peripherals} />
@@ -133,7 +133,7 @@ const SystemCard: React.FC<SystemCardProps> = ({ system }) => {
           {/* Software & Operating Systems Section (conditionally rendered) */}
           {system.softwareAndOS && system.softwareAndOS.length > 0 && (
             <>
-              <h4 className="text-lg font-bold text-m3-primary mt-8 mb-4 uppercase tracking-wider text-xs">
+              <h4 className="text-lg font-bold text-m3-primary mt-8 mb-4 uppercase tracking-wider">
                 Software & Operating Systems
               </h4>
               <ItemList items={system.softwareAndOS} />
