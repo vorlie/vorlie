@@ -59,7 +59,7 @@ function App() {
         style={{ backgroundImage: "url('/images/background.png')" }}
       >
         <div className="min-h-screen w-full text-m3-on-surface p-4 md:p-12 pb-24 bg-m3-surface/30">
-          <div className="w-full max-w-7xl mx-auto relative z-10">
+          <div className="w-full max-w-6xl mx-auto relative z-10">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/specs" element={<PCSpecs />} />
