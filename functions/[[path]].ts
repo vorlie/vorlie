@@ -8,7 +8,8 @@ interface Env {
 const routeMetadata: Record<string, { title: string; description: string }> = {
   "/": {
     title: "Home | vorlie",
-    description: "My website with coding projects, tech stack, and interests in games, music, and anime.",
+    description:
+      "My website with coding projects, tech stack, and interests in games, music, and anime.",
   },
   "/specs": {
     title: "PC Specs | vorlie",
@@ -16,15 +17,18 @@ const routeMetadata: Record<string, { title: string; description: string }> = {
   },
   "/clips": {
     title: "Clips | vorlie",
-    description: "A collection of my gaming clips, highlights, and funny moments.",
+    description:
+      "A collection of my gaming clips, highlights, and funny moments.",
   },
   "/project/iota-player": {
     title: "Iota Player | vorlie",
-    description: "A modern, lightweight, and beautiful music player for Windows built with Python.",
+    description:
+      "A modern, lightweight, and beautiful music player for Windows built with Python.",
   },
   "/music": {
     title: "Music | vorlie",
-    description: "Check out what I'm listening to! Real-time stats from Last.fm.",
+    description:
+      "Check out what I'm listening to! Real-time stats from Last.fm.",
   },
   "/rat": {
     title: "Rats | vorlie",
@@ -32,7 +36,8 @@ const routeMetadata: Record<string, { title: string; description: string }> = {
   },
   "/colors": {
     title: "Colors | vorlie",
-    description: "Material 3 Dynamic Color Palette and WCAG 2.1 contrast checker.",
+    description:
+      "Material 3 Dynamic Color Palette and WCAG 2.1 contrast checker.",
   },
   "/scanner": {
     title: "Scanner | vorlie",
@@ -70,7 +75,8 @@ export const onRequest = async (context: any) => {
 
   // 2. Determine Metadata
   let title = "vorlie";
-  let description = "vorlie - Personal website, developer portfolio, and blog.";
+  let description =
+    "My website with coding projects, tech stack, and interests in games, music, and anime.";
   //let image = "https://vorlie.pl/images/favicon.png"; // Default image
 
   // Check for Dynamic Blog Post
@@ -119,31 +125,31 @@ export const onRequest = async (context: any) => {
     .replace(/<title>.*?<\/title>/, `<title>${title}</title>`)
     .replace(
       /<meta name="description" content=".*?" \/>/,
-      `<meta name="description" content="${description.replace(/"/g, '&quot;')}" />`
+      `<meta name="description" content="${description.replace(/"/g, "&quot;")}" />`,
     )
     .replace(
       /<meta property="og:title" content=".*?" \/>/,
-      `<meta property="og:title" content="${title.replace(/"/g, '&quot;')}" />`
+      `<meta property="og:title" content="${title.replace(/"/g, "&quot;")}" />`,
     )
     .replace(
       /<meta property="og:description" content=".*?" \/>/,
-      `<meta property="og:description" content="${description.replace(/"/g, '&quot;')}" />`
+      `<meta property="og:description" content="${description.replace(/"/g, "&quot;")}" />`,
     )
     .replace(
       /<meta property="og:url" content=".*?" \/>/,
-      `<meta property="og:url" content="${url.href}" />`
+      `<meta property="og:url" content="${url.href}" />`,
     )
     .replace(
       /<meta property="twitter:title" content=".*?" \/>/,
-      `<meta property="twitter:title" content="${title.replace(/"/g, '&quot;')}" />`
+      `<meta property="twitter:title" content="${title.replace(/"/g, "&quot;")}" />`,
     )
     .replace(
       /<meta property="twitter:description" content=".*?" \/>/,
-      `<meta property="twitter:description" content="${description.replace(/"/g, '&quot;')}" />`
+      `<meta property="twitter:description" content="${description.replace(/"/g, "&quot;")}" />`,
     )
     .replace(
       /<meta property="twitter:url" content=".*?" \/>/,
-      `<meta property="twitter:url" content="${url.href}" />`
+      `<meta property="twitter:url" content="${url.href}" />`,
     );
 
   return new Response(injectedHtml, {
