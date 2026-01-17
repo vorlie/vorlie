@@ -46,7 +46,12 @@ const friendButtons = [
     href: "https://kick.com/osysiak07",
     imgSrc: "/images/osysiak07.png",
     alt: "kick.com/osysiak07 button",
-  }
+  },
+  {
+    href: "https://kyuqdev.pages.dev/",
+    imgSrc: "https://kyuqdev.pages.dev/referer/banner.png",
+    alt: "kyuqdev.pages.dev button",
+  },
 ];
 
 const myButtonCode =
@@ -74,7 +79,9 @@ const Buttons88x31: React.FC = () => {
   return (
     <section className="my-10 text-left">
       {" "}
-      <h2 className="text-2xl font-bold mb-6 text-m3-on-surface tracking-tight">My Friends</h2>
+      <h2 className="text-2xl font-bold mb-6 text-m3-on-surface tracking-tight">
+        My Friends
+      </h2>
       <div className="flex flex-wrap gap-3 mb-8">
         {friendButtons.map((button) => (
           <a
@@ -124,7 +131,9 @@ const Buttons88x31: React.FC = () => {
           }
         `}
       >
-        <div className={`w-2 h-2 rounded-full ${notificationText.includes("Failed") ? 'bg-m3-error' : 'bg-m3-primary'} shadow-sm animate-pulse`}></div>
+        <div
+          className={`w-2 h-2 rounded-full ${notificationText.includes("Failed") ? "bg-m3-error" : "bg-m3-primary"} shadow-sm animate-pulse`}
+        ></div>
         {notificationText}
       </div>
     </section>
