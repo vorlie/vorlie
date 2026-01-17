@@ -11,6 +11,7 @@ function Navbar() {
     { to: "/music", label: "Music" },
     { to: "/clips", label: "Clips" },
     { to: "/rat", label: "Rats" },
+    { to: "/colors", label: "Colors" },
     { to: "https://docs.vorlie.pl", label: "API" },
     {
       label: "Projects",
