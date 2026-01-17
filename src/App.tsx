@@ -14,6 +14,9 @@ import Scanner from "./pages/Scanner";
 import Rats from "./pages/Rats";
 import Music from "./pages/Music";
 import Colors from "./pages/Colors";
+import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
+
 
 import useDynamicColor from "./hooks/useDynamicColor";
 
@@ -76,6 +79,8 @@ function App() {
               <Route path="/rat" element={<Rats />} />
               <Route path="/music" element={<Music />} />
               <Route path="/colors" element={<Colors />} />
+              <Route path="/blog" element={<Blog />} />
+              <Route path="/blog/:slug" element={<BlogPost />} />
               <Route path="*" element={<Home />} />
             </Routes>
           </div>

@@ -241,3 +241,119 @@
 .animate-float {
   animation: float 6s ease-in-out infinite;
 }
+
+/* Markdown Content Styles */
+.markdown-content {
+  max-width: none;
+  line-height: 1.65;
+}
+
+.markdown-content h2 {
+  font-size: 1.75rem;
+  font-weight: 900;
+  color: var(--color-m3-on-surface);
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.025em;
+}
+
+.markdown-content h3 {
+  font-size: 1.375rem;
+  font-weight: 900;
+  color: var(--color-m3-on-surface);
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.025em;
+}
+
+.markdown-content p {
+  color: var(--color-m3-on-surface-variant);
+  margin-bottom: 1rem;
+  line-height: 1.7;
+}
+
+.markdown-content a {
+  color: var(--color-m3-primary);
+  font-weight: 700;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.markdown-content a:hover {
+  text-decoration: underline;
+  opacity: 0.8;
+}
+
+.markdown-content strong {
+  color: var(--color-m3-on-surface);
+  font-weight: 900;
+}
+
+.markdown-content code {
+  color: var(--color-m3-primary);
+  background: rgba(73, 69, 79, 0.2);
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.375rem;
+  font-family: 'Courier New', monospace;
+  font-size: 0.875rem;
+}
+
+.markdown-content pre {
+  background: rgba(73, 69, 79, 0.1);
+  border: 1px solid rgba(147, 143, 153, 0.1);
+  border-radius: 1rem;
+  padding: 1rem;
+  margin: 1.5rem 0;
+  overflow-x: auto;
+}
+
+.markdown-content pre code {
+  background: none;
+  padding: 0;
+  color: inherit;
+  font-size: 0.875rem;
+}
+
+.markdown-content ul,
+.markdown-content ol {
+  color: var(--color-m3-on-surface-variant);
+  margin: 1rem 0;
+  padding-left: 1.75rem;
+  list-style-position: outside;
+}
+
+.markdown-content ul {
+  list-style-type: disc;
+}
+
+.markdown-content ol {
+  list-style-type: decimal;
+}
+
+.markdown-content li {
+  margin-bottom: 0.375rem;
+}
+
+.markdown-content li::marker {
+  color: var(--color-m3-primary);
+}
+
+.markdown-content blockquote {
+  border-left: 4px solid var(--color-m3-primary);
+  padding-left: 1rem;
+  margin: 1.5rem 0;
+  color: var(--color-m3-on-surface-variant);
+  font-style: italic;
+}
+
+.markdown-content hr {
+  border: none;
+  border-top: 1px solid rgba(147, 143, 153, 0.2);
+  margin: 2rem 0;
+}
+
+.markdown-content img {
+  border-radius: 1.5rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  margin: 1.5rem 0;
+}
