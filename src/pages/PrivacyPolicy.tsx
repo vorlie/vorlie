@@ -1,6 +1,13 @@
+import SEO from "../components/SEO";
+
 function PrivacyPolicy() {
   return (
     <div className="min-h-screen py-12 px-4 sm:px-6 text-m3-on-surface">
+      <SEO
+        title="Privacy Policy"
+        description="Privacy practices for Miko#3059 Discord bot."
+        url="https://vorlie.pl/privacy-policy"
+      />
       <div className="max-w-4xl mx-auto bg-m3-surface-container rounded-[40px] p-8 sm:p-16 shadow-sm border border-m3-outline/10">
         <h1 className="text-4xl sm:text-5xl font-black mb-4 text-m3-primary tracking-tight text-center sm:text-left">
           Privacy Policy
@@ -70,7 +77,7 @@ function PrivacyPolicy() {
             </div>
           </section>
         </div>
-        
+
         <div className="mt-16 pt-8 border-t border-m3-outline/10 text-center">
             <p className="text-xs font-black uppercase tracking-[0.3em] text-m3-on-surface-variant opacity-30">© {new Date().getFullYear()} vorlie</p>
         </div>

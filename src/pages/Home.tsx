@@ -3,6 +3,7 @@ import LanyardPresence from "../components/LanyardPresence";
 import Projects from "../components/Projects";
 import Buttons88x31 from "../components/Buttons88x31";
 import TicTacToe from "../components/TicTacToe";
+import SEO from "../components/SEO";
 
 import {
   FaReact,
@@ -113,6 +114,11 @@ function Home() {
 
   return (
     <div className="min-h-screen text-m3-on-surface">
+      <SEO
+        title="Home"
+        description="My website with coding projects, tech stack, and interests in games, music, and anime."
+        url="https://vorlie.pl/"
+      />
       <div className="max-w-full mx-auto relative z-10 px-4 py-8">
         {" "}
         <div className="flex flex-col gap-6">

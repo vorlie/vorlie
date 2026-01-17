@@ -1,6 +1,7 @@
 import React from "react";
 import { useLastFm } from "../hooks/useLastFm";
 import { useAlbumColors } from "../hooks/useAlbumColors";
+import SEO from "../components/SEO";
 
 const Music: React.FC = () => {
   const { recentTracks, topArtists, loading } = useLastFm();
@@ -18,7 +19,7 @@ const Music: React.FC = () => {
   }
 
   return (
-    <div 
+    <div
       className="py-8 px-4 sm:px-6 animate-in fade-in duration-1000"
       style={albumColors ? {
         '--local-primary': albumColors.primary,
@@ -26,9 +27,14 @@ const Music: React.FC = () => {
         '--local-surface-variant': albumColors.surfaceVariant,
       } as React.CSSProperties : {}}
     >
+      <SEO
+        title="Music Deep Dive"
+        description="Explore my recent listens, top artists - powered by Last.fm"
+        url="https://vorlie.pl/music"
+      />
       <div className="max-w-6xl mx-auto bg-m3-surface-container rounded-[48px] p-8 sm:p-12 border border-m3-outline/10 shadow-sm relative z-10">
         <header className="mb-12 text-center sm:text-left">
-        <h1 
+        <h1
           className="text-5xl font-black tracking-tighter uppercase italic mb-2"
           style={{ color: albumColors?.primary || 'var(--color-m3-primary)' }}
         >
@@ -43,42 +49,42 @@ const Music: React.FC = () => {
       <section className="mb-16">
         <div className="bg-m3-surface-container rounded-[48px] p-6 sm:p-10 border border-m3-outline/10 shadow-2xl relative overflow-hidden group">
           {/* Subtle blurred background of the album art */}
-          <div 
+          <div
             className="absolute inset-0 opacity-10 blur-3xl scale-150 transition-all duration-1000 group-hover:opacity-20"
             style={{ backgroundImage: `url(${nowPlaying?.image})`, backgroundSize: 'cover' }}
           ></div>
 
           <div className="relative z-10 flex flex-col md:flex-row items-center gap-10">
             <div className="w-64 h-64 flex-shrink-0 shadow-2xl rounded-[32px] overflow-hidden group/art">
-              <img 
-                src={nowPlaying?.image} 
-                alt={nowPlaying?.album} 
-                className="w-full h-full object-cover transition-transform duration-700 group-hover/art:scale-110" 
+              <img
+                src={nowPlaying?.image}
+                alt={nowPlaying?.album}
+                className="w-full h-full object-cover transition-transform duration-700 group-hover/art:scale-110"
               />
             </div>
-            
+
             <div className="flex-grow text-center md:text-left">
               {nowPlaying?.isPlaying && (
-                <div 
+                <div
                   className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-6 border animate-pulse"
-                  style={{ 
+                  style={{
                     backgroundColor: albumColors?.primary ? `${albumColors.primary}1A` : 'rgba(var(--color-m3-primary), 0.1)',
                     color: albumColors?.primary || 'var(--color-m3-primary)',
                     borderColor: albumColors?.primary ? `${albumColors.primary}33` : 'rgba(var(--color-m3-primary), 0.2)'
                   }}
                 >
-                  <div 
+                  <div
                     className="w-2 h-2 rounded-full"
                     style={{ backgroundColor: albumColors?.primary || 'var(--color-m3-primary)' }}
                   ></div>
                   <span className="text-xs font-black uppercase tracking-widest">Currently Listening</span>
                 </div>
               )}
-              
+
               <h2 className="text-4xl md:text-5xl font-black text-m3-on-surface-variant tracking-tighter mb-4 line-clamp-2">
                 {nowPlaying?.name}
               </h2>
-              <p 
+              <p
                 className="text-2xl font-bold mb-2 opacity-90"
                 style={{ color: albumColors?.primary || 'var(--color-m3-primary)' }}
               >
@@ -89,7 +95,7 @@ const Music: React.FC = () => {
               </p>
 
               <div className="mt-8 flex flex-wrap gap-4 justify-center md:justify-start">
-                <a 
+                <a
                   href={nowPlaying?.url}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -111,7 +117,7 @@ const Music: React.FC = () => {
           </h3>
           <div className="space-y-4">
             {recentTracks.slice(1, 7).map((track, i) => (
-              <a 
+              <a
                 key={i}
                 href={track.url}
                 target="_blank"
@@ -120,9 +126,9 @@ const Music: React.FC = () => {
               >
                 <img src={track.image} alt={track.name} className="w-16 h-16 rounded-[16px] object-cover shadow-md transition-transform group-hover:scale-105" />
                 <div className="flex-grow min-w-0">
-                  <p 
+                  <p
                     className="font-black truncate transition-colors"
-                    style={{ 
+                    style={{
                       color: 'var(--color-m3-on-surface)',
                     }}
                     onMouseEnter={(e) => albumColors && (e.currentTarget.style.color = albumColors.primary)}
@@ -139,9 +145,9 @@ const Music: React.FC = () => {
 
         {/* Top Artists */}
         <section>
-          <h3 
+          <h3
             className="text-2xl font-black mb-8 tracking-tight uppercase border-l-4 pl-4"
-            style={{ 
+            style={{
               color: 'var(--color-m3-on-surface)',
               borderColor: albumColors?.primary || 'var(--color-m3-secondary)'
             }}
@@ -150,7 +156,7 @@ const Music: React.FC = () => {
           </h3>
           <div className="grid grid-cols-2 gap-6">
             {topArtists.map((artist, i) => (
-              <a 
+              <a
                 key={i}
                 href={artist.url}
                 target="_blank"
@@ -162,7 +168,7 @@ const Music: React.FC = () => {
                 >
                   <img src={artist.image} alt={artist.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                 </div>
-                <p 
+                <p
                   className="font-black text-lg tracking-tight line-clamp-1 transition-colors"
                   style={{ color: 'var(--color-m3-on-surface-variant)' }}
                   onMouseEnter={(e) => albumColors && (e.currentTarget.style.color = albumColors.primary)}
@@ -170,7 +176,7 @@ const Music: React.FC = () => {
                 >
                   {artist.name}
                 </p>
-                <p 
+                <p
                   className="text-xs font-black uppercase opacity-60 mt-1"
                   style={{ color: albumColors?.primary || 'var(--color-m3-primary)' }}
                 >

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import SEO from "../components/SEO";
 
 function IotaPlayer() {
   // State for managing the image modal
@@ -17,6 +18,11 @@ function IotaPlayer() {
 
   return (
     <div className="flex flex-col gap-12 max-w-6xl mx-auto py-12 px-4 sm:px-6 lg:px-8 text-m3-on-surface">
+      <SEO
+        title="Iota Player"
+        description="Iota Player is a feature-rich desktop music player for Windows and Linux with playlist management and platform integration."
+        url="https://vorlie.pl/project/iota-player"
+      />
       <div className="flex flex-col lg:flex-row gap-12">
         <section className="lg:w-2/3 flex flex-col gap-10">
           {/* Header Section */}
@@ -86,7 +92,7 @@ function IotaPlayer() {
           {/* Installation Section */}
           <div id="installation" className="bg-m3-surface-container rounded-[32px] p-8 sm:p-12 border border-m3-outline/10 shadow-sm scroll-mt-24">
             <h2 className="text-3xl font-black mb-10 text-m3-on-surface tracking-tight">Installation Guide</h2>
-            
+
             <div className="flex flex-col gap-10">
               <div className="p-8 bg-m3-surface-variant/10 rounded-[28px] border border-m3-outline/5 hover:border-m3-outline/20 transition-all duration-300">
                 <div className="flex items-center gap-4 mb-6">
@@ -211,15 +217,15 @@ function IotaPlayer() {
 
       {/* Image Modal */}
       {isModalOpen && (
-        <div 
+        <div
           className="fixed inset-0 z-[200] flex items-center justify-center p-4 sm:p-12 bg-m3-surface/95 backdrop-blur-xl animate-in fade-in duration-500"
           onClick={closeModal}
         >
-          <div 
+          <div
             className="relative bg-m3-surface-container rounded-[40px] p-4 sm:p-6 shadow-2xl border border-m3-outline/20 max-w-6xl w-full flex flex-col animate-in zoom-in-95 duration-500"
             onClick={(e) => e.stopPropagation()}
           >
-            <button 
+            <button
               className="absolute top-8 right-8 z-10 p-4 bg-m3-primary text-m3-on-primary rounded-full shadow-xl hover:scale-110 active:scale-90 transition-all group"
               onClick={closeModal}
             >
@@ -228,9 +234,9 @@ function IotaPlayer() {
               </svg>
             </button>
             <div className="overflow-auto rounded-[24px]">
-              <img 
-                src={currentImage} 
-                alt="Fullscreen Preview" 
+              <img
+                src={currentImage}
+                alt="Fullscreen Preview"
                 className="w-full h-auto object-contain max-h-[85vh] rounded-[24px]"
               />
             </div>

@@ -4,6 +4,7 @@ import ClipList from "../components/ClipList";
 import SearchInput from "../components/SearchInput";
 import VideoModal from "../components/VideoModal";
 import { Clip } from "../data/clipsData";
+import SEO from "../components/SEO";
 
 // Helper function to filter clips
 const filterClips = (clips: Clip[], searchText: string): Clip[] => {
@@ -122,6 +123,11 @@ const Clips: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-m3-surface-container rounded-[32px] text-m3-on-surface">
+      <SEO
+        title="Clips"
+        description="Clips and highlights from streams and gaming sessions"
+        url="https://vorlie.pl/clips"
+      />
       <div className="max-w-6xl mx-auto relative z-10 p-4 md:p-8 text-m3-on-surface">
         <h1 className="text-4xl font-bold mb-4 tracking-tight">
           Clips and Highlights

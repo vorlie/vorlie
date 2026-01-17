@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import { Link } from "react-router-dom";
+import SEO from "../components/SEO";
 import { BlogPost } from "../types/blog";
 
 const Blog: React.FC = () => {
@@ -116,6 +117,12 @@ const Blog: React.FC = () => {
 
   return (
     <div className="py-12 px-4 sm:px-6 animate-in fade-in duration-700">
+      <SEO
+        title="Blog"
+        description="Thoughts on dev, linux & tech"
+        url="https://vorlie.pl/blog"
+      />
+      
       <div className="max-w-6xl mx-auto bg-m3-surface-container rounded-[32px] p-4 md:p-8">
         {/* Header */}
         <header className="mb-12">

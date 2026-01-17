@@ -2,10 +2,16 @@
 import React from "react";
 import SystemCard from "../components/SystemCard";
 import { allSystemSpecs } from "../data/systemSpecs";
+import SEO from "../components/SEO";
 
 const PCSpecs: React.FC = () => {
   return (
     <div className="min-h-screen bg-m3-surface-container rounded-[32px] text-m3-on-surface">
+      <SEO
+        title="PC Specifications"
+        description="Detailed overview of my current systems and setups."
+        url="https://vorlie.pl/pc-specs"
+      />
       <div className="max-w-6xl mx-auto relative z-10 p-4 md:p-8">
         <h1 className="text-4xl font-bold mb-4 text-m3-on-surface tracking-tight">
           My Tech Arsenal

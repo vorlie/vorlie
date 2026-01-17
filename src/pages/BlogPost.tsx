@@ -5,6 +5,7 @@ import remarkGfm from "remark-gfm";
 import rehypeHighlight from "rehype-highlight";
 import rehypeRaw from "rehype-raw";
 import { BlogPostFull } from "../types/blog";
+import SEO from "../components/SEO";
 import "highlight.js/styles/tokyo-night-dark.css";
 
 const BlogPost: React.FC = () => {
@@ -114,6 +115,15 @@ const BlogPost: React.FC = () => {
 
   return (
     <div className="py-12 px-4 sm:px-6 animate-in fade-in duration-700">
+      <SEO
+        title={post.title}
+        description={post.excerpt}
+        type="article"
+        url={`https://vorlie.pl/blog/${post.slug}`}
+        publishedTime={post.date}
+        tags={post.tags}
+      />
+      
       <div className="max-w-6xl mx-auto bg-m3-surface-container rounded-[32px] p-4 md:p-8">
         {/* Back Button */}
         <Link 

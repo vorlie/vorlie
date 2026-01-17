@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import SEO from "../components/SEO";
 
 interface User {
   userId: string;
@@ -62,9 +63,14 @@ function Verify() {
 
   return (
     <div className="flex items-center justify-center py-12 px-4 text-m3-on-surface">
+      <SEO
+        title="Account Verification"
+        description="Verify your account status by logging in with Discord."
+        url="https://vorlie.pl/verify"
+      />
       <div className="max-w-md w-full rounded-[32px] bg-m3-surface-container p-8 sm:p-10 shadow-sm border border-m3-outline/10 text-center flex flex-col items-center">
         <h1 className="text-3xl font-black mb-10 text-m3-primary tracking-tight">Account Verification</h1>
-        
+
         {verificationStatus ? (
           <div className="w-full flex flex-col items-center">
             <div className={`relative rounded-[32px] p-1.5 transition-all duration-500 border-2 ${user?.verified ? 'border-m3-primary/50' : 'border-m3-outline/20'} mb-6 shadow-inner`}>
@@ -91,7 +97,7 @@ function Verify() {
               <p className="text-xs font-black uppercase tracking-widest text-m3-primary opacity-70 mb-4">
                 ID: {user?.userId}
               </p>
-              
+
               {verifiedDate && (
                 <div className="pt-4 border-t border-m3-outline/10">
                   <p className="text-xs font-black uppercase tracking-widest text-m3-on-surface-variant opacity-50 mb-1">Verified on</p>
@@ -122,7 +128,7 @@ function Verify() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
               </a>
-              
+
               <a
                 href="https://api.vorlie.pl/v1/login"
                 className="w-full bg-m3-primary text-m3-on-primary font-black py-4 px-6 rounded-full shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-95 transition-all text-lg"
@@ -130,7 +136,7 @@ function Verify() {
                 Login with Discord
               </a>
             </div>
-            
+
             <p className="text-xs font-bold text-m3-on-surface-variant opacity-40 uppercase tracking-widest mt-4">Required for server access</p>
           </div>
         )}

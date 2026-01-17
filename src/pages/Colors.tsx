@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import SEO from "../components/SEO";
 
 interface ColorPair {
   name: string;
@@ -14,7 +15,7 @@ const Colors: React.FC = () => {
     // Extract all M3 color variables from CSS
     const root = document.documentElement;
     const computedStyle = getComputedStyle(root);
-    
+
     const colorVars = [
       'color-m3-surface',
       'color-m3-surface-container',
@@ -39,7 +40,7 @@ const Colors: React.FC = () => {
         extractedColors[varName] = value;
       }
     });
-    
+
     setColors(extractedColors);
   }, []);
 
@@ -62,7 +63,7 @@ const Colors: React.FC = () => {
     const l2 = getLuminance(bg);
     const lighter = Math.max(l1, l2);
     const darker = Math.min(l1, l2);
-    
+
     return (lighter + 0.05) / (darker + 0.05);
   };
 
@@ -86,6 +87,11 @@ const Colors: React.FC = () => {
 
   return (
     <div className="py-12 px-4 sm:px-6 animate-in fade-in duration-700">
+      <SEO
+        title="Color System"
+        description="Material 3 Palette and WCAG Contrast Ratios"
+        url="https://vorlie.pl/colors"
+      />
       <div className="max-w-6xl mx-auto bg-m3-surface-container rounded-[48px] p-8 sm:p-12 border border-m3-outline/10 shadow-sm">
         <header className="mb-12">
           <h1 className="text-5xl font-black text-m3-primary tracking-tighter uppercase italic mb-2">
@@ -104,7 +110,7 @@ const Colors: React.FC = () => {
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {Object.entries(colors).map(([name, value]) => (
               <div key={name} className="bg-m3-surface-variant/20 rounded-[24px] p-4 border border-m3-outline/5">
-                <div 
+                <div
                   className="w-full h-24 rounded-[16px] mb-3 shadow-inner border border-m3-outline/10"
                   style={{ backgroundColor: value }}
                 ></div>
@@ -128,23 +134,23 @@ const Colors: React.FC = () => {
             {colorPairs.map((pair) => {
               const fg = colors[pair.foreground];
               const bg = colors[pair.background];
-              
+
               if (!fg || !bg) return null;
-              
+
               const ratio = getContrastRatio(fg, bg);
               const wcag = getWCAGLevel(ratio);
 
               return (
-                <div 
+                <div
                   key={pair.name}
                   className="bg-m3-surface-variant/20 rounded-[24px] p-6 border border-m3-outline/5 flex flex-col md:flex-row md:items-center gap-6"
                 >
                   {/* Preview */}
-                  <div 
+                  <div
                     className="w-full md:w-48 h-24 rounded-[16px] flex items-center justify-center shadow-inner border border-m3-outline/10 flex-shrink-0"
                     style={{ backgroundColor: bg }}
                   >
-                    <span 
+                    <span
                       className="text-xl font-black"
                       style={{ color: fg }}
                     >
@@ -170,7 +176,7 @@ const Colors: React.FC = () => {
                         {ratio.toFixed(2)}:1
                       </p>
                     </div>
-                    <div 
+                    <div
                       className="px-4 py-2 rounded-full font-black text-sm uppercase tracking-wider shadow-sm"
                       style={{ backgroundColor: `${wcag.color}20`, color: wcag.color, border: `2px solid ${wcag.color}` }}
                     >

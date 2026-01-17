@@ -6,7 +6,6 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
 import Verify from "./pages/Verify";
 import Navbar from "./components/Navbar";
-import Chleb from "./pages/Chleb";
 import IotaPlayer from "./pages/IotaPlayer";
 import PCSpecs from "./pages/PCSpecs";
 import Clips from "./pages/Clips";
@@ -28,7 +27,7 @@ function App() {
   const isLoading = useDynamicColor("/images/background.png");
 
   return (
-    <Router>
+      <Router>
       {/*
         Loading Screen Overlay
         We use a solid background fallback and fixed positioning to ensure it's visible immediately.
@@ -74,7 +73,6 @@ function App() {
               />
               <Route path="/verify" element={<Verify />} />
               <Route path="/project/iota-player" element={<IotaPlayer />} />
-              <Route path="/przepis-na-chleb" element={<Chleb />} />
               <Route path="/scanner" element={<Scanner />} />
               <Route path="/rat" element={<Rats />} />
               <Route path="/music" element={<Music />} />
@@ -87,7 +85,7 @@ function App() {
           <Navbar />
         </div>
       </div>
-    </Router>
+      </Router>
   );
 }
 
