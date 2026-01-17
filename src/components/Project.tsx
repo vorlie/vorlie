@@ -14,7 +14,7 @@ const Project: React.FC<ProjectProps> = ({
   languages,
   languageIcons,
 }) => (
-  <div className="bg-m3-surface-container border border-m3-outline/5 rounded-[24px] p-6 flex flex-col h-full hover:bg-m3-on-surface/5 transition-all duration-300 group cursor-default border border-transparent hover:border-m3-outline/20">
+  <div className="bg-m3-surface-container border-m3-outline/5 rounded-[24px] p-6 flex flex-col h-full hover:bg-m3-on-surface/5 transition-all duration-300 group cursor-default border hover:border-m3-outline/20">
     <div className="flex-grow mb-4">
       <h3 className="text-xl font-bold text-m3-on-surface mb-2 tracking-tight">{title}</h3>
       <p className="text-sm text-m3-on-surface-variant leading-relaxed font-medium">{desc}</p>
