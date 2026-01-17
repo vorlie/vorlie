@@ -6,7 +6,7 @@ interface Env {
 const routeMetadata: Record<string, { title: string; description: string }> = {
   "/": {
     title: "Home | vorlie",
-    description: "Personal website of vorlie - developer, linux enthusiast, and tech lover.",
+    description: "My website with coding projects, tech stack, and interests in games, music, and anime.",
   },
   "/specs": {
     title: "PC Specs | vorlie",
@@ -26,11 +26,11 @@ const routeMetadata: Record<string, { title: string; description: string }> = {
   },
   "/rat": {
     title: "Rats | vorlie",
-    description: "A gallery of my chaos potatoes (rats).",
+    description: "A gallery of rats.",
   },
   "/colors": {
     title: "Colors | vorlie",
-    description: "Material 3 Dynamic Color Palette Visualizer.",
+    description: "Material 3 Dynamic Color Palette and WCAG 2.1 contrast checker.",
   },
   "/scanner": {
     title: "Scanner | vorlie",
