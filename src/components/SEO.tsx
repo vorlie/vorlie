@@ -13,7 +13,7 @@ interface SEOProps {
 const SEO: React.FC<SEOProps> = ({
   title,
   description = "vorlie's personal website - developer, linux enthusiast, and tech lover.",
-  image = "https://vorlie.pl/images/favicon.png", // Ensure you have a default OG image
+  image = "https://vorlie.pl/images/favicon.png",
   url = typeof window !== "undefined" ? window.location.href : "https://vorlie.pl",
   type = "website",
   publishedTime,
