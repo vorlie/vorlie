@@ -9,7 +9,7 @@ const routeMetadata: Record<string, { title: string; description: string }> = {
   "/": {
     title: "Home | vorlie",
     description:
-      "My website with coding projects, tech stack, and interests in games, music, and anime.",
+      "My personal corner of the internet.",
   },
   "/specs": {
     title: "PC Specs | vorlie",
@@ -76,7 +76,7 @@ export const onRequest = async (context: any) => {
   // 2. Determine Metadata
   let title = "vorlie";
   let description =
-    "My website with coding projects, tech stack, and interests in games, music, and anime.";
+    "My personal corner of the internet.";
   //let image = "https://vorlie.pl/images/favicon.png"; // Default image
 
   // Check for Dynamic Blog Post
