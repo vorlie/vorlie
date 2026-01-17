@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 interface Env {
   ASSETS: { fetch: (request: Request) => Promise<Response> };
 }
@@ -69,7 +71,7 @@ export const onRequest = async (context: any) => {
   // 2. Determine Metadata
   let title = "vorlie";
   let description = "vorlie - Personal website, developer portfolio, and blog.";
-  let image = "https://vorlie.pl/images/favicon.png"; // Default image
+  //let image = "https://vorlie.pl/images/favicon.png"; // Default image
 
   // Check for Dynamic Blog Post
   const blogMatch = path.match(/^\/blog\/([^/]+)$/);
@@ -79,7 +81,7 @@ export const onRequest = async (context: any) => {
       // Fetch posts.json from the same origin (it's a static asset)
       const postsReq = new Request(`${url.origin}/blog/posts.json`);
       const postsRes = await context.env.ASSETS.fetch(postsReq);
-      
+
       if (postsRes.ok) {
         const posts: any[] = await postsRes.json();
         const post = posts.find((p) => p.slug === slug);
@@ -103,7 +105,7 @@ export const onRequest = async (context: any) => {
 
   // 3. Fetch index.html
   const response = await context.env.ASSETS.fetch(context.request);
-  
+
   // If not an HTML page (e.g. 404 handled by spa fallback), just return
   const contentType = response.headers.get("content-type");
   if (!contentType || !contentType.includes("text/html")) {
@@ -112,7 +114,7 @@ export const onRequest = async (context: any) => {
 
   // 4. Inject Metadata
   const html = await response.text();
-  
+
   // Simple regex replacements
   const injectedHtml = html
     .replace(/<title>.*?<\/title>/, `<title>${title}</title>`)
