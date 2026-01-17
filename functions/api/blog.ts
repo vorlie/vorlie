@@ -5,36 +5,19 @@ export const onRequest = async (context: any) => {
   const tag = url.searchParams.get("tag");
 
   try {
-    // In production, we'd fetch from KV or R2
-    // For now, return mock data structure
-    // The actual posts will be fetched client-side from /blog/posts/*.md
+    // Fetch the pre-generated posts.json
+    const postsResponse = await fetch(new URL('/blog/posts.json', url.origin));
     
-    const posts = [
-      {
-        slug: "material-3-theming",
-        title: "Building a Dynamic Material 3 Theme System",
-        date: "2026-01-16",
-        tags: ["webdev", "material-design", "tutorial"],
-        excerpt: "How I implemented Material You theming that extracts colors from my wallpaper and applies them across the entire website.",
-        readingTime: 5
-      },
-      {
-        slug: "welcome",
-        title: "Welcome to My Blog",
-        date: "2026-01-17",
-        tags: ["announcement", "meta"],
-        excerpt: "The first post on my new blog. Here's what you can expect from this space.",
-        readingTime: 2
-      }
-    ];
+    if (!postsResponse.ok) {
+      throw new Error('Failed to load posts.json');
+    }
+    
+    const allPosts = await postsResponse.json();
 
     // Filter by tag if provided
     let filteredPosts = tag 
-      ? posts.filter(p => p.tags.includes(tag))
-      : posts;
-
-    // Sort by date (newest first)
-    filteredPosts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+      ? allPosts.filter((p: any) => p.tags.includes(tag))
+      : allPosts;
 
     // Paginate
     const startIndex = (page - 1) * limit;
@@ -49,7 +32,8 @@ export const onRequest = async (context: any) => {
       {
         headers: {
           "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*"
+          "Access-Control-Allow-Origin": "*",
+          "Cache-Control": "public, max-age=3600" // Cache for 1 hour
         }
       }
     );

@@ -1,0 +1,25 @@
+[
+  {
+    "slug": "welcome",
+    "title": "Welcome to My Blog",
+    "date": "2026-01-17",
+    "tags": [
+      "announcement",
+      "meta"
+    ],
+    "excerpt": "The first post on my new blog. Here's what you can expect from this space.",
+    "readingTime": 1
+  },
+  {
+    "slug": "material-3-theming",
+    "title": "Building a Dynamic Material 3 Theme System",
+    "date": "2026-01-16",
+    "tags": [
+      "webdev",
+      "material-design",
+      "tutorial"
+    ],
+    "excerpt": "How I implemented Material You theming that extracts colors from my wallpaper and applies them across the entire website.",
+    "readingTime": 2
+  }
+]
