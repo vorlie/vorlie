@@ -26,11 +26,11 @@ function App() {
 
   return (
     <Router>
-      {/* 
-        Loading Screen Overlay 
+      {/*
+        Loading Screen Overlay
         We use a solid background fallback and fixed positioning to ensure it's visible immediately.
       */}
-      <div 
+      <div
         className={`fixed inset-0 z-[200] flex flex-col items-center justify-center bg-[#1C1B1F] bg-m3-surface transition-opacity duration-700 ${!isLoading ? 'animate-m3-fade-out' : 'opacity-100'}`}
       >
         <div className="relative flex flex-col items-center gap-8">
@@ -52,7 +52,7 @@ function App() {
         style={{ backgroundImage: "url('/images/background.png')" }}
       >
         <div className="min-h-screen w-full text-m3-on-surface p-4 md:p-12 pb-24 bg-m3-surface/30">
-          <div className="w-full max-w-6xl mx-auto relative z-10">
+          <div className="w-full max-w-7xl mx-auto relative z-10">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/specs" element={<PCSpecs />} />

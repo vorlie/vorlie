@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
+  <defs>
+    <filter id="drop-shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="2.5"/>
+      <feOffset dx="0" dy="3" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.25"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#442929;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#442929;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="v-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffdad9;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ede0df;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Rounded square background with gradient -->
+  <rect x="2" y="2" width="44" height="44" rx="12" fill="url(#bg-gradient)"/>
+
+  <!-- V letter with rounded edges and drop shadow -->
+  <path
+    d="M 15 13 C 15 13 14.5 13 14.5 13.5 C 14.5 13.8 14.6 14 14.8 14.5 L 22.5 32.5 C 22.8 33.2 23.2 34 24 34 C 24.8 34 25.2 33.2 25.5 32.5 L 33.2 14.5 C 33.4 14 33.5 13.8 33.5 13.5 C 33.5 13 33 13 33 13 L 30 13 C 29.2 13 28.8 13.3 28.5 14 L 24 25 L 19.5 14 C 19.2 13.3 18.8 13 18 13 Z"
+    fill="url(#v-gradient)"
+    filter="url(#drop-shadow)"
+  />
+
+  <!-- Subtle highlight for depth -->
+  <rect x="2" y="2" width="44" height="22" rx="12" fill="white" opacity="0.1"/>
+</svg>
