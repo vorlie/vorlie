@@ -95,7 +95,6 @@ export const onRequest = async (context: any) => {
     }
   } else {
     // Check Static Routes
-    // Handle trailing slash consistency if needed, strictly matching for now
     const meta = routeMetadata[path] || routeMetadata[path.replace(/\/$/, "")];
     if (meta) {
       title = meta.title;
