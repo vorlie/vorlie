@@ -38,11 +38,6 @@ const friendButtons = [
     alt: "megu.dev button",
   },
   {
-    href: "https://dvop.fyi/",
-    imgSrc: "https:///dvop.fyi/images/frank.png",
-    alt: "dvop.fyi button",
-  },
-  {
     href: "https://kyuqdev.pages.dev/",
     imgSrc: "https://kyuqdev.pages.dev/referer/banner.png",
     alt: "kyuqdev.pages.dev button",
