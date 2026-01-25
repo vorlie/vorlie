@@ -85,27 +85,21 @@ export const allSystemSpecs: SystemDetails[] = [
       { label: "Mousepad", value: "KRUX Space XXL" },
       { label: "Controller", value: "XBOX One S Controller White" },
       { label: "Console", value: "XBOX One S 512GB" },
-      { label: "Network Switch", value: "Mercusys MS105GS 10/100/1000Mbps Switch" },
+      {
+        label: "Network Switch",
+        value: "Mercusys MS105GS 10/100/1000Mbps Switch",
+      },
     ],
     softwareAndOS: [
       {
-        label: "System",
-        value: "Dual Boot: Arch Linux / Windows 10 IoT Enterprise LTSC",
-      },
-      {
         label: "Primary OS",
-        value: "Arch Linux + KDE Plasma 6",
+        value: "Windows 11 Pro",
         notes:
-          "I use Arch Linux as my primary OS, where I mostly play games and code.",
-      },
-      {
-        label: "Windows Use",
-        value: "Gaming & Specific Software",
-        notes: "Windows is used mainly for kernel anti-cheat games.",
+          "Used for gaming and general tasks. I keep it updated to the latest version.",
       },
       {
         label: "Dev Env.",
-        value: "Python 3.13+, Node.js (LTS), VS Code",
+        value: "Python 3.14+, Node.js (LTS), VS Code",
       },
     ],
   },
