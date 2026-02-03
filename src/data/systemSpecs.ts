@@ -113,7 +113,7 @@ export const allSystemSpecs: SystemDetails[] = [
       },
       {
         label: "Frameworks",
-        value: "WinUI 3, .NET 8/9",
+        value: "WinUI 3, .NET 8/10",
         notes: "Focused on modern Windows desktop application development.",
       },
     ],
