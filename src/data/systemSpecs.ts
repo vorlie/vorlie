@@ -98,7 +98,7 @@ export const allSystemSpecs: SystemDetails[] = [
       },
       {
         label: "Editors & IDEs",
-        value: "VS Code, Visual Studio 2022",
+        value: "VS Code, Visual Studio 2026",
         notes:
           "VS Code for web/scripting; Visual Studio for heavy .NET and C++ work.",
       },
