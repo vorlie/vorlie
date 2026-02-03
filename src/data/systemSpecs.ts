@@ -84,7 +84,7 @@ export const allSystemSpecs: SystemDetails[] = [
       },
       { label: "Mousepad", value: "KRUX Space XXL" },
       { label: "Controller", value: "XBOX One S Controller White" },
-      { label: "Console", value: "XBOX One S 512GB" },
+      { label: "Console", value: "XBOX One S 1TB" },
       {
         label: "Network Switch",
         value: "Mercusys MS105GS 10/100/1000Mbps Switch",
@@ -94,12 +94,27 @@ export const allSystemSpecs: SystemDetails[] = [
       {
         label: "Primary OS",
         value: "Windows 11 Pro",
-        notes:
-          "Used for gaming and general tasks. I keep it updated to the latest version.",
+        notes: "Primary workstation for development and gaming.",
       },
       {
-        label: "Dev Env.",
-        value: "Python 3.14+, Node.js (LTS), VS Code",
+        label: "Editors & IDEs",
+        value: "VS Code, Visual Studio 2022",
+        notes:
+          "VS Code for web/scripting; Visual Studio for heavy .NET and C++ work.",
+      },
+      {
+        label: "Languages & Runtimes",
+        value: "Python 3.14+, Node.js (LTS), Rust (Cargo)",
+      },
+      {
+        label: "C++ Toolchain",
+        value: "CMake, MSVC",
+        notes: "Standard build tools for native Windows development.",
+      },
+      {
+        label: "Frameworks",
+        value: "WinUI 3, .NET 8/9",
+        notes: "Focused on modern Windows desktop application development.",
       },
     ],
   },
