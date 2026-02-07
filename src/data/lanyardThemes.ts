@@ -67,7 +67,7 @@ export const LANYARD_THEMES: Record<string, LanyardTheme> = {
     textClass: "text-blue-400",
   },
   "Visual Studio Code": {
-    name: "Visual Studio Code",
+    name: "VSCode",
     color: "text-blue-500",
     pulseColor: "59, 130, 246",
     icon: VscCode,

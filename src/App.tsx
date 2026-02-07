@@ -9,7 +9,6 @@ import Navbar from "./components/Navbar";
 import IotaPlayer from "./pages/IotaPlayer";
 import PCSpecs from "./pages/PCSpecs";
 import Clips from "./pages/Clips";
-import Scanner from "./pages/Scanner";
 import Rats from "./pages/Rats";
 import Music from "./pages/Music";
 import Colors from "./pages/Colors";
@@ -73,7 +72,6 @@ function App() {
               />
               <Route path="/verify" element={<Verify />} />
               <Route path="/project/iota-player" element={<IotaPlayer />} />
-              <Route path="/scanner" element={<Scanner />} />
               <Route path="/rat" element={<Rats />} />
               <Route path="/music" element={<Music />} />
               <Route path="/colors" element={<Colors />} />

@@ -4,6 +4,7 @@ import Projects from "../components/Projects";
 import Buttons88x31 from "../components/Buttons88x31";
 import TicTacToe from "../components/TicTacToe";
 import SEO from "../components/SEO";
+import GameAccs from "../components/GameAccs";
 
 import {
   FaReact,
@@ -215,6 +216,9 @@ function Home() {
                   </div>
                   <div className="mt-8">
                     <Buttons88x31 />
+                  </div>
+                  <div className="mt-8">
+                    <GameAccs />
                   </div>
                 </div>
 
