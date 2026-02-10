@@ -19,8 +19,12 @@ function PrivacyPolicy() {
         <div className="space-y-12">
           <section className="group">
             <div className="flex items-center gap-4 mb-4">
-              <span className="text-2xl font-black text-m3-primary/30 group-hover:text-m3-primary transition-colors">01</span>
-              <h2 className="text-2xl font-black text-m3-on-surface tracking-tight">Information Collection</h2>
+              <span className="text-2xl font-black text-m3-primary/30 group-hover:text-m3-primary transition-colors">
+                01
+              </span>
+              <h2 className="text-2xl font-black text-m3-on-surface tracking-tight">
+                Information Collection
+              </h2>
             </div>
             <div className="sm:ml-12 border-l-2 border-m3-primary/10 pl-6 group-hover:border-m3-primary/30 transition-colors">
               <p className="text-lg text-m3-on-surface-variant font-medium leading-relaxed mb-4">
@@ -29,24 +33,32 @@ function PrivacyPolicy() {
               <ul className="grid gap-3 list-none mb-6">
                 {[
                   "User, Server, and Channel IDs.",
-                  "Member counts for statistics and status display."
-                ].map(item => (
-                  <li key={item} className="flex items-start gap-3 text-m3-on-surface-variant/80 font-bold">
+                  "Member counts for statistics and status display.",
+                ].map((item) => (
+                  <li
+                    key={item}
+                    className="flex items-start gap-3 text-m3-on-surface-variant/80 font-bold"
+                  >
                     <span className="w-1.5 h-1.5 rounded-full bg-m3-primary mt-2"></span>
                     {item}
                   </li>
                 ))}
               </ul>
               <p className="text-lg text-m3-on-surface-variant font-medium opacity-80 italic">
-                We do not collect or store message content or personally identifiable information.
+                We do not collect or store message content or personally
+                identifiable information.
               </p>
             </div>
           </section>
 
           <section className="group">
             <div className="flex items-center gap-4 mb-4">
-              <span className="text-2xl font-black text-m3-primary/30 group-hover:text-m3-primary transition-colors">02</span>
-              <h2 className="text-2xl font-black text-m3-on-surface tracking-tight">Data Security</h2>
+              <span className="text-2xl font-black text-m3-primary/30 group-hover:text-m3-primary transition-colors">
+                02
+              </span>
+              <h2 className="text-2xl font-black text-m3-on-surface tracking-tight">
+                Data Security
+              </h2>
             </div>
             <div className="sm:ml-12 border-l-2 border-m3-primary/10 pl-6 group-hover:border-m3-primary/30 transition-colors">
               <ul className="grid gap-3 list-none">
@@ -54,9 +66,12 @@ function PrivacyPolicy() {
                   "Processing is performed in-memory without permanent storage.",
                   "Temporary files are immediately deleted after use.",
                   "No permanent storage of user-submitted content or images.",
-                  "Prepared statements protect against SQL vulnerabilities."
-                ].map(item => (
-                  <li key={item} className="flex items-start gap-3 text-m3-on-surface-variant/80 font-bold">
+                  "Prepared statements protect against SQL vulnerabilities.",
+                ].map((item) => (
+                  <li
+                    key={item}
+                    className="flex items-start gap-3 text-m3-on-surface-variant/80 font-bold"
+                  >
                     <span className="w-1.5 h-1.5 rounded-full bg-m3-primary mt-2"></span>
                     {item}
                   </li>
@@ -67,19 +82,27 @@ function PrivacyPolicy() {
 
           <section className="group">
             <div className="flex items-center gap-4 mb-4">
-              <span className="text-2xl font-black text-m3-primary/30 group-hover:text-m3-primary transition-colors">03</span>
-              <h2 className="text-2xl font-black text-m3-on-surface tracking-tight">User Rights</h2>
+              <span className="text-2xl font-black text-m3-primary/30 group-hover:text-m3-primary transition-colors">
+                03
+              </span>
+              <h2 className="text-2xl font-black text-m3-on-surface tracking-tight">
+                User Rights
+              </h2>
             </div>
             <div className="sm:ml-12 border-l-2 border-m3-primary/10 pl-6 group-hover:border-m3-primary/30 transition-colors">
-               <p className="text-lg text-m3-on-surface-variant font-medium leading-relaxed mb-4">
-                 You retain full rights to your data (Access, Rectification, Deletion). Since we only store basic Discord IDs, requests can be handled via our support channels.
-               </p>
+              <p className="text-lg text-m3-on-surface-variant font-medium leading-relaxed mb-4">
+                You retain full rights to your data (Access, Rectification,
+                Deletion). Since we only store basic Discord IDs, requests can
+                be handled via our support channels.
+              </p>
             </div>
           </section>
         </div>
 
         <div className="mt-16 pt-8 border-t border-m3-outline/10 text-center">
-            <p className="text-xs font-black uppercase tracking-[0.3em] text-m3-on-surface-variant opacity-30">© {new Date().getFullYear()} vorlie</p>
+          <p className="text-xs font-black uppercase tracking-[0.3em] text-m3-on-surface-variant opacity-30">
+            © {new Date().getFullYear()} vorlie
+          </p>
         </div>
       </div>
     </div>

@@ -12,7 +12,7 @@ interface User {
 function Verify() {
   const [user, setUser] = useState<User | null>(null);
   const [verificationStatus, setVerificationStatus] = useState<string | null>(
-    null
+    null,
   );
   const [verifiedDate, setVerifiedDate] = useState<string | null>(null);
   const [avatarError, setAvatarError] = useState<boolean>(false);
@@ -28,7 +28,7 @@ function Verify() {
         setVerifiedDate(
           parsedUser.verifiedAt
             ? new Date(Number(parsedUser.verifiedAt) * 1000).toLocaleString()
-            : null
+            : null,
         );
       } else {
         const urlParams = new URLSearchParams(window.location.search);
@@ -50,7 +50,7 @@ function Verify() {
           setUser(userData);
           setVerificationStatus(userData.verified ? "You are verified!" : null);
           setVerifiedDate(
-            new Date(Number(userData.verifiedAt) * 1000).toLocaleString()
+            new Date(Number(userData.verifiedAt) * 1000).toLocaleString(),
           );
         }
       }
@@ -69,11 +69,15 @@ function Verify() {
         url="https://vorlie.pl/verify"
       />
       <div className="max-w-md w-full rounded-[32px] bg-m3-surface-container p-8 sm:p-10 shadow-sm border border-m3-outline/10 text-center flex flex-col items-center">
-        <h1 className="text-3xl font-black mb-10 text-m3-primary tracking-tight">Account Verification</h1>
+        <h1 className="text-3xl font-black mb-10 text-m3-primary tracking-tight">
+          Account Verification
+        </h1>
 
         {verificationStatus ? (
           <div className="w-full flex flex-col items-center">
-            <div className={`relative rounded-[32px] p-1.5 transition-all duration-500 border-2 ${user?.verified ? 'border-m3-primary/50' : 'border-m3-outline/20'} mb-6 shadow-inner`}>
+            <div
+              className={`relative rounded-[32px] p-1.5 transition-all duration-500 border-2 ${user?.verified ? "border-m3-primary/50" : "border-m3-outline/20"} mb-6 shadow-inner`}
+            >
               <div className="relative rounded-[24px] overflow-hidden w-28 h-28 shadow-lg">
                 {user?.userId && (
                   <img
@@ -100,21 +104,26 @@ function Verify() {
 
               {verifiedDate && (
                 <div className="pt-4 border-t border-m3-outline/10">
-                  <p className="text-xs font-black uppercase tracking-widest text-m3-on-surface-variant opacity-50 mb-1">Verified on</p>
+                  <p className="text-xs font-black uppercase tracking-widest text-m3-on-surface-variant opacity-50 mb-1">
+                    Verified on
+                  </p>
                   <p className="text-sm font-bold opacity-80">{verifiedDate}</p>
                 </div>
               )}
             </div>
 
             <div className="bg-m3-primary/10 text-m3-primary px-6 py-4 rounded-full border border-m3-primary/20 w-full animate-in zoom-in-95 duration-500">
-               <p className="text-xl font-black tracking-tight">{verificationStatus}</p>
+              <p className="text-xl font-black tracking-tight">
+                {verificationStatus}
+              </p>
             </div>
           </div>
         ) : (
           <div className="w-full flex flex-col gap-6">
             <div className="p-6 bg-m3-surface-variant/20 rounded-[24px] border border-m3-outline/5 leading-relaxed">
               <p className="text-lg text-m3-on-surface-variant font-medium">
-                Please authenticate using Discord to link and verify your account status.
+                Please authenticate using Discord to link and verify your
+                account status.
               </p>
             </div>
 
@@ -124,8 +133,19 @@ function Verify() {
                 className="w-full bg-m3-surface text-m3-primary font-black py-4 px-6 rounded-full border-2 border-m3-primary/20 hover:bg-m3-primary/10 transition-all flex items-center justify-center gap-2 group"
               >
                 Join Discord Server
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5 transform group-hover:translate-x-1 transition-transform"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={3}
+                    d="M13 7l5 5m0 0l-5 5m5-5H6"
+                  />
                 </svg>
               </a>
 
@@ -137,7 +157,9 @@ function Verify() {
               </a>
             </div>
 
-            <p className="text-xs font-bold text-m3-on-surface-variant opacity-40 uppercase tracking-widest mt-4">Required for server access</p>
+            <p className="text-xs font-bold text-m3-on-surface-variant opacity-40 uppercase tracking-widest mt-4">
+              Required for server access
+            </p>
           </div>
         )}
       </div>

@@ -15,18 +15,8 @@ interface GameGroup {
 
 const GameAccsData: GameGroup[] = [
   {
-    gameTitle: "League of Legends",
-    accounts: [
-      { name: "Endfield Pixie", tag: "FLUX", region: "EUW" },
-      { name: "iota", tag: "weiii", region: "EUW" },
-    ],
-  },
-  {
-    gameTitle: "Valorant",
-    accounts: [
-      { name: "Endfield Pixie", tag: "FLUX" },
-      { name: "iota", tag: "weiii" },
-    ],
+    gameTitle: "League of Legends & Valorant",
+    accounts: [{ name: "Endfield Pixie", tag: "FLUX", region: "EUW" }],
   },
   {
     gameTitle: "Dead by Daylight",

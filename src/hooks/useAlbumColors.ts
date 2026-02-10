@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import ColorThief from "colorthief";
-import { 
-  argbFromRgb, 
-  themeFromSourceColor, 
-  hexFromArgb
+import {
+  argbFromRgb,
+  themeFromSourceColor,
+  hexFromArgb,
 } from "@material/material-color-utilities";
 
 interface AlbumColors {
@@ -14,7 +14,9 @@ interface AlbumColors {
   surfaceVariant: string;
 }
 
-export const useAlbumColors = (imageUrl: string | undefined): AlbumColors | null => {
+export const useAlbumColors = (
+  imageUrl: string | undefined,
+): AlbumColors | null => {
   const [colors, setColors] = useState<AlbumColors | null>(null);
 
   useEffect(() => {
@@ -31,8 +33,12 @@ export const useAlbumColors = (imageUrl: string | undefined): AlbumColors | null
       try {
         const colorThief = new ColorThief();
         const dominantRgb = colorThief.getColor(img);
-        
-        const sourceColor = argbFromRgb(dominantRgb[0], dominantRgb[1], dominantRgb[2]);
+
+        const sourceColor = argbFromRgb(
+          dominantRgb[0],
+          dominantRgb[1],
+          dominantRgb[2],
+        );
         const theme = themeFromSourceColor(sourceColor, [
           {
             name: "album-theme",
@@ -42,7 +48,7 @@ export const useAlbumColors = (imageUrl: string | undefined): AlbumColors | null
         ]);
 
         const systemDark = theme.schemes.dark;
-        
+
         setColors({
           primary: hexFromArgb(systemDark.primary),
           onPrimary: hexFromArgb(systemDark.onPrimary),

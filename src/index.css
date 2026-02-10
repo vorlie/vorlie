@@ -363,10 +363,10 @@
 .material-symbols-rounded {
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   font-variation-settings:
-  'FILL' 0,
-  'wght' 600,
-  'GRAD' 0,
-  'opsz' 10
+    'FILL' 0,
+    'wght' 600,
+    'GRAD' 0,
+    'opsz' 10
 }
 
 /* Animation for the Desktop Dropdowns */
@@ -375,6 +375,7 @@
     opacity: 0;
     transform: translateY(10px) scale(0.95);
   }
+
   100% {
     opacity: 1;
     transform: translateY(0) scale(1);
@@ -387,6 +388,7 @@
     opacity: 0;
     transform: translateY(20px);
   }
+
   100% {
     opacity: 1;
     transform: translateY(0);

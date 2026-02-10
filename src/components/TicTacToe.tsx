@@ -287,12 +287,12 @@ const TicTacToe: React.FC = () => {
           winnerInfo && winnerInfo === "X"
             ? "text-green-400"
             : winnerInfo && winnerInfo === "O"
-            ? "text-m3-primary"
-            : winnerInfo === "Draw"
-            ? "text-yellow-400"
-            : isBotThinking
-            ? "text-m3-on-surface-variant animate-pulse"
-            : "text-m3-on-surface-variant opacity-80"
+              ? "text-m3-primary"
+              : winnerInfo === "Draw"
+                ? "text-yellow-400"
+                : isBotThinking
+                  ? "text-m3-on-surface-variant animate-pulse"
+                  : "text-m3-on-surface-variant opacity-80"
         }`}
       >
         {status}

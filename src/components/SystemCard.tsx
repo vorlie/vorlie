@@ -92,10 +92,12 @@ const SystemCard: React.FC<SystemCardProps> = ({ system }) => {
         aria-expanded={isExpanded}
         aria-controls={`system-specs-content-${system.name.replace(
           /\s/g,
-          "-"
+          "-",
         )}`}
       >
-        <h3 className="text-2xl font-bold text-m3-on-surface tracking-tight">{system.name}</h3>
+        <h3 className="text-2xl font-bold text-m3-on-surface tracking-tight">
+          {system.name}
+        </h3>
         <span className="text-m3-on-surface-variant transition-transform duration-300 ease-in-out">
           {isExpanded ? (
             <FaChevronUp size="1.2em" />
@@ -106,7 +108,9 @@ const SystemCard: React.FC<SystemCardProps> = ({ system }) => {
       </button>
 
       {system.description && (
-        <p className="px-6 pb-4 text-m3-on-surface-variant text-sm font-medium">{system.description}</p>
+        <p className="px-6 pb-4 text-m3-on-surface-variant text-sm font-medium">
+          {system.description}
+        </p>
       )}
 
       <div

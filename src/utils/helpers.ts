@@ -1,7 +1,7 @@
 // src/utils/helpers.ts
 export const extractImageUrl = (
   url: string,
-  application_id?: string
+  application_id?: string,
 ): string => {
   const fallback = "/images/default.png";
   if (!url) return fallback;
@@ -10,7 +10,7 @@ export const extractImageUrl = (
     if (url.startsWith("mp:external/")) {
       return `https://media.discordapp.net/external/${url.replace(
         "mp:external/",
-        ""
+        "",
       )}`;
     } else if (url.startsWith("spotify:")) {
       return url.replace("spotify:", "https://i.scdn.co/image/");
@@ -26,7 +26,7 @@ export const extractImageUrl = (
 
 export const getAvatarUrl = (
   userId: string,
-  avatarId: string | null
+  avatarId: string | null,
 ): string => {
   if (!avatarId) {
     return `https://cdn.discordapp.com/embed/avatars/${Number(userId) % 5}.png`;
@@ -68,7 +68,7 @@ export const getEffectClass = (effectId: number | undefined): string => {
 
 export const decToHex = (dec: number) => {
   const hex = dec.toString(16);
-  return '#' + '0'.repeat(6 - hex.length) + hex;
+  return "#" + "0".repeat(6 - hex.length) + hex;
 };
 
 export const getBannerUrl = async (userId: string): Promise<string | null> => {
@@ -79,7 +79,7 @@ export const getBannerUrl = async (userId: string): Promise<string | null> => {
     const data = await response.json();
     return data.banner_url;
   } catch (error) {
-    console.error('Error fetching banner:', error);
+    console.error("Error fetching banner:", error);
     return null;
   }
 };

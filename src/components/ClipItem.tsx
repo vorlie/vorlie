@@ -1,6 +1,6 @@
 // src/components/ClipItem.tsx
 import React from "react";
-import { Clip } from '../data/clipsData';
+import { Clip } from "../data/clipsData";
 
 interface ClipItemProps {
   clip: Clip;
@@ -21,7 +21,11 @@ const ClipItem: React.FC<ClipItemProps> = ({ clip, onClipClick }) => {
         />
         <div className="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 hover:opacity-100 transition-opacity duration-300">
           <div className="bg-m3-primary/90 p-4 rounded-full shadow-lg">
-            <svg className="h-8 w-8 text-m3-on-primary" fill="currentColor" viewBox="0 0 24 24">
+            <svg
+              className="h-8 w-8 text-m3-on-primary"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
               <path d="M8 5v14l11-7z" />
             </svg>
           </div>
@@ -35,13 +39,18 @@ const ClipItem: React.FC<ClipItemProps> = ({ clip, onClipClick }) => {
           {clip.description}
         </p>
         <div className="flex justify-between items-center text-xs font-bold uppercase tracking-wider text-m3-primary mt-auto">
-          <span>{clip.platform} &bull; {clip.date}</span>
+          <span>
+            {clip.platform} &bull; {clip.date}
+          </span>
           <span>{clip.game}</span>
         </div>
         {clip.tags && clip.tags.length > 0 && (
           <div className="mt-4 flex flex-wrap gap-2">
             {clip.tags.map((tag: string) => (
-              <span key={tag} className="bg-m3-primary/10 text-m3-primary text-xs font-bold px-3 py-1 rounded-full border border-m3-primary/20">
+              <span
+                key={tag}
+                className="bg-m3-primary/10 text-m3-primary text-xs font-bold px-3 py-1 rounded-full border border-m3-primary/20"
+              >
                 #{tag}
               </span>
             ))}

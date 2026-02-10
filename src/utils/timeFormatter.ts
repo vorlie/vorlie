@@ -33,7 +33,7 @@ export const formatTotalDuration = (start: number, end: number): string => {
 
 export const calculateProgressPercent = (
   start: number,
-  end: number
+  end: number,
 ): number | null => {
   const now = Date.now();
   if (now < start || end <= start) return 0;

@@ -11,66 +11,73 @@ const Blog: React.FC = () => {
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
   const observerTarget = useRef<HTMLDivElement>(null);
 
-  const loadPosts = useCallback(async (pageNum: number, tag: string | null = null) => {
-    setLoading(true);
-    try {
-      const tagParam = tag ? `&tag=${tag}` : "";
-      const response = await fetch(`/api/blog?page=${pageNum}&limit=6${tagParam}`);
-      
-      // If API fails (local dev), use mock data
-      if (!response.ok) {
-        console.warn("API not available, using local data");
-        
-        const mockPosts: BlogPost[] = [
-          {
-            slug: "material-3-theming",
-            title: "Building a Dynamic Material 3 Theme System",
-            date: "2026-01-16",
-            tags: ["webdev", "material-design", "tutorial"],
-            excerpt: "How I implemented Material You theming that extracts colors from my wallpaper and applies them across the entire website.",
-            readingTime: 2
-          },
-          {
-            slug: "welcome",
-            title: "Welcome to My Blog",
-            date: "2026-01-17",
-            tags: ["announcement", "meta"],
-            excerpt: "The first post on my new blog. Here's what you can expect from this space.",
-            readingTime: 1
+  const loadPosts = useCallback(
+    async (pageNum: number, tag: string | null = null) => {
+      setLoading(true);
+      try {
+        const tagParam = tag ? `&tag=${tag}` : "";
+        const response = await fetch(
+          `/api/blog?page=${pageNum}&limit=6${tagParam}`,
+        );
+
+        // If API fails (local dev), use mock data
+        if (!response.ok) {
+          console.warn("API not available, using local data");
+
+          const mockPosts: BlogPost[] = [
+            {
+              slug: "material-3-theming",
+              title: "Building a Dynamic Material 3 Theme System",
+              date: "2026-01-16",
+              tags: ["webdev", "material-design", "tutorial"],
+              excerpt:
+                "How I implemented Material You theming that extracts colors from my wallpaper and applies them across the entire website.",
+              readingTime: 2,
+            },
+            {
+              slug: "welcome",
+              title: "Welcome to My Blog",
+              date: "2026-01-17",
+              tags: ["announcement", "meta"],
+              excerpt:
+                "The first post on my new blog. Here's what you can expect from this space.",
+              readingTime: 1,
+            },
+          ];
+
+          const filteredPosts = tag
+            ? mockPosts.filter((p) => p.tags.includes(tag))
+            : mockPosts;
+
+          if (pageNum === 1) {
+            setPosts(filteredPosts);
+          } else {
+            setPosts((prev) => [...prev, ...filteredPosts]);
           }
-        ];
-        
-        const filteredPosts = tag 
-          ? mockPosts.filter(p => p.tags.includes(tag))
-          : mockPosts;
-        
-        if (pageNum === 1) {
-          setPosts(filteredPosts);
-        } else {
-          setPosts(prev => [...prev, ...filteredPosts]);
+
+          setHasMore(false);
+          setLoading(false);
+          return;
         }
-        
+
+        const data = await response.json();
+
+        if (pageNum === 1) {
+          setPosts(data.posts);
+        } else {
+          setPosts((prev) => [...prev, ...data.posts]);
+        }
+
+        setHasMore(data.hasMore);
+      } catch (error) {
+        console.error("Failed to load blog posts:", error);
         setHasMore(false);
+      } finally {
         setLoading(false);
-        return;
       }
-      
-      const data = await response.json();
-      
-      if (pageNum === 1) {
-        setPosts(data.posts);
-      } else {
-        setPosts(prev => [...prev, ...data.posts]);
-      }
-      
-      setHasMore(data.hasMore);
-    } catch (error) {
-      console.error("Failed to load blog posts:", error);
-      setHasMore(false);
-    } finally {
-      setLoading(false);
-    }
-  }, []);
+    },
+    [],
+  );
 
   // Initial load
   useEffect(() => {
@@ -80,12 +87,12 @@ const Blog: React.FC = () => {
   // Infinite scroll observer
   useEffect(() => {
     const observer = new IntersectionObserver(
-      entries => {
+      (entries) => {
         if (entries[0].isIntersecting && hasMore && !loading) {
-          setPage(prev => prev + 1);
+          setPage((prev) => prev + 1);
         }
       },
-      { threshold: 0.5 }
+      { threshold: 0.5 },
     );
 
     const currentTarget = observerTarget.current;
@@ -107,7 +114,7 @@ const Blog: React.FC = () => {
     }
   }, [page]);
 
-  const allTags = Array.from(new Set(posts.flatMap(p => p.tags)));
+  const allTags = Array.from(new Set(posts.flatMap((p) => p.tags)));
 
   const handleTagClick = (tag: string) => {
     setSelectedTag(tag === selectedTag ? null : tag);
@@ -122,7 +129,7 @@ const Blog: React.FC = () => {
         description="Thoughts on dev, linux & tech"
         url="https://vorlie.pl/blog"
       />
-      
+
       <div className="max-w-6xl mx-auto bg-m3-surface-container rounded-[32px] p-4 md:p-8">
         {/* Header */}
         <header className="mb-12">
@@ -137,7 +144,7 @@ const Blog: React.FC = () => {
         {/* Tag Filter */}
         {allTags.length > 0 && (
           <div className="mb-8 flex flex-wrap gap-2">
-            {allTags.map(tag => (
+            {allTags.map((tag) => (
               <button
                 key={tag}
                 onClick={() => handleTagClick(tag)}
@@ -168,14 +175,16 @@ const Blog: React.FC = () => {
                   </h2>
                   <div className="flex items-center gap-4 text-sm text-m3-on-surface-variant opacity-60">
                     <time className="font-bold uppercase tracking-wider">
-                      {new Date(post.date).toLocaleDateString('en-US', { 
-                        year: 'numeric', 
-                        month: 'short', 
-                        day: 'numeric' 
+                      {new Date(post.date).toLocaleDateString("en-US", {
+                        year: "numeric",
+                        month: "short",
+                        day: "numeric",
                       })}
                     </time>
                     <span>•</span>
-                    <span className="font-bold">{post.readingTime} min read</span>
+                    <span className="font-bold">
+                      {post.readingTime} min read
+                    </span>
                   </div>
                 </div>
               </div>
@@ -185,7 +194,7 @@ const Blog: React.FC = () => {
               </p>
 
               <div className="flex flex-wrap gap-2">
-                {post.tags.map(tag => (
+                {post.tags.map((tag) => (
                   <span
                     key={tag}
                     className="px-3 py-1 bg-m3-primary/10 text-m3-primary rounded-full text-xs font-black uppercase tracking-wider"

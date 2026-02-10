@@ -17,24 +17,24 @@ const Colors: React.FC = () => {
     const computedStyle = getComputedStyle(root);
 
     const colorVars = [
-      'color-m3-surface',
-      'color-m3-surface-container',
-      'color-m3-surface-variant',
-      'color-m3-primary',
-      'color-m3-on-primary',
-      'color-m3-primary-container',
-      'color-m3-on-primary-container',
-      'color-m3-secondary',
-      'color-m3-on-secondary',
-      'color-m3-error-container',
-      'color-m3-on-error-container',
-      'color-m3-outline',
-      'color-m3-on-surface',
-      'color-m3-on-surface-variant',
+      "color-m3-surface",
+      "color-m3-surface-container",
+      "color-m3-surface-variant",
+      "color-m3-primary",
+      "color-m3-on-primary",
+      "color-m3-primary-container",
+      "color-m3-on-primary-container",
+      "color-m3-secondary",
+      "color-m3-on-secondary",
+      "color-m3-error-container",
+      "color-m3-on-error-container",
+      "color-m3-outline",
+      "color-m3-on-surface",
+      "color-m3-on-surface-variant",
     ];
 
     const extractedColors: { [key: string]: string } = {};
-    colorVars.forEach(varName => {
+    colorVars.forEach((varName) => {
       const value = computedStyle.getPropertyValue(`--${varName}`).trim();
       if (value) {
         extractedColors[varName] = value;
@@ -52,7 +52,7 @@ const Colors: React.FC = () => {
       const g = ((rgb >> 8) & 0xff) / 255;
       const b = (rgb & 0xff) / 255;
 
-      const [rs, gs, bs] = [r, g, b].map(c => {
+      const [rs, gs, bs] = [r, g, b].map((c) => {
         return c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4);
       });
 
@@ -68,21 +68,56 @@ const Colors: React.FC = () => {
   };
 
   const getWCAGLevel = (ratio: number): { level: string; color: string } => {
-    if (ratio >= 7) return { level: 'AAA', color: '#00e676' };
-    if (ratio >= 4.5) return { level: 'AA', color: '#76ff03' };
-    if (ratio >= 3) return { level: 'AA Large', color: '#ffea00' };
-    return { level: 'Fail', color: '#f50057' };
+    if (ratio >= 7) return { level: "AAA", color: "#00e676" };
+    if (ratio >= 4.5) return { level: "AA", color: "#76ff03" };
+    if (ratio >= 3) return { level: "AA Large", color: "#ffea00" };
+    return { level: "Fail", color: "#f50057" };
   };
 
   // Define common color pairs used in the app
   const colorPairs: ColorPair[] = [
-    { name: 'Primary on Surface', foreground: 'color-m3-primary', background: 'color-m3-surface', usage: 'Headers, accents' },
-    { name: 'On-Primary on Primary', foreground: 'color-m3-on-primary', background: 'color-m3-primary', usage: 'Buttons' },
-    { name: 'On-Surface on Surface', foreground: 'color-m3-on-surface', background: 'color-m3-surface', usage: 'Body text' },
-    { name: 'On-Surface-Variant on Surface', foreground: 'color-m3-on-surface-variant', background: 'color-m3-surface', usage: 'Secondary text' },
-    { name: 'On-Surface on Surface Container', foreground: 'color-m3-on-surface', background: 'color-m3-surface-container', usage: 'Cards' },
-    { name: 'Primary on Surface Container', foreground: 'color-m3-primary', background: 'color-m3-surface-container', usage: 'Card headers' },
-    { name: 'On-Primary-Container on Primary Container', foreground: 'color-m3-on-primary-container', background: 'color-m3-primary-container', usage: 'Highlighted elements' },
+    {
+      name: "Primary on Surface",
+      foreground: "color-m3-primary",
+      background: "color-m3-surface",
+      usage: "Headers, accents",
+    },
+    {
+      name: "On-Primary on Primary",
+      foreground: "color-m3-on-primary",
+      background: "color-m3-primary",
+      usage: "Buttons",
+    },
+    {
+      name: "On-Surface on Surface",
+      foreground: "color-m3-on-surface",
+      background: "color-m3-surface",
+      usage: "Body text",
+    },
+    {
+      name: "On-Surface-Variant on Surface",
+      foreground: "color-m3-on-surface-variant",
+      background: "color-m3-surface",
+      usage: "Secondary text",
+    },
+    {
+      name: "On-Surface on Surface Container",
+      foreground: "color-m3-on-surface",
+      background: "color-m3-surface-container",
+      usage: "Cards",
+    },
+    {
+      name: "Primary on Surface Container",
+      foreground: "color-m3-primary",
+      background: "color-m3-surface-container",
+      usage: "Card headers",
+    },
+    {
+      name: "On-Primary-Container on Primary Container",
+      foreground: "color-m3-on-primary-container",
+      background: "color-m3-primary-container",
+      usage: "Highlighted elements",
+    },
   ];
 
   return (
@@ -109,13 +144,16 @@ const Colors: React.FC = () => {
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {Object.entries(colors).map(([name, value]) => (
-              <div key={name} className="bg-m3-surface-variant/20 rounded-[24px] p-4 border border-m3-outline/5">
+              <div
+                key={name}
+                className="bg-m3-surface-variant/20 rounded-[24px] p-4 border border-m3-outline/5"
+              >
                 <div
                   className="w-full h-24 rounded-[16px] mb-3 shadow-inner border border-m3-outline/10"
                   style={{ backgroundColor: value }}
                 ></div>
                 <p className="text-xs font-black uppercase tracking-widest text-m3-on-surface-variant opacity-60 mb-1">
-                  {name.replace('color-m3-', '').replace(/-/g, ' ')}
+                  {name.replace("color-m3-", "").replace(/-/g, " ")}
                 </p>
                 <p className="text-sm font-bold text-m3-primary font-mono">
                   {value}
@@ -150,21 +188,23 @@ const Colors: React.FC = () => {
                     className="w-full md:w-48 h-24 rounded-[16px] flex items-center justify-center shadow-inner border border-m3-outline/10 flex-shrink-0"
                     style={{ backgroundColor: bg }}
                   >
-                    <span
-                      className="text-xl font-black"
-                      style={{ color: fg }}
-                    >
+                    <span className="text-xl font-black" style={{ color: fg }}>
                       Sample Text
                     </span>
                   </div>
 
                   {/* Info */}
                   <div className="flex-grow">
-                    <h3 className="text-lg font-black text-m3-on-surface mb-1">{pair.name}</h3>
-                    <p className="text-sm text-m3-on-surface-variant opacity-60 mb-2">{pair.usage}</p>
+                    <h3 className="text-lg font-black text-m3-on-surface mb-1">
+                      {pair.name}
+                    </h3>
+                    <p className="text-sm text-m3-on-surface-variant opacity-60 mb-2">
+                      {pair.usage}
+                    </p>
                     <div className="flex items-center gap-3 text-xs font-mono">
                       <span className="text-m3-on-surface-variant">
-                        {pair.foreground.replace('color-m3-', '')} on {pair.background.replace('color-m3-', '')}
+                        {pair.foreground.replace("color-m3-", "")} on{" "}
+                        {pair.background.replace("color-m3-", "")}
                       </span>
                     </div>
                   </div>
@@ -178,7 +218,11 @@ const Colors: React.FC = () => {
                     </div>
                     <div
                       className="px-4 py-2 rounded-full font-black text-sm uppercase tracking-wider shadow-sm"
-                      style={{ backgroundColor: `${wcag.color}20`, color: wcag.color, border: `2px solid ${wcag.color}` }}
+                      style={{
+                        backgroundColor: `${wcag.color}20`,
+                        color: wcag.color,
+                        border: `2px solid ${wcag.color}`,
+                      }}
                     >
                       {wcag.level}
                     </div>

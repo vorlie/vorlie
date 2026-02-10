@@ -14,7 +14,13 @@ import {
 } from "../utils/helpers";
 import ActivityTimestamp from "./ActivityTimestamp";
 import MarqueeText from "./MarqueeText";
-import { FaSpotify, FaGamepad, FaHeadphones, FaVideo, FaTrophy } from "react-icons/fa";
+import {
+  FaSpotify,
+  FaGamepad,
+  FaHeadphones,
+  FaVideo,
+  FaTrophy,
+} from "react-icons/fa";
 import useDominantColor from "../hooks/useDominantColor";
 import { LANYARD_THEMES, LanyardTheme } from "../data/lanyardThemes";
 
@@ -64,7 +70,9 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
   const [bannerUrl, setBannerUrl] = useState<string | null>(null);
   const socket = useRef<WebSocket | null>(null);
   const heartbeatInterval = useRef<NodeJS.Timeout | null>(null);
-  const spotifyColor = useDominantColor(presenceData?.spotify?.album_art_url || null);
+  const spotifyColor = useDominantColor(
+    presenceData?.spotify?.album_art_url || null,
+  );
 
   useEffect(() => {
     if (!discordId) return;
@@ -101,7 +109,7 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
               JSON.stringify({
                 op: OP.INITIALIZE,
                 d: { subscribe_to_id: discordId },
-              })
+              }),
             );
           }
           break;
@@ -120,7 +128,7 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
       console.log(
         "Lanyard WebSocket closed:",
         event.reason,
-        `Code: ${event.code}`
+        `Code: ${event.code}`,
       );
       cleanup();
     };
@@ -134,8 +142,6 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
       });
     }
   }, [discordId]);
-
-
 
   if (!presenceData) {
     return <div className="h-24 text-gray-500 animate-pulse">Loading...</div>;
@@ -155,7 +161,7 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
   const decorationUrl = `https://cdn.discordapp.com/avatar-decoration-presets/${decorationAsset}.png`;
   const clanIconUrl = `https://cdn.discordapp.com/clan-badges/${discord_user.primary_guild?.identity_guild_id}/${discord_user.primary_guild?.badge}.png?size=16`;
   const customStatus = activities.find((act) => act.type === 4);
-  
+
   const statusText =
     discord_status === "dnd"
       ? "Do not disturb"
@@ -246,7 +252,10 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
     <div className="">
       <div className="relative overflow-hidden rounded-[20px] h-24 mb-4">
         <img
-          src={bannerUrl || "https://us-east-1.tixte.net/uploads/cx.tixte.co/banner.gif"}
+          src={
+            bannerUrl ||
+            "https://us-east-1.tixte.net/uploads/cx.tixte.co/banner.gif"
+          }
           alt="User Banner"
           className="w-full h-full object-cover [-webkit-mask-image:linear-gradient(to_bottom,rgba(0,0,0,1)_50%,rgba(0,0,0,0)_100%)] [mask-image:linear-gradient(to_bottom,rgba(0,0,0,1)_50%,rgba(0,0,0,0)_100%)] opacity-60"
         />
@@ -284,11 +293,16 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
                 className={`relative w-2 h-2 rounded-full ${statusBgColors[discord_status]}`}
               ></div>
             </div>
-            <span className={`${statusTextColors[discord_status]} font-bold uppercase tracking-wider`}>
+            <span
+              className={`${statusTextColors[discord_status]} font-bold uppercase tracking-wider`}
+            >
               {statusText}
             </span>
             {customStatus && customStatus.state && (
-              <MarqueeText className="max-w-[8rem] font-bold" title={customStatus.state}>
+              <MarqueeText
+                className="max-w-[8rem] font-bold"
+                title={customStatus.state}
+              >
                 {customStatus.emoji?.id ? (
                   <img
                     src={`https://cdn.discordapp.com/emojis/${
@@ -306,7 +320,7 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
                     ref={(el) => {
                       if (el && window.twemoji) {
                         el.innerHTML = window.twemoji.parse(
-                          customStatus.emoji?.name ?? ""
+                          customStatus.emoji?.name ?? "",
                         );
                       }
                     }}
@@ -340,7 +354,10 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
                       className="w-16 h-16 rounded-[12px] shadow-md transition-transform duration-300 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-m3-primary/20 opacity-0 group-hover:opacity-100 transition-opacity rounded-[12px] flex items-center justify-center">
-                      <FaSpotify className="text-white drop-shadow-lg" size={24} />
+                      <FaSpotify
+                        className="text-white drop-shadow-lg"
+                        size={24}
+                      />
                     </div>
                   </div>
                 )}
@@ -394,7 +411,7 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
                         <img
                           src={extractImageUrl(
                             activity.assets.large_image,
-                            activity.application_id || ""
+                            activity.application_id || "",
                           )}
                           alt={activity.name}
                           className="w-16 h-16 rounded-[12px] object-cover shadow-sm"
@@ -410,7 +427,7 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
                         <img
                           src={extractImageUrl(
                             activity.assets.small_image,
-                            activity.application_id || ""
+                            activity.application_id || "",
                           )}
                           alt="Small asset"
                           className="w-6 h-6 rounded-full absolute -bottom-1 -right-1 border-2 border-m3-surface-container shadow-md"
@@ -462,11 +479,11 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
             </div>
           )}
 
-          {!spotify &&
-            themedActivities.length === 0 &&
-            !customStatus && (
+          {!spotify && themedActivities.length === 0 && !customStatus && (
             <div className="text-center py-6">
-               <p className="text-m3-on-surface-variant italic font-medium opacity-50">No current activities</p>
+              <p className="text-m3-on-surface-variant italic font-medium opacity-50">
+                No current activities
+              </p>
             </div>
           )}
         </div>

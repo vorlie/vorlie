@@ -14,7 +14,9 @@ const SEO: React.FC<SEOProps> = ({
   title,
   description = "vorlie's personal website - developer, linux enthusiast, and tech lover.",
   image = "https://vorlie.pl/images/favicon.png",
-  url = typeof window !== "undefined" ? window.location.href : "https://vorlie.pl",
+  url = typeof window !== "undefined"
+    ? window.location.href
+    : "https://vorlie.pl",
   type = "website",
   publishedTime,
   tags,
@@ -23,7 +25,9 @@ const SEO: React.FC<SEOProps> = ({
   const fullTitle = `${title} | ${siteTitle}`;
 
   // Ensure absolute URL for image
-  const fullImage = image.startsWith("http") ? image : `https://vorlie.pl${image}`;
+  const fullImage = image.startsWith("http")
+    ? image
+    : `https://vorlie.pl${image}`;
 
   return (
     <>
@@ -41,8 +45,13 @@ const SEO: React.FC<SEOProps> = ({
       <meta property="og:image" content={fullImage} />
 
       {/* Article Specific */}
-      {publishedTime && <meta property="article:published_time" content={publishedTime} />}
-      {tags && tags.map((tag) => <meta key={tag} property="article:tag" content={tag} />)}
+      {publishedTime && (
+        <meta property="article:published_time" content={publishedTime} />
+      )}
+      {tags &&
+        tags.map((tag) => (
+          <meta key={tag} property="article:tag" content={tag} />
+        ))}
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />

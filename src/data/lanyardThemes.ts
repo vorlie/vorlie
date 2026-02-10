@@ -98,4 +98,3 @@ export const LANYARD_THEMES: Record<string, LanyardTheme> = {
     repoUrl: "https://github.com/vorlie/iotaplayer",
   },
 };
-

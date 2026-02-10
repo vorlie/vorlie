@@ -145,7 +145,7 @@ const ProjectsPage: React.FC = () => (
         links={proj.links}
         languages={proj.languages}
         languageIcons={proj.languages.map(
-          (lang) => languageIconMap[lang] || null
+          (lang) => languageIconMap[lang] || null,
         )}
       />
     ))}

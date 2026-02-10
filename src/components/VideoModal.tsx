@@ -13,7 +13,7 @@ const VideoModal: React.FC<VideoModalProps> = ({ clip, onClose }) => {
   const getEmbedSource = useCallback(
     (
       videoUrl: string,
-      platform: "YouTube" | "Twitch" | "Other"
+      platform: "YouTube" | "Twitch" | "Other",
     ): { type: "iframe" | "video"; src: string } | null => {
       if (!videoUrl) return null;
 
@@ -26,7 +26,7 @@ const VideoModal: React.FC<VideoModalProps> = ({ clip, onClose }) => {
 
         // 1. Check for direct video file (e.g., .mp4 from a CDN)
         const isDirectVideoFile = videoExtensions.some((ext) =>
-          pathname.endsWith(ext)
+          pathname.endsWith(ext),
         );
         if (isDirectVideoFile) {
           return { type: "video", src: videoUrl };
@@ -72,7 +72,7 @@ const VideoModal: React.FC<VideoModalProps> = ({ clip, onClose }) => {
           }
           // For Twitch Clips: https://clips.twitch.tv/ClipID (alphanumeric string)
           const clipIdMatch = videoUrl.match(
-            /clips\.twitch\.tv\/([a-zA-Z0-9]+)/
+            /clips\.twitch\.tv\/([a-zA-Z0-9]+)/,
           );
           if (clipIdMatch) {
             const clipId = clipIdMatch[1];
@@ -87,7 +87,7 @@ const VideoModal: React.FC<VideoModalProps> = ({ clip, onClose }) => {
       }
       return null; // Fallback if no specific embed type is found
     },
-    []
+    [],
   );
 
   useEffect(() => {
@@ -121,7 +121,8 @@ const VideoModal: React.FC<VideoModalProps> = ({ clip, onClose }) => {
         <button
           onClick={onClose}
           className="absolute top-6 right-8 text-m3-on-surface hover:text-m3-on-primary text-3xl font-bold leading-none z-10"
-          aria-label="Close modal">
+          aria-label="Close modal"
+        >
           <span className="material-symbols-rounded">close</span>
         </button>
 

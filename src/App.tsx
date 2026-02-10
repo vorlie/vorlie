@@ -15,7 +15,6 @@ import Colors from "./pages/Colors";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 
-
 import useDynamicColor from "./hooks/useDynamicColor";
 
 function App() {
@@ -26,7 +25,7 @@ function App() {
   const isLoading = useDynamicColor("/images/background.png");
 
   return (
-      <Router>
+    <Router>
       {/*
         Loading Screen Overlay
         We use a solid background fallback and fixed positioning to ensure it's visible immediately.
@@ -83,7 +82,7 @@ function App() {
           <Navbar />
         </div>
       </div>
-      </Router>
+    </Router>
   );
 }
 
