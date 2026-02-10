@@ -83,6 +83,7 @@ export const getBannerUrl = async (userId: string): Promise<string | null> => {
     return null;
   }
 };
+
 export const getReadableColor = (color: number[] | null): number[] | null => {
   if (!color) return null;
 
