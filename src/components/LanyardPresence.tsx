@@ -1,8 +1,6 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import {
   PresenceData,
-  LanyardWebSocketMessage,
-  LanyardHelloData,
   Activity,
 } from "../types/lanyard";
 import {
@@ -23,6 +21,7 @@ import {
 } from "react-icons/fa";
 import useDominantColor from "../hooks/useDominantColor";
 import { LANYARD_THEMES, LanyardTheme } from "../data/lanyardThemes";
+import { useLanyard } from "../hooks/useLanyard";
 
 declare global {
   interface Window {
@@ -31,14 +30,6 @@ declare global {
     };
   }
 }
-
-const LANYARD_API_URL = "wss://api.lanyard.rest/socket";
-const OP = {
-  EVENT: 0,
-  HELLO: 1,
-  INITIALIZE: 2,
-  HEARTBEAT: 3,
-};
 
 interface LanyardPresenceProps {
   discordId: string;
@@ -66,74 +57,11 @@ const statusBgColors: Record<PresenceData["discord_status"], string> = {
 };
 
 function LanyardPresence({ discordId }: LanyardPresenceProps) {
-  const [presenceData, setPresenceData] = useState<PresenceData | null>(null);
+  const presenceData = useLanyard(discordId);
   const [bannerUrl, setBannerUrl] = useState<string | null>(null);
-  const socket = useRef<WebSocket | null>(null);
-  const heartbeatInterval = useRef<NodeJS.Timeout | null>(null);
   const spotifyColor = useDominantColor(
     presenceData?.spotify?.album_art_url || null,
   );
-
-  useEffect(() => {
-    if (!discordId) return;
-    const cleanup = () => {
-      if (socket.current) {
-        socket.current.onclose = null;
-        socket.current.onerror = null;
-        socket.current.onmessage = null;
-        socket.current.onopen = null;
-        socket.current.close();
-        socket.current = null;
-      }
-      if (heartbeatInterval.current) {
-        clearInterval(heartbeatInterval.current);
-        heartbeatInterval.current = null;
-      }
-    };
-    socket.current = new WebSocket(LANYARD_API_URL);
-    socket.current.onopen = () => console.log("Lanyard WebSocket connected");
-    socket.current.onmessage = (event) => {
-      const data: LanyardWebSocketMessage = JSON.parse(event.data);
-      switch (data.op) {
-        case OP.HELLO: {
-          if (heartbeatInterval.current)
-            clearInterval(heartbeatInterval.current);
-          const helloData = data.d as LanyardHelloData;
-          heartbeatInterval.current = setInterval(() => {
-            if (socket.current?.readyState === WebSocket.OPEN) {
-              socket.current.send(JSON.stringify({ op: OP.HEARTBEAT }));
-            }
-          }, helloData.heartbeat_interval);
-          if (socket.current && socket.current.readyState === WebSocket.OPEN) {
-            socket.current.send(
-              JSON.stringify({
-                op: OP.INITIALIZE,
-                d: { subscribe_to_id: discordId },
-              }),
-            );
-          }
-          break;
-        }
-        case OP.EVENT:
-          setPresenceData(data.d as PresenceData);
-          break;
-        default:
-          break;
-      }
-    };
-    socket.current.onerror = () => {
-      cleanup();
-    };
-    socket.current.onclose = (event) => {
-      console.log(
-        "Lanyard WebSocket closed:",
-        event.reason,
-        `Code: ${event.code}`,
-      );
-      cleanup();
-    };
-    return cleanup;
-  }, [discordId]);
 
   useEffect(() => {
     if (discordId) {

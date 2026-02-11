@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import Home from "./pages/Home";
 import redirect from "./utils/redirect";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
@@ -16,22 +16,27 @@ import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 
 import useDynamicColor from "./hooks/useDynamicColor";
+import ObsPanel from "./pages/ObsPanel";
 
-function App() {
-  useEffect(() => {
-    redirect();
-  }, []);
-
+function AppContent() {
+  const location = useLocation();
+  const isObsRoute = location.pathname.startsWith("/obs");
   const isLoading = useDynamicColor("/images/background.png");
 
+  if (isObsRoute) {
+    return (
+      <div className="bg-transparent min-h-screen overflow-hidden">
+        <Routes>
+          <Route path="/obs/lanyard" element={<ObsPanel />} />
+        </Routes>
+      </div>
+    );
+  }
+
   return (
-    <Router>
-      {/*
-        Loading Screen Overlay
-        We use a solid background fallback and fixed positioning to ensure it's visible immediately.
-      */}
+    <>
       <div
-        className={`fixed inset-0 z-[200] flex flex-col items-center justify-center bg-[#1C1B1F] bg-m3-surface transition-opacity duration-700 ${!isLoading ? "animate-m3-fade-out" : "opacity-100"}`}
+        className={`fixed inset-0 z-[200] flex flex-col items-center justify-center bg-m3-surface transition-opacity duration-700 ${!isLoading ? "animate-m3-fade-out" : "opacity-100"}`}
       >
         <div className="relative flex flex-col items-center gap-8">
           <div className="relative w-32 h-32">
@@ -76,12 +81,25 @@ function App() {
               <Route path="/colors" element={<Colors />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/blog/:slug" element={<BlogPost />} />
+              <Route path="/obs/lanyard" element={<ObsPanel />} />
               <Route path="*" element={<Home />} />
             </Routes>
           </div>
           <Navbar />
         </div>
       </div>
+    </>
+  );
+}
+
+function App() {
+  useEffect(() => {
+    redirect();
+  }, []);
+
+  return (
+    <Router>
+      <AppContent />
     </Router>
   );
 }
