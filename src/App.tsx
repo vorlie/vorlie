@@ -17,6 +17,7 @@ import BlogPost from "./pages/BlogPost";
 
 import useDynamicColor from "./hooks/useDynamicColor";
 import ObsPanel from "./pages/ObsPanel";
+import ObsGlow from "./pages/ObsGlow";
 
 function AppContent() {
   const location = useLocation();
@@ -28,6 +29,7 @@ function AppContent() {
       <div className="bg-transparent min-h-screen overflow-hidden">
         <Routes>
           <Route path="/obs/lanyard" element={<ObsPanel />} />
+          <Route path="/obs/glow" element={<ObsGlow />} />
         </Routes>
       </div>
     );
