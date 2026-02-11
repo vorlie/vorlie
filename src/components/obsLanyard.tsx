@@ -16,6 +16,20 @@ export default function ObsPanel({ discordId }: { discordId: string }) {
     ? `rgb(${readableColorArray.join(",")})`
     : "var(--m3-primary)";
 
+  // Calculate the current progress state
+  const timestamps = spotify.timestamps;
+  let initialWidth = "0%";
+  let remainingDuration = 0;
+
+  if (timestamps) {
+    const total = timestamps.end - timestamps.start;
+    const elapsed = Date.now() - timestamps.start;
+    const progress = Math.max(0, Math.min(1, elapsed / total));
+
+    initialWidth = `${progress * 100}%`;
+    remainingDuration = Math.max(0, (timestamps.end - Date.now()) / 1000);
+  }
+
   return (
     <div className="flex flex-col items-center w-fit p-10 overflow-hidden">
       {/* Lanyard String */}
@@ -75,14 +89,13 @@ export default function ObsPanel({ discordId }: { discordId: string }) {
           {/* MD3 Progress Bar Style */}
           <div className="w-full h-1 bg-m3-surface rounded-full overflow-hidden">
             <motion.div
+              key={spotify.track_id} 
               className="h-full"
               style={{ backgroundColor: accentColor }}
-              initial={{ width: "0%" }}
+              initial={{ width: initialWidth }}
               animate={{ width: "100%" }}
               transition={{
-                duration: spotify.timestamps
-                  ? (spotify.timestamps.end - spotify.timestamps.start) / 1000
-                  : 0,
+                duration: remainingDuration,
                 ease: "linear",
               }}
             />
