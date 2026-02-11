@@ -1,6 +1,6 @@
-import { useLanyard } from "../hooks/useLanyard";
-import useDominantColor from "../hooks/useDominantColor";
-import { getReadableColor } from "../utils/helpers";
+import { useLanyard } from "../../hooks/useLanyard";
+import useDominantColor from "../../hooks/useDominantColor";
+import { getReadableColor } from "../../utils/helpers";
 import { motion } from "framer-motion";
 
 export default function ObsPanel({ discordId }: { discordId: string }) {
@@ -89,7 +89,7 @@ export default function ObsPanel({ discordId }: { discordId: string }) {
           {/* MD3 Progress Bar Style */}
           <div className="w-full h-1 bg-m3-surface rounded-full overflow-hidden">
             <motion.div
-              key={spotify.track_id} 
+              key={spotify.track_id}
               className="h-full"
               style={{ backgroundColor: accentColor }}
               initial={{ width: initialWidth }}

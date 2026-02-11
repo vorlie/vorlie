@@ -1,6 +1,6 @@
-import { useLanyard } from "../hooks/useLanyard";
-import useDominantColor from "../hooks/useDominantColor";
-import { getReadableColor } from "../utils/helpers";
+import { useLanyard } from "../../hooks/useLanyard";
+import useDominantColor from "../../hooks/useDominantColor";
+import { getReadableColor } from "../../utils/helpers";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function GameFrame({ discordId }: { discordId: string }) {

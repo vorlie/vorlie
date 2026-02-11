@@ -1,4 +1,4 @@
-import ObsLanyard from "../components/obsLanyard";
+import ObsLanyard from "../components/obs/obsLanyard";
 
 function ObsPanel() {
   return (

@@ -18,6 +18,7 @@ import BlogPost from "./pages/BlogPost";
 import useDynamicColor from "./hooks/useDynamicColor";
 import ObsPanel from "./pages/ObsPanel";
 import ObsGlow from "./pages/ObsGlow";
+import ObsGameFramePage from "./pages/ObsCamFrame";
 
 function AppContent() {
   const location = useLocation();
@@ -30,6 +31,7 @@ function AppContent() {
         <Routes>
           <Route path="/obs/lanyard" element={<ObsPanel />} />
           <Route path="/obs/glow" element={<ObsGlow />} />
+          <Route path="/obs/camframe" element={<ObsGameFramePage />} />
         </Routes>
       </div>
     );
