@@ -1,5 +1,10 @@
 import { useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 import Home from "./pages/Home";
 import redirect from "./utils/redirect";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
@@ -19,6 +24,7 @@ import useDynamicColor from "./hooks/useDynamicColor";
 import ObsPanel from "./pages/ObsPanel";
 import ObsGlow from "./pages/ObsGlow";
 import ObsGameFramePage from "./pages/ObsCamFrame";
+import ObsWidgets from "./pages/ObsWidgets";
 
 function AppContent() {
   const location = useLocation();
@@ -29,9 +35,12 @@ function AppContent() {
     return (
       <div className="bg-transparent min-h-screen overflow-hidden">
         <Routes>
-          <Route path="/obs/lanyard" element={<ObsPanel />} />
-          <Route path="/obs/glow" element={<ObsGlow />} />
-          <Route path="/obs/camframe" element={<ObsGameFramePage />} />
+          <Route path="/obs/spotify/:discordId" element={<ObsPanel />} />
+          <Route path="/obs/glow/:discordId" element={<ObsGlow />} />
+          <Route
+            path="/obs/camframe/:discordId"
+            element={<ObsGameFramePage />}
+          />
         </Routes>
       </div>
     );
@@ -85,6 +94,7 @@ function AppContent() {
               <Route path="/colors" element={<Colors />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/blog/:slug" element={<BlogPost />} />
+              <Route path="/project/obs" element={<ObsWidgets />} />
               <Route path="/obs/lanyard" element={<ObsPanel />} />
               <Route path="*" element={<Home />} />
             </Routes>
