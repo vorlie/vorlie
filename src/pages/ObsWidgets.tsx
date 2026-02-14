@@ -3,6 +3,10 @@ import { Copy, Check } from "lucide-react";
 
 function ObsWidgets() {
   const [copiedWidget, setCopiedWidget] = useState<string | null>(null);
+  const [userDiscordId, setUserDiscordId] = useState("");
+  const [selectedDomain, setSelectedDomain] = useState<"main" | "backup">(
+    "main",
+  );
 
   const copyToClipboard = (text: string, widget: string) => {
     navigator.clipboard.writeText(text);
@@ -11,6 +15,11 @@ function ObsWidgets() {
   };
 
   const exampleDiscordId = "614807913302851594";
+  const discordId = userDiscordId || exampleDiscordId;
+
+  const mainDomain = "https://vorlie.pl";
+  const backupDomain = "https://vorliev2.pages.dev";
+  const baseDomain = selectedDomain === "main" ? mainDomain : backupDomain;
 
   const widgets = [
     {
@@ -114,11 +123,62 @@ function ObsWidgets() {
             <div className="flex-shrink-0 w-8 h-8 rounded-full bg-m3-primary text-m3-on-primary flex items-center justify-center font-bold text-sm">
               2
             </div>
+            <div className="flex-grow">
+              <h3 className="font-bold text-lg mb-4">Enter Your Discord ID</h3>
+              <div className="space-y-4">
+                <input
+                  type="text"
+                  placeholder="Paste your Discord ID here..."
+                  value={userDiscordId}
+                  onChange={(e) => setUserDiscordId(e.target.value)}
+                  className="w-full bg-m3-surface border border-m3-outline/30 rounded-2xl px-4 py-3 text-m3-on-surface placeholder-m3-on-surface/50 focus:outline-none focus:border-m3-primary transition-colors"
+                />
+
+                <div className="space-y-2">
+                  <p className="text-sm font-bold text-m3-on-surface-variant">
+                    Select Domain:
+                  </p>
+                  <div className="flex gap-4">
+                    <label className="flex items-center gap-2 cursor-pointer">
+                      <input
+                        type="radio"
+                        name="domain"
+                        value="main"
+                        checked={selectedDomain === "main"}
+                        onChange={() => setSelectedDomain("main")}
+                        className="w-4 h-4"
+                      />
+                      <span className="text-sm text-m3-on-surface">
+                        Main (vorlie.pl)
+                      </span>
+                    </label>
+                    <label className="flex items-center gap-2 cursor-pointer">
+                      <input
+                        type="radio"
+                        name="domain"
+                        value="backup"
+                        checked={selectedDomain === "backup"}
+                        onChange={() => setSelectedDomain("backup")}
+                        className="w-4 h-4"
+                      />
+                      <span className="text-sm text-m3-on-surface">
+                        Backup (vorliev2.pages.dev)
+                      </span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex gap-4">
+            <div className="flex-shrink-0 w-8 h-8 rounded-full bg-m3-primary text-m3-on-primary flex items-center justify-center font-bold text-sm">
+              3
+            </div>
             <div>
               <h3 className="font-bold text-lg mb-2">Choose Your Widget</h3>
               <p className="text-m3-on-surface-variant">
-                Select one of the widgets below and copy your personalized URL
-                by replacing the Discord ID in the link.
+                Select one of the widgets below and copy your personalized URL.
               </p>
             </div>
           </div>
@@ -178,7 +238,7 @@ function ObsWidgets() {
             <button
               onClick={() =>
                 copyToClipboard(
-                  `/obs/${widget.path}/${exampleDiscordId}`,
+                  `${baseDomain}/obs/${widget.path}/${discordId}`,
                   widget.id,
                 )
               }
