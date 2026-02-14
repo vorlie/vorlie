@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Copy, Check } from "lucide-react";
+import { Copy, Check, ExternalLink } from "lucide-react";
 
 function ObsWidgets() {
   const [copiedWidget, setCopiedWidget] = useState<string | null>(null);
@@ -206,58 +206,67 @@ function ObsWidgets() {
 
       {/* Widgets Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-        {widgets.map((widget) => (
-          <div
-            key={widget.id}
-            className="bg-m3-surface-container rounded-3xl p-6 border border-m3-outline/20 flex flex-col h-full hover:border-m3-outline/40 transition-colors"
-          >
-            <div className="text-4xl mb-3">{widget.icon}</div>
+        {widgets.map((widget) => {
+          const widgetUrl = `${baseDomain}/obs/${widget.path}/${discordId}`;
 
-            <h3 className="text-xl font-bold mb-2">{widget.name}</h3>
-            <p className="text-m3-on-surface-variant text-sm mb-4 flex-grow">
-              {widget.description}
-            </p>
-
-            <div className="mb-4">
-              <p className="text-xs font-bold uppercase tracking-wider text-m3-on-surface-variant mb-2">
-                Features
-              </p>
-              <ul className="space-y-1">
-                {widget.features.map((feature) => (
-                  <li
-                    key={feature}
-                    className="text-sm text-m3-on-surface-variant flex items-start gap-2"
-                  >
-                    <span className="text-m3-primary mt-1">•</span>
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <button
-              onClick={() =>
-                copyToClipboard(
-                  `${baseDomain}/obs/${widget.path}/${discordId}`,
-                  widget.id,
-                )
-              }
-              className="w-full bg-m3-primary text-m3-on-primary rounded-2xl py-2 px-4 font-bold text-sm flex items-center justify-center gap-2 hover:opacity-90 transition-opacity"
+          return (
+            <div
+              key={widget.id}
+              className="bg-m3-surface-container rounded-3xl p-6 border border-m3-outline/20 flex flex-col h-full hover:border-m3-outline/40 transition-colors"
             >
-              {copiedWidget === widget.id ? (
-                <>
-                  <Check size={16} />
-                  Copied!
-                </>
-              ) : (
-                <>
-                  <Copy size={16} />
-                  Copy URL
-                </>
-              )}
-            </button>
-          </div>
-        ))}
+              <div className="text-4xl mb-3">{widget.icon}</div>
+              <h3 className="text-xl font-bold mb-2">{widget.name}</h3>
+              <p className="text-m3-on-surface-variant text-sm mb-4 flex-grow">
+                {widget.description}
+              </p>
+
+              <div className="mb-4">
+                <p className="text-xs font-bold uppercase tracking-wider text-m3-on-surface-variant mb-2">
+                  Features
+                </p>
+                <ul className="space-y-1">
+                  {widget.features.map((feature) => (
+                    <li
+                      key={feature}
+                      className="text-sm text-m3-on-surface-variant flex items-start gap-2"
+                    >
+                      <span className="text-m3-primary mt-1">•</span>
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="flex flex-col gap-2">
+                <button
+                  onClick={() => copyToClipboard(widgetUrl, widget.id)}
+                  className="w-full bg-m3-primary text-m3-on-primary rounded-2xl py-2 px-4 font-bold text-sm flex items-center justify-center gap-2 hover:opacity-90 transition-opacity"
+                >
+                  {copiedWidget === widget.id ? (
+                    <>
+                      <Check size={16} /> Copied!
+                    </>
+                  ) : (
+                    <>
+                      <Copy size={16} /> Copy URL
+                    </>
+                  )}
+                </button>
+
+                <a
+                  href={widgetUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full bg-m3-surface-variant text-m3-on-surface-variant rounded-2xl py-2 px-4 font-bold text-sm flex items-center justify-center gap-2 hover:bg-m3-outline/20 transition-colors"
+                >
+                  <ExternalLink size={16} />
+                  Preview
+                </a>
+              </div>
+            </div>
+          );
+        })}
       </div>
 
       {/* Customization Section */}
