@@ -74,9 +74,9 @@ function AppContent() {
 
       <div
         className={`min-h-screen w-full bg-cover bg-center bg-fixed transition-opacity duration-1000 ${isLoading ? "opacity-0" : "opacity-100"}`}
-        style={{ backgroundImage: "url('/images/background.png')" }}
+        style={{ backgroundImage: "url('/images/background.png')", }}
       >
-        <div className="min-h-screen w-full text-m3-on-surface p-4 md:p-12 pb-24 bg-m3-surface/30">
+        <div className="min-h-screen w-full text-m3-on-surface p-4 md:p-12 pb-24 bg-m3-surface/70">
           <div className="w-full max-w-6xl mx-auto relative z-10">
             <Routes>
               <Route path="/" element={<Home />} />
