@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Copy, Check, ExternalLink } from "lucide-react";
+import { Copy, Check, ExternalLink, Settings2, Zap, ZapOff, Globe, Eye } from "lucide-react";
+import ObsSpotify, { SpotifyTheme } from "../components/obs/obsLanyard";
 
 function ObsWidgets() {
   const [copiedWidget, setCopiedWidget] = useState<string | null>(null);
@@ -7,12 +8,26 @@ function ObsWidgets() {
   const [selectedDomain, setSelectedDomain] = useState<"main" | "backup">(
     "main",
   );
+  const [selectedTheme, setSelectedTheme] = useState<SpotifyTheme>("badge");
+  const [motionEnabled, setMotionEnabled] = useState(true);
 
   const copyToClipboard = (text: string, widget: string) => {
-    navigator.clipboard.writeText(text);
+    // Add theme and motion params if the widget is spotify
+    let finalUrl = text;
+    if (widget === "spotify") {
+      const url = new URL(text);
+      url.searchParams.set("theme", selectedTheme);
+      if (!motionEnabled) {
+        url.searchParams.set("motion", "false");
+      }
+      finalUrl = url.toString();
+    }
+
+    navigator.clipboard.writeText(finalUrl);
     setCopiedWidget(widget);
     setTimeout(() => setCopiedWidget(null), 2000);
   };
+
 
   const exampleDiscordId = "614807913302851594";
   const discordId = userDiscordId || exampleDiscordId;
@@ -134,42 +149,92 @@ function ObsWidgets() {
                   className="w-full bg-m3-surface border border-m3-outline/30 rounded-2xl px-4 py-3 text-m3-on-surface placeholder-m3-on-surface/50 focus:outline-none focus:border-m3-primary transition-colors"
                 />
 
-                <div className="space-y-2">
-                  <p className="text-sm font-bold text-m3-on-surface-variant">
-                    Select Domain:
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-2">
+                  <div className="space-y-3">
+                    <p className="text-sm font-bold text-m3-on-surface-variant flex items-center gap-2">
+                      <Globe size={16} /> Select Domain:
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {(["main", "backup"] as const).map((d) => (
+                        <button
+                          key={d}
+                          onClick={() => setSelectedDomain(d)}
+                          className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
+                            selectedDomain === d
+                              ? "bg-m3-primary text-m3-on-primary shadow-lg scale-105"
+                              : "bg-m3-surface text-m3-on-surface-variant hover:bg-m3-surface-variant"
+                          }`}
+                        >
+                          {d === "main" ? "Main" : "Backup"}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="space-y-3">
+                    <p className="text-sm font-bold text-m3-on-surface-variant flex items-center gap-2">
+                      <Settings2 size={16} /> Spotify Theme:
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {(["badge", "compact", "glass", "modern"] as const).map(
+                        (t) => (
+                          <button
+                            key={t}
+                            onClick={() => setSelectedTheme(t)}
+                            className={`px-3 py-1.5 rounded-xl text-xs font-bold capitalize transition-all ${
+                              selectedTheme === t
+                                ? "bg-m3-primary text-m3-on-primary shadow-lg scale-105"
+                                : "bg-m3-surface text-m3-on-surface-variant hover:bg-m3-surface-variant"
+                            }`}
+                          >
+                            {t}
+                          </button>
+                        ),
+                      )}
+                    </div>
+                  </div>
+
+                  <div className="space-y-3">
+                    <p className="text-sm font-bold text-m3-on-surface-variant flex items-center gap-2">
+                      {motionEnabled ? <Zap size={16} /> : <ZapOff size={16} />}
+                      Performance (Motion):
+                    </p>
+                    <button
+                      onClick={() => setMotionEnabled(!motionEnabled)}
+                      className={`flex items-center gap-2 px-4 py-1.5 rounded-xl text-xs font-bold transition-all ${
+                        motionEnabled
+                          ? "bg-green-500/20 text-green-500 border border-green-500/30"
+                          : "bg-orange-500/20 text-orange-500 border border-orange-500/30"
+                      }`}
+                    >
+                      {motionEnabled ? "Motion Enabled" : "Motion Disabled"}
+                    </button>
+                    <p className="text-[10px] text-m3-on-surface-variant/70 italic">
+                      Disable for lower CPU usage in OBS
+                    </p>
+                  </div>
+                </div>
+
+                {/* Live Preview Section */}
+                <div className="mt-8 pt-8 border-t border-m3-outline/20">
+                  <p className="text-sm font-bold text-m3-on-surface-variant flex items-center gap-2 mb-6">
+                    <Eye size={16} /> Live Preview:
                   </p>
-                  <div className="flex gap-4">
-                    <label className="flex items-center gap-2 cursor-pointer">
-                      <input
-                        type="radio"
-                        name="domain"
-                        value="main"
-                        checked={selectedDomain === "main"}
-                        onChange={() => setSelectedDomain("main")}
-                        className="w-4 h-4"
+                  <div className="flex justify-center bg-m3-surface rounded-2xl p-8 border border-m3-outline/10 min-h-[300px] overflow-hidden">
+                    <div className="scale-75 md:scale-100 origin-center">
+                      <ObsSpotify
+                        discordId={discordId}
+                        theme={selectedTheme}
+                        animate={motionEnabled}
                       />
-                      <span className="text-sm text-m3-on-surface">
-                        Main (vorlie.pl)
-                      </span>
-                    </label>
-                    <label className="flex items-center gap-2 cursor-pointer">
-                      <input
-                        type="radio"
-                        name="domain"
-                        value="backup"
-                        checked={selectedDomain === "backup"}
-                        onChange={() => setSelectedDomain("backup")}
-                        className="w-4 h-4"
-                      />
-                      <span className="text-sm text-m3-on-surface">
-                        Backup (vorliev2.pages.dev)
-                      </span>
-                    </label>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+
+
 
           <div className="flex gap-4">
             <div className="flex-shrink-0 w-8 h-8 rounded-full bg-m3-primary text-m3-on-primary flex items-center justify-center font-bold text-sm">
@@ -207,7 +272,14 @@ function ObsWidgets() {
       {/* Widgets Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
         {widgets.map((widget) => {
-          const widgetUrl = `${baseDomain}/obs/${widget.path}/${discordId}`;
+          let widgetUrl = `${baseDomain}/obs/${widget.path}/${discordId}`;
+
+          if (widget.id === "spotify") {
+            const params = new URLSearchParams();
+            params.set("theme", selectedTheme);
+            if (!motionEnabled) params.set("motion", "false");
+            widgetUrl += `?${params.toString()}`;
+          }
 
           return (
             <div
