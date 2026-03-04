@@ -64,11 +64,7 @@ export default function ObsSpotifyComponent({
                   style={{ backgroundColor: accentColor }}
                   initial={{ width: initialWidth }}
                   animate={{ width: "100%" }}
-                  transition={
-                    animate
-                      ? { duration: remainingDuration, ease: "linear" }
-                      : { duration: 0 }
-                  }
+                  transition={{ duration: remainingDuration, ease: "linear" }}
                 />
               </div>
             </div>
