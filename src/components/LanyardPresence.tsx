@@ -188,7 +188,7 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
 
       <div className="relative">
         <div className="grid grid-cols-[auto_1fr] gap-x-4 gap-y-1 mb-4 items-start mt-[-4rem]">
-          <div className="relative row-span-2 self-start w-16 h-16 rounded-full border-4 border-m3-surface-container shadow-lg">
+          <div className="relative row-span-2 self-start w-16 h-16 rounded-full border-4 border-m3-surface-container">
             {" "}
             <img
               src={avatarUrl}
@@ -278,7 +278,7 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
                       alt={`${spotify.album} cover`}
                       className="w-16 h-16 rounded-[12px] transition-transform duration-300 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-m3-primary/20 opacity-0 group-hover:opacity-100 transition-opacity rounded-[12px] flex items-center justify-center">
+                    <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity rounded-[12px] flex items-center justify-center">
                       <FaSpotify
                         className="text-white drop-shadow-lg"
                         size={24}
@@ -316,7 +316,7 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
                     startTime={spotify.timestamps.start}
                     endTime={spotify.timestamps.end}
                     color="var(--color-m3-primary)"
-                    colorSecondary="var(--color-m3-on-surface-variant)"
+                    colorSecondary="var(--color-m3-on-secondary)"
                   />
                 </div>
               )}
@@ -355,7 +355,7 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
                             activity.application_id || "",
                           )}
                           alt="Small asset"
-                          className="w-6 h-6 rounded-full absolute -bottom-1 -right-1 border-2 border-m3-surface-container shadow-md"
+                          className="w-6 h-6 rounded-full absolute -bottom-1 -right-1 border-2 border-m3-surface-container"
                         />
                       )}
                     </div>
@@ -396,6 +396,7 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
                         startTime={activity.timestamps.start}
                         endTime={activity.timestamps.end}
                         color="var(--color-m3-primary)"
+                        colorSecondary="var(--color-m3-on-secondary)"
                       />
                     </div>
                   )}

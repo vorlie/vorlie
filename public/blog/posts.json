@@ -1,5 +1,17 @@
 [
   {
+    "slug": "league-client-technical-debt",
+    "title": "The League Client: A Case Study in Technical Debt",
+    "date": "2026-03-06",
+    "tags": [
+      "league-of-legends",
+      "rant",
+      "webdev"
+    ],
+    "excerpt": "Why I keep uninstalling League, only to come back to a client held together by memory leaks and prayers.",
+    "readingTime": 2
+  },
+  {
     "slug": "cloudflare-pages-dynamic-metadata-spa",
     "title": "Dynamic SEO Metadata for SPAs using Cloudflare Pages",
     "date": "2026-01-17",
