@@ -1,8 +1,5 @@
 import { useState, useEffect } from "react";
-import {
-  PresenceData,
-  Activity,
-} from "../types/lanyard";
+import { PresenceData, Activity } from "../types/lanyard";
 import {
   extractImageUrl,
   getAvatarUrl,
@@ -279,7 +276,7 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
                     <img
                       src={spotify.album_art_url}
                       alt={`${spotify.album} cover`}
-                      className="w-16 h-16 rounded-[12px] shadow-md transition-transform duration-300 group-hover:scale-105"
+                      className="w-16 h-16 rounded-[12px] transition-transform duration-300 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-m3-primary/20 opacity-0 group-hover:opacity-100 transition-opacity rounded-[12px] flex items-center justify-center">
                       <FaSpotify
@@ -342,7 +339,7 @@ function LanyardPresence({ discordId }: LanyardPresenceProps) {
                             activity.application_id || "",
                           )}
                           alt={activity.name}
-                          className="w-16 h-16 rounded-[12px] object-cover shadow-sm"
+                          className="w-16 h-16 rounded-[12px] object-cover"
                         />
                       ) : (
                         <div
