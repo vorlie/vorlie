@@ -8,8 +8,7 @@ interface Env {
 const routeMetadata: Record<string, { title: string; description: string }> = {
   "/": {
     title: "Home | vorlie",
-    description:
-      "My personal corner of the internet.",
+    description: "My personal corner of the internet.",
   },
   "/specs": {
     title: "PC Specs | vorlie",
@@ -59,6 +58,10 @@ const routeMetadata: Record<string, { title: string; description: string }> = {
     title: "Blog | vorlie",
     description: "Thoughts on dev, linux & tech",
   },
+  "/gallery": {
+    title: "Gallery | vorlie",
+    description: "A collection of my Cyberpunk 2077 photomode shots.",
+  },
 };
 
 export const onRequest = async (context: any) => {
@@ -75,8 +78,7 @@ export const onRequest = async (context: any) => {
 
   // 2. Determine Metadata
   let title = "vorlie";
-  let description =
-    "My personal corner of the internet.";
+  let description = "My personal corner of the internet.";
   //let image = "https://vorlie.pl/images/favicon.png"; // Default image
 
   // Check for Dynamic Blog Post
