@@ -36,7 +36,7 @@ export default function Gallery() {
 
   useEffect(() => {
     const WORKER_URL = 'https://gallery-api.vorlie.pl/';
-    
+
     fetch(WORKER_URL)
       .then(res => {
         if (!res.ok) throw new Error("Worker not giving valid response yet");
@@ -89,7 +89,7 @@ export default function Gallery() {
           onClick={() => setSelectedIndex(null)}
         >
           {/* Close button */}
-          <button 
+          <button
             className="absolute top-6 right-6 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors z-[1001] flex items-center justify-center"
             onClick={(e) => {
               e.stopPropagation();
@@ -100,7 +100,7 @@ export default function Gallery() {
           </button>
 
           {/* Previous Button */}
-          <button 
+          <button
             className="absolute left-2 sm:left-8 top-1/2 -translate-y-1/2 w-12 h-12 md:w-16 md:h-16 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors z-[1001] flex items-center justify-center"
             onClick={(e) => {
               e.stopPropagation();
@@ -111,7 +111,7 @@ export default function Gallery() {
           </button>
 
           {/* Next Button */}
-          <button 
+          <button
             className="absolute right-2 sm:right-8 top-1/2 -translate-y-1/2 w-12 h-12 md:w-16 md:h-16 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors z-[1001] flex items-center justify-center"
             onClick={(e) => {
               e.stopPropagation();
@@ -157,7 +157,7 @@ export default function Gallery() {
   );
 
   return (
-    <div className="w-full animate-vertical-slide-in">
+    <div className="w-full animate-vertical-slide-in mb-25">
       <div className="mb-10 text-center">
         <h1 className="text-4xl font-bold text-m3-on-surface mb-2 font-sakura">Gallery</h1>
         <p className="text-m3-on-surface-variant">Property of Arasaka Corporation</p>
@@ -188,7 +188,7 @@ export default function Gallery() {
               className="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
               loading="lazy"
             />
-            
+
             {/* Hover Overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6 backdrop-blur-[2px]">
               <div className="flex justify-between items-end">
