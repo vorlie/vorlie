@@ -2,12 +2,6 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { createPortal } from 'react-dom';
 
-const Images = [
-  { id: 1, url: '/images/gallery/photomode_18032026_234946.png', title: 'Cyber Goth' },
-  { id: 2, url: '/images/gallery/photomode_19032026_022536.png', title: 'Neon Rebellion' },
-  { id: 3, url: '/images/gallery/photomode_19032026_023056.png', title: 'Midnight Neko' },
-];
-
 const variants = {
   enter: (direction: number) => ({
     x: direction > 0 ? 300 : -300,
@@ -26,15 +20,49 @@ const variants = {
   })
 };
 
+interface GalleryImage {
+  id: number;
+  url: string;
+  title: string;
+  uploadedAt: string;
+}
+
 export default function Gallery() {
+  const [images, setImages] = useState<GalleryImage[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [direction, setDirection] = useState(0); // -1 for left, 1 for right
+
+  useEffect(() => {
+    const WORKER_URL = 'https://gallery-api.vorlie.pl/';
+    
+    fetch(WORKER_URL)
+      .then(res => {
+        if (!res.ok) throw new Error("Worker not giving valid response yet");
+        return res.json();
+      })
+      .then(data => {
+        const validImages = data.filter((img: GalleryImage) => !img.url.endsWith('/'));
+        setImages(validImages);
+        setIsLoading(false);
+      })
+      .catch(err => {
+        console.log("Worker not connected yet! Loading local fallbacks:", err.message);
+        setImages([
+          { id: 1, url: '/images/gallery/photomode_18032026_234946.png', title: 'Cyber Goth', uploadedAt: new Date().toISOString() },
+          { id: 2, url: '/images/gallery/photomode_19032026_022536.png', title: 'Neon Rebellion', uploadedAt: new Date().toISOString() },
+          { id: 3, url: '/images/gallery/photomode_19032026_023056.png', title: 'Midnight Neko', uploadedAt: new Date().toISOString() },
+        ]);
+        setIsLoading(false);
+      });
+  }, []);
 
   const paginate = (newDirection: number) => {
     setDirection(newDirection);
     setSelectedIndex((prev) => {
       if (prev === null) return 0;
-      return (prev + newDirection + Images.length) % Images.length;
+      return (prev + newDirection + images.length) % images.length;
     });
   };
 
@@ -48,11 +76,11 @@ export default function Gallery() {
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [selectedIndex]);
+  }, [selectedIndex, images.length]);
 
   const modalContent = (
     <AnimatePresence>
-      {selectedIndex !== null && (
+      {selectedIndex !== null && images.length > 0 && (
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -110,12 +138,15 @@ export default function Gallery() {
               onClick={(e) => e.stopPropagation()}
             >
               <img
-                src={Images[selectedIndex].url}
-                alt={Images[selectedIndex].title}
+                src={images[selectedIndex].url}
+                alt={images[selectedIndex].title}
                 className="max-h-[85vh] w-auto h-auto object-contain block mx-auto rounded-2xl"
               />
               <div className="absolute bottom-0 inset-x-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
-                <h2 className="text-white text-2xl font-sakura">{Images[selectedIndex].title}</h2>
+                <h2 className="text-white text-2xl font-sakura leading-tight">{images[selectedIndex].title}</h2>
+                <p className="text-white/60 text-sm font-light mt-1">
+                  {new Date(images[selectedIndex].uploadedAt).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' })}
+                </p>
               </div>
             </motion.div>
           </AnimatePresence>
@@ -132,9 +163,16 @@ export default function Gallery() {
         <p className="text-m3-on-surface-variant">Property of Arasaka Corporation</p>
       </div>
 
+      {isLoading && (
+        <div className="flex justify-center my-10 animate-pulse text-m3-on-surface-variant">
+          <span className="material-symbols-rounded animate-spin mr-2">refresh</span>
+          Fetching from Arasaka Dataterm...
+        </div>
+      )}
+
       {/* Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {Images.map((img, index) => (
+        {images.map((img, index) => (
           <motion.div
             key={img.id}
             initial={{ opacity: 0, scale: 0.9 }}
@@ -154,9 +192,14 @@ export default function Gallery() {
             {/* Hover Overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6 backdrop-blur-[2px]">
               <div className="flex justify-between items-end">
-                <h3 className="text-white font-medium text-lg transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                  {img.title}
-                </h3>
+                <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                  <h3 className="text-white font-medium text-lg leading-tight">
+                    {img.title}
+                  </h3>
+                  <p className="text-white/60 text-xs font-light mt-1">
+                    {new Date(img.uploadedAt).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' })}
+                  </p>
+                </div>
                 <span className="material-symbols-rounded text-white/80 text-2xl transform scale-75 group-hover:scale-100 transition-transform duration-300">zoom_in</span>
               </div>
             </div>
