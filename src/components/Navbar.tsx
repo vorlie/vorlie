@@ -23,6 +23,7 @@ const navLinks: NavItem[] = [
     label: "Showcase",
     icon: "grid_view",
     children: [
+      { to: "/gallery", label: "Gallery", icon: "image" },
       { to: "/specs", label: "My Rigs", icon: "desktop_windows" },
       { to: "/music", label: "Music", icon: "music_note" },
       { to: "/clips", label: "Clips", icon: "movie" },

@@ -25,6 +25,7 @@ import ObsPanel from "./pages/ObsPanel";
 import ObsGlow from "./pages/ObsGlow";
 import ObsGameFramePage from "./pages/ObsCamFrame";
 import ObsWidgets from "./pages/ObsWidgets";
+import Gallery from "./pages/Gallery";
 
 function AppContent() {
   const location = useLocation();
@@ -96,6 +97,7 @@ function AppContent() {
               <Route path="/blog/:slug" element={<BlogPost />} />
               <Route path="/project/obs" element={<ObsWidgets />} />
               <Route path="/obs/lanyard" element={<ObsPanel />} />
+              <Route path="/gallery" element={<Gallery />} />
               <Route path="*" element={<Home />} />
             </Routes>
           </div>
