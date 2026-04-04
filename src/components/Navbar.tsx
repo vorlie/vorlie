@@ -7,6 +7,7 @@ import {
 } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
+import { supportedLanguages, useTranslation } from "../i18n";
 
 interface NavItem {
   label: string;
@@ -29,6 +30,7 @@ const navLinks: NavItem[] = [
       { to: "/clips", label: "Clips", icon: "movie" },
       { to: "/rat", label: "Rats", icon: "pets" },
       { to: "/colors", label: "Colors", icon: "palette" },
+      { to: "/for-sale", label: "For Sale", icon: "sell" },
     ],
   },
   {
@@ -75,6 +77,7 @@ export default function Navbar() {
   const linksRef = useRef<{ [key: string]: HTMLElement | null }>({});
   const navRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
+  const { language, setLanguage } = useTranslation();
 
   const updatePill = useCallback(() => {
     if (!navRef.current) return;
@@ -271,6 +274,23 @@ export default function Navbar() {
               {link.icon && <Icon name={link.icon} />}
               {link.label}
             </NavLink>
+          ))}
+        </div>
+
+        <div className="hidden md:flex items-center gap-1 pl-1">
+          {supportedLanguages.map((lang) => (
+            <button
+              key={lang}
+              type="button"
+              onClick={() => setLanguage(lang)}
+              className={`relative z-10 px-3 py-2 rounded-full text-sm font-medium transition-colors duration-300 ${
+                language === lang
+                  ? "bg-m3-primary text-m3-on-primary"
+                  : "text-m3-on-surface-variant hover:bg-m3-on-surface/10"
+              }`}
+            >
+              {lang.toUpperCase()}
+            </button>
           ))}
         </div>
 

@@ -26,6 +26,8 @@ import ObsGlow from "./pages/ObsGlow";
 import ObsGameFramePage from "./pages/ObsCamFrame";
 import ObsWidgets from "./pages/ObsWidgets";
 import Gallery from "./pages/Gallery";
+import ForSale from "./pages/ForSale";
+import { LanguageProvider } from "./i18n";
 
 function AppContent() {
   const location = useLocation();
@@ -75,7 +77,7 @@ function AppContent() {
 
       <div
         className={`min-h-screen w-full bg-cover bg-center bg-fixed transition-opacity duration-1000 ${isLoading ? "opacity-0" : "opacity-100"}`}
-        style={{ backgroundImage: "url('/images/background.png')", }}
+        style={{ backgroundImage: "url('/images/background.png')" }}
       >
         <div className="min-h-screen w-full text-m3-on-surface p-4 md:p-12 pb-24 bg-m3-surface/70">
           <div className="w-full max-w-6xl mx-auto relative z-10">
@@ -98,6 +100,7 @@ function AppContent() {
               <Route path="/project/obs" element={<ObsWidgets />} />
               <Route path="/obs/lanyard" element={<ObsPanel />} />
               <Route path="/gallery" element={<Gallery />} />
+              <Route path="/for-sale" element={<ForSale />} />
               <Route path="*" element={<Home />} />
             </Routes>
           </div>
@@ -114,9 +117,11 @@ function App() {
   }, []);
 
   return (
-    <Router>
-      <AppContent />
-    </Router>
+    <LanguageProvider>
+      <Router>
+        <AppContent />
+      </Router>
+    </LanguageProvider>
   );
 }
 
