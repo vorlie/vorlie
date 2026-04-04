@@ -57,7 +57,7 @@ const translations = {
         "Check back soon or reach out if you’re looking for something specific.",
       contactTitle: "Contact",
       contactText:
-        "If you want to buy something, send me a message through the usual channels listed on the homepage. Include the item ID from the listing so I know which item you're asking about. I’ll confirm availability, provide the final shipping cost, and ship after payment is received.",
+        "If you want to buy something, send me a message with the item ID so I know which listing you're referring to. I will confirm availability, provide payment details and estimated shipping cost. To ship the parcel, I need the exact parcel locker number (e.g. WAW01M) where I should send it. Items are shipped after payment is received.",
       parcelLockerHint:
         "You can find your parcel locker number in the InPost locator or in the InPost app when selecting a delivery point.",
       parcelLockerLink: "InPost locator",
