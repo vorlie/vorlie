@@ -58,6 +58,9 @@ const translations = {
       contactTitle: "Contact",
       contactText:
         "If you want to buy something, send me a message through the usual channels listed on the homepage. Include the item ID from the listing so I know which item you're asking about. I’ll confirm availability, provide the final shipping cost, and ship after payment is received.",
+      parcelLockerHint:
+        "You can find your parcel locker number in the InPost locator or in the InPost app when selecting a delivery point.",
+      parcelLockerLink: "InPost locator",
       shippingLabel: "Shipping:",
       photosMissing: "Photos not added yet",
       contactEmailLabel: "Email",
@@ -114,7 +117,10 @@ const translations = {
         "Sprawdź ponownie wkrótce lub skontaktuj się, jeśli szukasz czegoś konkretnego.",
       contactTitle: "Kontakt",
       contactText:
-        "Jeśli chcesz coś kupić, wyślij mi wiadomość z ID przedmiotu, żebym wiedział, którego ogłoszenia dotyczy. Potwierdzę dostępność, podam dane do płatności oraz szacunkowy koszt wysyłki. Przedmioty wysyłam po otrzymaniu płatności.",
+        "Jeśli chcesz coś kupić, wyślij mi wiadomość z ID przedmiotu, żebym wiedział, którego ogłoszenia dotyczy. Potwierdzę dostępność, podam dane do płatności oraz szacunkowy koszt wysyłki. Do nadania przesyłki potrzebuję dokładnego numeru paczkomatu (np. WAW01M), na który mam wysłać paczkę. Przedmioty wysyłam po otrzymaniu płatności.",
+      parcelLockerHint:
+        "Numer paczkomatu możesz znaleźć w wyszukiwarce InPost lub w aplikacji InPost podczas wyboru punktu dostawy.",
+      parcelLockerLink: "Znajdź paczkomat",
       shippingLabel: "Wysyłka:",
       photosMissing: "Zdjęcia nie zostały jeszcze dodane",
       contactEmailLabel: "Email",

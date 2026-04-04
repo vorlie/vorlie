@@ -1,3 +1,4 @@
+import { ExternalLink } from "lucide-react";
 import SEO from "../components/SEO";
 import { forSaleItems } from "../data/forSaleItems";
 import { useTranslation } from "../i18n";
@@ -25,6 +26,8 @@ type ForSaleTranslation = {
   noListingsBody: string;
   contactTitle: string;
   contactText: string;
+  parcelLockerHint: string;
+  parcelLockerLink: string;
   shippingLabel: string;
   photosMissing: string;
   contactEmailLabel: string;
@@ -245,7 +248,25 @@ function ForSale() {
                 {sale.contactTitle}
               </h2>
             </div>
-
+            <div className="sm:ml-12 pl-2 mb-6">
+              <p className="text-sm font-semibold text-m3-on-surface-variant">
+                {sale.contactText}
+              </p>
+            </div>
+            <div className="sm:ml-12 pl-2 mb-6">
+              <p className="text-sm text-m3-on-surface-variant">
+                {sale.parcelLockerHint}{" "}
+                <a
+                  href="https://inpost.pl/znajdz-paczkomat"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-m3-primary font-semibold hover:underline inline-flex items-center gap-1"
+                >
+                  {sale.parcelLockerLink}
+                  <ExternalLink size={14} />
+                </a>
+              </p>
+            </div>
             <div className="sm:ml-12 border-l-2 border-m3-primary/10 pl-6 space-y-6">
               <p className="text-lg text-m3-on-surface-variant leading-relaxed">
                 {sale.contactInstructions}
