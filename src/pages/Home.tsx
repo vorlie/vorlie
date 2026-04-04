@@ -249,7 +249,7 @@ function Home() {
                 </h2>
                 <div className="flex justify-center">
                   <iframe
-                    src="https://ring.pre1ude.dev/ring?url=https://vorlie.pl&fgcolor=ede0df&bgcolor=5d3f3f"
+                    src="https://ring.pre1ude.dev/ring?url=https://vorlie.pl&fgcolor=E4E1E6&bgcolor=434559"
                     width="230"
                     height="100"
                     frameBorder="0"

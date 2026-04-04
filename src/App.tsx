@@ -32,7 +32,7 @@ import { LanguageProvider } from "./i18n";
 function AppContent() {
   const location = useLocation();
   const isObsRoute = location.pathname.startsWith("/obs");
-  const isLoading = useDynamicColor("/images/background.png");
+  const isLoading = useDynamicColor("/images/background.jpg");
 
   if (isObsRoute) {
     return (
@@ -77,7 +77,7 @@ function AppContent() {
 
       <div
         className={`min-h-screen w-full bg-cover bg-center bg-fixed transition-opacity duration-1000 ${isLoading ? "opacity-0" : "opacity-100"}`}
-        style={{ backgroundImage: "url('/images/background.png')" }}
+        style={{ backgroundImage: "url('/images/background.jpg')" }}
       >
         <div className="min-h-screen w-full text-m3-on-surface p-4 md:p-12 pb-24 bg-m3-surface/70">
           <div className="w-full max-w-6xl mx-auto relative z-10">
