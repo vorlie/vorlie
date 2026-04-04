@@ -3,6 +3,7 @@ import { forSaleItems } from "../data/forSaleItems";
 import { useTranslation } from "../i18n";
 
 type ForSaleTranslation = {
+  legalNote: string;
   title: string;
   subtitle: string;
   intro: string;
@@ -226,9 +227,7 @@ function ForSale() {
                             `Item ${item.id}`,
                           )}`}
                           className="text-sm font-semibold text-m3-primary hover:underline"
-                        >
-
-                        </a>
+                        ></a>
                       </div>
                     </div>
                   </article>
@@ -286,6 +285,14 @@ function ForSale() {
                   FS-001 – asking about availability
                 </code>
               </div>
+            </div>
+          </section>
+          {/* Legal note */}
+          <section className="group">
+            <div className="flex items-center gap-4 mb-6">
+              <p className="text-sm font-semibold text-m3-on-surface-variant">
+                {sale.legalNote}
+              </p>
             </div>
           </section>
         </div>

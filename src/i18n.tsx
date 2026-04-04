@@ -24,7 +24,7 @@ const translations = {
         "A very simple listing page for things I no longer need. No cart, no checkout, just item details, photos, condition, and how to contact me.",
       whatThisPageTitle: "What this page is for",
       whatThisPageText:
-        "Personal items I want to sell locally or via trusted shipping. This is not a business storefront - just occasional listings of my own stuff.",
+        "Personal items I want to sell locally or via trusted shipping. This is not a business storefront - just occasional private sales of my own belongings.",
       keyPointsHeading: "Key points",
       keyPoints: [
         "Simple item listings with photos and condition.",
@@ -66,6 +66,8 @@ const translations = {
       contactExample: "Example: FS-001 – asking about availability",
       copyEmail: "Copy email",
       contactAboutItem: "Contact about this item",
+      legalNote:
+        "This is a private sale of personal items, not a registered business. Items are sold as used, without warranty or guarantee unless stated otherwise. Returns are not accepted unless agreed individually.",
     },
   },
   pl: {
@@ -79,7 +81,7 @@ const translations = {
         "Bardzo prosta strona z rzeczami, których już nie potrzebuję. Brak koszyka, brak realizacji płatności - tylko opis przedmiotu, zdjęcia, stan i kontakt.",
       whatThisPageTitle: "Do czego służy ta strona",
       whatThisPageText:
-        "Rzeczy osobiste, które chcę sprzedać lokalnie lub wysłać zaufaną przesyłką. To nie jest sklep - tylko okazjonalne ogłoszenia moich własnych rzeczy.",
+        "Osobiste przedmioty, które chcę sprzedać lokalnie lub wysłać przez zaufane metody dostawy. To nie jest sklep ani działalność — tylko okazjonalna sprzedaż moich prywatnych rzeczy.",
       keyPointsHeading: "Najważniejsze",
       keyPoints: [
         "Proste ogłoszenia z opisem stanu i zdjęciami.",
@@ -112,7 +114,7 @@ const translations = {
         "Sprawdź ponownie wkrótce lub skontaktuj się, jeśli szukasz czegoś konkretnego.",
       contactTitle: "Kontakt",
       contactText:
-        "Jeśli chcesz coś kupić, wyślij mi wiadomość przez zwykłe kanały podane na stronie głównej. Podaj ID przedmiotu z ogłoszenia, żebym wiedział, o który przedmiot chodzi. Potwierdzę dostępność, podam ostateczny koszt wysyłki i wyślę po otrzymaniu płatności.",
+        "Jeśli chcesz coś kupić, wyślij mi wiadomość z ID przedmiotu, żebym wiedział, którego ogłoszenia dotyczy. Potwierdzę dostępność, podam dane do płatności oraz szacunkowy koszt wysyłki. Przedmioty wysyłam po otrzymaniu płatności.",
       shippingLabel: "Wysyłka:",
       photosMissing: "Zdjęcia nie zostały jeszcze dodane",
       contactEmailLabel: "Email",
@@ -121,6 +123,8 @@ const translations = {
       contactExample: "Przykład: FS-001 – zapytanie o dostępność",
       copyEmail: "Skopiuj email",
       contactAboutItem: "Skontaktuj się w sprawie tego przedmiotu",
+      legalNote:
+        "To prywatna sprzedaż osobistych przedmiotów, a nie zarejestrowana działalność gospodarcza. Przedmioty są sprzedawane jako używane, bez gwarancji ani rękojmi, chyba że zaznaczono inaczej. Zwroty nie są przyjmowane, chyba że zostanie to indywidualnie ustalone.",
     },
   },
 } as const;
