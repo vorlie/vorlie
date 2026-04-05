@@ -186,23 +186,51 @@ function ForSale() {
                       </div>
                     </div>
 
-                    <div className="mt-6 grid gap-6 lg:grid-cols-[1fr_1.2fr]">
-                      <div className="grid gap-3">
+                    <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-6">
+                      <div className="grid grid-cols-2 grid-rows-2 gap-3">
                         {item.photos && item.photos.length > 0 ? (
-                          item.photos.map((src, index) => (
-                            <img
-                              key={index}
-                              src={src}
-                              alt={`${item.title[language]} photo ${index + 1}`}
-                              className="h-40 w-full rounded-[24px] object-cover border border-m3-outline/10"
-                            />
-                          ))
+                          <>
+                            {/* Main large image (first image) */}
+                            <div className="col-span-2 row-span-2">
+                              <img
+                                src={item.photos[0]}
+                                alt={`${item.title[language]} main photo`}
+                                className="h-full w-full rounded-[24px] object-cover border border-m3-outline/10"
+                              />
+                            </div>
+
+                            {/* Two smaller images (second and third if they exist) */}
+                            {item.photos.slice(1, 3).map((src, index) => (
+                              <div key={index + 1} className="hidden lg:block">
+                                <img
+                                  src={src}
+                                  alt={`${item.title[language]} photo ${index + 2}`}
+                                  className="h-full w-full rounded-[24px] object-cover border border-m3-outline/10"
+                                />
+                              </div>
+                            ))}
+
+                            {/* Show remaining images in mobile view */}
+                            {item.photos.length > 3 && (
+                              <div className="col-span-2 lg:hidden grid grid-cols-2 gap-3">
+                                {item.photos.slice(3).map((src, index) => (
+                                  <img
+                                    key={index + 3}
+                                    src={src}
+                                    alt={`${item.title[language]} photo ${index + 4}`}
+                                    className="h-40 w-full rounded-[24px] object-cover border border-m3-outline/10"
+                                  />
+                                ))}
+                              </div>
+                            )}
+                          </>
                         ) : (
-                          <div className="flex h-40 items-center justify-center rounded-[24px] border border-dashed border-m3-outline/40 bg-m3-surface-variant text-m3-on-surface-variant">
+                          <div className="col-span-2 flex h-40 items-center justify-center rounded-[24px] border border-dashed border-m3-outline/40 bg-m3-surface-variant text-m3-on-surface-variant">
                             {sale.photosMissing}
                           </div>
                         )}
                       </div>
+
                       <div className="space-y-4 text-m3-on-surface-variant leading-relaxed">
                         <p>{item.description[language]}</p>
                         {item.shippingNote && (
@@ -230,7 +258,9 @@ function ForSale() {
                             `Item ${item.id}`,
                           )}`}
                           className="text-sm font-semibold text-m3-primary hover:underline"
-                        ></a>
+                        >
+                          {sale.contactAboutItem}
+                        </a>
                       </div>
                     </div>
                   </article>

@@ -14,5 +14,4 @@ export interface ForSaleItem {
   notes?: LocalizedString[];
 }
 
-export const forSaleItems: ForSaleItem[] = [
-];
+export const forSaleItems: ForSaleItem[] = [];
