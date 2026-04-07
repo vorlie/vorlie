@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "build": "npm run generate:posts && tsc -b && vite build",
     "generate:posts": "node scripts/generate-posts.mjs",
     "lint": "eslint .",

@@ -38,6 +38,7 @@ const navLinks: NavItem[] = [
     icon: "code",
     children: [
       { to: "/project/iota-player", label: "Iota Player", icon: "play_circle" },
+      { to: "/project/iotas-notepad", label: "Iota's Notepad", icon: "note_add" },
       { to: "https://docs.vorlie.pl", label: "API", icon: "terminal" },
       { to: "https://edit.vorlie.pl", label: "PixieEdit", icon: "edit" },
       { to: "/project/obs", label: "OBS Widgets", icon: "stream" },

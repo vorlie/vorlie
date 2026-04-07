@@ -93,6 +93,7 @@ const projectData = [
         href: "https://github.com/vorlie/iotas-notepad/releases/",
         text: "Releases",
       },
+      { href: "https://vorlie.pl/project/iotas-notepad", text: "Homepage" },
     ],
     languages: ["Electron"],
   },

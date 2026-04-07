@@ -19,6 +19,7 @@ import Music from "./pages/Music";
 import Colors from "./pages/Colors";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
+import IotasNotepad from "./pages/IotasNotepad";
 
 import useDynamicColor from "./hooks/useDynamicColor";
 import ObsPanel from "./pages/ObsPanel";
@@ -92,6 +93,7 @@ function AppContent() {
               />
               <Route path="/verify" element={<Verify />} />
               <Route path="/project/iota-player" element={<IotaPlayer />} />
+              <Route path="/project/iotas-notepad" element={<IotasNotepad />} />
               <Route path="/rat" element={<Rats />} />
               <Route path="/music" element={<Music />} />
               <Route path="/colors" element={<Colors />} />
