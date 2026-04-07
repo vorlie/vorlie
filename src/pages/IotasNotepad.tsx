@@ -237,7 +237,7 @@ function IotasNotepad() {
               the Windows Mica design language.
             </p>
             <div className="flex flex-col gap-4">
-              {["Electron", "TypeScript", "React", "Node.js"].map((tech) => (
+              {["Electron", "JavaScript",  "Node.js"].map((tech) => (
                 <div key={tech} className="flex items-center gap-3">
                   <div className="w-2 h-2 rounded-full bg-m3-primary"></div>
                   <span className="font-bold text-sm text-m3-on-surface-variant">
