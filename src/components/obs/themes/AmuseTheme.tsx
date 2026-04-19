@@ -25,7 +25,7 @@ export default function AmuseTheme({
     update();
     const interval = setInterval(update, 1000);
     return () => clearInterval(interval);
-  }, [start, end]);
+  }, [start, end, musicData.title]);
 
   const formatTime = (ms: number) => {
     const totalSeconds = Math.floor(ms / 1000);
@@ -93,7 +93,7 @@ export default function AmuseTheme({
         <div className="relative h-4 px-2">
           <div className="absolute inset-0 bg-white/10 rounded-full overflow-hidden mx-2">
             <motion.div
-              key={musicData.trackId}
+              key={musicData.trackId || musicData.title}
               className="h-full rounded-full shadow-[0_0_15px_rgba(255,255,255,0.3)]"
               style={{ backgroundColor: accentColor }}
               initial={{ width: initialWidth }}

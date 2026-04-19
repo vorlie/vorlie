@@ -29,7 +29,7 @@ export default function ModernTheme({
       <div className="p-3">
         <div className="w-full h-1.5 bg-m3-surface rounded-full overflow-hidden">
           <motion.div
-            key={musicData.trackId}
+            key={musicData.trackId || musicData.title}
             className="h-full"
             style={{ backgroundColor: accentColor }}
             initial={{ width: initialWidth }}

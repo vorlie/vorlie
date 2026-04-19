@@ -24,7 +24,7 @@ export default function CompactTheme({
         </p>
         <div className="w-full h-1 bg-m3-surface rounded-full mt-1 overflow-hidden">
           <motion.div
-            key={musicData.trackId}
+            key={musicData.trackId || musicData.title}
             className="h-full"
             style={{ backgroundColor: accentColor }}
             initial={{ width: initialWidth }}

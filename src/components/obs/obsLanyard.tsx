@@ -123,20 +123,20 @@ export default function ObsSpotifyComponent({
 
     switch (theme) {
       case "compact":
-        return <CompactTheme {...themeProps} />;
+        return <CompactTheme key={musicData.trackId || musicData.title} {...themeProps} />;
       case "glass":
-        return <GlassTheme {...themeProps} />;
+        return <GlassTheme key={musicData.trackId || musicData.title} {...themeProps} />;
       case "modern":
-        return <ModernTheme {...themeProps} />;
+        return <ModernTheme key={musicData.trackId || musicData.title} {...themeProps} />;
       case "tidal":
-        return <TidalTheme {...themeProps} />;
+        return <TidalTheme key={musicData.trackId || musicData.title} {...themeProps} />;
       case "amuse":
-        return <AmuseTheme {...themeProps} />;
+        return <AmuseTheme key={musicData.trackId || musicData.title} {...themeProps} />;
       case "musicbee":
-        return <MusicBeeTheme {...themeProps} />;
+        return <MusicBeeTheme key={musicData.trackId || musicData.title} {...themeProps} />;
       case "badge":
       default:
-        return <BadgeTheme {...themeProps} />;
+        return <BadgeTheme key={musicData.trackId || musicData.title} {...themeProps} />;
     }
   };
 

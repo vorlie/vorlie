@@ -25,7 +25,7 @@ export default function MusicBeeTheme({
     update();
     const interval = setInterval(update, 1000);
     return () => clearInterval(interval);
-  }, [start, end]);
+  }, [start, end, musicData.title]);
 
   const formatTime = (ms: number) => {
     const totalSeconds = Math.floor(ms / 1000);

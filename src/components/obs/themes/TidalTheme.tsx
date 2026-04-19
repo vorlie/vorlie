@@ -16,6 +16,7 @@ export default function TidalTheme({
   useEffect(() => {
     if (!start || !end) return;
 
+    // Reset elapsed when theme remounts or start/end changes
     const update = () => {
       const now = Date.now();
       const newElapsed = Math.max(0, Math.min(end - start, now - start));
@@ -25,7 +26,7 @@ export default function TidalTheme({
     update();
     const interval = setInterval(update, 1000);
     return () => clearInterval(interval);
-  }, [start, end]);
+  }, [start, end, musicData.title]);
 
   const formatTime = (ms: number) => {
     const totalSeconds = Math.floor(ms / 1000);

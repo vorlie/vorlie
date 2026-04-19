@@ -39,7 +39,7 @@ export default function GlassTheme({
       </div>
       <div className="w-full h-1.5 bg-white/10 rounded-full overflow-hidden relative z-10">
         <motion.div
-          key={musicData.trackId}
+          key={musicData.trackId || musicData.title}
           className="h-full"
           style={{ backgroundColor: accentColor }}
           initial={{ width: initialWidth }}
