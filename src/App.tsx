@@ -39,7 +39,7 @@ function AppContent() {
     return (
       <div className="bg-transparent min-h-screen overflow-hidden">
         <Routes>
-          <Route path="/obs/spotify/:discordId" element={<ObsPanel />} />
+          <Route path="/obs/nowplaying/:discordId" element={<ObsPanel />} />
           <Route path="/obs/glow/:discordId" element={<ObsGlow />} />
           <Route
             path="/obs/camframe/:discordId"

@@ -22,7 +22,7 @@ function ObsWidgets() {
 
   const copyToClipboard = (text: string, widget: string) => {
     let finalUrl = text;
-    if (widget === "spotify") {
+    if (widget === "music") {
       const url = new URL(text);
       url.searchParams.set("theme", selectedTheme);
       if (!motionEnabled) {
@@ -45,12 +45,12 @@ function ObsWidgets() {
 
   const widgets = [
     {
-      id: "spotify",
+      id: "music",
       name: "Music Now Playing",
       description:
         "Display your current track from Spotify, Tidal, or MusicBee with album art, artist, and smooth progress tracking. Features adaptive Material Design 3 styling based on album colors.",
       icon: "🎵",
-      path: "spotify",
+      path: "nowplaying",
       features: [
         "Spotify, Tidal & MusicBee support",
         "Real-time album art & progress",
@@ -288,7 +288,7 @@ function ObsWidgets() {
         {widgets.map((widget) => {
           let widgetUrl = `${baseDomain}/obs/${widget.path}/${discordId}`;
 
-          if (widget.id === "spotify") {
+          if (widget.id === "music") {
             const params = new URLSearchParams();
             params.set("theme", selectedTheme);
             if (!motionEnabled) params.set("motion", "false");
@@ -362,81 +362,81 @@ function ObsWidgets() {
         <div className="space-y-6">
           <div>
             <h3 className="font-bold text-lg mb-3">
-              Using Your Own Discord ID
+              URL Parameters (Advanced)
             </h3>
+            <p className="text-m3-on-surface-variant mb-4 font-medium">
+              Manually configure your widget by adding query parameters to the URL:
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+              <div className="bg-m3-surface rounded-2xl p-4 border border-m3-outline/10">
+                <p className="text-[10px] font-black uppercase tracking-widest text-m3-primary mb-2">Theme Selection</p>
+                <code className="text-sm text-m3-on-surface-variant">
+                  ?theme=[badge|compact|glass|modern|tidal|amuse|musicbee]
+                </code>
+              </div>
+              <div className="bg-m3-surface rounded-2xl p-4 border border-m3-outline/10">
+                <p className="text-[10px] font-black uppercase tracking-widest text-m3-primary mb-2">Animation Toggle</p>
+                <code className="text-sm text-m3-on-surface-variant">
+                  ?motion=[true|false]
+                </code>
+              </div>
+            </div>
+
+            <h3 className="font-bold text-lg mb-3">Using Your Own Discord ID</h3>
             <p className="text-m3-on-surface-variant mb-4">
               All widgets use URL-based configuration. Simply modify the Discord
               ID at the end of the URL:
             </p>
             <div className="space-y-2 mb-4">
-              <div className="bg-m3-surface rounded-2xl p-4 font-mono text-sm overflow-x-auto">
+              <div className="bg-m3-surface rounded-2xl p-4 font-mono text-sm border border-m3-outline/5 overflow-x-auto">
                 <code>
-                  https://vorlie.pl/obs/spotify
-                  <span className="text-m3-primary">/614807913302851594</span>
+                  https://vorlie.pl/obs/nowplaying
+                  <span className="text-m3-primary">/YOUR_DISCORD_ID</span>
+                  <span className="text-m3-on-surface-variant/40">?theme=musicbee&motion=true</span>
                 </code>
               </div>
-              <p className="text-xs text-m3-on-surface-variant px-2">
-                Main domain
-              </p>
-            </div>
-            <div className="space-y-2 mb-4">
-              <div className="bg-m3-surface rounded-2xl p-4 font-mono text-sm overflow-x-auto">
-                <code>
-                  https://vorliev2.pages.dev/obs/spotify
-                  <span className="text-m3-primary">/614807913302851594</span>
-                </code>
-              </div>
-              <p className="text-xs text-m3-on-surface-variant px-2">
-                Backup (Cloudflare Pages)
-              </p>
             </div>
             <p className="text-sm text-m3-on-surface-variant">
               Replace{" "}
-              <code className="bg-m3-surface px-2 py-1 rounded">
-                614807913302851594
+              <code className="bg-m3-surface px-2 py-1 rounded border border-m3-outline/10">
+                YOUR_DISCORD_ID
               </code>{" "}
-              with your Discord ID.
+              with your 18-digit ID.
             </p>
           </div>
 
-          <div>
-            <h3 className="font-bold text-lg mb-3">Widget Behavior</h3>
-            <ul className="space-y-3 text-m3-on-surface-variant">
-              <li className="flex gap-3">
-                <span className="text-m3-primary font-bold">→</span>
-                <span>
-                  <strong>Offline:</strong> All widgets automatically hide when
-                  your Discord status is offline
-                </span>
+          <div className="pt-6 border-t border-m3-outline/10">
+            <h3 className="font-bold text-lg mb-4 flex items-center gap-2">
+              <Zap size={20} className="text-m3-primary" /> Widget Behavior
+            </h3>
+            <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <li className="flex gap-4 bg-m3-surface/50 p-4 rounded-2xl border border-m3-outline/5">
+                <span className="text-m3-primary font-bold mt-0.5">✓</span>
+                <div>
+                  <p className="font-bold text-sm mb-1 text-m3-on-surface">Offline State</p>
+                  <p className="text-xs text-m3-on-surface-variant leading-relaxed">Widgets automatically hide when your Discord status is offline.</p>
+                </div>
               </li>
-              <li className="flex gap-3">
-                <span className="text-m3-primary font-bold">→</span>
-                <span>
-                  <strong>No Spotify:</strong> The Now Playing Card hides if
-                  you're not playing anything
-                </span>
+              <li className="flex gap-4 bg-m3-surface/50 p-4 rounded-2xl border border-m3-outline/5">
+                <span className="text-m3-primary font-bold mt-0.5">✓</span>
+                <div>
+                  <p className="font-bold text-sm mb-1 text-m3-on-surface">No Active Playback</p>
+                  <p className="text-xs text-m3-on-surface-variant leading-relaxed">The Music card hides if nothing is playing on Spotify, Tidal, or MusicBee.</p>
+                </div>
               </li>
-              <li className="flex gap-3">
-                <span className="text-m3-primary font-bold">→</span>
-                <span>
-                  <strong>Real-time Updates:</strong> All widgets update via
-                  WebSocket for instant changes
-                </span>
+              <li className="flex gap-4 bg-m3-surface/50 p-4 rounded-2xl border border-m3-outline/5">
+                <span className="text-m3-primary font-bold mt-0.5">✓</span>
+                <div>
+                  <p className="font-bold text-sm mb-1 text-m3-on-surface">Real-time Updates</p>
+                  <p className="text-xs text-m3-on-surface-variant leading-relaxed">WebSocket-driven push updates ensure zero lag for progress and track changes.</p>
+                </div>
               </li>
-              <li className="flex gap-3">
-                <span className="text-m3-primary font-bold">→</span>
-                <span>
-                  <strong>No Configuration Needed:</strong> Just add the URL to
-                  OBS and it works!
-                </span>
-              </li>
-              <li className="flex gap-3">
-                <span className="text-m3-primary font-bold">→</span>
-                <span>
-                  <strong>GPU Acceleration:</strong> Widgets use GPU
-                  acceleration for smooth animations, which may increase GPU
-                  usage slightly
-                </span>
+              <li className="flex gap-4 bg-m3-surface/50 p-4 rounded-2xl border border-m3-outline/5">
+                <span className="text-m3-primary font-bold mt-0.5">✓</span>
+                <div>
+                  <p className="font-bold text-sm mb-1 text-m3-on-surface">GPU Optimized</p>
+                  <p className="text-xs text-m3-on-surface-variant leading-relaxed">Use <code>motion=false</code> to disable all internal transitions for ultra-low CPU usage.</p>
+                </div>
               </li>
             </ul>
           </div>
