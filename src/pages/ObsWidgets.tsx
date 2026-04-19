@@ -1,5 +1,14 @@
 import { useState } from "react";
-import { Copy, Check, ExternalLink, Settings2, Zap, ZapOff, Globe, Eye } from "lucide-react";
+import {
+  Copy,
+  Check,
+  ExternalLink,
+  Settings2,
+  Zap,
+  ZapOff,
+  Globe,
+  Eye,
+} from "lucide-react";
 import ObsSpotify, { SpotifyTheme } from "../components/obs/obsLanyard";
 
 function ObsWidgets() {
@@ -12,7 +21,6 @@ function ObsWidgets() {
   const [motionEnabled, setMotionEnabled] = useState(true);
 
   const copyToClipboard = (text: string, widget: string) => {
-    // Add theme and motion params if the widget is spotify
     let finalUrl = text;
     if (widget === "spotify") {
       const url = new URL(text);
@@ -28,7 +36,6 @@ function ObsWidgets() {
     setTimeout(() => setCopiedWidget(null), 2000);
   };
 
-
   const exampleDiscordId = "614807913302851594";
   const discordId = userDiscordId || exampleDiscordId;
 
@@ -39,17 +46,17 @@ function ObsWidgets() {
   const widgets = [
     {
       id: "spotify",
-      name: "Now Playing Card",
+      name: "Music Now Playing",
       description:
-        "Display your current Spotify song with album art, artist, and animated progress bar. Material Design 3 themed with dynamic colors. Perfect for showing music taste!",
+        "Display your current track from Spotify, Tidal, or MusicBee with album art, artist, and smooth progress tracking. Features adaptive Material Design 3 styling based on album colors.",
       icon: "🎵",
       path: "spotify",
       features: [
-        "Live Spotify data",
-        "Album art",
-        "Progress bar",
-        "Material Design 3 styling",
-        "Color-adaptive design",
+        "Spotify, Tidal & MusicBee support",
+        "Real-time album art & progress",
+        "Material Design 3 aesthetic",
+        "Color-adaptive UI components",
+        "Auto-hide when offline",
       ],
     },
     {
@@ -87,9 +94,9 @@ function ObsWidgets() {
       {/* Header */}
       <div className="mb-12">
         <h1 className="text-4xl font-black mb-4">OBS Widgets</h1>
-        <p className="text-lg text-m3-on-surface-variant">
-          Beautiful, customizable widgets designed for OBS streamers. Display
-          your Spotify activity with style.
+        <p className="text-lg text-m3-on-surface-variant max-w-2xl">
+          Beautiful, customizable widgets designed for OBS streamers. 
+          Support for <span className="font-bold">Spotify</span>, <span className="font-bold">Tidal</span>, and <span className="font-bold">MusicBee</span> (via <a href="https://musicpresence.app" target="_blank" rel="noopener noreferrer" className="text-m3-primary hover:underline font-bold">MusicPresence.app</a>).
         </p>
       </div>
 
@@ -173,44 +180,52 @@ function ObsWidgets() {
 
                   <div className="space-y-3">
                     <p className="text-sm font-bold text-m3-on-surface-variant flex items-center gap-2">
-                      <Settings2 size={16} /> Spotify Theme:
+                      <Settings2 size={16} /> Music Theme:
                     </p>
                     <div className="flex flex-wrap gap-2">
-                      {(["badge", "compact", "glass", "modern"] as const).map(
-                        (t) => (
-                          <button
-                            key={t}
-                            onClick={() => setSelectedTheme(t)}
-                            className={`px-3 py-1.5 rounded-xl text-xs font-bold capitalize transition-all ${
-                              selectedTheme === t
-                                ? "bg-m3-primary text-m3-on-primary shadow-lg scale-105"
-                                : "bg-m3-surface text-m3-on-surface-variant hover:bg-m3-surface-variant"
-                            }`}
-                          >
-                            {t}
-                          </button>
-                        ),
-                      )}
+                      {(
+                        [
+                          "badge",
+                          "compact",
+                          "glass",
+                          "modern",
+                          "tidal",
+                          "amuse",
+                          "musicbee",
+                        ] as const
+                      ).map((t) => (
+                        <button
+                          key={t}
+                          onClick={() => setSelectedTheme(t)}
+                          className={`px-3 py-1.5 rounded-xl text-xs font-bold capitalize transition-all ${
+                            selectedTheme === t
+                              ? "bg-m3-primary text-m3-on-primary shadow-lg scale-105"
+                              : "bg-m3-surface text-m3-on-surface-variant hover:bg-m3-surface-variant"
+                          }`}
+                        >
+                          {t}
+                        </button>
+                      ))}
                     </div>
                   </div>
 
                   <div className="space-y-3">
                     <p className="text-sm font-bold text-m3-on-surface-variant flex items-center gap-2">
                       {motionEnabled ? <Zap size={16} /> : <ZapOff size={16} />}
-                      Performance (Motion):
+                      Internal Animations:
                     </p>
                     <button
                       onClick={() => setMotionEnabled(!motionEnabled)}
                       className={`flex items-center gap-2 px-4 py-1.5 rounded-xl text-xs font-bold transition-all ${
                         motionEnabled
                           ? "bg-green-500/20 text-green-500 border border-green-500/30"
-                          : "bg-orange-500/20 text-orange-500 border border-orange-500/30"
+                          : "bg-orange-500/20 text-orange-500 border border-orange-500/30 shadow-inner"
                       }`}
                     >
-                      {motionEnabled ? "Motion Enabled" : "Motion Disabled"}
+                      {motionEnabled ? "Animated (Smooth)" : "Static (Low CPU)"}
                     </button>
-                    <p className="text-[10px] text-m3-on-surface-variant/70 italic">
-                      Disable for lower CPU usage in OBS
+                    <p className="text-[10px] text-m3-on-surface-variant/70 leading-relaxed italic">
+                      Disabling makes the widget "Static"—stopping smooth progress bars and visualizers to save CPU.
                     </p>
                   </div>
                 </div>
@@ -233,8 +248,6 @@ function ObsWidgets() {
               </div>
             </div>
           </div>
-
-
 
           <div className="flex gap-4">
             <div className="flex-shrink-0 w-8 h-8 rounded-full bg-m3-primary text-m3-on-primary flex items-center justify-center font-bold text-sm">
@@ -260,9 +273,10 @@ function ObsWidgets() {
               </p>
               <ul className="list-disc list-inside space-y-1 text-m3-on-surface-variant text-sm">
                 <li>Connect to your Discord activity via Lanyard API</li>
-                <li>Update in real-time with your Spotify status</li>
-                <li>Adapt colors to your current album art</li>
-                <li>Hide when you go offline</li>
+                <li>Detect your music from Spotify, Tidal, or MusicBee</li>
+                <li>Update in real-time with live progress tracking</li>
+                <li>Adapt colors globally to your current album art</li>
+                <li>Hide automatically when playback stops</li>
               </ul>
             </div>
           </div>
@@ -446,12 +460,12 @@ function ObsWidgets() {
 
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
           {[
-            "Discord Status",
-            "Current Game",
-            "Spotify Activity",
-            "Album Art",
-            "Listening Duration",
-            "User Status Changes",
+            "Spotify Presence",
+            "Tidal (via MusicPresence)",
+            "MusicBee (via MusicPresence)",
+            "Real-time Album Art",
+            "Live Timestamps",
+            "Color Palette Extraction",
           ].map((item) => (
             <div
               key={item}

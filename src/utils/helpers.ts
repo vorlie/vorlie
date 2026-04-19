@@ -8,10 +8,11 @@ export const extractImageUrl = (
 
   try {
     if (url.startsWith("mp:external/")) {
-      return `https://media.discordapp.net/external/${url.replace(
+      const externalUrl = `https://media.discordapp.net/external/${url.replace(
         "mp:external/",
         "",
       )}`;
+      return `${externalUrl}${externalUrl.includes("?") ? "&" : "?"}width=400&height=400`;
     } else if (url.startsWith("spotify:")) {
       return url.replace("spotify:", "https://i.scdn.co/image/");
     } else if (application_id) {
