@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-unused-vars */
+
 interface Env {
   ASSETS: { fetch: (request: Request) => Promise<Response> };
 }
@@ -68,7 +68,7 @@ export const onRequest = async (context: any) => {
   const url = new URL(context.request.url);
   const path = url.pathname;
 
-  // 1. Pass through API requests and static assets (images, js, css, etc.)
+  // 1. Pass through API & static assets
   if (
     path.startsWith("/api/") ||
     path.match(/\.(png|jpg|jpeg|gif|ico|svg|js|css|json|woff|woff2|ttf)$/)
@@ -76,135 +76,172 @@ export const onRequest = async (context: any) => {
     return context.env.ASSETS.fetch(context.request);
   }
 
-  // 2. Determine Metadata
+  // 2. Defaults
   let title = "vorlie";
   let description = "My personal corner of the internet.";
-  let image = "https://vorlie.pl/images/favicon.png"; // Default image
-  let videoUrl = ""; // For video embeds
+  let image = "https://vorlie.pl/images/favicon.png";
+  let videoUrl = "";
   let isYouTube = false;
 
-  // Check for Dynamic Blog Post
+  // 3. Blog dynamic
   const blogMatch = path.match(/^\/blog\/([^/]+)$/);
   if (blogMatch) {
     const slug = blogMatch[1];
+
     try {
-      // Fetch posts.json from the same origin (it's a static asset)
       const postsReq = new Request(`${url.origin}/blog/posts.json`);
       const postsRes = await context.env.ASSETS.fetch(postsReq);
 
       if (postsRes.ok) {
         const posts: any[] = await postsRes.json();
         const post = posts.find((p) => p.slug === slug);
+
         if (post) {
           title = `${post.title} | vorlie's blog`;
           description = post.excerpt || description;
         }
       }
     } catch (e) {
-      console.error("Failed to fetch blog posts for metadata injection:", e);
+      console.error("Blog metadata fetch failed:", e);
     }
-  } else if (path.startsWith("/clips")) {
-    let clipId = null;
+  }
+
+  // 4. Clips dynamic
+  else if (path.startsWith("/clips")) {
+    let clipId: string | null = null;
+
     if (path === "/clips") {
       clipId = url.searchParams.get("id");
     } else {
       clipId = path.split("/")[2];
     }
+
     if (clipId) {
       try {
-        const clipsReq = new Request(`https://api.vorlie.pl/clips.json`);
-        const clipsRes = await fetch(clipsReq);
+        const clipsRes = await fetch("https://api.vorlie.pl/clips.json");
+
         if (clipsRes.ok) {
           const clips: any[] = await clipsRes.json();
           const clip = clips.find((c) => c.id === clipId);
+
           if (clip) {
             title = `${clip.title} | vorlie`;
-            description = clip.description;
+            description = clip.description; // ← THIS is what Discord needs
             image = clip.thumbnailUrl;
             videoUrl = clip.videoUrl;
+
             isYouTube =
-              !!videoUrl &&
-              (videoUrl.includes("youtube.com") ||
-                videoUrl.includes("youtu.be"));
+              videoUrl.includes("youtube.com") || videoUrl.includes("youtu.be");
+
+            console.log("Clip metadata applied:", clipId);
+          } else {
+            console.log("Clip not found:", clipId);
           }
         }
       } catch (e) {
-        console.error("Failed to fetch clips for metadata:", e);
+        console.error("Clip metadata fetch failed:", e);
       }
     }
-  } else {
-    // Check Static Routes
+  }
+
+  // 5. Static routes fallback
+  else {
     const meta = routeMetadata[path] || routeMetadata[path.replace(/\/$/, "")];
+
     if (meta) {
       title = meta.title;
       description = meta.description;
     }
   }
 
-  // 3. Fetch index.html
+  // 6. Fetch base HTML
   const response = await context.env.ASSETS.fetch(context.request);
 
-  // If not an HTML page (e.g. 404 handled by spa fallback), just return
   const contentType = response.headers.get("content-type");
   if (!contentType || !contentType.includes("text/html")) {
     return response;
   }
 
-  // 4. Inject Metadata
-  const html = await response.text();
+  const finalType = isYouTube
+    ? "website"
+    : videoUrl
+      ? "video.other"
+      : "website";
 
-  // Simple regex replacements with more flexible matching
-  let injectedHtml = html
-    .replace(/<title>.*?<\/title>/, `<title>${title}</title>`)
-    .replace(
-      /<meta name="description" content="[\s\S]*?"\s*\/?>/,
-      `<meta name="description" content="${description.replace(/"/g, "&quot;")}" />`,
-    )
-    .replace(
-      /<meta property="og:title" content="[\s\S]*?"\s*\/?>/,
-      `<meta property="og:title" content="${title.replace(/"/g, "&quot;")}" />`,
-    )
-    .replace(
-      /<meta property="og:description" content="[\s\S]*?"\s*\/?>/,
-      `<meta property="og:description" content="${description.replace(/"/g, "&quot;")}" />`,
-    )
-    .replace(
-      /<meta property="og:image" content="[\s\S]*?"\s*\/?>/,
-      `<meta property="og:image" content="${image}" />`,
-    )
-    .replace(
-      /<meta property="og:url" content="[\s\S]*?"\s*\/?>/,
-      `<meta property="og:url" content="${url.href}" />`,
-    )
-    .replace(
-      /<meta property="og:type" content="[\s\S]*?"\s*\/?>/,
-      `<meta property="og:type" content="${isYouTube ? "website" : videoUrl ? "video.other" : "website"}" />`,
-    )
-    .replace(
-      /<meta property="twitter:title" content="[\s\S]*?"\s*\/?>/,
-      `<meta property="twitter:title" content="${title.replace(/"/g, "&quot;")}" />`,
-    )
-    .replace(
-      /<meta property="twitter:description" content="[\s\S]*?"\s*\/?>/,
-      `<meta property="twitter:description" content="${description.replace(/"/g, "&quot;")}" />`,
-    )
-    .replace(
-      /<meta property="twitter:url" content="[\s\S]*?"\s*\/?>/, // Note: twitter:url wasn't in index.html but good to handle if added
-      `<meta property="twitter:url" content="${url.href}" />`,
-    );
+  // 7. HTMLRewriter
+  let rewriter = new HTMLRewriter()
+    .on("title", {
+      element(el) {
+        el.setInnerContent(title);
+      },
+    })
+    .on('meta[name="description"]', {
+      element(el: Element) {
+        el.setAttribute("content", description);
+      },
+    })
+    .on('meta[property="og:title"]', {
+      element(el: Element) {
+        el.setAttribute("content", title);
+      },
+    })
+    .on('meta[property="og:description"]', {
+      element(el: Element) {
+        el.setAttribute("content", description);
+      },
+    })
+    .on('meta[property="og:image"]', {
+      element(el: Element) {
+        el.setAttribute("content", image);
+      },
+    })
+    .on('meta[property="og:url"]', {
+      element(el: Element) {
+        el.setAttribute("content", url.href);
+      },
+    })
+    .on('meta[property="og:type"]', {
+      element(el: Element) {
+        el.setAttribute("content", finalType);
+      },
+    })
+    .on('meta[name="twitter:title"]', {
+      element(el: Element) {
+        el.setAttribute("content", title);
+      },
+    })
+    .on('meta[name="twitter:description"]', {
+      element(el: Element) {
+        el.setAttribute("content", description);
+      },
+    })
+    .on('meta[name="twitter:card"]', {
+      element(el: Element) {
+        el.setAttribute("content", videoUrl ? "player" : "summary_large_image");
+      },
+    });
 
-  // Add video meta tags for clips
+  // Inject video tags
   if (videoUrl && !isYouTube) {
-    injectedHtml = injectedHtml.replace(
-      "</head>",
-      `<meta property="og:video" content="${videoUrl}" />
-<meta property="og:video:type" content="video/mp4" />
-</head>`,
-    );
+    rewriter = rewriter.on("head", {
+      element(el: Element) {
+        el.append(
+          `<meta property="og:video" content="${videoUrl}">
+           <meta property="og:video:type" content="video/mp4">`,
+          { html: true },
+        );
+      },
+    });
   }
 
-  return new Response(injectedHtml, {
-    headers: response.headers,
+  const transformed = rewriter.transform(response);
+
+  // 8. Disable cache for embeds (VERY IMPORTANT)
+  return new Response(transformed.body, {
+    headers: {
+      "content-type": "text/html; charset=UTF-8",
+      "cache-control": "no-cache, no-store, must-revalidate",
+    },
     status: response.status,
   });
 };
