@@ -79,7 +79,9 @@ export const onRequest = async (context: any) => {
   // 2. Determine Metadata
   let title = "vorlie";
   let description = "My personal corner of the internet.";
-  //let image = "https://vorlie.pl/images/favicon.png"; // Default image
+  let image = "https://vorlie.pl/images/favicon.png"; // Default image
+  let videoUrl = ""; // For video embeds
+  let isYouTube = false;
 
   // Check for Dynamic Blog Post
   const blogMatch = path.match(/^\/blog\/([^/]+)$/);
@@ -100,6 +102,35 @@ export const onRequest = async (context: any) => {
       }
     } catch (e) {
       console.error("Failed to fetch blog posts for metadata injection:", e);
+    }
+  } else if (path.startsWith("/clips")) {
+    let clipId = null;
+    if (path === "/clips") {
+      clipId = url.searchParams.get("id");
+    } else {
+      clipId = path.split("/")[2];
+    }
+    if (clipId) {
+      try {
+        const clipsReq = new Request(`${url.origin}/api/clips.json`);
+        const clipsRes = await context.env.ASSETS.fetch(clipsReq);
+        if (clipsRes.ok) {
+          const clips: any[] = await clipsRes.json();
+          const clip = clips.find((c) => c.id === clipId);
+          if (clip) {
+            title = `${clip.title} | vorlie`;
+            description = clip.description;
+            image = clip.thumbnailUrl;
+            videoUrl = clip.videoUrl;
+            isYouTube =
+              !!videoUrl &&
+              (videoUrl.includes("youtube.com") ||
+                videoUrl.includes("youtu.be"));
+          }
+        }
+      } catch (e) {
+        console.error("Failed to fetch clips for metadata:", e);
+      }
     }
   } else {
     // Check Static Routes
@@ -123,7 +154,7 @@ export const onRequest = async (context: any) => {
   const html = await response.text();
 
   // Simple regex replacements with more flexible matching
-  const injectedHtml = html
+  let injectedHtml = html
     .replace(/<title>.*?<\/title>/, `<title>${title}</title>`)
     .replace(
       /<meta name="description" content=".*?"\s*\/?>/,
@@ -138,8 +169,16 @@ export const onRequest = async (context: any) => {
       `<meta property="og:description" content="${description.replace(/"/g, "&quot;")}" />`,
     )
     .replace(
+      /<meta property="og:image" content=".*?"\s*\/?>/,
+      `<meta property="og:image" content="${image}" />`,
+    )
+    .replace(
       /<meta property="og:url" content=".*?"\s*\/?>/,
       `<meta property="og:url" content="${url.href}" />`,
+    )
+    .replace(
+      /<meta property="og:type" content=".*?"\s*\/?>/,
+      `<meta property="og:type" content="${isYouTube ? "website" : videoUrl ? "video.other" : "website"}" />`,
     )
     .replace(
       /<meta property="twitter:title" content=".*?"\s*\/?>/,
@@ -153,6 +192,16 @@ export const onRequest = async (context: any) => {
       /<meta property="twitter:url" content=".*?"\s*\/?>/, // Note: twitter:url wasn't in index.html but good to handle if added
       `<meta property="twitter:url" content="${url.href}" />`,
     );
+
+  // Add video meta tags for clips
+  if (videoUrl && !isYouTube) {
+    injectedHtml = injectedHtml.replace(
+      "</head>",
+      `<meta property="og:video" content="${videoUrl}" />
+<meta property="og:video:type" content="video/mp4" />
+</head>`,
+    );
+  }
 
   return new Response(injectedHtml, {
     headers: response.headers,

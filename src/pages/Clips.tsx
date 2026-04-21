@@ -1,5 +1,6 @@
 // src/pages/Clips.tsx
 import React, { useState, useEffect, useMemo } from "react";
+import { useParams } from "react-router-dom";
 import ClipList from "../components/ClipList";
 import SearchInput from "../components/SearchInput";
 import VideoModal from "../components/VideoModal";
@@ -26,6 +27,7 @@ const filterClips = (clips: Clip[], searchText: string): Clip[] => {
 };
 
 const Clips: React.FC = () => {
+  const { id } = useParams<{ id?: string }>();
   const [allClips, setAllClips] = useState<Clip[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -54,19 +56,13 @@ const Clips: React.FC = () => {
 
   // Handle URL parameters for deep linking
   useEffect(() => {
-    if (allClips.length > 0) {
-      const params = new URLSearchParams(window.location.search);
-      const clipId = params.get("id");
-
-      if (clipId) {
-        const foundClip = allClips.find((clip) => clip.id === clipId);
-        if (foundClip) {
-          setSelectedClip(foundClip);
-          window.history.replaceState(null, "", window.location.pathname);
-        }
+    if (allClips.length > 0 && id) {
+      const foundClip = allClips.find((clip) => clip.id === id);
+      if (foundClip) {
+        setSelectedClip(foundClip);
       }
     }
-  }, [allClips]);
+  }, [allClips, id]);
 
   const sortedClips = useMemo(() => {
     function parseDMY(dateStr: string) {
@@ -93,13 +89,13 @@ const Clips: React.FC = () => {
   // Handler to open the modal
   const handleClipClick = (clip: Clip) => {
     setSelectedClip(clip);
-    window.history.pushState(null, "", `?id=${clip.id}`);
+    window.history.pushState(null, "", `/clips/${clip.id}`);
   };
 
   // Handler to close the modal
   const handleCloseModal = () => {
     setSelectedClip(null);
-    window.history.replaceState(null, "", window.location.pathname);
+    window.history.replaceState(null, "", "/clips");
   };
 
   if (loading) {

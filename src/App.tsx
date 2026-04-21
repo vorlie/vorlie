@@ -86,6 +86,7 @@ function AppContent() {
               <Route path="/" element={<Home />} />
               <Route path="/specs" element={<PCSpecs />} />
               <Route path="/clips" element={<Clips />} />
+              <Route path="/clips/:id" element={<Clips />} />
               <Route path="/miko/privacy-policy" element={<PrivacyPolicy />} />
               <Route
                 path="/miko/terms-of-service"
