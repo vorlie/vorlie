@@ -157,39 +157,39 @@ export const onRequest = async (context: any) => {
   let injectedHtml = html
     .replace(/<title>.*?<\/title>/, `<title>${title}</title>`)
     .replace(
-      /<meta name="description" content=".*?"\s*\/?>/,
+      /<meta name="description" content="[\s\S]*?"\s*\/?>/,
       `<meta name="description" content="${description.replace(/"/g, "&quot;")}" />`,
     )
     .replace(
-      /<meta property="og:title" content=".*?"\s*\/?>/,
+      /<meta property="og:title" content="[\s\S]*?"\s*\/?>/,
       `<meta property="og:title" content="${title.replace(/"/g, "&quot;")}" />`,
     )
     .replace(
-      /<meta property="og:description" content=".*?"\s*\/?>/,
+      /<meta property="og:description" content="[\s\S]*?"\s*\/?>/,
       `<meta property="og:description" content="${description.replace(/"/g, "&quot;")}" />`,
     )
     .replace(
-      /<meta property="og:image" content=".*?"\s*\/?>/,
+      /<meta property="og:image" content="[\s\S]*?"\s*\/?>/,
       `<meta property="og:image" content="${image}" />`,
     )
     .replace(
-      /<meta property="og:url" content=".*?"\s*\/?>/,
+      /<meta property="og:url" content="[\s\S]*?"\s*\/?>/,
       `<meta property="og:url" content="${url.href}" />`,
     )
     .replace(
-      /<meta property="og:type" content=".*?"\s*\/?>/,
+      /<meta property="og:type" content="[\s\S]*?"\s*\/?>/,
       `<meta property="og:type" content="${isYouTube ? "website" : videoUrl ? "video.other" : "website"}" />`,
     )
     .replace(
-      /<meta property="twitter:title" content=".*?"\s*\/?>/,
+      /<meta property="twitter:title" content="[\s\S]*?"\s*\/?>/,
       `<meta property="twitter:title" content="${title.replace(/"/g, "&quot;")}" />`,
     )
     .replace(
-      /<meta property="twitter:description" content=".*?"\s*\/?>/,
+      /<meta property="twitter:description" content="[\s\S]*?"\s*\/?>/,
       `<meta property="twitter:description" content="${description.replace(/"/g, "&quot;")}" />`,
     )
     .replace(
-      /<meta property="twitter:url" content=".*?"\s*\/?>/, // Note: twitter:url wasn't in index.html but good to handle if added
+      /<meta property="twitter:url" content="[\s\S]*?"\s*\/?>/, // Note: twitter:url wasn't in index.html but good to handle if added
       `<meta property="twitter:url" content="${url.href}" />`,
     );
 
