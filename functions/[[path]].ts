@@ -112,7 +112,7 @@ export const onRequest = async (context: any) => {
     }
     if (clipId) {
       try {
-        const clipsReq = new Request(`${url.origin}/api/clips.json`);
+        const clipsReq = new Request(`https://api.vorlie.pl/clips.json`);
         const clipsRes = await context.env.ASSETS.fetch(clipsReq);
         if (clipsRes.ok) {
           const clips: any[] = await clipsRes.json();
