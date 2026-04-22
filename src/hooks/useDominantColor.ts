@@ -1,3 +1,5 @@
+// src/hooks/useDominantColor.ts
+// This hook extracts the dominant color from an image URL using the ColorThief library.
 import { useState, useEffect } from "react";
 import ColorThief from "colorthief";
 

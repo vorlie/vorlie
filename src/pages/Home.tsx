@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import LanyardPresence from "../components/LanyardPresence";
 import Projects from "../components/Projects";
 import Buttons88x31 from "../components/Buttons88x31";
@@ -7,23 +8,11 @@ import SEO from "../components/SEO";
 import GameAccs from "../components/GameAccs";
 
 import {
-  FaReact,
-  FaPython,
-  FaHtml5,
-  FaCss3Alt,
-  FaJs,
-  FaJava,
   FaGithub,
   FaDiscord,
   FaSteam,
   FaYoutube,
 } from "react-icons/fa";
-import {
-  SiTypescript,
-  SiAstro,
-  SiTailwindcss,
-  SiCplusplus,
-} from "react-icons/si";
 
 interface CommitInfo {
   sha: string;
@@ -268,56 +257,26 @@ function Home() {
             </aside>
           </div>
 
-          {/* Technologies Section */}
-          <section className="bg-m3-surface-container border border-m3-outline/10 rounded-[32px] shadow-sm p-8">
-            <h2 className="text-2xl font-bold mb-6 text-m3-on-surface tracking-tight border-b border-m3-outline/10 pb-4">
-              Technologies I Use
-            </h2>
-            <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-              {[
-                {
-                  Icon: SiTypescript,
-                  color: "text-blue-400",
-                  label: "TypeScript",
-                },
-                { Icon: FaPython, color: "text-yellow-400", label: "Python" },
-                { Icon: FaHtml5, color: "text-orange-500", label: "HTML" },
-                { Icon: FaCss3Alt, color: "text-blue-500", label: "CSS" },
-                { Icon: FaJs, color: "text-yellow-300", label: "JavaScript" },
-                { Icon: SiAstro, color: "text-orange-400", label: "Astro" },
-                { Icon: FaReact, color: "text-cyan-400", label: "React" },
-                {
-                  Icon: SiTailwindcss,
-                  color: "text-teal-400",
-                  label: "Tailwind",
-                },
-                { Icon: FaJava, color: "text-orange-400", label: "Java" },
-                { Icon: SiCplusplus, color: "text-purple-400", label: "C++" },
-              ].map(({ Icon, color, label }) => (
-                <li
-                  key={label}
-                  className="flex items-center gap-3 p-4 rounded-[20px] hover:bg-m3-on-surface/5 transition-all duration-300 group cursor-default border border-transparent hover:border-m3-outline/10"
-                >
-                  <Icon
-                    className={`${color} w-6 h-6 group-hover:scale-110 transition-transform duration-300`}
-                  />
-                  <span className="text-m3-on-surface-variant group-hover:text-m3-on-surface font-semibold">
-                    {label}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </section>
         </div>{" "}
-        <section
+        <motion.section
           id="projects"
-          className="bg-m3-surface-container border border-m3-outline/10 rounded-[32px] shadow-sm p-8 mt-8"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="bg-m3-surface-container border border-m3-outline/10 rounded-[40px] shadow-sm p-6 sm:p-10 mt-8 mb-16"
         >
-          <h2 className="text-3xl font-bold mb-6 text-m3-on-surface text-center tracking-tight">
-            Projects
-          </h2>
+          <div className="flex flex-col items-center mb-10">
+            <h2 className="text-4xl font-black text-m3-on-surface tracking-tighter mb-3">
+              Featured Projects
+            </h2>
+            <div className="h-1.5 w-20 bg-m3-primary rounded-full" />
+            <p className="mt-4 text-m3-on-surface-variant max-w-xl text-center font-medium">
+              A collection of my latest work, from high-performance shaders to full-stack applications.
+            </p>
+          </div>
           <Projects />
-        </section>
+        </motion.section>
         <footer className="mt-8 pb-32 border-m3-outline/10 text-center text-m3-on-surface-variant text-sm font-medium">
           {commitInfo ? (
             <p>

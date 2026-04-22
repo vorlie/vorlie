@@ -1,3 +1,5 @@
+// src/hooks/useDynamicColor.ts
+// This hook generates a dynamic Material 3 theme based on the dominant color of an image URL.
 import { useEffect, useState } from "react";
 import ColorThief from "colorthief";
 import {
