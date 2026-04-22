@@ -403,3 +403,41 @@
 .animate-mobile-slide-up {
   animation: mobile-slide-up 0.3s cubic-bezier(0, 0, 0.2, 1) forwards;
 }
+
+.m3-card {
+  @apply bg-m3-surface-container/60 backdrop-blur-2xl border border-m3-outline/10 rounded-[32px] shadow-sm transition-all duration-300;
+}
+
+.m3-card-hover {
+  @apply hover:bg-m3-on-surface/5 hover:border-m3-outline/20 transition-all duration-300;
+}
+
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+.animate-blob {
+  animation: blob 7s infinite;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}

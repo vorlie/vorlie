@@ -33,7 +33,7 @@ export const allSystemSpecs: SystemDetails[] = [
   {
     name: "Main Gaming PC",
     description:
-      "My primary setup for gaming, coding, and daily use. It's undergone a few upgrades since its initial build.",
+      "My primary setup for gaming, coding, and daily use. A high-performance workstation built for modern development and immersive gaming.",
     specs: [
       { label: "CPU", value: "AMD Ryzen 5 3600" },
       {
@@ -115,35 +115,6 @@ export const allSystemSpecs: SystemDetails[] = [
         label: "Frameworks",
         value: "WinUI 3, .NET 8/10",
         notes: "Focused on modern Windows desktop application development.",
-      },
-    ],
-  },
-  {
-    name: "Old PC",
-    description:
-      "This is my old PC which I gave to my brother. It still serves as a capable machine for basic tasks and light gaming.",
-    specs: [
-      { label: "CPU", value: "Intel Core i5-4590" },
-      {
-        label: "GPU",
-        value: "MSI Radeon RX 570 ARMOR OC 4GB GDDR5",
-        notes: "Added recently.",
-      },
-      { label: "RAM", value: "X-Star Tiger Shark DDR3 2x8GB 1600Mhz" },
-      { label: "Motherboard", value: "ASUS H81M-PLUS" },
-      { label: "Storage (SSD)", value: "Goodram CX400 128GB" },
-      { label: "Storage (HDD)", value: 'WD BLUE 500GB 3.5"' },
-      {
-        label: "Power Supply",
-        value: "be quiet! 450W",
-        notes: "I think, didn't look inside to check.",
-      },
-      { label: "Case", value: "Cooler Master MasterBox Q300L" },
-    ],
-    softwareAndOS: [
-      {
-        label: "System",
-        value: "Windows 10 Pro",
       },
     ],
   },

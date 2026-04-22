@@ -103,24 +103,29 @@ function Home() {
   }, [GITHUB_REPO]);
 
   return (
-    <div className="min-h-screen text-m3-on-surface">
+    <div className="min-h-screen text-m3-on-surface relative overflow-hidden animate-reveal">
       <SEO
         title="Home"
         description="My website with coding projects, tech stack, and interests in games, music, and anime."
         url="https://vorlie.pl/"
       />
+
       <div className="max-w-full mx-auto relative z-10 px-4 py-8">
-        {" "}
         <div className="flex flex-col gap-6">
           {/* Top Section: Hero & Status */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {/* Hero Card */}
             <main className="lg:col-span-2">
-              <section className="h-full flex flex-col justify-start bg-m3-surface-container border border-m3-outline/10 rounded-[32px] shadow-sm p-8 relative overflow-hidden group">
+              <motion.section 
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6 }}
+                className="h-full flex flex-col justify-start m3-card p-6 sm:p-10 relative overflow-hidden group hover:border-m3-primary/20 transition-all duration-500"
+              >
                 <div className="relative z-10 w-full">
-                  <h1 className="text-4xl sm:text-5xl font-bold text-m3-on-surface leading-tight mb-4 tracking-tight">
+                  <h1 className="text-4xl sm:text-6xl font-black text-m3-on-surface leading-[1.1] mb-6 tracking-tighter">
                     Hello, I'm{" "}
-                    <div className="effect-neon inline-block">
+                    <div className="effect-neon inline-block scale-90 sm:scale-100 origin-left">
                       <span className="glow-layer" aria-hidden="true">
                         Charlie
                       </span>
@@ -130,7 +135,7 @@ function Home() {
                         </span>
                       </span>
                     </div>
-                    <span className="block text-2xl sm:text-3xl mt-2 text-m3-on-surface-variant font-medium">
+                    <span className="block text-2xl sm:text-3xl mt-3 text-m3-on-surface-variant font-bold opacity-90">
                       <TypewriterText
                         texts={[
                           "a friendly coder.",
@@ -141,122 +146,135 @@ function Home() {
                       />
                     </span>
                   </h1>
-                  <p className="text-m3-primary text-sm mb-6 font-mono bg-m3-primary/10 inline-block px-4 py-1.5 rounded-full font-semibold">
-                    Haiii visitors1!!1!!!1
-                  </p>
-
-                  {/* Social Icons */}
-                  <div className="flex gap-3 mb-6">
-                    {[
-                      {
-                        Icon: FaGithub,
-                        href: "https://github.com/vorlie",
-                        color: "hover:bg-m3-on-surface/10",
-                      },
-                      {
-                        Icon: FaDiscord,
-                        href: "https://discord.gg/yUueAFyAmN",
-                        color: "hover:bg-m3-on-surface/10",
-                      },
-                      {
-                        Icon: FaSteam,
-                        href: "https://steamcommunity.com/id/s9suk3_41z3n/",
-                        color: "hover:bg-m3-on-surface/10",
-                      },
-                      {
-                        Icon: FaYoutube,
-                        href: "https://www.youtube.com/@vve1_",
-                        color: "hover:bg-m3-on-surface/10",
-                      },
-                    ].map(({ Icon, href, color }, index) => (
-                      <a
-                        key={index}
-                        href={href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={`p-3 rounded-full text-m3-on-surface-variant transition-all duration-300 transform hover:scale-110 ${color}`}
-                      >
-                        <Icon size={24} />
-                      </a>
-                    ))}
+                  
+                  <div className="flex flex-wrap items-center gap-4 mb-8">
+                    <p className="text-m3-primary text-xs font-black uppercase tracking-widest bg-m3-primary/10 px-4 py-2 rounded-full border border-m3-primary/20">
+                      Haiii visitors1!!1!!!1
+                    </p>
+                    
+                    {/* Social Icons */}
+                    <div className="flex gap-2 p-1 bg-m3-on-surface/5 rounded-full border border-m3-outline/10">
+                      {[
+                        {
+                          Icon: FaGithub,
+                          href: "https://github.com/vorlie",
+                          label: "GitHub",
+                        },
+                        {
+                          Icon: FaDiscord,
+                          href: "https://discord.gg/yUueAFyAmN",
+                          label: "Discord",
+                        },
+                        {
+                          Icon: FaSteam,
+                          href: "https://steamcommunity.com/id/s9suk3_41z3n/",
+                          label: "Steam",
+                        },
+                        {
+                          Icon: FaYoutube,
+                          href: "https://www.youtube.com/@vve1_",
+                          label: "YouTube",
+                        },
+                      ].map(({ Icon, href, label }, index) => (
+                        <a
+                          key={index}
+                          href={href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          title={label}
+                          className="p-2.5 rounded-full text-m3-on-surface-variant transition-all duration-300 hover:bg-m3-primary hover:text-m3-on-primary hover:scale-110 shadow-sm"
+                        >
+                          <Icon size={20} />
+                        </a>
+                      ))}
+                    </div>
                   </div>
 
-                  <div className="space-y-4 text-lg text-gray-300 leading-relaxed max-w-xl">
+                  <div className="space-y-4 text-lg text-m3-on-surface-variant leading-relaxed max-w-xl font-medium">
                     <p>
                       I focus on writing code and building projects across
                       various technologies. I love anime, games, and music.
                     </p>
-                    <p>
-                      I have an interest in{" "}
-                      <span className="text-m3-primary font-bold bg-m3-primary/10 px-2 py-0.5 rounded-full border border-m3-primary/10">
-                        games
-                      </span>
-                      ,
-                      <span className="text-m3-primary font-bold bg-m3-primary/10 px-2 py-0.5 rounded-full border border-m3-primary/10">
-                        {" "}
-                        music
-                      </span>
-                      , and{" "}
-                      <span className="text-m3-primary font-bold bg-m3-primary/10 px-2 py-0.5 rounded-full border border-m3-primary/10">
-                        anime
-                      </span>
-                      .
-                    </p>
+                    <div className="flex flex-wrap gap-2 mt-4">
+                      {["games", "music", "anime"].map(tag => (
+                        <span key={tag} className="text-m3-primary text-sm font-black uppercase tracking-wider bg-m3-primary/10 px-3 py-1 rounded-lg border border-m3-primary/10">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                  <div className="mt-8">
-                    <Buttons88x31 />
-                  </div>
-                  <div className="mt-8">
-                    <GameAccs />
+                  
+                  <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div className="p-4 bg-m3-on-surface/5 rounded-2xl border border-m3-outline/10">
+                      <Buttons88x31 />
+                    </div>
+                    <div className="p-4 bg-m3-on-surface/5 rounded-2xl border border-m3-outline/10 text-center">
+                      <GameAccs />
+                    </div>
                   </div>
                 </div>
 
-                {/* Floating Mascot */}
-                <div className="md:block absolute -bottom-4 -right-4 w-64 h-64 pointer-events-none opacity-90 z-0">
+                {/* Integrated Mascot */}
+                <div className="hidden sm:block absolute -bottom-6 -right-6 w-56 h-56 pointer-events-none opacity-80 z-0 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-700">
                   <img
                     src="/images/evernight_chibi.gif"
                     alt="Chibi Mascot"
-                    className="w-full h-full object-contain drop-shadow-[0_0_15px_rgba(230,204,213,1)]"
+                    className="w-full h-full object-contain drop-shadow-[0_0_20px_rgba(230,204,213,0.4)]"
                     onError={(e) => {
                       e.currentTarget.style.display = "none";
                     }}
                   />
                 </div>
-              </section>
+              </motion.section>
             </main>
 
             {/* Sidebar: Status & TicTacToe */}
             <aside className="space-y-6">
-              <section className="bg-m3-surface-container border border-m3-outline/10 rounded-[32px] shadow-sm p-6">
-                <div className="">
-                  <LanyardPresence discordId={MY_DISCORD_ID} />
-                </div>
-              </section>
-              <section className="bg-m3-surface-container border border-m3-outline/10 rounded-[32px] shadow-sm p-6">
-                <h2 className="text-xl font-bold mb-4 text-m3-on-surface tracking-tight">
+              <motion.section 
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="m3-card p-6 border-m3-primary/5 hover:border-m3-primary/20 transition-all duration-500"
+              >
+                <LanyardPresence discordId={MY_DISCORD_ID} />
+              </motion.section>
+              
+              <motion.section 
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="m3-card p-6"
+              >
+                <h2 className="text-xs font-black uppercase tracking-[0.2em] mb-4 text-m3-on-surface-variant/60">
                   Webring
                 </h2>
-                <div className="flex justify-center">
+                <div className="flex justify-center bg-m3-on-surface/5 rounded-2xl p-4 border border-m3-outline/5 hover:bg-m3-on-surface/10 transition-colors">
                   <iframe
                     src="https://ring.pre1ude.dev/ring?url=https://vorlie.pl&fgcolor=E4E1E6&bgcolor=434559"
                     width="230"
                     height="100"
                     frameBorder="0"
                     scrolling="no"
-                    className="rounded-lg"
+                    className="rounded-lg contrast-[1.1] grayscale-[0.2] hover:grayscale-0 transition-all duration-500"
                   ></iframe>
                 </div>
-              </section>
+              </motion.section>
 
-              <section className="bg-m3-surface-container border border-m3-outline/10 rounded-[32px] shadow-sm p-6">
-                <h2 className="text-xl font-bold mb-4 text-m3-on-surface tracking-tight">
-                  Tic Tac Toe
+              <motion.section 
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                className="m3-card p-6"
+              >
+                <h2 className="text-xs font-black uppercase tracking-[0.2em] mb-4 text-m3-on-surface-variant/60">
+                  Match Game
                 </h2>
-                <TicTacToe />
-              </section>
+                <div className="bg-m3-on-surface/5 rounded-2xl p-4 border border-m3-outline/5">
+                  <TicTacToe />
+                </div>
+              </motion.section>
             </aside>
           </div>
-
         </div>{" "}
         <motion.section
           id="projects"
@@ -264,15 +282,15 @@ function Home() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="bg-m3-surface-container border border-m3-outline/10 rounded-[40px] shadow-sm p-6 sm:p-10 mt-8 mb-16"
+          className="bg-m3-surface-container/60 backdrop-blur-2xl border border-m3-outline/10 rounded-[48px] shadow-xl p-8 sm:p-12 mt-12 mb-20 relative overflow-hidden"
         >
-          <div className="flex flex-col items-center mb-10">
-            <h2 className="text-4xl font-black text-m3-on-surface tracking-tighter mb-3">
+          <div className="flex flex-col items-center mb-12">
+            <h2 className="text-4xl sm:text-5xl font-black text-m3-on-surface tracking-tighter mb-4">
               Featured Projects
             </h2>
-            <div className="h-1.5 w-20 bg-m3-primary rounded-full" />
-            <p className="mt-4 text-m3-on-surface-variant max-w-xl text-center font-medium">
-              A collection of my latest work, from high-performance shaders to full-stack applications.
+            <div className="h-2 w-24 bg-gradient-to-r from-m3-primary to-m3-secondary rounded-full shadow-sm shadow-m3-primary/20" />
+            <p className="mt-6 text-m3-on-surface-variant max-w-xl text-center font-bold opacity-80 text-lg leading-relaxed">
+              A curated collection of my experiments, from real-time shaders to modular desktop applications.
             </p>
           </div>
           <Projects />
@@ -316,7 +334,7 @@ function Home() {
             © {new Date().getFullYear()} Charlie. All rights reserved.
           </p>
         </footer>
-      </div>{" "}
+      </div>
     </div>
   );
 }

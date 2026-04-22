@@ -1,37 +1,60 @@
-// src/pages/PCSpecs.tsx
-import React from "react";
+import { motion } from "framer-motion";
 import SystemCard from "../components/SystemCard";
 import { allSystemSpecs } from "../data/systemSpecs";
 import SEO from "../components/SEO";
 
-const PCSpecs: React.FC = () => {
+export default function PCSpecs() {
   return (
-    <div className="min-h-screen bg-m3-surface-container rounded-[32px] text-m3-on-surface">
+    <div className="min-h-screen text-m3-on-surface animate-reveal">
       <SEO
         title="PC Specifications"
         description="Detailed overview of my current systems and setups."
-        url="https://vorlie.pl/pc-specs"
+        url="https://vorlie.pl/specs"
       />
-      <div className="max-w-6xl mx-auto relative z-10 p-4 md:p-8">
-        <h1 className="text-4xl font-bold mb-4 text-m3-on-surface tracking-tight">
-          My Tech Arsenal
-        </h1>
-        <p className="text-lg text-m3-on-surface-variant mb-8 font-medium">
-          Here's a detailed look at the computing systems I currently use for
-          various purposes, from gaming and development.
-        </p>
 
-        {allSystemSpecs.map((system, index) => (
-          <SystemCard key={index} system={system} />
-        ))}
+      <div className="max-w-full mx-auto relative z-10 py-8">
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="mb-10"
+        >
+          <p className="text-m3-primary text-xs font-black uppercase tracking-[0.25em] mb-3 opacity-70">
+            Tech Arsenal
+          </p>
+          <h1 className="text-5xl sm:text-7xl font-black text-m3-on-surface tracking-tighter mb-4">
+            My Rigs
+          </h1>
+          <div className="h-1.5 w-20 bg-gradient-to-r from-m3-primary to-m3-secondary rounded-full mb-6" />
+          <p className="text-lg text-m3-on-surface-variant font-bold opacity-70 max-w-xl leading-relaxed">
+            A detailed breakdown of the hardware and software powering my
+            development workflow and gaming sessions.
+          </p>
+        </motion.div>
 
-        <p className="text-m3-on-surface-variant mt-8 text-sm opacity-70">
+        <div className="space-y-8">
+          {allSystemSpecs.map((system, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+            >
+              <SystemCard system={system} />
+            </motion.div>
+          ))}
+        </div>
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="text-m3-on-surface-variant mt-10 text-xs font-bold opacity-40 tracking-wider text-center uppercase"
+        >
           Details are kept as up-to-date as possible, reflecting upgrades and
           changes.
-        </p>
+        </motion.p>
       </div>
     </div>
   );
-};
-
-export default PCSpecs;
+}

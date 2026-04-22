@@ -28,7 +28,6 @@ const navLinks: NavItem[] = [
       { to: "/specs", label: "My Rigs", icon: "desktop_windows" },
       { to: "/music", label: "Music", icon: "music_note" },
       { to: "/clips", label: "Clips", icon: "movie" },
-      { to: "/rat", label: "Rats", icon: "pets" },
       { to: "/colors", label: "Colors", icon: "palette" },
       { to: "/for-sale", label: "For Sale", icon: "sell" },
     ],
@@ -249,10 +248,10 @@ export default function Navbar() {
 
       <nav
         ref={navRef}
-        className="relative z-20 pointer-events-auto flex items-center gap-1 bg-m3-surface-container border border-m3-outline/20 rounded-[28px] shadow-lg px-2 py-2 transition-all duration-300"
+        className="relative z-20 pointer-events-auto flex items-center gap-1 bg-m3-surface-container/80 backdrop-blur-xl border border-m3-outline/20 rounded-[32px] shadow-2xl px-2.5 py-2 transition-all duration-500 hover:border-m3-outline/30"
       >
         <div
-          className="absolute h-[36px] bg-m3-primary-container rounded-full transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] z-0"
+          className="absolute h-[40px] bg-m3-primary-container/80 backdrop-blur-md rounded-full transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] z-0"
           style={{
             left: `${indicatorStyle.left}px`,
             width: `${indicatorStyle.width}px`,
@@ -269,7 +268,7 @@ export default function Navbar() {
                 linksRef.current[link.to!] = el;
               }}
               className={({ isActive }) =>
-                `relative z-10 flex items-center gap-2 text-sm font-medium px-4 py-2 rounded-full transition-colors duration-300 ${isActive ? "text-m3-on-primary-container" : "text-m3-on-surface-variant hover:bg-m3-on-surface/5"}`
+                `relative z-10 flex items-center gap-2 text-sm font-bold px-4 py-2.5 rounded-full transition-all duration-300 ${isActive ? "text-m3-on-primary-container" : "text-m3-on-surface-variant hover:text-m3-on-surface"}`
               }
             >
               {link.icon && <Icon name={link.icon} />}
@@ -278,15 +277,15 @@ export default function Navbar() {
           ))}
         </div>
 
-        <div className="hidden md:flex items-center gap-1 pl-1">
+        <div className="hidden md:flex items-center gap-1 pl-1 border-l border-m3-outline/10 ml-1">
           {supportedLanguages.map((lang) => (
             <button
               key={lang}
               type="button"
               onClick={() => setLanguage(lang)}
-              className={`relative z-10 px-3 py-2 rounded-full text-sm font-medium transition-colors duration-300 ${
+              className={`relative z-10 px-3 py-2 rounded-full text-xs font-black transition-all duration-300 ${
                 language === lang
-                  ? "bg-m3-primary text-m3-on-primary"
+                  ? "bg-m3-primary text-m3-on-primary shadow-sm"
                   : "text-m3-on-surface-variant hover:bg-m3-on-surface/10"
               }`}
             >
@@ -295,7 +294,7 @@ export default function Navbar() {
           ))}
         </div>
 
-        <div className="hidden md:flex items-center gap-1">
+        <div className="hidden md:flex items-center gap-1 border-l border-m3-outline/10 ml-1">
           {navLinks.slice(2).map((link) => (
             <div key={link.label} className="relative w-fit flex-shrink-0">
               <button
@@ -307,25 +306,25 @@ export default function Navbar() {
                     openDropdown === link.label ? null : link.label,
                   )
                 }
-                className={`relative z-10 flex items-center gap-2 text-sm font-medium px-4 py-2 rounded-full transition-all duration-300 ${
+                className={`relative z-10 flex items-center gap-2 text-sm font-bold px-4 py-2.5 rounded-full transition-all duration-300 ${
                   openDropdown === link.label ||
                   navLinks
                     .find((g) => g.label === link.label)
                     ?.children?.some((c) => c.to === location.pathname)
                     ? "text-m3-on-primary-container"
-                    : "text-m3-on-surface-variant hover:bg-m3-on-surface/5"
+                    : "text-m3-on-surface-variant hover:text-m3-on-surface"
                 }`}
               >
                 {link.icon && <Icon name={link.icon} />}
                 {link.label}
                 <ChevronDownIcon
-                  className={`w-4 h-4 transition-transform duration-300 ${openDropdown === link.label ? "rotate-180" : ""}`}
+                  className={`w-4 h-4 transition-transform duration-500 ${openDropdown === link.label ? "rotate-180" : ""}`}
                 />
               </button>
 
               {openDropdown === link.label && (
-                <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-4 min-w-[14rem] w-max max-w-[90vw] bg-m3-surface-container border border-m3-outline/20 rounded-[24px] shadow-2xl z-50 overflow-hidden animate-vertical-slide-in transform-gpu origin-bottom">
-                  <div className="p-2 space-y-1">
+                <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-6 min-w-[14rem] w-max max-w-[90vw] bg-m3-surface-container/95 backdrop-blur-2xl border border-m3-outline/20 rounded-[28px] shadow-2xl z-50 overflow-hidden animate-vertical-slide-in transform-gpu origin-bottom">
+                  <div className="p-2.5 space-y-1">
                     {link.children?.map((child) => renderChildLink(child))}
                   </div>
                 </div>
@@ -339,7 +338,7 @@ export default function Navbar() {
             linksRef.current["More"] = el;
           }}
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className={`md:hidden flex items-center gap-2 px-4 py-2 rounded-full relative z-10 transition-all ${
+          className={`md:hidden flex items-center gap-2 px-4 py-2.5 rounded-full relative z-10 transition-all ${
             isMobileMenuOpen ||
             navLinks
               .slice(2)
@@ -349,7 +348,7 @@ export default function Navbar() {
           }`}
         >
           <Icon name={isMobileMenuOpen ? "close" : "more_horiz"} />
-          <span className="text-sm font-medium">More</span>
+          <span className="text-sm font-bold">More</span>
         </button>
       </nav>
     </div>

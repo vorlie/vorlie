@@ -157,16 +157,23 @@ export default function Gallery() {
   );
 
   return (
-    <div className="w-full animate-vertical-slide-in mb-25">
-      <div className="mb-10 text-center">
-        <h1 className="text-4xl font-bold text-m3-on-surface mb-2 font-sakura">Gallery</h1>
-        <p className="text-m3-on-surface-variant">Property of Arasaka Corporation</p>
+    <div className="w-full animate-reveal mb-25">
+      <div className="mb-10">
+        <p className="text-m3-primary text-xs font-black uppercase tracking-[0.25em] mb-3 opacity-70">
+          Arasaka Dataterm
+        </p>
+        <h1 className="text-5xl sm:text-7xl text-m3-on-surface tracking-tighter mb-4 font-sakura">
+          Gallery
+        </h1>
+        <div className="h-1.5 w-20 bg-gradient-to-r from-m3-primary to-m3-secondary rounded-full mb-4" />
+        <p className="text-m3-on-surface-variant font-bold opacity-50 text-sm">
+          Property of Arasaka Corporation
+        </p>
       </div>
 
       {isLoading && (
-        <div className="flex justify-center my-10 animate-pulse text-m3-on-surface-variant">
-          <span className="material-symbols-rounded animate-spin mr-2">refresh</span>
-          Fetching from Arasaka Dataterm...
+        <div className="flex justify-center my-10">
+          <div className="w-8 h-8 border-2 border-m3-primary border-t-transparent rounded-full animate-spin" />
         </div>
       )}
 

@@ -14,7 +14,6 @@ import Navbar from "./components/Navbar";
 import IotaPlayer from "./pages/IotaPlayer";
 import PCSpecs from "./pages/PCSpecs";
 import Clips from "./pages/Clips";
-import Rats from "./pages/Rats";
 import Music from "./pages/Music";
 import Colors from "./pages/Colors";
 import Blog from "./pages/Blog";
@@ -23,11 +22,11 @@ import IotasNotepad from "./pages/IotasNotepad";
 
 import useDynamicColor from "./hooks/useDynamicColor";
 import ObsPanel from "./pages/ObsPanel";
-import ObsGlow from "./pages/ObsGlow";
 import ObsGameFramePage from "./pages/ObsCamFrame";
 import ObsWidgets from "./pages/ObsWidgets";
 import Gallery from "./pages/Gallery";
 import ForSale from "./pages/ForSale";
+import ObsGameFrame from "./pages/ObsGameFrame";
 import { LanguageProvider } from "./i18n";
 
 function AppContent() {
@@ -40,11 +39,8 @@ function AppContent() {
       <div className="bg-transparent min-h-screen overflow-hidden">
         <Routes>
           <Route path="/obs/nowplaying/:discordId" element={<ObsPanel />} />
-          <Route path="/obs/glow/:discordId" element={<ObsGlow />} />
-          <Route
-            path="/obs/camframe/:discordId"
-            element={<ObsGameFramePage />}
-          />
+          <Route path="/obs/camframe/:discordId" element={<ObsGameFramePage />} />
+          <Route path="/obs/gameframe/:discordId" element={<ObsGameFrame />} />
         </Routes>
       </div>
     );
@@ -80,7 +76,14 @@ function AppContent() {
         className={`min-h-screen w-full bg-cover bg-center bg-fixed transition-opacity duration-1000 ${isLoading ? "opacity-0" : "opacity-100"}`}
         style={{ backgroundImage: "url('/images/background.jpg')" }}
       >
-        <div className="min-h-screen w-full text-m3-on-surface p-4 md:p-12 pb-24 bg-m3-surface/70">
+        <div className="min-h-screen w-full text-m3-on-surface p-4 md:p-12 pb-24 bg-m3-surface/70 relative overflow-hidden">
+          {/* Background Depth Effects (Global) */}
+          <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+            <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-m3-primary/10 rounded-full blur-[120px] animate-blob" />
+            <div className="absolute top-[20%] right-[-5%] w-[35%] h-[35%] bg-m3-secondary/10 rounded-full blur-[100px] animate-blob animation-delay-2000" />
+            <div className="absolute bottom-[-10%] left-[20%] w-[30%] h-[30%] bg-m3-primary/5 rounded-full blur-[80px] animate-blob animation-delay-4000" />
+          </div>
+
           <div className="w-full max-w-6xl mx-auto relative z-10">
             <Routes>
               <Route path="/" element={<Home />} />
@@ -95,7 +98,6 @@ function AppContent() {
               <Route path="/verify" element={<Verify />} />
               <Route path="/project/iota-player" element={<IotaPlayer />} />
               <Route path="/project/iotas-notepad" element={<IotasNotepad />} />
-              <Route path="/rat" element={<Rats />} />
               <Route path="/music" element={<Music />} />
               <Route path="/colors" element={<Colors />} />
               <Route path="/blog" element={<Blog />} />
