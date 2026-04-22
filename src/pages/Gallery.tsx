@@ -1,23 +1,23 @@
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { createPortal } from 'react-dom';
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { createPortal } from "react-dom";
 
 const variants = {
   enter: (direction: number) => ({
     x: direction > 0 ? 300 : -300,
     opacity: 0,
-    scale: 0.9
+    scale: 0.9,
   }),
   center: {
     x: 0,
     opacity: 1,
-    scale: 1
+    scale: 1,
   },
   exit: (direction: number) => ({
     x: direction < 0 ? 300 : -300,
     opacity: 0,
-    scale: 0.9
-  })
+    scale: 0.9,
+  }),
 };
 
 interface GalleryImage {
@@ -35,24 +35,56 @@ export default function Gallery() {
   const [direction, setDirection] = useState(0); // -1 for left, 1 for right
 
   useEffect(() => {
-    const WORKER_URL = 'https://gallery-api.vorlie.pl/';
+    const WORKER_URL = "https://gallery-api.vorlie.pl/";
 
     fetch(WORKER_URL)
-      .then(res => {
+      .then((res) => {
         if (!res.ok) throw new Error("Worker not giving valid response yet");
         return res.json();
       })
-      .then(data => {
-        const validImages = data.filter((img: GalleryImage) => !img.url.endsWith('/'));
+      .then((data) => {
+        const validImages = data.filter((img: GalleryImage) => {
+          try {
+            const url = new URL(img.url, window.location.origin);
+
+            // 1. Must be in /images/ path
+            const isInImagesPath = url.pathname.startsWith("/images/");
+
+            // 2. Must be an actual image file
+            const isImage = /\.(png|jpe?g|webp|gif|avif)$/i.test(url.pathname);
+
+            return isInImagesPath && isImage;
+          } catch {
+            return false;
+          }
+        });
         setImages(validImages);
         setIsLoading(false);
       })
-      .catch(err => {
-        console.log("Worker not connected yet! Loading local fallbacks:", err.message);
+      .catch((err) => {
+        console.log(
+          "Worker not connected yet! Loading local fallbacks:",
+          err.message,
+        );
         setImages([
-          { id: 1, url: '/images/gallery/photomode_18032026_234946.png', title: 'Cyber Goth', uploadedAt: new Date().toISOString() },
-          { id: 2, url: '/images/gallery/photomode_19032026_022536.png', title: 'Neon Rebellion', uploadedAt: new Date().toISOString() },
-          { id: 3, url: '/images/gallery/photomode_19032026_023056.png', title: 'Midnight Neko', uploadedAt: new Date().toISOString() },
+          {
+            id: 1,
+            url: "/images/gallery/photomode_18032026_234946.png",
+            title: "Cyber Goth",
+            uploadedAt: new Date().toISOString(),
+          },
+          {
+            id: 2,
+            url: "/images/gallery/photomode_19032026_022536.png",
+            title: "Neon Rebellion",
+            uploadedAt: new Date().toISOString(),
+          },
+          {
+            id: 3,
+            url: "/images/gallery/photomode_19032026_023056.png",
+            title: "Midnight Neko",
+            uploadedAt: new Date().toISOString(),
+          },
         ]);
         setIsLoading(false);
       });
@@ -70,12 +102,12 @@ export default function Gallery() {
   useEffect(() => {
     if (selectedIndex === null) return;
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setSelectedIndex(null);
-      if (e.key === 'ArrowRight') paginate(1);
-      if (e.key === 'ArrowLeft') paginate(-1);
+      if (e.key === "Escape") setSelectedIndex(null);
+      if (e.key === "ArrowRight") paginate(1);
+      if (e.key === "ArrowLeft") paginate(-1);
     };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
   }, [selectedIndex, images.length]);
 
   const modalContent = (
@@ -107,7 +139,9 @@ export default function Gallery() {
               paginate(-1);
             }}
           >
-            <span className="material-symbols-rounded text-[32px] md:text-[40px]">chevron_left</span>
+            <span className="material-symbols-rounded text-[32px] md:text-[40px]">
+              chevron_left
+            </span>
           </button>
 
           {/* Next Button */}
@@ -118,7 +152,9 @@ export default function Gallery() {
               paginate(1);
             }}
           >
-            <span className="material-symbols-rounded text-[32px] md:text-[40px]">chevron_right</span>
+            <span className="material-symbols-rounded text-[32px] md:text-[40px]">
+              chevron_right
+            </span>
           </button>
 
           {/* Modal Image Slider */}
@@ -132,8 +168,8 @@ export default function Gallery() {
               exit="exit"
               transition={{
                 x: { type: "tween", duration: 0.2, ease: "easeOut" },
-                opacity: { duration: 0.15 }
-            }}
+                opacity: { duration: 0.15 },
+              }}
               className="relative w-fit h-fit max-w-[95vw] mx-auto rounded-2xl overflow-hidden shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             >
@@ -143,14 +179,21 @@ export default function Gallery() {
                 className="max-h-[85vh] w-auto h-auto object-contain block mx-auto rounded-2xl"
               />
               <div className="absolute bottom-0 inset-x-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
-                <h2 className="text-white text-2xl font-sakura leading-tight">{images[selectedIndex].title}</h2>
+                <h2 className="text-white text-2xl font-sakura leading-tight">
+                  {images[selectedIndex].title}
+                </h2>
                 <p className="text-white/60 text-sm font-light mt-1">
-                  {new Date(images[selectedIndex].uploadedAt).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' })}
+                  {new Date(
+                    images[selectedIndex].uploadedAt,
+                  ).toLocaleDateString(undefined, {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  })}
                 </p>
               </div>
             </motion.div>
           </AnimatePresence>
-
         </motion.div>
       )}
     </AnimatePresence>
@@ -204,10 +247,16 @@ export default function Gallery() {
                     {img.title}
                   </h3>
                   <p className="text-white/60 text-xs font-light mt-1">
-                    {new Date(img.uploadedAt).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' })}
+                    {new Date(img.uploadedAt).toLocaleDateString(undefined, {
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                    })}
                   </p>
                 </div>
-                <span className="material-symbols-rounded text-white/80 text-2xl transform scale-75 group-hover:scale-100 transition-transform duration-300">zoom_in</span>
+                <span className="material-symbols-rounded text-white/80 text-2xl transform scale-75 group-hover:scale-100 transition-transform duration-300">
+                  zoom_in
+                </span>
               </div>
             </div>
           </motion.div>
@@ -215,7 +264,8 @@ export default function Gallery() {
       </div>
 
       {/* Render Lightbox via Portal so it breaks out of App.tsx z-index limits */}
-      {typeof document !== 'undefined' && createPortal(modalContent, document.body)}
+      {typeof document !== "undefined" &&
+        createPortal(modalContent, document.body)}
     </div>
   );
 }
