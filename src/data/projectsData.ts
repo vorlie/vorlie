@@ -132,14 +132,35 @@ export const projectsData: ProjectData[] = [
     aboutText:
       "Iota Player is built to provide a modern, stable, and feature-rich music environment on the desktop, with a core focus on the Linux ecosystem while remaining Windows-ready.",
     gallery: [
-      { name: "Main Window", path: "/images/projects/iota-player/MainWindow.png" },
-      { name: "Playlist Manager", path: "/images/projects/iota-player/PlaylistManager.png" },
-      { name: "App Settings", path: "/images/projects/iota-player/Settings.png" },
+      {
+        name: "Main Window",
+        path: "/images/projects/iota-player/MainWindow.png",
+      },
+      {
+        name: "Playlist Manager",
+        path: "/images/projects/iota-player/PlaylistManager.png",
+      },
+      {
+        name: "App Settings",
+        path: "/images/projects/iota-player/Settings.png",
+      },
     ],
     links: [
-      { label: "License", href: "https://github.com/vorlie/IotaPlayer/blob/main/LICENSE", meta: "GPL 3.0" },
-      { label: "Source", href: "https://github.com/vorlie/IotaPlayer", meta: "GitHub" },
-      { label: "To-Do", href: "https://github.com/users/vorlie/projects/3/views/1", meta: "Roadmap" },
+      {
+        label: "License",
+        href: "https://github.com/vorlie/IotaPlayer/blob/main/LICENSE",
+        meta: "GPL 3.0",
+      },
+      {
+        label: "Source",
+        href: "https://github.com/vorlie/IotaPlayer",
+        meta: "GitHub",
+      },
+      {
+        label: "To-Do",
+        href: "https://github.com/users/vorlie/projects/3/views/1",
+        meta: "Roadmap",
+      },
     ],
     acknowledgments: "Built with PyQt6, qdarktheme, pypresence, and mutagen.",
   },
@@ -240,10 +261,19 @@ export const projectsData: ProjectData[] = [
       },
     ],
     links: [
-      { label: "License", href: "https://github.com/vorlie/iotas-notepad/blob/master/LICENSE", meta: "MIT" },
-      { label: "Source", href: "https://github.com/vorlie/iotas-notepad", meta: "GitHub" },
+      {
+        label: "License",
+        href: "https://github.com/vorlie/iotas-notepad/blob/master/LICENSE",
+        meta: "MIT",
+      },
+      {
+        label: "Source",
+        href: "https://github.com/vorlie/iotas-notepad",
+        meta: "GitHub",
+      },
     ],
-    acknowledgments: "Built with Electron, Bootstrap Icons, and community themes.",
+    acknowledgments:
+      "Built with Electron, Bootstrap Icons, and community themes.",
   },
 ];
 

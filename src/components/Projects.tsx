@@ -3,10 +3,26 @@ import React, { useState, useMemo } from "react";
 import Project from "./Project";
 import { motion, AnimatePresence } from "framer-motion";
 
-import { FaJava, FaPython, FaReact, FaSearch, FaThLarge, FaList } from "react-icons/fa";
+import {
+  FaJava,
+  FaPython,
+  FaReact,
+  FaSearch,
+  FaThLarge,
+  FaList,
+} from "react-icons/fa";
 import { SiElectron, SiJavascript, SiCplusplus, SiRust } from "react-icons/si";
 
 const projectData = [
+  {
+    title: "SECURE_TERMINAL_V1.9",
+    desc: "A browser-based puzzle game teaching JavaScript fundamentals through real-time code execution and system-repair scenarios. Built with React & Tailwind CSS.",
+    links: [
+      { href: "https://secure-terminal.vorlie.pl/", text: "Homepage" },
+      { href: "https://github.com/vorlie/secure-terminal", text: "Repository" },
+    ],
+    languages: ["React", "Typescript"],
+  },
   {
     title: "Snake Shader",
     desc: "Welcome to Snake Shader, a high-performance, retro-futuristic reimplementation of the classic Snake game. We've ditched the basic 2D grids for a fully GPU-accelerated experience using ModernGL and Pygame",
@@ -117,7 +133,8 @@ const Projects: React.FC = () => {
       const matchSearch =
         p.title.toLowerCase().includes(search.toLowerCase()) ||
         p.desc.toLowerCase().includes(search.toLowerCase());
-      const matchLang = !selectedLanguage || p.languages.includes(selectedLanguage);
+      const matchLang =
+        !selectedLanguage || p.languages.includes(selectedLanguage);
       return matchSearch && matchLang;
     });
   }, [search, selectedLanguage]);
@@ -138,7 +155,7 @@ const Projects: React.FC = () => {
               className="w-full bg-m3-on-surface/5 border border-m3-outline/20 rounded-2xl py-3 pl-11 pr-4 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-m3-primary/30 focus:border-m3-primary/50 transition-all placeholder:text-m3-on-surface-variant/40"
             />
           </div>
-          
+
           <div className="flex bg-m3-on-surface/5 p-1 rounded-2xl border border-m3-outline/20 shrink-0">
             <button
               onClick={() => setView("grid")}
@@ -183,7 +200,9 @@ const Projects: React.FC = () => {
               }`}
             >
               {languageIconMap[lang] && (
-                <span className="w-3 h-3 opacity-80">{languageIconMap[lang]}</span>
+                <span className="w-3 h-3 opacity-80">
+                  {languageIconMap[lang]}
+                </span>
               )}
               {lang}
             </button>
@@ -192,21 +211,24 @@ const Projects: React.FC = () => {
       </div>
 
       {/* Projects Grid/List */}
-      <motion.div 
+      <motion.div
         layout
         className={`grid gap-5 ${view === "grid" ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-3" : "grid-cols-1"}`}
       >
         <AnimatePresence mode="popLayout">
           {filteredProjects.map((proj) => {
-             const mainLink = proj.links.find(l => 
-                ["Homepage", "Website", "API Docs", "Modrinth"].includes(l.text)
-             )?.href || proj.links[0]?.href;
+            const mainLink =
+              proj.links.find((l) =>
+                ["Homepage", "Website", "API Docs", "Modrinth"].includes(
+                  l.text,
+                ),
+              )?.href || proj.links[0]?.href;
 
-             const otherLinks = proj.links.filter(l => 
-                !["Homepage", "Website", "API Docs"].includes(l.text)
-             );
+            const otherLinks = proj.links.filter(
+              (l) => !["Homepage", "Website", "API Docs"].includes(l.text),
+            );
 
-             return (
+            return (
               <Project
                 key={proj.title}
                 view={view}
@@ -226,9 +248,14 @@ const Projects: React.FC = () => {
 
       {filteredProjects.length === 0 && (
         <div className="text-center py-12 bg-m3-surface-container/30 rounded-[32px] border border-dashed border-m3-outline/20">
-          <p className="text-m3-on-surface-variant italic">No projects found matching your criteria.</p>
-          <button 
-            onClick={() => { setSearch(""); setSelectedLanguage(null); }}
+          <p className="text-m3-on-surface-variant italic">
+            No projects found matching your criteria.
+          </p>
+          <button
+            onClick={() => {
+              setSearch("");
+              setSelectedLanguage(null);
+            }}
             className="mt-4 text-m3-primary font-bold hover:underline"
           >
             Clear filters
