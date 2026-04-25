@@ -19,10 +19,6 @@ const projectData = [
     desc: "A browser-based puzzle game teaching JavaScript fundamentals through real-time code execution and system-repair scenarios. Built with React & Tailwind CSS.",
     links: [
       { href: "https://secure-terminal.vorlie.pl/", text: "Homepage" },
-      {
-        href: "https://github.com/vorlie/SECURE_TERMINAL_V1.9",
-        text: "Repository",
-      },
     ],
     languages: ["React", "Typescript"],
   },
