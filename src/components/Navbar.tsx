@@ -37,7 +37,11 @@ const navLinks: NavItem[] = [
     icon: "code",
     children: [
       { to: "/project/iota-player", label: "Iota Player", icon: "play_circle" },
-      { to: "/project/iotas-notepad", label: "Iota's Notepad", icon: "note_add" },
+      {
+        to: "/project/iotas-notepad",
+        label: "Iota's Notepad",
+        icon: "note_add",
+      },
       { to: "https://docs.vorlie.pl", label: "API", icon: "terminal" },
       { to: "https://edit.vorlie.pl", label: "PixieEdit", icon: "edit" },
       { to: "/project/obs", label: "OBS Widgets", icon: "stream" },
@@ -296,7 +300,7 @@ export default function Navbar() {
 
         <div className="hidden md:flex items-center gap-1 border-l border-m3-outline/10 ml-1">
           {navLinks.slice(2).map((link) => (
-            <div key={link.label} className="relative w-fit flex-shrink-0 cursor-pointer">
+            <div key={link.label} className="relative w-fit flex-shrink-0">
               <button
                 ref={(el) => {
                   linksRef.current[link.label] = el;
@@ -306,7 +310,7 @@ export default function Navbar() {
                     openDropdown === link.label ? null : link.label,
                   )
                 }
-                className={`relative z-10 flex items-center gap-2 text-sm font-bold px-4 py-2.5 rounded-full transition-all duration-300 ${
+                className={`cursor-pointer relative z-10 flex items-center gap-2 text-sm font-bold px-4 py-2.5 rounded-full transition-all duration-300 ${
                   openDropdown === link.label ||
                   navLinks
                     .find((g) => g.label === link.label)
