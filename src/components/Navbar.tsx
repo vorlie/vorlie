@@ -283,7 +283,7 @@ export default function Navbar() {
               key={lang}
               type="button"
               onClick={() => setLanguage(lang)}
-              className={`relative z-10 px-3 py-2 rounded-full text-xs font-black transition-all duration-300 ${
+              className={`cursor-pointer relative z-10 px-3 py-2 rounded-full text-xs font-black transition-all duration-300 ${
                 language === lang
                   ? "bg-m3-primary text-m3-on-primary shadow-sm"
                   : "text-m3-on-surface-variant hover:bg-m3-on-surface/10"
@@ -296,7 +296,7 @@ export default function Navbar() {
 
         <div className="hidden md:flex items-center gap-1 border-l border-m3-outline/10 ml-1">
           {navLinks.slice(2).map((link) => (
-            <div key={link.label} className="relative w-fit flex-shrink-0">
+            <div key={link.label} className="relative w-fit flex-shrink-0 cursor-pointer">
               <button
                 ref={(el) => {
                   linksRef.current[link.label] = el;
