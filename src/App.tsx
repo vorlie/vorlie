@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -28,7 +28,7 @@ import Gallery from "./pages/Gallery";
 import ForSale from "./pages/ForSale";
 import ObsGameFrame from "./pages/ObsGameFrame";
 import { LanguageProvider } from "./i18n";
-import { ThemeProvider, useApplyResolvedTheme } from "./theme";
+import { ThemeProvider, useApplyResolvedTheme, useTheme } from "./theme";
 
 function AppContent() {
   const location = useLocation();
@@ -36,12 +36,37 @@ function AppContent() {
   const isLoading = useDynamicColor("/images/background.jpg");
   useApplyResolvedTheme(isLoading);
 
+  const { resolvedTheme, prideTheme } = useTheme();
+  const prideFlagBackground = useMemo(() => {
+    if (resolvedTheme !== "pride") {
+      return "none";
+    }
+
+    switch (prideTheme) {
+      case "bisexual":
+        return "linear-gradient(180deg, #d60270 0%, #d60270 40%, #9b4f96 40%, #9b4f96 60%, #0038a8 60%, #0038a8 100%)";
+      case "genderfluid":
+        return "linear-gradient(180deg, #ff75a2 0%, #ff75a2 20%, #ffffff 20%, #ffffff 40%, #be18d6 40%, #be18d6 60%, #000000 60%, #000000 80%, #333ebd 80%, #333ebd 100%)";
+      case "lesbian":
+        return "linear-gradient(180deg, #d52d00 0%, #d52d00 20%, #ef7627 20%, #ef7627 40%, #ffffff 40%, #ffffff 60%, #b55690 60%, #b55690 80%, #a30262 80%, #a30262 100%)";
+      case "transgender":
+        return "linear-gradient(180deg, #5bcefa 0%, #5bcefa 20%, #f5a9b8 20%, #f5a9b8 40%, #ffffff 40%, #ffffff 60%, #f5a9b8 60%, #f5a9b8 80%, #5bcefa 80%, #5bcefa 100%)";
+      case "nonbinary":
+        return "linear-gradient(180deg, #fff430 0%, #fff430 25%, #ffffff 25%, #ffffff 50%, #9c59d1 50%, #9c59d1 75%, #2c2c2c 75%, #2c2c2c 100%)";
+      default:
+        return "none";
+    }
+  }, [resolvedTheme, prideTheme]);
+
   if (isObsRoute) {
     return (
       <div className="bg-transparent min-h-screen overflow-hidden">
         <Routes>
           <Route path="/obs/nowplaying/:discordId" element={<ObsPanel />} />
-          <Route path="/obs/camframe/:discordId" element={<ObsGameFramePage />} />
+          <Route
+            path="/obs/camframe/:discordId"
+            element={<ObsGameFramePage />}
+          />
           <Route path="/obs/gameframe/:discordId" element={<ObsGameFrame />} />
         </Routes>
       </div>
@@ -75,8 +100,23 @@ function AppContent() {
       </div>
 
       <div
-        className={`min-h-screen w-full bg-cover bg-center bg-fixed transition-opacity duration-1000 ${isLoading ? "opacity-0" : "opacity-100"}`}
-        style={{ backgroundImage: "url('/images/background.jpg')" }}
+        className="fixed inset-0 -z-20 pointer-events-none"
+        style={{
+          backgroundImage: prideFlagBackground,
+          opacity: resolvedTheme === "pride" ? 0.35 : 0,
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "100% 100%",
+        }}
+      />
+
+      <div
+        className={`min-h-screen w-full  bg-cover bg-center bg-fixed transition-opacity duration-1000 ${isLoading ? "opacity-0" : "opacity-100"}`}
+        style={{
+          backgroundImage:
+            resolvedTheme === "default"
+              ? "url('/images/background.jpg')"
+              : undefined,
+        }}
       >
         <div className="min-h-screen w-full text-m3-on-surface p-4 md:p-12 pb-24 bg-m3-surface/70 relative overflow-hidden">
           {/* Background Depth Effects (Global) */}
