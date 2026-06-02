@@ -8,6 +8,7 @@ import {
 import { NavLink, useLocation } from "react-router-dom";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import { supportedLanguages, useTranslation } from "../i18n";
+import { PrideTheme, ThemeMode, useTheme } from "../theme";
 
 interface NavItem {
   label: string;
@@ -72,6 +73,7 @@ const navLinks: NavItem[] = [
 export default function Navbar() {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isPrideMenuOpen, setIsPrideMenuOpen] = useState(false);
   const [indicatorStyle, setIndicatorStyle] = useState({
     left: 0,
     width: 0,
@@ -80,8 +82,17 @@ export default function Navbar() {
 
   const linksRef = useRef<{ [key: string]: HTMLElement | null }>({});
   const navRef = useRef<HTMLDivElement>(null);
+  const preferencesRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
   const { language, setLanguage } = useTranslation();
+  const {
+    themeMode,
+    resolvedTheme,
+    prideTheme,
+    isSeasonalPrideActive,
+    setThemeMode,
+    setPrideTheme,
+  } = useTheme();
 
   const updatePill = useCallback(() => {
     if (!navRef.current) return;
@@ -154,9 +165,16 @@ export default function Navbar() {
   useEffect(() => {
     setOpenDropdown(null);
     setIsMobileMenuOpen(false);
+    setIsPrideMenuOpen(false);
     const handleClick = (e: MouseEvent) => {
       if (navRef.current && !navRef.current.contains(e.target as Node)) {
         setOpenDropdown(null);
+      }
+      if (
+        preferencesRef.current &&
+        !preferencesRef.current.contains(e.target as Node)
+      ) {
+        setIsPrideMenuOpen(false);
       }
     };
     document.addEventListener("mousedown", handleClick);
@@ -176,6 +194,187 @@ export default function Navbar() {
     >
       {name}
     </span>
+  );
+
+  const themeOptions: {
+    mode: ThemeMode;
+    label: string;
+    icon: string;
+    title: string;
+  }[] = [
+    {
+      mode: "auto",
+      label: "Auto",
+      icon: "auto_awesome",
+      title: isSeasonalPrideActive
+        ? "Auto: Pride theme active for June"
+        : "Auto: default theme outside June",
+    },
+    {
+      mode: "default",
+      label: "Default",
+      icon: "palette",
+      title: "Use the dynamic site palette",
+    },
+    {
+      mode: "pride",
+      label: "Pride",
+      icon: "favorite",
+      title: "Use the selected Pride theme. Right-click for more Pride themes.",
+    },
+  ];
+
+  const prideThemeOptions: {
+    theme: PrideTheme;
+    label: string;
+    swatches: string[];
+  }[] = [
+    {
+      theme: "bisexual",
+      label: "Bisexual",
+      swatches: ["#d60270", "#9b4f96", "#0038a8"],
+    },
+    {
+      theme: "genderfluid",
+      label: "Genderfluid",
+      swatches: ["#ff75a2", "#ffffff", "#be18d6", "#000000", "#333ebd"],
+    },
+    {
+      theme: "lesbian",
+      label: "Lesbian",
+      swatches: ["#d52d00", "#ef7627", "#ffffff", "#b55690", "#a30262"],
+    },
+    {
+      theme: "transgender",
+      label: "Transgender",
+      swatches: ["#5bcefa", "#f5a9b8", "#ffffff"],
+    },
+    {
+      theme: "nonbinary",
+      label: "Non-Binary",
+      swatches: ["#fff430", "#ffffff", "#9c59d1", "#2c2c2c"],
+    },
+  ];
+
+  const activePrideThemeLabel =
+    prideThemeOptions.find((option) => option.theme === prideTheme)?.label ??
+    "Pride";
+
+  const selectPrideTheme = (nextTheme: PrideTheme) => {
+    setPrideTheme(nextTheme);
+    setThemeMode("pride");
+    setIsPrideMenuOpen(false);
+  };
+
+  const prideThemeMenu = (
+    <div
+      className="absolute bottom-full right-0 mb-3 w-52 rounded-[22px] border border-m3-outline/20 bg-m3-surface-container/95 p-2 shadow-2xl backdrop-blur-2xl animate-vertical-slide-in"
+      onMouseDown={(event) => event.stopPropagation()}
+    >
+      <div className="px-3 py-2 text-[10px] font-black uppercase tracking-[0.2em] text-m3-primary/80">
+        Pride Theme
+      </div>
+      <div className="space-y-1">
+        {prideThemeOptions.map((option) => {
+          const isActive = prideTheme === option.theme;
+          return (
+            <button
+              key={option.theme}
+              type="button"
+              onClick={() => selectPrideTheme(option.theme)}
+              className={`flex w-full items-center gap-3 rounded-[16px] px-3 py-2.5 text-left text-sm font-bold transition-all ${
+                isActive
+                  ? "bg-m3-primary text-m3-on-primary"
+                  : "text-m3-on-surface hover:bg-m3-on-surface/10"
+              }`}
+            >
+              <span className="flex overflow-hidden rounded-full border border-m3-outline/20">
+                {option.swatches.map((color) => (
+                  <span
+                    key={color}
+                    className="h-4 w-3"
+                    style={{ backgroundColor: color }}
+                  />
+                ))}
+              </span>
+              <span className="flex-grow">{option.label}</span>
+              {isActive && <Icon name="check" className="text-[17px]" />}
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  );
+
+  const themeControl = (compact = false) => (
+    <div
+      className={`flex items-center gap-1 rounded-full border border-m3-outline/10 bg-m3-on-surface/5 p-1 ${
+        compact ? "w-full justify-between" : ""
+      }`}
+      aria-label="Theme"
+    >
+      {themeOptions.map((option) => {
+        const isActive = themeMode === option.mode;
+        const isPrideOption = option.mode === "pride";
+        return (
+          <div
+            key={option.mode}
+            className={`relative flex ${compact ? "flex-1" : ""}`}
+          >
+            <button
+              type="button"
+              onClick={() => setThemeMode(option.mode)}
+              onContextMenu={(event) => {
+                if (!isPrideOption) return;
+                event.preventDefault();
+                setIsPrideMenuOpen((isOpen) => !isOpen);
+              }}
+              title={
+                isPrideOption
+                  ? `${option.title} Current: ${activePrideThemeLabel}.`
+                  : option.title
+              }
+              aria-pressed={isActive}
+              className={`cursor-pointer relative flex w-full items-center justify-center gap-2 rounded-full text-xs font-black transition-all duration-300 ${
+                compact ? "px-3 py-2.5" : "px-3 py-2"
+              } ${
+                isActive
+                  ? "bg-m3-primary text-m3-on-primary shadow-sm"
+                  : "text-m3-on-surface-variant hover:bg-m3-on-surface/10 hover:text-m3-on-surface"
+              }`}
+            >
+              <Icon name={option.icon} className="text-[18px]" />
+              <span>{option.label}</span>
+            </button>
+            {isPrideOption && isPrideMenuOpen && prideThemeMenu}
+          </div>
+        );
+      })}
+    </div>
+  );
+
+  const languageControl = (compact = false) => (
+    <div
+      className={`flex items-center gap-1 rounded-full border border-m3-outline/10 bg-m3-on-surface/5 p-1 ${
+        compact ? "w-full" : ""
+      }`}
+      aria-label="Language"
+    >
+      {supportedLanguages.map((lang) => (
+        <button
+          key={lang}
+          type="button"
+          onClick={() => setLanguage(lang)}
+          className={`cursor-pointer relative flex-1 rounded-full px-3 py-2 text-xs font-black transition-all duration-300 ${
+            language === lang
+              ? "bg-m3-secondary text-m3-on-secondary shadow-sm"
+              : "text-m3-on-surface-variant hover:bg-m3-on-surface/10"
+          }`}
+        >
+          {lang.toUpperCase()}
+        </button>
+      ))}
+    </div>
   );
 
   const renderChildLink = (link: NavItem) => {
@@ -226,7 +425,7 @@ export default function Navbar() {
   };
 
   return (
-    <div className="fixed bottom-6 left-0 right-0 z-50 px-4 flex justify-center pointer-events-none">
+    <div className="fixed bottom-6 left-0 right-0 z-50 px-4 flex flex-col items-center gap-2 pointer-events-none">
       {isMobileMenuOpen && (
         <div
           className="fixed inset-0 bg-black/40 backdrop-blur-sm z-10 md:hidden pointer-events-auto"
@@ -236,6 +435,20 @@ export default function Navbar() {
             className="absolute bottom-24 left-4 right-4 bg-m3-surface-container border border-m3-outline/20 rounded-[32px] p-2 shadow-2xl max-h-[70vh] overflow-y-auto animate-mobile-slide-up mx-auto max-w-lg"
             onClick={(e) => e.stopPropagation()}
           >
+            <div className="mb-3 rounded-[24px] border border-m3-outline/10 bg-m3-on-surface/5 p-3">
+              <div className="px-2 pb-2 text-[11px] font-bold text-m3-primary uppercase tracking-widest opacity-70">
+                Preferences
+              </div>
+              <div className="flex flex-col gap-2">
+                {themeControl(true)}
+                {languageControl(true)}
+              </div>
+              <p className="px-2 pt-2 text-[11px] font-bold text-m3-on-surface-variant/60">
+                {resolvedTheme === "pride"
+                  ? `${activePrideThemeLabel} Pride palette active`
+                  : "Dynamic palette active"}
+              </p>
+            </div>
             {navLinks.slice(2).map((group) => (
               <div key={group.label} className="mb-2 last:mb-0">
                 <div className="px-4 py-2 text-[11px] font-bold text-m3-primary uppercase tracking-widest opacity-70">
@@ -249,6 +462,15 @@ export default function Navbar() {
           </div>
         </div>
       )}
+
+      <div
+        ref={preferencesRef}
+        className="hidden md:flex pointer-events-auto items-center gap-2 rounded-full border border-m3-outline/20 bg-m3-surface-container/80 px-2 py-2 shadow-2xl backdrop-blur-xl"
+      >
+        {themeControl()}
+        <div className="h-7 w-px bg-m3-outline/10" />
+        {languageControl()}
+      </div>
 
       <nav
         ref={navRef}
@@ -278,23 +500,6 @@ export default function Navbar() {
               {link.icon && <Icon name={link.icon} />}
               {link.label}
             </NavLink>
-          ))}
-        </div>
-
-        <div className="hidden md:flex items-center gap-1 pl-1 border-l border-m3-outline/10 ml-1">
-          {supportedLanguages.map((lang) => (
-            <button
-              key={lang}
-              type="button"
-              onClick={() => setLanguage(lang)}
-              className={`cursor-pointer relative z-10 px-3 py-2 rounded-full text-xs font-black transition-all duration-300 ${
-                language === lang
-                  ? "bg-m3-primary text-m3-on-primary shadow-sm"
-                  : "text-m3-on-surface-variant hover:bg-m3-on-surface/10"
-              }`}
-            >
-              {lang.toUpperCase()}
-            </button>
           ))}
         </div>
 

@@ -28,11 +28,13 @@ import Gallery from "./pages/Gallery";
 import ForSale from "./pages/ForSale";
 import ObsGameFrame from "./pages/ObsGameFrame";
 import { LanguageProvider } from "./i18n";
+import { ThemeProvider, useApplyResolvedTheme } from "./theme";
 
 function AppContent() {
   const location = useLocation();
   const isObsRoute = location.pathname.startsWith("/obs");
   const isLoading = useDynamicColor("/images/background.jpg");
+  useApplyResolvedTheme(isLoading);
 
   if (isObsRoute) {
     return (
@@ -81,7 +83,7 @@ function AppContent() {
           <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
             <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-m3-primary/10 rounded-full blur-[120px] animate-blob" />
             <div className="absolute top-[20%] right-[-5%] w-[35%] h-[35%] bg-m3-secondary/10 rounded-full blur-[100px] animate-blob animation-delay-2000" />
-            <div className="absolute bottom-[-10%] left-[20%] w-[30%] h-[30%] bg-m3-primary/5 rounded-full blur-[80px] animate-blob animation-delay-4000" />
+            <div className="theme-blue-glow absolute bottom-[-10%] left-[20%] w-[30%] h-[30%] rounded-full blur-[80px] animate-blob animation-delay-4000" />
           </div>
 
           <div className="w-full max-w-6xl mx-auto relative z-10">
@@ -123,9 +125,11 @@ function App() {
 
   return (
     <LanguageProvider>
-      <Router>
-        <AppContent />
-      </Router>
+      <ThemeProvider>
+        <Router>
+          <AppContent />
+        </Router>
+      </ThemeProvider>
     </LanguageProvider>
   );
 }
