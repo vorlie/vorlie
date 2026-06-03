@@ -3,16 +3,10 @@ import { motion } from "framer-motion";
 import LanyardPresence from "../components/LanyardPresence";
 import Projects from "../components/Projects";
 import Buttons88x31 from "../components/Buttons88x31";
-import TicTacToe from "../components/TicTacToe";
 import SEO from "../components/SEO";
 import GameAccs from "../components/GameAccs";
 
-import {
-  FaGithub,
-  FaDiscord,
-  FaSteam,
-  FaYoutube,
-} from "react-icons/fa";
+import { FaGithub, FaDiscord, FaSteam } from "react-icons/fa";
 
 interface CommitInfo {
   sha: string;
@@ -110,191 +104,183 @@ function Home() {
         url="https://vorlie.pl/"
       />
 
-      <div className="max-w-full mx-auto relative z-10 px-4 py-8">
-        <div className="flex flex-col gap-6">
-          {/* Top Section: Hero & Status */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            {/* Hero Card */}
-            <main className="lg:col-span-2">
-              <motion.section 
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6 }}
-                className="h-full flex flex-col justify-start m3-card p-6 sm:p-10 relative overflow-hidden group hover:border-m3-primary/20 transition-all duration-500"
-              >
-                <div className="relative z-10 w-full">
-                  <h1 className="text-4xl sm:text-6xl font-black text-m3-on-surface leading-[1.1] mb-6 tracking-tighter">
-                    Hello, I'm{" "}
-                    <div className="effect-neon inline-block scale-90 sm:scale-100 origin-left">
+      <div className="mx-auto relative z-10 px-4 py-8 sm:px-6 lg:px-8">
+        <div className="grid gap-6 xl:grid-cols-[2fr_1fr]">
+          <motion.section
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            className="m3-card p-6 sm:p-8 rounded-[32px] border border-m3-outline/10 overflow-hidden group hover:border-m3-primary/20 transition-all duration-500"
+          >
+            <div className="relative z-10 w-full">
+              <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+                <div className="min-w-0">
+                  <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-m3-on-surface leading-normal tracking-tight mb-3">
+                    Hi, I'm{" "}
+                    <div className="effect-neon origin-left">
                       <span className="glow-layer" aria-hidden="true">
                         Charlie
                       </span>
-                      <span className="text-layer font-sakura">
+                      <span className="text-layer font-sakura font-normal">
                         <span className="truncate" title="Charlie">
                           Charlie
                         </span>
                       </span>
                     </div>
-                    <span className="block text-2xl sm:text-3xl mt-3 text-m3-on-surface-variant font-bold opacity-90">
-                      <TypewriterText
-                        texts={[
-                          "a friendly coder.",
-                          "a web developer.",
-                          "an osu! player.",
-                          "a tech enthusiast.",
-                        ]}
-                      />
-                    </span>
                   </h1>
-                  
-                  <div className="flex flex-wrap items-center gap-4 mb-8">
-                    <p className="text-m3-primary text-xs font-black uppercase tracking-widest bg-m3-primary/10 px-4 py-2 rounded-full border border-m3-primary/20">
-                      Haiii visitors1!!1!!!1
-                    </p>
-                    
-                    {/* Social Icons */}
-                    <div className="flex gap-2 p-1 bg-m3-on-surface/5 rounded-full border border-m3-outline/10">
-                      {[
-                        {
-                          Icon: FaGithub,
-                          href: "https://github.com/vorlie",
-                          label: "GitHub",
-                        },
-                        {
-                          Icon: FaDiscord,
-                          href: "https://discord.gg/yUueAFyAmN",
-                          label: "Discord",
-                        },
-                        {
-                          Icon: FaSteam,
-                          href: "https://steamcommunity.com/id/s9suk3_41z3n/",
-                          label: "Steam",
-                        },
-                        {
-                          Icon: FaYoutube,
-                          href: "https://www.youtube.com/@vve1_",
-                          label: "YouTube",
-                        },
-                      ].map(({ Icon, href, label }, index) => (
-                        <a
-                          key={index}
-                          href={href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          title={label}
-                          className="p-2.5 rounded-full text-m3-on-surface-variant transition-all duration-300 hover:bg-m3-primary hover:text-m3-on-primary hover:scale-110 shadow-sm"
-                        >
-                          <Icon size={20} />
-                        </a>
-                      ))}
-                    </div>
-                  </div>
 
-                  <div className="space-y-4 text-lg text-m3-on-surface-variant leading-relaxed max-w-xl font-medium">
-                    <p>
-                      I focus on writing code and building projects across
-                      various technologies. I love anime, games, and music.
-                    </p>
-                    <div className="flex flex-wrap gap-2 mt-4">
-                      {["games", "music", "anime"].map(tag => (
-                        <span key={tag} className="text-m3-primary text-sm font-black uppercase tracking-wider bg-m3-primary/10 px-3 py-1 rounded-lg border border-m3-primary/10">
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                  
-                  <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    <div className="p-4 bg-m3-on-surface/5 rounded-2xl border border-m3-outline/10">
-                      <Buttons88x31 />
-                    </div>
-                    <div className="p-4 bg-m3-on-surface/5 rounded-2xl border border-m3-outline/10 text-center">
-                      <GameAccs />
-                    </div>
+                  <p className="text-lg sm:text-xl font-semibold text-m3-on-surface-variant mb-3">
+                    <TypewriterText
+                      texts={[
+                        "I build web stuff.",
+                        "I play osu! and listen to music.",
+                        "I like anime and tinkering.",
+                      ]}
+                    />
+                  </p>
+
+                  <div className="flex gap-3 items-center mb-4">
+                    <a
+                      href="#projects"
+                      className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-m3-primary text-m3-on-primary font-bold shadow-sm hover:shadow-md transition-colors"
+                    >
+                      View Projects
+                    </a>
+                    <a
+                      href="/blog"
+                      className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-m3-outline/10 text-m3-on-surface-variant font-semibold hover:bg-m3-on-surface/5 transition-colors"
+                    >
+                      Read Blog
+                    </a>
                   </div>
                 </div>
 
-                {/* Integrated Mascot */}
-                <div className="hidden sm:block absolute -bottom-6 -right-6 w-56 h-56 pointer-events-none opacity-80 z-0 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-700">
-                  <img
-                    src="/images/evernight_chibi.gif"
-                    alt="Chibi Mascot"
-                    className="w-full h-full object-contain drop-shadow-[0_0_20px_rgba(230,204,213,0.4)]"
-                    onError={(e) => {
-                      e.currentTarget.style.display = "none";
-                    }}
-                  />
+                <div className="flex items-center gap-3">
+                  <div className="flex gap-2 p-1 bg-m3-on-surface/5 rounded-full border border-m3-outline/10">
+                    {[
+                      {
+                        Icon: FaGithub,
+                        href: "https://github.com/vorlie",
+                        label: "GitHub",
+                      },
+                      {
+                        Icon: FaDiscord,
+                        href: "https://discord.gg/yUueAFyAmN",
+                        label: "Discord",
+                      },
+                      {
+                        Icon: FaSteam,
+                        href: "https://steamcommunity.com/id/s9suk3_41z3n/",
+                        label: "Steam",
+                      },
+                    ].map(({ Icon, href, label }, i) => (
+                      <a
+                        key={i}
+                        href={href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        title={label}
+                        className="p-2 rounded-full text-m3-on-surface-variant transition-all duration-300 hover:bg-m3-primary hover:text-m3-on-primary"
+                      >
+                        <Icon size={18} />
+                      </a>
+                    ))}
+                  </div>
                 </div>
-              </motion.section>
-            </main>
+              </div>
 
-            {/* Sidebar: Status & TicTacToe */}
-            <aside className="space-y-6">
-              <motion.section 
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="m3-card p-6 border-m3-primary/5 hover:border-m3-primary/20 transition-all duration-500"
-              >
-                <LanyardPresence discordId={MY_DISCORD_ID} />
-              </motion.section>
-              
-              <motion.section 
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-                className="m3-card p-6"
-              >
-                <h2 className="text-xs font-black uppercase tracking-[0.2em] mb-4 text-m3-on-surface-variant/60">
-                  Webring
-                </h2>
-                <div className="flex justify-center bg-m3-on-surface/5 rounded-2xl p-4 border border-m3-outline/5 hover:bg-m3-on-surface/10 transition-colors">
-                  <iframe
-                    src="https://ring.pre1ude.dev/ring?url=https://vorlie.pl&fgcolor=E4E1E6&bgcolor=434559"
-                    width="230"
-                    height="100"
-                    frameBorder="0"
-                    scrolling="no"
-                    className="rounded-lg contrast-[1.1] grayscale-[0.2] hover:grayscale-0 transition-all duration-500"
-                  ></iframe>
+              <div className="mt-4 text-base sm:text-lg text-m3-on-surface-variant leading-relaxed max-w-3xl font-medium">
+                <p>
+                  I focus on thoughtful small projects - experiments, demos and
+                  useful tools. This site collects my tinkering: code, music,
+                  and game-related things I enjoy.
+                </p>
+                <div className="flex flex-wrap gap-2 mt-3">
+                  {["games", "music", "anime"].map((tag) => (
+                    <span
+                      key={tag}
+                      className="text-m3-primary text-xs sm:text-sm font-black uppercase tracking-wider bg-m3-primary/10 px-3 py-1 rounded-lg border border-m3-primary/10"
+                    >
+                      {tag}
+                    </span>
+                  ))}
                 </div>
-              </motion.section>
+              </div>
 
-              <motion.section 
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                className="m3-card p-6"
-              >
-                <h2 className="text-xs font-black uppercase tracking-[0.2em] mb-4 text-m3-on-surface-variant/60">
-                  Match Game
-                </h2>
-                <div className="bg-m3-on-surface/5 rounded-2xl p-4 border border-m3-outline/5">
-                  <TicTacToe />
-                </div>
-              </motion.section>
-            </aside>
+              <div className="mt-6 p-3 sm:p-4 bg-m3-on-surface/5 rounded-3xl border border-m3-outline/10">
+                <GameAccs />
+              </div>
+            </div>
+          </motion.section>
+
+          <motion.section
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="m3-card p-6 sm:p-8 rounded-[32px] border border-m3-outline/10 overflow-hidden"
+          >
+            <LanyardPresence discordId={MY_DISCORD_ID} />
+            <div className="hidden sm:block absolute -bottom-2 -right-2 w-48 h-48 pointer-events-none opacity-80 -z-0 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-700">
+              <img
+                src="/images/evernight_chibi.gif"
+                alt="Chibi Mascot"
+                className="w-full h-full object-contain drop-shadow-[0_0_20px_rgba(230,204,213,0.4)]"
+                onError={(e) => {
+                  e.currentTarget.style.display = "none";
+                }}
+              />
+            </div>
+          </motion.section>
+        </div>
+
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
+          className="grid gap-6 grid-cols-1 xl:grid-cols-[1.15fr_0.85fr] mt-6"
+        >
+          <div className="m3-card p-6 sm:p-8 rounded-[32px] border border-m3-outline/10 min-w-0">
+            <h2 className="text-xs font-black uppercase tracking-[0.2em] mb-4 text-m3-on-surface-variant/70">
+              Webring
+            </h2>
+            <div className="mx-auto w-full max-w-md overflow-hidden rounded-[28px] border border-m3-outline/10 bg-m3-surface-container">
+              <div className="aspect-[12/5] w-full">
+                <iframe
+                  title="Webring widget"
+                  src="https://ring.pre1ude.dev/ring?url=https://vorlie.pl&fgcolor=E4E1E6&bgcolor=434559"
+                  className="w-full h-full rounded-[28px] contrast-[1.1] grayscale-[0.2] hover:grayscale-0 transition-all duration-500"
+                />
+              </div>
+            </div>
           </div>
-        </div>{" "}
+
+          <div className="m3-card p-6 sm:p-8 rounded-[32px] border border-m3-outline/10">
+            <Buttons88x31 />
+          </div>
+        </motion.section>
+
         <motion.section
           id="projects"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="bg-m3-surface-container/60 backdrop-blur-2xl border border-m3-outline/10 rounded-[48px] shadow-xl p-8 sm:p-12 mt-12 mb-20 relative overflow-hidden"
+          className="bg-m3-surface-container/60 backdrop-blur-2xl border border-m3-outline/10 rounded-[48px] shadow-xl p-6 sm:p-10 mt-8 mb-20 relative overflow-hidden"
         >
-          <div className="flex flex-col items-center mb-12">
+          <div className="flex flex-col items-center mb-10">
             <h2 className="text-4xl sm:text-5xl font-black text-m3-on-surface tracking-tighter mb-4">
               Featured Projects
             </h2>
             <div className="h-2 w-24 bg-gradient-to-r from-m3-primary to-m3-secondary rounded-full shadow-sm shadow-m3-primary/20" />
             <p className="mt-6 text-m3-on-surface-variant max-w-xl text-center font-bold opacity-80 text-lg leading-relaxed">
-              A curated collection of my experiments, from real-time shaders to modular desktop applications.
+              A curated collection of my experiments, from real-time shaders to
+              modular desktop applications.
             </p>
           </div>
           <Projects />
         </motion.section>
+
         <footer className="mt-8 pb-32 border-m3-outline/10 text-center text-m3-on-surface-variant text-sm font-medium">
           {commitInfo ? (
             <p>

@@ -17,9 +17,7 @@ const projectData = [
   {
     title: "SECURE_TERMINAL_V1.9",
     desc: "A browser-based puzzle game teaching JavaScript fundamentals through real-time code execution and system-repair scenarios. Built with React & Tailwind CSS.",
-    links: [
-      { href: "https://secure-terminal.vorlie.pl/", text: "Homepage" },
-    ],
+    links: [{ href: "https://secure-terminal.vorlie.pl/", text: "Homepage" }],
     languages: ["React", "Typescript"],
   },
   {
@@ -141,7 +139,7 @@ const Projects: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Control Bar */}
-      <div className="space-y-4 bg-m3-surface-container/30 p-5 sm:p-6 rounded-[32px] border border-m3-outline/10">
+      <div className="space-y-4">
         {/* Row 1: Search & View Toggle */}
         <div className="flex flex-col sm:flex-row items-center gap-4">
           <div className="relative flex-grow w-full sm:w-auto">

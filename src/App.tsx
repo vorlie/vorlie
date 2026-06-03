@@ -110,7 +110,7 @@ function AppContent() {
       />
 
       <div
-        className={`min-h-screen w-full  bg-cover bg-center bg-fixed transition-opacity duration-1000 ${isLoading ? "opacity-0" : "opacity-100"}`}
+        className={`min-h-screen w-full bg-cover bg-center bg-fixed transition-opacity duration-1000 ${isLoading ? "opacity-0" : "opacity-100"}`}
         style={{
           backgroundImage:
             resolvedTheme === "default"
@@ -126,7 +126,7 @@ function AppContent() {
             <div className="theme-blue-glow absolute bottom-[-10%] left-[20%] w-[30%] h-[30%] rounded-full blur-[80px] animate-blob animation-delay-4000" />
           </div>
 
-          <div className="w-full max-w-6xl mx-auto relative z-10">
+          <div className="w-full max-w-7xl mx-auto relative z-10">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/specs" element={<PCSpecs />} />

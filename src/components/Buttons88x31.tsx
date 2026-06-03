@@ -67,8 +67,7 @@ const Buttons88x31: React.FC = () => {
   };
 
   return (
-    <section className="my-10 text-left">
-      {" "}
+    <section className="space-y-4 text-left">
       <h2 className="text-2xl font-bold mb-6 text-m3-on-surface tracking-tight">
         My Friends and other cute people
       </h2>

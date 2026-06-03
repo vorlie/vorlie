@@ -23,13 +23,13 @@
 }
 
 :root {
-  --white-500: #FFFFFF;
-  --custom-display-name-styles-main-color: #ca44ff;
-  --custom-display-name-styles-light-1-color: #dc85ff;
-  --custom-display-name-styles-light-2-color: #ffffff;
-  --custom-display-name-styles-dark-1-color: #8b00c2;
-  --custom-display-name-styles-dark-2-color: #2e0041;
-  --color-pride-blue: #8bb8ff;
+  --white-500: var(--color-m3-on-surface, #FFFFFF);
+  --custom-display-name-styles-main-color: var(--color-m3-primary, #D0BCFF);
+  --custom-display-name-styles-light-1-color: var(--color-m3-primary-container, #4F378B);
+  --custom-display-name-styles-light-2-color: var(--color-m3-on-primary-container, #EADDFF);
+  --custom-display-name-styles-dark-1-color: var(--color-m3-on-primary, #381E72);
+  --custom-display-name-styles-dark-2-color: var(--color-m3-surface, #1C1B1F);
+  --color-pride-blue: var(--color-m3-secondary, #CCC2DC);
 }
 
 .theme-blue-glow {
