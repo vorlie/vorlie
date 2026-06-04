@@ -13,11 +13,7 @@ function ObsPanel() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-6 bg-m3-surface">
-      <div className="w-full max-w-3xl bg-m3-surface-container rounded-none border border-m3-outline/10 shadow-[6px_6px_0px_0px_rgba(0,0,0,0.35)] p-4">
-        <ObsSpotify discordId={discordId} theme={theme} animate={animate} />
-      </div>
-    </div>
+    <ObsSpotify discordId={discordId} theme={theme} animate={animate} />
   );
 }
 
