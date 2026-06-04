@@ -23,13 +23,12 @@ const GameAccsData: GameGroup[] = [
     accounts: [{ name: "vorlieFUepi6", tag: "eaad", platform: "Epic Games" }],
   },
   {
-    gameTitle: "Dead by Daylight",
-    accounts: [{ name: "vorlieFUepi6", tag: "eaad", platform: "Epic Games" }],
+    gameTitle: "Xbox",
+    accounts: [{ name: "Mispiry"}],
   },
-
   {
-    gameTitle: "Dead by Daylight",
-    accounts: [{ name: "vorlieFUepi6", tag: "eaad", platform: "Epic Games" }],
+    gameTitle: "Wargaming (WoT, WoTB)",
+    accounts: [{ name: "__Evernight__", region: "EU" }],
   },
 ];
 
