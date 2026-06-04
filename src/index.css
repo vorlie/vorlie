@@ -30,6 +30,7 @@
   --custom-display-name-styles-dark-1-color: var(--color-m3-on-primary, #381E72);
   --custom-display-name-styles-dark-2-color: var(--color-m3-surface, #1C1B1F);
   --color-pride-blue: var(--color-m3-secondary, #CCC2DC);
+  transition: background-color 0.35s ease, color 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, fill 0.35s ease, stroke 0.35s ease;
 }
 
 .theme-blue-glow {

@@ -90,8 +90,10 @@ export default function Navbar() {
     resolvedTheme,
     prideTheme,
     isSeasonalPrideActive,
+    isPrideCycleActive,
     setThemeMode,
     setPrideTheme,
+    setPrideCycleActive,
   } = useTheme();
 
   const updatePill = useCallback(() => {
@@ -350,6 +352,31 @@ export default function Navbar() {
           </div>
         );
       })}
+      {resolvedTheme === "pride" && (
+        <button
+          type="button"
+          onClick={() => setPrideCycleActive(!isPrideCycleActive)}
+          title={
+            isPrideCycleActive
+              ? "Stop pride theme looping."
+              : "Animate pride themes in a loop."
+          }
+          aria-pressed={isPrideCycleActive}
+          className={`cursor-pointer relative flex flex-1 items-center justify-center gap-2 rounded-none text-xs font-black transition-all duration-300 ${
+            compact ? "px-3 py-2.5" : "px-3 py-2"
+          } ${
+            isPrideCycleActive
+              ? "bg-m3-primary text-m3-on-primary shadow-sm"
+              : "text-m3-on-surface-variant hover:bg-m3-on-surface/10 hover:text-m3-on-surface"
+          }`}
+        >
+          <Icon
+            name={isPrideCycleActive ? "autorenew" : "play_arrow"}
+            className="text-[18px]"
+          />
+          <span>{isPrideCycleActive ? "Pride loop on" : "Loop Pride"}</span>
+        </button>
+      )}
     </div>
   );
 

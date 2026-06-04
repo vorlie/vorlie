@@ -22,12 +22,15 @@ interface ThemeContextValue {
   resolvedTheme: ResolvedTheme;
   prideTheme: PrideTheme;
   isSeasonalPrideActive: boolean;
+  isPrideCycleActive: boolean;
   setThemeMode: (mode: ThemeMode) => void;
   setPrideTheme: (theme: PrideTheme) => void;
+  setPrideCycleActive: (active: boolean) => void;
 }
 
 const themeStorageKey = "vorlie_theme_mode";
 const prideThemeStorageKey = "vorlie_pride_theme";
+const prideCycleStorageKey = "vorlie_pride_cycle";
 
 const prideThemeVars: Record<PrideTheme, Record<string, string>> = {
   bisexual: {
@@ -159,6 +162,18 @@ const resolveInitialPrideTheme = (): PrideTheme => {
   return "bisexual";
 };
 
+const resolveInitialPrideCycleActive = (): boolean => {
+  if (typeof window === "undefined") {
+    return false;
+  }
+
+  try {
+    return window.localStorage.getItem(prideCycleStorageKey) === "1";
+  } catch {
+    return false;
+  }
+};
+
 export const setDefaultThemeVars = (vars: Record<string, string>) => {
   Object.assign(defaultThemeVars, vars);
 
@@ -196,6 +211,9 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   const [prideTheme, setPrideThemeState] = useState<PrideTheme>(
     resolveInitialPrideTheme,
   );
+  const [isPrideCycleActive, setPrideCycleActiveState] = useState<boolean>(
+    resolveInitialPrideCycleActive,
+  );
   const [isSeasonalPrideActive, setIsSeasonalPrideActive] = useState(isJune);
 
   useEffect(() => {
@@ -227,6 +245,39 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   }, [prideTheme]);
 
   useEffect(() => {
+    try {
+      window.localStorage.setItem(
+        prideCycleStorageKey,
+        isPrideCycleActive ? "1" : "0",
+      );
+    } catch {
+      // ignore localStorage errors
+    }
+  }, [isPrideCycleActive]);
+
+  useEffect(() => {
+    if (!isPrideCycleActive || resolvedTheme !== "pride") {
+      return;
+    }
+
+    const interval = window.setInterval(() => {
+      setPrideThemeState((current) => {
+        const themes: PrideTheme[] = [
+          "bisexual",
+          "genderfluid",
+          "lesbian",
+          "transgender",
+          "nonbinary",
+        ];
+        const nextIndex = (themes.indexOf(current) + 1) % themes.length;
+        return themes[nextIndex];
+      });
+    }, 9000);
+
+    return () => window.clearInterval(interval);
+  }, [isPrideCycleActive, resolvedTheme]);
+
+  useEffect(() => {
     if (resolvedTheme === "pride") {
       applyPrideTheme(prideTheme);
       return;
@@ -243,16 +294,28 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     setPrideThemeState(theme);
   };
 
+  const setPrideCycleActive = (active: boolean) => {
+    setPrideCycleActiveState(active);
+  };
+
   const value = useMemo(
     () => ({
       themeMode,
       resolvedTheme,
       prideTheme,
       isSeasonalPrideActive,
+      isPrideCycleActive,
       setThemeMode,
       setPrideTheme,
+      setPrideCycleActive,
     }),
-    [themeMode, resolvedTheme, prideTheme, isSeasonalPrideActive],
+    [
+      themeMode,
+      resolvedTheme,
+      prideTheme,
+      isSeasonalPrideActive,
+      isPrideCycleActive,
+    ],
   );
 
   return (
