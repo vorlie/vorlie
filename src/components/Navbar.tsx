@@ -268,7 +268,7 @@ export default function Navbar() {
 
   const prideThemeMenu = (
     <div
-      className="absolute bottom-full right-0 mb-3 w-52 rounded-[22px] border border-m3-outline/20 bg-m3-surface-container/95 p-2 shadow-2xl backdrop-blur-2xl animate-vertical-slide-in"
+      className="absolute bottom-full right-0 mb-3 w-52 rounded-none border border-m3-outline/20 bg-m3-surface-container/95 p-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,0.4)] backdrop-blur-2xl animate-vertical-slide-in border-t-white/20 border-l-white/20 border-b-black/40 border-r-black/40"
       onMouseDown={(event) => event.stopPropagation()}
     >
       <div className="px-3 py-2 text-[10px] font-black uppercase tracking-[0.2em] text-m3-primary/80">
@@ -282,13 +282,13 @@ export default function Navbar() {
               key={option.theme}
               type="button"
               onClick={() => selectPrideTheme(option.theme)}
-              className={`flex w-full items-center gap-3 rounded-[16px] px-3 py-2.5 text-left text-sm font-bold transition-all ${
+              className={`flex w-full items-center gap-3 rounded-none px-3 py-2.5 text-left text-sm font-bold transition-all ${
                 isActive
                   ? "bg-m3-primary text-m3-on-primary"
                   : "text-m3-on-surface hover:bg-m3-on-surface/10"
               }`}
             >
-              <span className="flex overflow-hidden rounded-full border border-m3-outline/20">
+              <span className="flex overflow-hidden rounded-none border border-m3-outline/20">
                 {option.swatches.map((color) => (
                   <span
                     key={color}
@@ -308,7 +308,7 @@ export default function Navbar() {
 
   const themeControl = (compact = false) => (
     <div
-      className={`flex items-center gap-1 rounded-full border border-m3-outline/10 bg-m3-on-surface/5 p-1 ${
+      className={`flex items-center gap-1 rounded-none border border-m3-outline/10 bg-m3-on-surface/5 p-1 ${
         compact ? "w-full justify-between" : ""
       }`}
       aria-label="Theme"
@@ -335,7 +335,7 @@ export default function Navbar() {
                   : option.title
               }
               aria-pressed={isActive}
-              className={`cursor-pointer relative flex w-full items-center justify-center gap-2 rounded-full text-xs font-black transition-all duration-300 ${
+              className={`cursor-pointer relative flex w-full items-center justify-center gap-2 rounded-none text-xs font-black transition-all duration-300 ${
                 compact ? "px-3 py-2.5" : "px-3 py-2"
               } ${
                 isActive
@@ -355,7 +355,7 @@ export default function Navbar() {
 
   const languageControl = (compact = false) => (
     <div
-      className={`flex items-center gap-1 rounded-full border border-m3-outline/10 bg-m3-on-surface/5 p-1 ${
+      className={`flex items-center gap-1 rounded-none border border-m3-outline/10 bg-m3-on-surface/5 p-1 ${
         compact ? "w-full" : ""
       }`}
       aria-label="Language"
@@ -365,7 +365,7 @@ export default function Navbar() {
           key={lang}
           type="button"
           onClick={() => setLanguage(lang)}
-          className={`cursor-pointer relative flex-1 rounded-full px-3 py-2 text-xs font-black transition-all duration-300 ${
+          className={`cursor-pointer relative flex-1 rounded-none px-3 py-2 text-xs font-black transition-all duration-300 ${
             language === lang
               ? "bg-m3-secondary text-m3-on-secondary shadow-sm"
               : "text-m3-on-surface-variant hover:bg-m3-on-surface/10"
@@ -387,7 +387,7 @@ export default function Navbar() {
       );
     const isExternal = link.to?.startsWith("http");
     const childClass =
-      "flex items-center gap-3 px-4 py-3 text-sm font-medium rounded-[16px] transition-all duration-200";
+      "flex items-center gap-3 px-4 py-3 text-sm font-medium rounded-none transition-all duration-200";
     const content = (
       <>
         {link.icon && <Icon name={link.icon} />}
@@ -432,10 +432,10 @@ export default function Navbar() {
           onClick={() => setIsMobileMenuOpen(false)}
         >
           <div
-            className="absolute bottom-24 left-4 right-4 bg-m3-surface-container border border-m3-outline/20 rounded-[32px] p-2 shadow-2xl max-h-[70vh] overflow-y-auto animate-mobile-slide-up mx-auto max-w-lg"
+            className="absolute bottom-24 left-4 right-4 bg-m3-surface-container border border-m3-outline/20 rounded-none p-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,0.4)] max-h-[70vh] overflow-y-auto animate-mobile-slide-up mx-auto max-w-lg border-t-white/20 border-l-white/20 border-b-black/40 border-r-black/40"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="mb-3 rounded-[24px] border border-m3-outline/10 bg-m3-on-surface/5 p-3">
+            <div className="mb-3 rounded-none border border-m3-outline/10 bg-m3-on-surface/5 p-3">
               <div className="px-2 pb-2 text-[11px] font-bold text-m3-primary uppercase tracking-widest opacity-70">
                 Preferences
               </div>
@@ -465,7 +465,7 @@ export default function Navbar() {
 
       <div
         ref={preferencesRef}
-        className="hidden md:flex pointer-events-auto items-center gap-2 rounded-full border border-m3-outline/20 bg-m3-surface-container/80 px-2 py-2 shadow-2xl backdrop-blur-xl"
+        className="hidden md:flex pointer-events-auto items-center gap-2 rounded-none border border-m3-outline/20 bg-m3-surface-container/80 px-2 py-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,0.4)] backdrop-blur-xl border-t-white/20 border-l-white/20 border-b-black/40 border-r-black/40"
       >
         {themeControl()}
         <div className="h-7 w-px bg-m3-outline/10" />
@@ -474,10 +474,10 @@ export default function Navbar() {
 
       <nav
         ref={navRef}
-        className="relative z-20 pointer-events-auto flex items-center gap-1 bg-m3-surface-container/80 backdrop-blur-xl border border-m3-outline/20 rounded-[32px] shadow-2xl px-2.5 py-2 transition-all duration-500 hover:border-m3-outline/30"
+        className="relative z-20 pointer-events-auto flex items-center gap-1 bg-m3-surface-container/80 backdrop-blur-xl border border-m3-outline/20 rounded-none shadow-[4px_4px_0px_0px_rgba(0,0,0,0.4)] px-2.5 py-2 transition-all duration-500 hover:border-m3-outline/30 border-t-white/20 border-l-white/20 border-b-black/40 border-r-black/40"
       >
         <div
-          className="absolute h-[40px] bg-m3-primary-container/80 backdrop-blur-md rounded-full transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] z-0"
+          className="absolute h-[40px] bg-m3-primary-container/80 backdrop-blur-md rounded-sm transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] z-0"
           style={{
             left: `${indicatorStyle.left}px`,
             width: `${indicatorStyle.width}px`,
@@ -494,7 +494,7 @@ export default function Navbar() {
                 linksRef.current[link.to!] = el;
               }}
               className={({ isActive }) =>
-                `relative z-10 flex items-center gap-2 text-sm font-bold px-4 py-2.5 rounded-full transition-all duration-300 ${isActive ? "text-m3-on-primary-container" : "text-m3-on-surface-variant hover:text-m3-on-surface"}`
+                `relative z-10 flex items-center gap-2 text-sm font-bold px-4 py-2.5 rounded-none transition-all duration-300 ${isActive ? "text-m3-on-primary-container" : "text-m3-on-surface-variant hover:text-m3-on-surface"}`
               }
             >
               {link.icon && <Icon name={link.icon} />}
@@ -515,7 +515,7 @@ export default function Navbar() {
                     openDropdown === link.label ? null : link.label,
                   )
                 }
-                className={`cursor-pointer relative z-10 flex items-center gap-2 text-sm font-bold px-4 py-2.5 rounded-full transition-all duration-300 ${
+                className={`cursor-pointer relative z-10 flex items-center gap-2 text-sm font-bold px-4 py-2.5 rounded-none transition-all duration-300 ${
                   openDropdown === link.label ||
                   navLinks
                     .find((g) => g.label === link.label)
@@ -532,7 +532,7 @@ export default function Navbar() {
               </button>
 
               {openDropdown === link.label && (
-                <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-6 min-w-[14rem] w-max max-w-[90vw] bg-m3-surface-container/95 backdrop-blur-2xl border border-m3-outline/20 rounded-[28px] shadow-2xl z-50 overflow-hidden animate-vertical-slide-in transform-gpu origin-bottom">
+                <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-6 min-w-[14rem] w-max max-w-[90vw] bg-m3-surface-container/95 backdrop-blur-2xl border border-m3-outline/20 rounded-none shadow-[4px_4px_0px_0px_rgba(0,0,0,0.4)] z-50 overflow-hidden animate-vertical-slide-in transform-gpu origin-bottom border-t-white/20 border-l-white/20 border-b-black/40 border-r-black/40">
                   <div className="p-2.5 space-y-1">
                     {link.children?.map((child) => renderChildLink(child))}
                   </div>
@@ -547,7 +547,7 @@ export default function Navbar() {
             linksRef.current["More"] = el;
           }}
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className={`md:hidden flex items-center gap-2 px-4 py-2.5 rounded-full relative z-10 transition-all ${
+          className={`md:hidden flex items-center gap-2 px-4 py-2.5 rounded-none relative z-10 transition-all ${
             isMobileMenuOpen ||
             navLinks
               .slice(2)

@@ -16,12 +16,18 @@ import SEO from "../components/SEO";
 function ObsWidgets() {
   const [copiedWidget, setCopiedWidget] = useState<string | null>(null);
   const [userDiscordId, setUserDiscordId] = useState("");
-  const [selectedDomain, setSelectedDomain] = useState<"main" | "backup">("main");
+  const [selectedDomain, setSelectedDomain] = useState<"main" | "backup">(
+    "main",
+  );
   const [selectedTheme, setSelectedTheme] = useState<SpotifyTheme>("badge");
   const [motionEnabled, setMotionEnabled] = useState(true);
-  const [frameCorners, setFrameCorners] = useState<"rounded" | "sharp" | "pill">("rounded");
+  const [frameCorners, setFrameCorners] = useState<
+    "rounded" | "sharp" | "pill"
+  >("rounded");
   const [frameColor, setFrameColor] = useState<"dynamic" | "static">("dynamic");
-  const [frameGlow, setFrameGlow] = useState<"off" | "soft" | "medium" | "strong">("medium");
+  const [frameGlow, setFrameGlow] = useState<
+    "off" | "soft" | "medium" | "strong"
+  >("medium");
 
   const copyToClipboard = (text: string, widget: string) => {
     let finalUrl = text;
@@ -42,7 +48,15 @@ function ObsWidgets() {
   const backupDomain = "https://vorliev2.pages.dev";
   const baseDomain = selectedDomain === "main" ? mainDomain : backupDomain;
 
-  const themes: SpotifyTheme[] = ["badge", "compact", "glass", "modern", "tidal", "amuse", "musicbee"];
+  const themes: SpotifyTheme[] = [
+    "badge",
+    "compact",
+    "glass",
+    "modern",
+    "tidal",
+    "amuse",
+    "musicbee",
+  ];
 
   const widgets = [
     {
@@ -140,13 +154,12 @@ function ObsWidgets() {
           <h1 className="text-5xl sm:text-7xl font-black text-m3-on-surface tracking-tighter mb-4">
             OBS Widgets
           </h1>
-          <div className="h-1.5 w-20 bg-gradient-to-r from-m3-primary to-m3-secondary rounded-full mb-6" />
+          <div className="h-1.5 w-20 bg-gradient-to-r from-m3-primary to-m3-secondary rounded-sm mb-6" />
           <p className="text-lg text-m3-on-surface-variant font-bold opacity-70 max-w-2xl leading-relaxed">
             Beautiful, customizable widgets designed for OBS streamers. Support
             for <span className="text-m3-on-surface opacity-100">Spotify</span>,{" "}
             <span className="text-m3-on-surface opacity-100">Tidal</span>, and{" "}
-            <span className="text-m3-on-surface opacity-100">MusicBee</span>{" "}
-            via{" "}
+            <span className="text-m3-on-surface opacity-100">MusicBee</span> via{" "}
             <a
               href="https://musicpresence.app"
               target="_blank"
@@ -167,15 +180,17 @@ function ObsWidgets() {
           className="m3-card p-6 sm:p-10 mb-6"
         >
           <div className="flex items-center gap-3 mb-6">
-            <div className="h-5 w-1 bg-m3-primary rounded-full" />
+            <div className="h-5 w-1 bg-m3-primary rounded-sm" />
             <h2 className="text-sm font-black text-m3-primary uppercase tracking-[0.2em]">
               Setup Instructions
             </h2>
           </div>
 
           {/* Required Warning */}
-          <div className="flex items-start gap-3 bg-amber-500/10 text-amber-400 px-5 py-4 rounded-2xl border border-amber-500/20 mb-8">
-            <span className="material-symbols-rounded text-[18px] flex-shrink-0 mt-0.5">warning</span>
+          <div className="flex items-start gap-3 bg-amber-500/10 text-amber-400 px-5 py-4 rounded-none border border-amber-500/20 mb-8">
+            <span className="material-symbols-rounded text-[18px] flex-shrink-0 mt-0.5">
+              warning
+            </span>
             <p className="text-sm font-bold leading-relaxed">
               You must be in the{" "}
               <a
@@ -194,17 +209,19 @@ function ObsWidgets() {
           <div className="space-y-8">
             {/* Step 1 */}
             <div className="flex gap-5">
-              <div className="flex-shrink-0 w-8 h-8 rounded-full bg-m3-primary text-m3-on-primary flex items-center justify-center font-black text-sm">
+              <div className="flex-shrink-0 w-8 h-8 rounded-sm bg-m3-primary text-m3-on-primary flex items-center justify-center font-black text-sm">
                 1
               </div>
               <div>
-                <h3 className="font-black text-m3-on-surface mb-1">Find Your Discord ID</h3>
+                <h3 className="font-black text-m3-on-surface mb-1">
+                  Find Your Discord ID
+                </h3>
                 <p className="text-m3-on-surface-variant text-sm leading-relaxed mb-2">
                   Enable Developer Mode in Discord (Settings → Advanced →
-                  Developer Mode), then right-click your profile and select "Copy
-                  User ID".
+                  Developer Mode), then right-click your profile and select
+                  "Copy User ID".
                 </p>
-                <code className="text-xs bg-m3-on-surface/5 px-3 py-1.5 rounded-xl text-m3-primary font-black border border-m3-outline/10">
+                <code className="text-xs bg-m3-on-surface/5 px-3 py-1.5 rounded-sm text-m3-primary font-black border border-m3-outline/10">
                   614807913302851594
                 </code>
               </div>
@@ -212,18 +229,20 @@ function ObsWidgets() {
 
             {/* Step 2 — Config */}
             <div className="flex gap-5">
-              <div className="flex-shrink-0 w-8 h-8 rounded-full bg-m3-primary text-m3-on-primary flex items-center justify-center font-black text-sm">
+              <div className="flex-shrink-0 w-8 h-8 rounded-sm bg-m3-primary text-m3-on-primary flex items-center justify-center font-black text-sm">
                 2
               </div>
               <div className="flex-grow">
-                <h3 className="font-black text-m3-on-surface mb-4">Configure Your Widget</h3>
+                <h3 className="font-black text-m3-on-surface mb-4">
+                  Configure Your Widget
+                </h3>
 
                 <input
                   type="text"
                   placeholder="Paste your Discord ID here..."
                   value={userDiscordId}
                   onChange={(e) => setUserDiscordId(e.target.value)}
-                  className="w-full bg-m3-on-surface/5 border border-m3-outline/20 rounded-2xl px-4 py-3 text-m3-on-surface placeholder-m3-on-surface-variant/40 focus:outline-none focus:border-m3-primary/40 transition-colors font-bold text-sm mb-5"
+                  className="w-full bg-m3-on-surface/5 border border-m3-outline/20 rounded-sm px-4 py-3 text-m3-on-surface placeholder-m3-on-surface-variant/40 focus:outline-none focus:border-m3-primary/40 transition-colors font-bold text-sm mb-5"
                 />
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
@@ -237,7 +256,7 @@ function ObsWidgets() {
                         <button
                           key={d}
                           onClick={() => setSelectedDomain(d)}
-                          className={`px-3 py-1.5 rounded-xl text-xs font-black transition-all capitalize ${
+                          className={`px-3 py-1.5 rounded-sm text-xs font-black transition-all capitalize ${
                             selectedDomain === d
                               ? "bg-m3-primary text-m3-on-primary shadow-lg"
                               : "bg-m3-on-surface/5 text-m3-on-surface-variant hover:bg-m3-on-surface/10 border border-m3-outline/10"
@@ -255,14 +274,14 @@ function ObsWidgets() {
                       <Settings2 size={12} /> Music Widget Settings
                     </p>
                   </div>
-                  
+
                   <div className="md:col-span-2">
                     <div className="flex flex-wrap gap-2">
                       {themes.map((t) => (
                         <button
                           key={t}
                           onClick={() => setSelectedTheme(t)}
-                          className={`px-3 py-1.5 rounded-xl text-xs font-black capitalize transition-all ${
+                          className={`px-3 py-1.5 rounded-sm text-xs font-black capitalize transition-all ${
                             selectedTheme === t
                               ? "bg-m3-primary text-m3-on-primary shadow-lg"
                               : "bg-m3-on-surface/5 text-m3-on-surface-variant hover:bg-m3-on-surface/10 border border-m3-outline/10"
@@ -278,7 +297,7 @@ function ObsWidgets() {
                   <div>
                     <button
                       onClick={() => setMotionEnabled(!motionEnabled)}
-                      className={`flex items-center gap-2 px-4 py-1.5 rounded-xl text-xs font-black transition-all ${
+                      className={`flex items-center gap-2 px-4 py-1.5 rounded-sm text-xs font-black transition-all ${
                         motionEnabled
                           ? "bg-green-500/15 text-green-400 border border-green-500/25"
                           : "bg-orange-500/15 text-orange-400 border border-orange-500/25"
@@ -305,7 +324,7 @@ function ObsWidgets() {
                         <button
                           key={c}
                           onClick={() => setFrameCorners(c)}
-                          className={`px-3 py-1.5 rounded-xl text-xs font-black capitalize transition-all ${
+                          className={`px-3 py-1.5 rounded-sm text-xs font-black capitalize transition-all ${
                             frameCorners === c
                               ? "bg-m3-primary text-m3-on-primary shadow-lg"
                               : "bg-m3-on-surface/5 text-m3-on-surface-variant hover:bg-m3-on-surface/10 border border-m3-outline/10"
@@ -316,14 +335,14 @@ function ObsWidgets() {
                       ))}
                     </div>
                   </div>
-                  
+
                   <div>
                     <div className="flex flex-wrap gap-2">
                       {(["dynamic", "static"] as const).map((c) => (
                         <button
                           key={c}
                           onClick={() => setFrameColor(c)}
-                          className={`px-3 py-1.5 rounded-xl text-xs font-black capitalize transition-all ${
+                          className={`px-3 py-1.5 rounded-sm text-xs font-black capitalize transition-all ${
                             frameColor === c
                               ? "bg-m3-primary text-m3-on-primary shadow-lg"
                               : "bg-m3-on-surface/5 text-m3-on-surface-variant hover:bg-m3-on-surface/10 border border-m3-outline/10"
@@ -337,19 +356,21 @@ function ObsWidgets() {
 
                   <div>
                     <div className="flex flex-wrap gap-2">
-                      {(["off", "soft", "medium", "strong"] as const).map((g) => (
-                        <button
-                          key={g}
-                          onClick={() => setFrameGlow(g)}
-                          className={`px-3 py-1.5 rounded-xl text-xs font-black capitalize transition-all ${
-                            frameGlow === g
-                              ? "bg-m3-primary text-m3-on-primary shadow-lg"
-                              : "bg-m3-on-surface/5 text-m3-on-surface-variant hover:bg-m3-on-surface/10 border border-m3-outline/10"
-                          }`}
-                        >
-                          Glow: {g}
-                        </button>
-                      ))}
+                      {(["off", "soft", "medium", "strong"] as const).map(
+                        (g) => (
+                          <button
+                            key={g}
+                            onClick={() => setFrameGlow(g)}
+                            className={`px-3 py-1.5 rounded-sm text-xs font-black capitalize transition-all ${
+                              frameGlow === g
+                                ? "bg-m3-primary text-m3-on-primary shadow-lg"
+                                : "bg-m3-on-surface/5 text-m3-on-surface-variant hover:bg-m3-on-surface/10 border border-m3-outline/10"
+                            }`}
+                          >
+                            Glow: {g}
+                          </button>
+                        ),
+                      )}
                     </div>
                   </div>
                 </div>
@@ -359,7 +380,7 @@ function ObsWidgets() {
                   <p className="text-[10px] font-black uppercase tracking-widest text-m3-on-surface-variant opacity-50 mb-4 flex items-center gap-1.5">
                     <Eye size={12} /> Live Preview
                   </p>
-                  <div className="flex justify-center bg-m3-on-surface/5 rounded-2xl p-8 border border-m3-outline/5 min-h-[300px] overflow-hidden">
+                  <div className="flex justify-center bg-m3-on-surface/5 rounded-sm p-8 border border-m3-outline/5 min-h-[300px] overflow-hidden">
                     <div className="scale-75 md:scale-100 origin-center">
                       <ObsSpotify
                         discordId={discordId}
@@ -374,11 +395,13 @@ function ObsWidgets() {
 
             {/* Step 3 */}
             <div className="flex gap-5">
-              <div className="flex-shrink-0 w-8 h-8 rounded-full bg-m3-primary text-m3-on-primary flex items-center justify-center font-black text-sm">
+              <div className="flex-shrink-0 w-8 h-8 rounded-sm bg-m3-primary text-m3-on-primary flex items-center justify-center font-black text-sm">
                 3
               </div>
               <div>
-                <h3 className="font-black text-m3-on-surface mb-1">Add to OBS</h3>
+                <h3 className="font-black text-m3-on-surface mb-1">
+                  Add to OBS
+                </h3>
                 <p className="text-m3-on-surface-variant text-sm leading-relaxed mb-3">
                   Create a new Browser Source in OBS and paste your personalized
                   URL. The widget will automatically:
@@ -391,8 +414,13 @@ function ObsWidgets() {
                     "Adapt colors globally to your current album art",
                     "Hide automatically when playback stops",
                   ].map((item) => (
-                    <li key={item} className="flex items-start gap-2 text-sm text-m3-on-surface-variant">
-                      <span className="text-m3-primary mt-0.5 flex-shrink-0">•</span>
+                    <li
+                      key={item}
+                      className="flex items-start gap-2 text-sm text-m3-on-surface-variant"
+                    >
+                      <span className="text-m3-primary mt-0.5 flex-shrink-0">
+                        •
+                      </span>
                       {item}
                     </li>
                   ))}
@@ -418,9 +446,11 @@ function ObsWidgets() {
               widgetUrl += `?${params.toString()}`;
             } else if (widget.id === "camframe" || widget.id === "gameframe") {
               const params = new URLSearchParams();
-              if (frameCorners !== "rounded") params.set("corners", frameCorners);
+              if (frameCorners !== "rounded")
+                params.set("corners", frameCorners);
               if (frameColor !== "dynamic") params.set("color", frameColor);
-              if (frameGlow !== (widget.id === "camframe" ? "soft" : "medium")) params.set("glow", frameGlow);
+              if (frameGlow !== (widget.id === "camframe" ? "soft" : "medium"))
+                params.set("glow", frameGlow);
               const paramString = params.toString();
               if (paramString) widgetUrl += `?${paramString}`;
             }
@@ -434,12 +464,14 @@ function ObsWidgets() {
                 className="m3-card p-6 flex flex-col hover:border-m3-primary/20 transition-all duration-300"
               >
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 rounded-2xl bg-m3-primary/10 flex items-center justify-center flex-shrink-0">
+                  <div className="w-10 h-10 rounded-sm bg-m3-primary/10 flex items-center justify-center flex-shrink-0">
                     <span className="material-symbols-rounded text-m3-primary text-[20px]">
                       {widget.icon}
                     </span>
                   </div>
-                  <h3 className="font-black text-m3-on-surface tracking-tight">{widget.name}</h3>
+                  <h3 className="font-black text-m3-on-surface tracking-tight">
+                    {widget.name}
+                  </h3>
                 </div>
 
                 <p className="text-m3-on-surface-variant text-sm leading-relaxed mb-4 flex-grow">
@@ -452,8 +484,13 @@ function ObsWidgets() {
                   </p>
                   <ul className="space-y-1">
                     {widget.features.map((f) => (
-                      <li key={f} className="text-xs text-m3-on-surface-variant flex items-start gap-1.5">
-                        <span className="text-m3-primary mt-0.5 flex-shrink-0">•</span>
+                      <li
+                        key={f}
+                        className="text-xs text-m3-on-surface-variant flex items-start gap-1.5"
+                      >
+                        <span className="text-m3-primary mt-0.5 flex-shrink-0">
+                          •
+                        </span>
                         {f}
                       </li>
                     ))}
@@ -463,19 +500,23 @@ function ObsWidgets() {
                 <div className="flex flex-col gap-2">
                   <button
                     onClick={() => copyToClipboard(widgetUrl, widget.id)}
-                    className="w-full bg-m3-primary text-m3-on-primary rounded-2xl py-2.5 px-4 font-black text-xs uppercase tracking-wide flex items-center justify-center gap-2 hover:opacity-90 hover:scale-[1.02] active:scale-95 transition-all"
+                    className="w-full bg-m3-primary text-m3-on-primary rounded-sm py-2.5 px-4 font-black text-xs uppercase tracking-wide flex items-center justify-center gap-2 hover:opacity-90 hover:scale-[1.02] active:scale-95 transition-all"
                   >
                     {copiedWidget === widget.id ? (
-                      <><Check size={14} /> Copied!</>
+                      <>
+                        <Check size={14} /> Copied!
+                      </>
                     ) : (
-                      <><Copy size={14} /> Copy URL</>
+                      <>
+                        <Copy size={14} /> Copy URL
+                      </>
                     )}
                   </button>
                   <a
                     href={widgetUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full bg-m3-on-surface/5 text-m3-on-surface-variant rounded-2xl py-2.5 px-4 font-black text-xs uppercase tracking-wide flex items-center justify-center gap-2 hover:bg-m3-on-surface/10 transition-colors border border-m3-outline/10"
+                    className="w-full bg-m3-on-surface/5 text-m3-on-surface-variant rounded-sm py-2.5 px-4 font-black text-xs uppercase tracking-wide flex items-center justify-center gap-2 hover:bg-m3-on-surface/10 transition-colors border border-m3-outline/10"
                   >
                     <ExternalLink size={14} /> Preview
                   </a>
@@ -493,14 +534,14 @@ function ObsWidgets() {
           className="m3-card p-6 sm:p-10 mb-6"
         >
           <div className="flex items-center gap-3 mb-6">
-            <div className="h-5 w-1 bg-m3-secondary rounded-full" />
+            <div className="h-5 w-1 bg-m3-secondary rounded-sm" />
             <h2 className="text-sm font-black text-m3-secondary uppercase tracking-[0.2em]">
               Customization
             </h2>
           </div>
 
           <div className="grid md:grid-cols-2 gap-4 mb-8">
-            <div className="p-5 bg-m3-on-surface/5 rounded-2xl border border-m3-outline/5">
+            <div className="p-5 bg-m3-on-surface/5 rounded-none border border-m3-outline/5">
               <p className="text-[10px] font-black uppercase tracking-widest text-m3-primary mb-2">
                 Theme Selection
               </p>
@@ -508,7 +549,7 @@ function ObsWidgets() {
                 ?theme=[badge|compact|glass|modern|tidal|amuse|musicbee]
               </code>
             </div>
-            <div className="p-5 bg-m3-on-surface/5 rounded-2xl border border-m3-outline/5">
+            <div className="p-5 bg-m3-on-surface/5 rounded-none border border-m3-outline/5">
               <p className="text-[10px] font-black uppercase tracking-widest text-m3-primary mb-2">
                 Animation Toggle
               </p>
@@ -519,16 +560,18 @@ function ObsWidgets() {
           </div>
 
           <h3 className="font-black text-m3-on-surface mb-2">URL Structure</h3>
-          <div className="bg-m3-on-surface/5 rounded-2xl p-4 font-mono text-sm border border-m3-outline/5 overflow-x-auto mb-4">
+          <div className="bg-m3-on-surface/5 rounded-none p-4 font-mono text-sm border border-m3-outline/5 overflow-x-auto mb-4">
             <code>
               https://vorlie.pl/obs/nowplaying
               <span className="text-m3-primary">/YOUR_DISCORD_ID</span>
-              <span className="text-m3-on-surface-variant opacity-40">?theme=musicbee&motion=true</span>
+              <span className="text-m3-on-surface-variant opacity-40">
+                ?theme=musicbee&motion=true
+              </span>
             </code>
           </div>
           <p className="text-sm text-m3-on-surface-variant">
             Replace{" "}
-            <code className="bg-m3-on-surface/5 px-2 py-0.5 rounded-lg border border-m3-outline/10 text-m3-primary font-black text-xs">
+            <code className="bg-m3-on-surface/5 px-2 py-0.5 rounded-sm border border-m3-outline/10 text-m3-primary font-black text-xs">
               YOUR_DISCORD_ID
             </code>{" "}
             with your 18-digit Discord ID.
@@ -546,12 +589,18 @@ function ObsWidgets() {
               {behaviors.map((b) => (
                 <div
                   key={b.title}
-                  className="flex gap-3 bg-m3-on-surface/5 p-4 rounded-2xl border border-m3-outline/5"
+                  className="flex gap-3 bg-m3-on-surface/5 p-4 rounded-none border border-m3-outline/5"
                 >
-                  <span className="text-m3-primary font-black flex-shrink-0 mt-0.5">✓</span>
+                  <span className="text-m3-primary font-black flex-shrink-0 mt-0.5">
+                    ✓
+                  </span>
                   <div>
-                    <p className="font-black text-xs text-m3-on-surface mb-1">{b.title}</p>
-                    <p className="text-xs text-m3-on-surface-variant leading-relaxed">{b.desc}</p>
+                    <p className="font-black text-xs text-m3-on-surface mb-1">
+                      {b.title}
+                    </p>
+                    <p className="text-xs text-m3-on-surface-variant leading-relaxed">
+                      {b.desc}
+                    </p>
                   </div>
                 </div>
               ))}
@@ -567,7 +616,7 @@ function ObsWidgets() {
           className="m3-card p-6 sm:p-10"
         >
           <div className="flex items-center gap-3 mb-6">
-            <div className="h-5 w-1 bg-m3-primary rounded-full" />
+            <div className="h-5 w-1 bg-m3-primary rounded-sm" />
             <h2 className="text-sm font-black text-m3-primary uppercase tracking-[0.2em]">
               Behind the Scenes
             </h2>
@@ -580,14 +629,15 @@ function ObsWidgets() {
             >
               Lanyard API
             </a>
-            , which provides real-time Discord presence data. All data is fetched
-            via WebSocket connections with React, Tailwind CSS, and Framer Motion.
+            , which provides real-time Discord presence data. All data is
+            fetched via WebSocket connections with React, Tailwind CSS, and
+            Framer Motion.
           </p>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
             {apiFeatures.map((item) => (
               <div
                 key={item}
-                className="flex items-center gap-2 bg-m3-on-surface/5 rounded-2xl p-3 border border-m3-outline/5 text-xs text-m3-on-surface-variant"
+                className="flex items-center gap-2 bg-m3-on-surface/5 rounded-none p-3 border border-m3-outline/5 text-xs text-m3-on-surface-variant"
               >
                 <span className="text-m3-primary flex-shrink-0">✓</span>
                 {item}

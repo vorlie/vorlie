@@ -110,7 +110,7 @@ function Home() {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
-            className="m3-card p-6 sm:p-8 rounded-[32px] border border-m3-outline/10 overflow-hidden group hover:border-m3-primary/20 transition-all duration-500"
+            className="m3-card p-6 sm:p-8 rounded-none border border-m3-outline/10 overflow-hidden group hover:border-m3-primary/20 transition-all duration-500"
           >
             <div className="relative z-10 w-full">
               <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
@@ -142,13 +142,13 @@ function Home() {
                   <div className="flex gap-3 items-center mb-4">
                     <a
                       href="#projects"
-                      className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-m3-primary text-m3-on-primary font-bold shadow-sm hover:shadow-md transition-colors"
+                      className="inline-flex items-center gap-2 px-4 py-2 rounded-none bg-m3-primary text-m3-on-primary font-bold shadow-[4px_4px_0px_0px_rgba(0,0,0,0.12)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,0.1)] transition-colors"
                     >
                       View Projects
                     </a>
                     <a
                       href="/blog"
-                      className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-m3-outline/10 text-m3-on-surface-variant font-semibold hover:bg-m3-on-surface/5 transition-colors"
+                      className="inline-flex items-center gap-2 px-4 py-2 rounded-none border border-m3-outline/10 text-m3-on-surface-variant font-semibold hover:bg-m3-on-surface/5 transition-colors"
                     >
                       Read Blog
                     </a>
@@ -156,7 +156,7 @@ function Home() {
                 </div>
 
                 <div className="flex items-center gap-3">
-                  <div className="flex gap-2 p-1 bg-m3-on-surface/5 rounded-full border border-m3-outline/10">
+                  <div className="flex gap-2 p-1 bg-m3-on-surface/5 rounded-none border border-m3-outline/10">
                     {[
                       {
                         Icon: FaGithub,
@@ -180,7 +180,7 @@ function Home() {
                         target="_blank"
                         rel="noopener noreferrer"
                         title={label}
-                        className="p-2 rounded-full text-m3-on-surface-variant transition-all duration-300 hover:bg-m3-primary hover:text-m3-on-primary"
+                        className="p-2 rounded-none text-m3-on-surface-variant transition-all duration-300 hover:bg-m3-primary hover:text-m3-on-primary"
                       >
                         <Icon size={18} />
                       </a>
@@ -199,7 +199,7 @@ function Home() {
                   {["games", "music", "anime"].map((tag) => (
                     <span
                       key={tag}
-                      className="text-m3-primary text-xs sm:text-sm font-black uppercase tracking-wider bg-m3-primary/10 px-3 py-1 rounded-lg border border-m3-primary/10"
+                      className="text-m3-primary text-xs sm:text-sm font-black uppercase tracking-wider bg-m3-primary/10 px-3 py-1 rounded-none border border-m3-primary/10"
                     >
                       {tag}
                     </span>
@@ -207,7 +207,7 @@ function Home() {
                 </div>
               </div>
 
-              <div className="mt-6 p-3 sm:p-4 bg-m3-on-surface/5 rounded-3xl border border-m3-outline/10">
+              <div className="mt-6">
                 <GameAccs />
               </div>
             </div>
@@ -217,7 +217,7 @@ function Home() {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="m3-card p-6 sm:p-8 rounded-[32px] border border-m3-outline/10 overflow-hidden"
+            className="m3-card p-6 sm:p-8 rounded-none border border-m3-outline/10 overflow-hidden"
           >
             <LanyardPresence discordId={MY_DISCORD_ID} />
             <div className="hidden sm:block absolute -bottom-2 -right-2 w-48 h-48 pointer-events-none opacity-80 -z-0 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-700">
@@ -240,22 +240,22 @@ function Home() {
           transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
           className="grid gap-6 grid-cols-1 xl:grid-cols-[1.15fr_0.85fr] mt-6"
         >
-          <div className="m3-card p-6 sm:p-8 rounded-[32px] border border-m3-outline/10 min-w-0">
+          <div className="m3-card p-6 sm:p-8 rounded-none border border-m3-outline/10 min-w-0">
             <h2 className="text-xs font-black uppercase tracking-[0.2em] mb-4 text-m3-on-surface-variant/70">
               Webring
             </h2>
-            <div className="mx-auto w-full max-w-md overflow-hidden rounded-[28px] border border-m3-outline/10 bg-m3-surface-container">
+            <div className="mx-auto w-full max-w-md overflow-hidden rounded-none border border-m3-outline/10 bg-m3-surface-container">
               <div className="aspect-[12/5] w-full">
                 <iframe
                   title="Webring widget"
                   src="https://ring.pre1ude.dev/ring?url=https://vorlie.pl&fgcolor=E4E1E6&bgcolor=434559"
-                  className="w-full h-full rounded-[28px] contrast-[1.1] grayscale-[0.2] hover:grayscale-0 transition-all duration-500"
+                  className="w-full h-full rounded-none contrast-[1.1] grayscale-[0.2] hover:grayscale-0 transition-all duration-500"
                 />
               </div>
             </div>
           </div>
 
-          <div className="m3-card p-6 sm:p-8 rounded-[32px] border border-m3-outline/10">
+          <div className="m3-card p-6 sm:p-8 rounded-none border border-m3-outline/10">
             <Buttons88x31 />
           </div>
         </motion.section>
@@ -266,13 +266,13 @@ function Home() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="bg-m3-surface-container/60 backdrop-blur-2xl border border-m3-outline/10 rounded-[48px] shadow-xl p-6 sm:p-10 mt-8 mb-20 relative overflow-hidden"
+          className="bg-m3-surface-container/60 backdrop-blur-2xl border border-m3-outline/10 rounded-none shadow-[6px_6px_0px_0px_rgba(0,0,0,0.35)] p-6 sm:p-10 mt-8 mb-20 relative overflow-hidden"
         >
           <div className="flex flex-col items-center mb-10">
             <h2 className="text-4xl sm:text-5xl font-black text-m3-on-surface tracking-tighter mb-4">
               Featured Projects
             </h2>
-            <div className="h-2 w-24 bg-gradient-to-r from-m3-primary to-m3-secondary rounded-full shadow-sm shadow-m3-primary/20" />
+            <div className="h-2 w-24 bg-gradient-to-r from-m3-primary to-m3-secondary rounded-sm shadow-sm shadow-m3-primary/20" />
             <p className="mt-6 text-m3-on-surface-variant max-w-xl text-center font-bold opacity-80 text-lg leading-relaxed">
               A curated collection of my experiments, from real-time shaders to
               modular desktop applications.

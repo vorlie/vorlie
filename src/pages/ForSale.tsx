@@ -50,7 +50,13 @@ function ForSale() {
     setTimeout(() => setEmailCopied(false), 1500);
   };
 
-  const SectionLabel = ({ number, title }: { number: string; title: string }) => (
+  const SectionLabel = ({
+    number,
+    title,
+  }: {
+    number: string;
+    title: string;
+  }) => (
     <div className="flex items-center gap-4 mb-6">
       <span className="text-xs font-black text-m3-primary/30 group-hover:text-m3-primary transition-colors tracking-[0.2em] uppercase">
         {number}
@@ -84,7 +90,7 @@ function ForSale() {
           <h1 className="text-5xl sm:text-7xl font-black text-m3-on-surface tracking-tighter mb-4">
             {sale.title}
           </h1>
-          <div className="h-1.5 w-20 bg-gradient-to-r from-m3-primary to-m3-secondary rounded-full mb-6" />
+          <div className="h-1.5 w-20 bg-gradient-to-r from-m3-primary to-m3-secondary rounded-sm mb-6" />
           <p className="text-lg text-m3-on-surface-variant font-bold opacity-70 max-w-2xl leading-relaxed">
             {sale.intro}
           </p>
@@ -111,7 +117,10 @@ function ForSale() {
                 </p>
                 <ul className="space-y-2">
                   {sale.keyPoints.map((point: string, index: number) => (
-                    <li key={index} className="flex items-start gap-2 text-sm text-m3-on-surface-variant">
+                    <li
+                      key={index}
+                      className="flex items-start gap-2 text-sm text-m3-on-surface-variant"
+                    >
                       <span className="text-m3-primary mt-0.5">•</span>
                       {point}
                     </li>
@@ -126,7 +135,10 @@ function ForSale() {
                 </h3>
                 <ul className="space-y-2">
                   {sale.paymentItems.map((item: string, index: number) => (
-                    <li key={index} className="flex items-start gap-2 text-sm text-m3-on-surface-variant">
+                    <li
+                      key={index}
+                      className="flex items-start gap-2 text-sm text-m3-on-surface-variant"
+                    >
                       <span className="text-m3-secondary mt-0.5">•</span>
                       {item}
                     </li>
@@ -141,7 +153,10 @@ function ForSale() {
                 </h3>
                 <ul className="space-y-2">
                   {sale.shippingItems.map((item: string, index: number) => (
-                    <li key={index} className="flex items-start gap-2 text-sm text-m3-on-surface-variant">
+                    <li
+                      key={index}
+                      className="flex items-start gap-2 text-sm text-m3-on-surface-variant"
+                    >
                       <span className="text-m3-secondary mt-0.5">•</span>
                       {item}
                     </li>
@@ -210,7 +225,7 @@ function ForSale() {
                   >
                     <div className="flex flex-wrap items-start justify-between gap-3 mb-5">
                       <div>
-                        <span className="inline-flex items-center gap-1.5 rounded-full border border-m3-outline/10 bg-m3-surface-container/60 backdrop-blur px-3 py-1 text-xs font-black text-m3-on-surface-variant uppercase tracking-wider mb-3">
+                        <span className="inline-flex items-center gap-1.5 rounded-none border border-m3-outline/10 bg-m3-surface-container/60 backdrop-blur px-3 py-1 text-xs font-black text-m3-on-surface-variant uppercase tracking-wider mb-3">
                           ID: {item.id}
                         </span>
                         <h3 className="text-xl sm:text-2xl font-black text-m3-on-surface tracking-tighter">
@@ -222,7 +237,7 @@ function ForSale() {
                           </p>
                         )}
                       </div>
-                      <span className="inline-flex items-center rounded-full border border-m3-outline/10 bg-m3-primary/10 text-m3-primary px-4 py-1.5 text-xs font-black uppercase tracking-wider">
+                      <span className="inline-flex items-center rounded-none border border-m3-outline/10 bg-m3-primary/10 text-m3-primary px-4 py-1.5 text-xs font-black uppercase tracking-wider">
                         {sale.conditionLabel} {item.condition[language]}
                       </span>
                     </div>
@@ -250,14 +265,20 @@ function ForSale() {
                           </>
                         ) : (
                           <div className="col-span-2 flex h-40 items-center justify-center rounded-2xl border border-dashed border-m3-outline/30 bg-m3-on-surface/5 gap-2 text-m3-on-surface-variant opacity-50">
-                            <span className="material-symbols-rounded">image_not_supported</span>
-                            <span className="text-sm font-bold">{sale.photosMissing}</span>
+                            <span className="material-symbols-rounded">
+                              image_not_supported
+                            </span>
+                            <span className="text-sm font-bold">
+                              {sale.photosMissing}
+                            </span>
                           </div>
                         )}
                       </div>
 
                       <div className="space-y-3 text-m3-on-surface-variant leading-relaxed">
-                        <p className="font-medium">{item.description[language]}</p>
+                        <p className="font-medium">
+                          {item.description[language]}
+                        </p>
                         {item.shippingNote && (
                           <p className="text-sm">
                             <span className="font-black text-m3-on-surface">
@@ -269,8 +290,13 @@ function ForSale() {
                         {item.notes && (
                           <div className="space-y-1">
                             {item.notes.map((note, index) => (
-                              <p key={index} className="text-sm flex items-start gap-1.5">
-                                <span className="text-m3-primary mt-0.5">•</span>
+                              <p
+                                key={index}
+                                className="text-sm flex items-start gap-1.5"
+                              >
+                                <span className="text-m3-primary mt-0.5">
+                                  •
+                                </span>
                                 {note[language]}
                               </p>
                             ))}
@@ -280,7 +306,9 @@ function ForSale() {
                           href={`mailto:sales@vorlie.pl?subject=${encodeURIComponent(`Item ${item.id}`)}`}
                           className="inline-flex items-center gap-1.5 text-sm font-black text-m3-primary hover:opacity-80 transition-opacity mt-2"
                         >
-                          <span className="material-symbols-rounded text-[16px]">mail</span>
+                          <span className="material-symbols-rounded text-[16px]">
+                            mail
+                          </span>
                           {sale.contactAboutItem}
                         </a>
                       </div>
@@ -348,7 +376,10 @@ function ForSale() {
                   {sale.contactExample}
                 </p>
                 <code className="block text-sm font-mono text-m3-on-surface bg-m3-on-surface/10 rounded-xl px-3 py-2">
-                  FS-001 – {language === "pl" ? "zapytanie o dostępność" : "asking about availability"}
+                  FS-001 –{" "}
+                  {language === "pl"
+                    ? "zapytanie o dostępność"
+                    : "asking about availability"}
                 </code>
               </div>
             </div>

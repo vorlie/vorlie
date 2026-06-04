@@ -8,7 +8,7 @@ function TermsOfService() {
         description="Terms of Service for Miko#3059 Discord bot."
         url="https://vorlie.pl/terms-of-service"
       />
-      <div className="max-w-4xl mx-auto bg-m3-surface-container rounded-[40px] p-8 sm:p-16 shadow-sm border border-m3-outline/10">
+      <div className="max-w-4xl mx-auto bg-m3-surface-container rounded-none p-8 sm:p-16 shadow-sm border border-m3-outline/10">
         <h1 className="text-4xl sm:text-5xl font-black mb-4 text-m3-primary tracking-tight text-center sm:text-left">
           Terms of Service
         </h1>

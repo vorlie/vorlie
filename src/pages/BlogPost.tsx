@@ -21,22 +21,34 @@ const BlogPost: React.FC = () => {
         setLoading(true);
         setError(false);
         const response = await fetch(`/blog/posts/${slug}.md`);
-        if (!response.ok) { setError(true); return; }
+        if (!response.ok) {
+          setError(true);
+          return;
+        }
 
         const text = await response.text();
         const frontmatterRegex = /^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/;
         const match = text.match(frontmatterRegex);
-        if (!match) { setError(true); return; }
+        if (!match) {
+          setError(true);
+          return;
+        }
 
         const frontmatterText = match[1];
         const content = match[2];
-        const frontmatter: any = {};
+        const frontmatter: Record<string, string | string[] | undefined> = {};
         frontmatterText.split("\n").forEach((line) => {
           const [key, ...valueParts] = line.split(":");
           if (key && valueParts.length > 0) {
-            let value = valueParts.join(":").trim().replace(/^["']|["']$/g, "");
+            const value = valueParts
+              .join(":")
+              .trim()
+              .replace(/^['"]|['"]$/g, "");
             if (value.startsWith("[") && value.endsWith("]")) {
-              frontmatter[key.trim()] = value.slice(1, -1).split(",").map((v: string) => v.trim().replace(/^["']|["']$/g, ""));
+              frontmatter[key.trim()] = value
+                .slice(1, -1)
+                .split(",")
+                .map((v: string) => v.trim().replace(/^['"]|['"]$/g, ""));
             } else {
               frontmatter[key.trim()] = value;
             }
@@ -49,10 +61,20 @@ const BlogPost: React.FC = () => {
 
         setPost({
           slug: slug || "",
-          title: frontmatter.title || "Untitled",
-          date: frontmatter.date || new Date().toISOString(),
-          tags: Array.isArray(frontmatter.tags) ? frontmatter.tags : [],
-          excerpt: frontmatter.excerpt || "",
+          title: Array.isArray(frontmatter.title)
+            ? frontmatter.title[0] || "Untitled"
+            : frontmatter.title || "Untitled",
+          date: Array.isArray(frontmatter.date)
+            ? frontmatter.date[0] || new Date().toISOString()
+            : frontmatter.date || new Date().toISOString(),
+          tags: Array.isArray(frontmatter.tags)
+            ? frontmatter.tags
+            : typeof frontmatter.tags === "string"
+              ? [frontmatter.tags]
+              : [],
+          excerpt: Array.isArray(frontmatter.excerpt)
+            ? frontmatter.excerpt[0] || ""
+            : frontmatter.excerpt || "",
           readingTime,
           content: contentWithoutFirstH1,
         });
@@ -69,7 +91,7 @@ const BlogPost: React.FC = () => {
   if (loading) {
     return (
       <div className="min-h-[60vh] flex items-center justify-center">
-        <div className="w-8 h-8 border-2 border-m3-primary border-t-transparent rounded-full animate-spin" />
+        <div className="w-8 h-8 border-2 border-m3-primary border-t-transparent rounded-sm animate-spin" />
       </div>
     );
   }
@@ -85,9 +107,11 @@ const BlogPost: React.FC = () => {
         </h1>
         <Link
           to="/blog"
-          className="flex items-center gap-2 bg-m3-primary text-m3-on-primary px-6 py-3 rounded-full font-black uppercase tracking-tighter shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all"
+          className="flex items-center gap-2 bg-m3-primary text-m3-on-primary px-5 py-2 rounded-sm font-black uppercase tracking-tighter shadow-[4px_4px_0px_0px_rgba(0,0,0,0.4)] transition-all border border-m3-primary/20 border-t-white/20 border-l-white/20 border-b-black/40 border-r-black/40"
         >
-          <span className="material-symbols-rounded text-[18px]">arrow_back</span>
+          <span className="material-symbols-rounded text-[18px]">
+            arrow_back
+          </span>
           Back to Blog
         </Link>
       </div>
@@ -151,7 +175,7 @@ const BlogPost: React.FC = () => {
             {post.tags.map((tag) => (
               <span
                 key={tag}
-                className="px-2.5 py-1 bg-m3-primary/10 text-m3-primary rounded-lg text-[10px] font-black uppercase tracking-wider border border-m3-primary/10"
+                className="px-2.5 py-1 bg-m3-primary/10 text-m3-primary rounded-none text-[10px] font-black uppercase tracking-wider border border-m3-primary/10"
               >
                 #{tag}
               </span>
@@ -185,9 +209,11 @@ const BlogPost: React.FC = () => {
         >
           <Link
             to="/blog"
-            className="inline-flex items-center gap-2 bg-m3-primary/10 text-m3-primary border border-m3-primary/20 px-5 py-2.5 rounded-full font-black uppercase tracking-tighter text-sm hover:bg-m3-primary hover:text-m3-on-primary transition-all duration-300"
+            className="inline-flex items-center gap-2 bg-m3-primary/10 text-m3-primary border border-m3-primary/20 px-5 py-2.5 rounded-sm font-black uppercase tracking-tighter text-sm hover:bg-m3-primary hover:text-m3-on-primary transition-all duration-300 shadow-[4px_4px_0px_0px_rgba(0,0,0,0.4)] border-t-white/20 border-l-white/20 border-b-black/40 border-r-black/40"
           >
-            <span className="material-symbols-rounded text-[16px]">arrow_back</span>
+            <span className="material-symbols-rounded text-[16px]">
+              arrow_back
+            </span>
             More Posts
           </Link>
           <p className="text-[10px] font-black uppercase tracking-[0.2em] opacity-30">

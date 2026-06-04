@@ -68,7 +68,7 @@ function Verify() {
         description="Verify your account status by logging in with Discord."
         url="https://vorlie.pl/verify"
       />
-      <div className="max-w-md w-full rounded-[32px] bg-m3-surface-container p-8 sm:p-10 shadow-sm border border-m3-outline/10 text-center flex flex-col items-center">
+      <div className="max-w-md w-full rounded-none bg-m3-surface-container p-8 sm:p-10 shadow-sm border border-m3-outline/10 text-center flex flex-col items-center">
         <h1 className="text-3xl font-black mb-10 text-m3-primary tracking-tight">
           Account Verification
         </h1>
@@ -94,7 +94,7 @@ function Verify() {
               </div>
             </div>
 
-            <div className="bg-m3-surface-variant/20 rounded-[24px] p-6 w-full mb-8 border border-m3-outline/5">
+            <div className="bg-m3-surface-variant/20 rounded-none p-6 w-full mb-8 border border-m3-outline/5">
               <p className="text-lg font-bold text-m3-on-surface mb-2">
                 {user?.username}
               </p>
@@ -120,7 +120,7 @@ function Verify() {
           </div>
         ) : (
           <div className="w-full flex flex-col gap-6">
-            <div className="p-6 bg-m3-surface-variant/20 rounded-[24px] border border-m3-outline/5 leading-relaxed">
+            <div className="p-6 bg-m3-surface-variant/20 rounded-none border border-m3-outline/5 leading-relaxed">
               <p className="text-lg text-m3-on-surface-variant font-medium">
                 Please authenticate using Discord to link and verify your
                 account status.
@@ -130,7 +130,7 @@ function Verify() {
             <div className="flex flex-col gap-4">
               <a
                 href="https://vorlie.pl/?link=miko_support"
-                className="w-full bg-m3-surface text-m3-primary font-black py-4 px-6 rounded-full border-2 border-m3-primary/20 hover:bg-m3-primary/10 transition-all flex items-center justify-center gap-2 group"
+                className="w-full bg-m3-surface text-m3-primary font-black py-4 px-6 rounded-none border-2 border-m3-primary/20 hover:bg-m3-primary/10 transition-all flex items-center justify-center gap-2 group"
               >
                 Join Discord Server
                 <svg
@@ -151,7 +151,7 @@ function Verify() {
 
               <a
                 href="https://api.vorlie.pl/v1/login"
-                className="w-full bg-m3-primary text-m3-on-primary font-black py-4 px-6 rounded-full shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-95 transition-all text-lg"
+                className="w-full bg-m3-primary text-m3-on-primary font-black py-4 px-6 rounded-none shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-95 transition-all text-lg"
               >
                 Login with Discord
               </a>

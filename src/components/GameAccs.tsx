@@ -41,13 +41,13 @@ const GameAccs: React.FC = () => {
         {GameAccsData.map((group) => (
           <div
             key={group.gameTitle}
-            className="rounded-[28px] border border-m3-outline/10 bg-m3-surface-container p-4 shadow-sm"
+            className="rounded-none border border-m3-outline/10 bg-m3-surface-container p-3 sm:p-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,0.4)] border-t-white/20 border-l-white/20 border-b-black/40 border-r-black/40"
           >
             <div className="flex flex-wrap items-center justify-between gap-3">
-              <h3 className="text-lg font-semibold text-m3-on-surface">
+              <h3 className="text-lg font-semibold text-m3-on-surface tracking-tight leading-snug">
                 {group.gameTitle}
               </h3>
-              <span className="rounded-full bg-m3-primary/10 px-3 py-1 text-xs font-black uppercase tracking-[0.2em] text-m3-primary">
+              <span className="rounded-none bg-m3-primary/10 px-3 py-1 text-xs font-black uppercase tracking-[0.2em] text-m3-primary inline-block">
                 active
               </span>
             </div>
@@ -55,12 +55,12 @@ const GameAccs: React.FC = () => {
               {group.accounts.map((acc, index) => (
                 <li
                   key={`${group.gameTitle}-${index}`}
-                  className="rounded-2xl bg-m3-on-surface/5 px-4 py-3"
+                  className="rounded-none bg-m3-on-surface/5 px-3 py-2 sm:px-4 sm:py-3 border border-transparent border-t-black/50 border-l-black/50 border-b-white/10 border-r-white/10"
                 >
                   <div className="flex flex-wrap items-center gap-2 text-m3-on-surface">
                     <span className="font-semibold">{acc.name}</span>
                     {acc.tag && (
-                      <span className="rounded-full bg-m3-primary/10 px-2 py-0.5 text-xs font-bold text-m3-primary">
+                      <span className="rounded-none bg-m3-primary/10 px-2 py-0.5 text-xs font-bold text-m3-primary inline-block">
                         #{acc.tag}
                       </span>
                     )}
@@ -70,7 +70,7 @@ const GameAccs: React.FC = () => {
                       </span>
                     )}
                     {acc.platform && (
-                      <span className="rounded-full bg-m3-surface-variant/70 px-2 py-0.5 text-xs text-m3-on-surface">
+                      <span className="rounded-none bg-m3-surface-variant/70 px-2 py-0.5 text-xs text-m3-on-surface inline-block">
                         {acc.platform}
                       </span>
                     )}

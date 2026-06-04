@@ -416,7 +416,12 @@ html[data-theme='pride'] .m3-card {
 }
 
 .m3-card {
-  @apply bg-m3-surface-container/60 backdrop-blur-2xl border border-m3-outline/10 rounded-[32px] shadow-sm transition-all duration-300;
+  @apply bg-m3-surface-container/60 backdrop-blur-2xl border border-m3-outline/10 rounded-none transition-all duration-300;
+  box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 0.4);
+  border-top-color: rgba(255, 255, 255, 0.2);
+  border-left-color: rgba(255, 255, 255, 0.2);
+  border-bottom-color: rgba(0, 0, 0, 0.4);
+  border-right-color: rgba(0, 0, 0, 0.4);
 }
 
 .m3-card-hover {

@@ -10,7 +10,7 @@ interface ClipItemProps {
 const ClipItem: React.FC<ClipItemProps> = ({ clip, onClipClick }) => {
   return (
     <div
-      className="bg-m3-surface-container border border-m3-outline/10 rounded-[24px] shadow-sm overflow-hidden flex flex-col transform transition-all duration-300 hover:scale-[1.01] hover:border-m3-outline/30 cursor-pointer"
+      className="bg-m3-surface-container border border-m3-outline/10 rounded-none shadow-[4px_4px_0px_0px_rgba(0,0,0,0.4)] overflow-hidden flex flex-col transform transition-all duration-300 hover:scale-[1.01] hover:border-m3-outline/30 cursor-pointer border-t-white/20 border-l-white/20 border-b-black/40 border-r-black/40"
       onClick={() => onClipClick(clip)}
     >
       <div className="block relative aspect-video overflow-hidden">
@@ -20,7 +20,7 @@ const ClipItem: React.FC<ClipItemProps> = ({ clip, onClipClick }) => {
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 hover:opacity-100 transition-opacity duration-300">
-          <div className="bg-m3-primary/90 p-4 rounded-full shadow-lg">
+          <div className="bg-m3-primary/90 p-3 rounded-none shadow-[4px_4px_0px_0px_rgba(0,0,0,0.4)] inline-flex items-center justify-center">
             <svg
               className="h-8 w-8 text-m3-on-primary"
               fill="currentColor"
@@ -49,7 +49,7 @@ const ClipItem: React.FC<ClipItemProps> = ({ clip, onClipClick }) => {
             {clip.tags.map((tag: string) => (
               <span
                 key={tag}
-                className="bg-m3-primary/10 text-m3-primary text-xs font-bold px-3 py-1 rounded-full border border-m3-primary/20"
+                className="bg-m3-primary/10 text-m3-primary text-xs font-bold px-3 py-1 rounded-none border border-m3-primary/20 inline-block"
               >
                 #{tag}
               </span>

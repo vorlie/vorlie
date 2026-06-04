@@ -70,13 +70,48 @@ const Colors: React.FC = () => {
   };
 
   const colorPairs: ColorPair[] = [
-    { name: "Primary on Surface", foreground: "color-m3-primary", background: "color-m3-surface", usage: "Headers, accents" },
-    { name: "On-Primary on Primary", foreground: "color-m3-on-primary", background: "color-m3-primary", usage: "Buttons" },
-    { name: "On-Surface on Surface", foreground: "color-m3-on-surface", background: "color-m3-surface", usage: "Body text" },
-    { name: "On-Surface-Variant on Surface", foreground: "color-m3-on-surface-variant", background: "color-m3-surface", usage: "Secondary text" },
-    { name: "On-Surface on Surface Container", foreground: "color-m3-on-surface", background: "color-m3-surface-container", usage: "Cards" },
-    { name: "Primary on Surface Container", foreground: "color-m3-primary", background: "color-m3-surface-container", usage: "Card headers" },
-    { name: "On-Primary-Container on Primary Container", foreground: "color-m3-on-primary-container", background: "color-m3-primary-container", usage: "Highlighted elements" },
+    {
+      name: "Primary on Surface",
+      foreground: "color-m3-primary",
+      background: "color-m3-surface",
+      usage: "Headers, accents",
+    },
+    {
+      name: "On-Primary on Primary",
+      foreground: "color-m3-on-primary",
+      background: "color-m3-primary",
+      usage: "Buttons",
+    },
+    {
+      name: "On-Surface on Surface",
+      foreground: "color-m3-on-surface",
+      background: "color-m3-surface",
+      usage: "Body text",
+    },
+    {
+      name: "On-Surface-Variant on Surface",
+      foreground: "color-m3-on-surface-variant",
+      background: "color-m3-surface",
+      usage: "Secondary text",
+    },
+    {
+      name: "On-Surface on Surface Container",
+      foreground: "color-m3-on-surface",
+      background: "color-m3-surface-container",
+      usage: "Cards",
+    },
+    {
+      name: "Primary on Surface Container",
+      foreground: "color-m3-primary",
+      background: "color-m3-surface-container",
+      usage: "Card headers",
+    },
+    {
+      name: "On-Primary-Container on Primary Container",
+      foreground: "color-m3-on-primary-container",
+      background: "color-m3-primary-container",
+      usage: "Highlighted elements",
+    },
   ];
 
   return (
@@ -101,7 +136,7 @@ const Colors: React.FC = () => {
           <h1 className="text-5xl sm:text-7xl font-black text-m3-on-surface tracking-tighter mb-4">
             Color System
           </h1>
-          <div className="h-1.5 w-20 bg-gradient-to-r from-m3-primary to-m3-secondary rounded-full mb-6" />
+          <div className="h-1.5 w-20 bg-gradient-to-r from-m3-primary to-m3-secondary rounded-sm mb-6" />
           <p className="text-lg text-m3-on-surface-variant font-bold opacity-70 max-w-xl leading-relaxed">
             Material 3 dynamic palette with live WCAG contrast checks. Click any
             swatch to copy the hex value.
@@ -116,7 +151,7 @@ const Colors: React.FC = () => {
           className="m3-card p-6 sm:p-10 mb-8"
         >
           <div className="flex items-center gap-3 mb-6">
-            <div className="h-5 w-1 bg-m3-primary rounded-full" />
+            <div className="h-5 w-1 bg-m3-primary rounded-none" />
             <h2 className="text-sm font-black text-m3-primary uppercase tracking-[0.2em]">
               Current Palette
             </h2>
@@ -130,7 +165,7 @@ const Colors: React.FC = () => {
                 title={`Copy ${value}`}
               >
                 <div
-                  className="w-full h-20 rounded-2xl mb-2 shadow-inner border border-white/10 relative overflow-hidden"
+                  className="w-full h-20 rounded-none mb-2 shadow-inner border border-white/10 relative overflow-hidden"
                   style={{ backgroundColor: value }}
                 >
                   <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/30">
@@ -158,7 +193,7 @@ const Colors: React.FC = () => {
           className="m3-card p-6 sm:p-10 mb-8"
         >
           <div className="flex items-center gap-3 mb-6">
-            <div className="h-5 w-1 bg-m3-secondary rounded-full" />
+            <div className="h-5 w-1 bg-m3-secondary rounded-none" />
             <h2 className="text-sm font-black text-m3-secondary uppercase tracking-[0.2em]">
               Contrast Ratios
             </h2>
@@ -174,10 +209,10 @@ const Colors: React.FC = () => {
               return (
                 <div
                   key={pair.name}
-                  className="flex flex-col md:flex-row md:items-center gap-5 p-4 bg-m3-on-surface/5 rounded-2xl border border-m3-outline/5 hover:bg-m3-on-surface/10 transition-colors duration-300"
+                  className="flex flex-col md:flex-row md:items-center gap-5 p-4 bg-m3-on-surface/5 rounded-none border border-m3-outline/5 hover:bg-m3-on-surface/10 transition-colors duration-300"
                 >
                   <div
-                    className="w-full md:w-36 h-16 rounded-xl flex items-center justify-center shadow-inner border border-m3-outline/10 flex-shrink-0"
+                    className="w-full md:w-36 h-16 rounded-none flex items-center justify-center shadow-inner border border-m3-outline/10 flex-shrink-0"
                     style={{ backgroundColor: bg }}
                   >
                     <span className="text-lg font-black" style={{ color: fg }}>
@@ -199,7 +234,7 @@ const Colors: React.FC = () => {
                       {ratio.toFixed(2)}:1
                     </p>
                     <div
-                      className="px-3 py-1 rounded-full font-black text-xs uppercase tracking-wider"
+                      className="px-3 py-1 rounded-none font-black text-xs uppercase tracking-wider"
                       style={{
                         backgroundColor: `${wcag.color}20`,
                         color: wcag.color,
@@ -232,11 +267,21 @@ const Colors: React.FC = () => {
               { label: "AA Large", desc: "≥3:1 · 18pt+", color: "#ffea00" },
               { label: "Fail", desc: "<3:1 · Poor", color: "#f50057" },
             ].map(({ label, desc, color }) => (
-              <div key={label} className="flex items-center gap-2 p-2 bg-m3-on-surface/5 rounded-xl">
-                <div className="w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: color }} />
+              <div
+                key={label}
+                className="flex items-center gap-2 p-2 bg-m3-on-surface/5 rounded-none"
+              >
+                <div
+                  className="w-2 h-2 rounded-none flex-shrink-0"
+                  style={{ backgroundColor: color }}
+                />
                 <div>
-                  <span className="font-black text-m3-on-surface text-xs">{label}: </span>
-                  <span className="text-m3-on-surface-variant text-xs opacity-60">{desc}</span>
+                  <span className="font-black text-m3-on-surface text-xs">
+                    {label}:{" "}
+                  </span>
+                  <span className="text-m3-on-surface-variant text-xs opacity-60">
+                    {desc}
+                  </span>
                 </div>
               </div>
             ))}
