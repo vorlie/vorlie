@@ -22,6 +22,15 @@ const GameAccsData: GameGroup[] = [
     gameTitle: "Dead by Daylight",
     accounts: [{ name: "vorlieFUepi6", tag: "eaad", platform: "Epic Games" }],
   },
+  {
+    gameTitle: "Dead by Daylight",
+    accounts: [{ name: "vorlieFUepi6", tag: "eaad", platform: "Epic Games" }],
+  },
+
+  {
+    gameTitle: "Dead by Daylight",
+    accounts: [{ name: "vorlieFUepi6", tag: "eaad", platform: "Epic Games" }],
+  },
 ];
 
 const GameAccs: React.FC = () => {
@@ -37,7 +46,7 @@ const GameAccs: React.FC = () => {
         </p>
       </div>
 
-      <div className="grid gap-3">
+      <div className="grid gap-3 grid-cols-1 lg:grid-cols-2">
         {GameAccsData.map((group) => (
           <div
             key={group.gameTitle}
@@ -47,15 +56,12 @@ const GameAccs: React.FC = () => {
               <h3 className="text-lg font-semibold text-m3-on-surface tracking-tight leading-snug">
                 {group.gameTitle}
               </h3>
-              <span className="rounded-none bg-m3-primary/10 px-3 py-1 text-xs font-black uppercase tracking-[0.2em] text-m3-primary inline-block">
-                active
-              </span>
             </div>
             <ul className="mt-4 space-y-2">
               {group.accounts.map((acc, index) => (
                 <li
                   key={`${group.gameTitle}-${index}`}
-                  className="rounded-none bg-m3-on-surface/5 px-3 py-2 sm:px-4 sm:py-3 border border-transparent border-t-black/50 border-l-black/50 border-b-white/10 border-r-white/10"
+                  className="rounded-none"
                 >
                   <div className="flex flex-wrap items-center gap-2 text-m3-on-surface">
                     <span className="font-semibold">{acc.name}</span>

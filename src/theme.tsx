@@ -164,13 +164,14 @@ const resolveInitialPrideTheme = (): PrideTheme => {
 
 const resolveInitialPrideCycleActive = (): boolean => {
   if (typeof window === "undefined") {
-    return false;
+    return true;
   }
 
   try {
-    return window.localStorage.getItem(prideCycleStorageKey) === "1";
+    const stored = window.localStorage.getItem(prideCycleStorageKey);
+    return stored === null ? true : stored === "1";
   } catch {
-    return false;
+    return true;
   }
 };
 
@@ -223,27 +224,6 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     return () => window.clearInterval(interval);
   }, []);
 
-  const resolvedTheme: ResolvedTheme =
-    themeMode === "pride" || (themeMode === "auto" && isSeasonalPrideActive)
-      ? "pride"
-      : "default";
-
-  useEffect(() => {
-    try {
-      window.localStorage.setItem(themeStorageKey, themeMode);
-    } catch {
-      // ignore localStorage errors
-    }
-  }, [themeMode]);
-
-  useEffect(() => {
-    try {
-      window.localStorage.setItem(prideThemeStorageKey, prideTheme);
-    } catch {
-      // ignore localStorage errors
-    }
-  }, [prideTheme]);
-
   useEffect(() => {
     try {
       window.localStorage.setItem(
@@ -254,6 +234,11 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
       // ignore localStorage errors
     }
   }, [isPrideCycleActive]);
+
+  const resolvedTheme: ResolvedTheme =
+    themeMode === "pride" || (themeMode === "auto" && isSeasonalPrideActive)
+      ? "pride"
+      : "default";
 
   useEffect(() => {
     if (!isPrideCycleActive || resolvedTheme !== "pride") {
@@ -276,6 +261,22 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
 
     return () => window.clearInterval(interval);
   }, [isPrideCycleActive, resolvedTheme]);
+
+  useEffect(() => {
+    try {
+      window.localStorage.setItem(themeStorageKey, themeMode);
+    } catch {
+      // ignore localStorage errors
+    }
+  }, [themeMode]);
+
+  useEffect(() => {
+    try {
+      window.localStorage.setItem(prideThemeStorageKey, prideTheme);
+    } catch {
+      // ignore localStorage errors
+    }
+  }, [prideTheme]);
 
   useEffect(() => {
     if (resolvedTheme === "pride") {
