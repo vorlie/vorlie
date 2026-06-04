@@ -46,11 +46,11 @@ const ActivityTimestamp: React.FC<ActivityTimestampProps> = ({
       </p>
       {progress !== null && endTime && (
         <div
-          className="w-full bg-gray-600 rounded-full h-1 mt-1 overflow-hidden"
+          className="w-full h-1 mt-1 overflow-hidden rounded-none border border-transparent border-t-black/50 border-l-black/50 border-b-white/10 border-r-white/10"
           style={{ backgroundColor: colorSecondary || undefined }}
         >
           <div
-            className="bg-blue-400 h-1 rounded-full transition-all duration-1000 ease-linear"
+            className="bg-blue-400 h-1 rounded-none transition-all duration-1000 ease-linear"
             style={{
               width: `${progress}%`,
               backgroundColor: color || undefined,

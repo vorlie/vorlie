@@ -30,6 +30,7 @@
   --custom-display-name-styles-dark-1-color: var(--color-m3-on-primary, #381E72);
   --custom-display-name-styles-dark-2-color: var(--color-m3-surface, #1C1B1F);
   --color-pride-blue: var(--color-m3-secondary, #CCC2DC);
+  transition: background-color 0.35s ease, color 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, fill 0.35s ease, stroke 0.35s ease;
 }
 
 .theme-blue-glow {
@@ -416,7 +417,12 @@ html[data-theme='pride'] .m3-card {
 }
 
 .m3-card {
-  @apply bg-m3-surface-container/60 backdrop-blur-2xl border border-m3-outline/10 rounded-[32px] shadow-sm transition-all duration-300;
+  @apply bg-m3-surface-container/60 backdrop-blur-2xl border border-m3-outline/10 rounded-none transition-all duration-300;
+  box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 0.4);
+  border-top-color: rgba(255, 255, 255, 0.2);
+  border-left-color: rgba(255, 255, 255, 0.2);
+  border-bottom-color: rgba(0, 0, 0, 0.4);
+  border-right-color: rgba(0, 0, 0, 0.4);
 }
 
 .m3-card-hover {

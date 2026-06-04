@@ -16,8 +16,10 @@ function ObsGameFramePage() {
   }
 
   return (
-    <div>
-      <ObsCameraFrame discordId={discordId} />
+    <div className="min-h-screen flex items-center justify-center p-6 bg-m3-surface">
+      <div className="w-full max-w-2xl bg-m3-surface-container rounded-none border border-m3-outline/10 shadow-[6px_6px_0px_0px_rgba(0,0,0,0.35)] p-4">
+        <ObsCameraFrame discordId={discordId} />
+      </div>
     </div>
   );
 }

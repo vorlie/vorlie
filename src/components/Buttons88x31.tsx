@@ -87,7 +87,7 @@ const Buttons88x31: React.FC = () => {
               width="88"
               height="31"
               loading="lazy"
-              className="block rounded-[8px] shadow-sm border border-m3-outline/10"
+              className="block rounded-none shadow-[4px_4px_0px_0px_rgba(0,0,0,0.4)] border border-m3-outline/10"
             />
           </a>
         ))}
@@ -95,7 +95,7 @@ const Buttons88x31: React.FC = () => {
       <div className="mb-4">
         <button
           onClick={handleCopyClick}
-          className="bg-m3-primary-container text-m3-on-primary-container text-sm font-bold px-6 py-2.5 rounded-full hover:bg-m3-primary hover:text-m3-on-primary transition-all duration-300 shadow-sm hover:shadow-md cursor-pointer border border-m3-primary/20"
+          className="bg-m3-primary-container text-m3-on-primary-container text-sm font-bold px-5 py-2 rounded-sm hover:bg-m3-primary hover:text-m3-on-primary transition-all duration-300 shadow-[4px_4px_0px_0px_rgba(0,0,0,0.4)] cursor-pointer border border-m3-primary/20"
         >
           Copy my button code
         </button>
@@ -105,7 +105,7 @@ const Buttons88x31: React.FC = () => {
         aria-live="polite"
         className={`
           fixed top-8 right-8 z-[100]
-          px-6 py-3 rounded-2xl shadow-xl text-sm font-black tracking-tight
+          px-5 py-2 rounded-none shadow-[4px_4px_0px_0px_rgba(0,0,0,0.4)] text-sm font-black tracking-tight
           transition-all duration-500 ease-in-out border border-m3-outline/10
           flex items-center gap-3
           ${
@@ -121,7 +121,7 @@ const Buttons88x31: React.FC = () => {
         `}
       >
         <div
-          className={`w-2 h-2 rounded-full ${notificationText.includes("Failed") ? "bg-m3-error" : "bg-m3-primary"} shadow-sm animate-pulse`}
+          className={`w-2 h-2 rounded-none ${notificationText.includes("Failed") ? "bg-m3-error" : "bg-m3-primary"} shadow-[2px_2px_0px_0px_rgba(0,0,0,0.4)] animate-pulse`}
         ></div>
         {notificationText}
       </div>

@@ -80,7 +80,7 @@ function AppContent() {
       >
         <div className="relative flex flex-col items-center gap-8">
           <div className="relative w-32 h-32">
-            <div className="absolute inset-0 bg-m3-primary/20 rounded-full animate-m3-pulsate overflow-hidden">
+            <div className="absolute inset-0 bg-m3-primary/20 rounded-none animate-m3-pulsate overflow-hidden">
               <img
                 src="/images/evernight_chibi.gif"
                 alt="Loading Mascot"
@@ -92,7 +92,7 @@ function AppContent() {
             <h2 className="text-2xl font-black text-m3-primary tracking-tighter uppercase">
               Initialize
             </h2>
-            <div className="w-32 h-1 bg-m3-surface-variant rounded-full overflow-hidden">
+            <div className="w-32 h-1 bg-m3-surface-variant rounded-sm overflow-hidden">
               <div className="h-full bg-m3-primary w-1/2 animate-[m3-pulsate_1.5s_infinite_ease-in-out]"></div>
             </div>
           </div>
@@ -121,9 +121,9 @@ function AppContent() {
         <div className="min-h-screen w-full text-m3-on-surface p-4 md:p-12 pb-24 bg-m3-surface/70 relative overflow-hidden">
           {/* Background Depth Effects (Global) */}
           <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-            <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-m3-primary/10 rounded-full blur-[120px] animate-blob" />
-            <div className="absolute top-[20%] right-[-5%] w-[35%] h-[35%] bg-m3-secondary/10 rounded-full blur-[100px] animate-blob animation-delay-2000" />
-            <div className="theme-blue-glow absolute bottom-[-10%] left-[20%] w-[30%] h-[30%] rounded-full blur-[80px] animate-blob animation-delay-4000" />
+            <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-m3-primary/10 rounded-none blur-[120px] animate-blob" />
+            <div className="absolute top-[20%] right-[-5%] w-[35%] h-[35%] bg-m3-secondary/10 rounded-none blur-[100px] animate-blob animation-delay-2000" />
+            <div className="theme-blue-glow absolute bottom-[-10%] left-[20%] w-[30%] h-[30%] rounded-none blur-[80px] animate-blob animation-delay-4000" />
           </div>
 
           <div className="w-full max-w-7xl mx-auto relative z-10">

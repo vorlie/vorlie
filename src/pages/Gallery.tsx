@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { createPortal } from "react-dom";
 
@@ -90,13 +90,16 @@ export default function Gallery() {
       });
   }, []);
 
-  const paginate = (newDirection: number) => {
-    setDirection(newDirection);
-    setSelectedIndex((prev) => {
-      if (prev === null) return 0;
-      return (prev + newDirection + images.length) % images.length;
-    });
-  };
+  const paginate = useCallback(
+    (newDirection: number) => {
+      setDirection(newDirection);
+      setSelectedIndex((prev) => {
+        if (prev === null) return 0;
+        return (prev + newDirection + images.length) % images.length;
+      });
+    },
+    [images.length],
+  );
 
   // Keyboard navigation
   useEffect(() => {
@@ -108,7 +111,7 @@ export default function Gallery() {
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [selectedIndex, images.length]);
+  }, [selectedIndex, paginate]);
 
   const modalContent = (
     <AnimatePresence>
@@ -122,7 +125,7 @@ export default function Gallery() {
         >
           {/* Close button */}
           <button
-            className="absolute top-6 right-6 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors z-[1001] flex items-center justify-center"
+            className="absolute top-6 right-6 w-12 h-12 rounded-none bg-white/10 hover:bg-white/20 text-white transition-colors z-[1001] flex items-center justify-center"
             onClick={(e) => {
               e.stopPropagation();
               setSelectedIndex(null);
@@ -133,7 +136,7 @@ export default function Gallery() {
 
           {/* Previous Button */}
           <button
-            className="absolute left-2 sm:left-8 top-1/2 -translate-y-1/2 w-12 h-12 md:w-16 md:h-16 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors z-[1001] flex items-center justify-center"
+            className="absolute left-2 sm:left-8 top-1/2 -translate-y-1/2 w-12 h-12 md:w-16 md:h-16 rounded-none bg-white/10 hover:bg-white/20 text-white transition-colors z-[1001] flex items-center justify-center"
             onClick={(e) => {
               e.stopPropagation();
               paginate(-1);
@@ -146,7 +149,7 @@ export default function Gallery() {
 
           {/* Next Button */}
           <button
-            className="absolute right-2 sm:right-8 top-1/2 -translate-y-1/2 w-12 h-12 md:w-16 md:h-16 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors z-[1001] flex items-center justify-center"
+            className="absolute right-2 sm:right-8 top-1/2 -translate-y-1/2 w-12 h-12 md:w-16 md:h-16 rounded-none bg-white/10 hover:bg-white/20 text-white transition-colors z-[1001] flex items-center justify-center"
             onClick={(e) => {
               e.stopPropagation();
               paginate(1);
@@ -170,13 +173,13 @@ export default function Gallery() {
                 x: { type: "tween", duration: 0.2, ease: "easeOut" },
                 opacity: { duration: 0.15 },
               }}
-              className="relative w-fit h-fit max-w-[95vw] mx-auto rounded-2xl overflow-hidden shadow-2xl"
+              className="relative w-fit h-fit max-w-[95vw] mx-auto rounded-none overflow-hidden shadow-[6px_6px_0px_0px_rgba(0,0,0,0.35)]"
               onClick={(e) => e.stopPropagation()}
             >
               <img
                 src={images[selectedIndex].url}
                 alt={images[selectedIndex].title}
-                className="max-h-[85vh] w-auto h-auto object-contain block mx-auto rounded-2xl"
+                className="max-h-[85vh] w-auto h-auto object-contain block mx-auto rounded-none"
               />
               <div className="absolute bottom-0 inset-x-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
                 <h2 className="text-white text-2xl font-sakura leading-tight">
@@ -208,7 +211,7 @@ export default function Gallery() {
         <h1 className="text-5xl sm:text-7xl text-m3-on-surface tracking-tighter mb-4 font-sakura">
           Gallery
         </h1>
-        <div className="h-1.5 w-20 bg-gradient-to-r from-m3-primary to-m3-secondary rounded-full mb-4" />
+        <div className="h-1.5 w-20 bg-gradient-to-r from-m3-primary to-m3-secondary rounded-sm mb-4" />
         <p className="text-m3-on-surface-variant font-bold opacity-50 text-sm">
           Property of Arasaka Corporation
         </p>
@@ -216,7 +219,7 @@ export default function Gallery() {
 
       {isLoading && (
         <div className="flex justify-center my-10">
-          <div className="w-8 h-8 border-2 border-m3-primary border-t-transparent rounded-full animate-spin" />
+          <div className="w-8 h-8 border-2 border-m3-primary border-t-transparent rounded-sm animate-spin" />
         </div>
       )}
 
@@ -228,7 +231,7 @@ export default function Gallery() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.4, delay: index * 0.1 }}
-            className="group relative aspect-square overflow-hidden rounded-2xl bg-m3-surface-variant cursor-pointer shadow-md hover:shadow-xl transition-all"
+            className="group relative aspect-square overflow-hidden rounded-none bg-m3-surface-variant cursor-pointer shadow-[4px_4px_0px_0px_rgba(0,0,0,0.15)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,0.2)] transition-all"
             onClick={() => setSelectedIndex(index)}
           >
             {/* Image */}

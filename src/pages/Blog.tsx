@@ -47,14 +47,20 @@ const Blog: React.FC = () => {
             ? mockPosts.filter((p) => p.tags.includes(tag))
             : mockPosts;
 
-          setPosts(pageNum === 1 ? filteredPosts : (prev) => [...prev, ...filteredPosts]);
+          setPosts(
+            pageNum === 1
+              ? filteredPosts
+              : (prev) => [...prev, ...filteredPosts],
+          );
           setHasMore(false);
           setLoading(false);
           return;
         }
 
         const data = await response.json();
-        setPosts(pageNum === 1 ? data.posts : (prev) => [...prev, ...data.posts]);
+        setPosts(
+          pageNum === 1 ? data.posts : (prev) => [...prev, ...data.posts],
+        );
         setHasMore(data.hasMore);
       } catch (error) {
         console.error("Failed to load blog posts:", error);
@@ -66,7 +72,9 @@ const Blog: React.FC = () => {
     [],
   );
 
-  useEffect(() => { loadPosts(1, selectedTag); }, [selectedTag]);
+  useEffect(() => {
+    loadPosts(1, selectedTag);
+  }, [selectedTag, loadPosts]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -79,10 +87,14 @@ const Blog: React.FC = () => {
     );
     const currentTarget = observerTarget.current;
     if (currentTarget) observer.observe(currentTarget);
-    return () => { if (currentTarget) observer.unobserve(currentTarget); };
+    return () => {
+      if (currentTarget) observer.unobserve(currentTarget);
+    };
   }, [hasMore, loading]);
 
-  useEffect(() => { if (page > 1) loadPosts(page, selectedTag); }, [page]);
+  useEffect(() => {
+    if (page > 1) loadPosts(page, selectedTag);
+  }, [page, selectedTag, loadPosts]);
 
   const allTags = Array.from(new Set(posts.flatMap((p) => p.tags)));
 
@@ -114,7 +126,7 @@ const Blog: React.FC = () => {
           <h1 className="text-5xl sm:text-7xl font-black text-m3-on-surface tracking-tighter mb-4">
             Blog
           </h1>
-          <div className="h-1.5 w-20 bg-gradient-to-r from-m3-primary to-m3-secondary rounded-full mb-6" />
+          <div className="h-1.5 w-20 bg-gradient-to-r from-m3-primary to-m3-secondary rounded-sm mb-6" />
           <p className="text-lg text-m3-on-surface-variant font-bold opacity-70 max-w-xl leading-relaxed">
             Thoughts on dev, linux &amp; tech. Raw notes, tutorials, and the
             occasional deep dive.
@@ -133,9 +145,9 @@ const Blog: React.FC = () => {
               <button
                 key={tag}
                 onClick={() => handleTagClick(tag)}
-                className={`px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-wider transition-all duration-200 border ${
+                className={`px-4 py-1.5 rounded-sm text-xs font-black uppercase tracking-wider transition-all duration-200 border ${
                   selectedTag === tag
-                    ? "bg-m3-primary text-m3-on-primary border-m3-primary shadow-lg shadow-m3-primary/20"
+                    ? "bg-m3-primary text-m3-on-primary border-m3-primary shadow-[4px_4px_0px_0px_rgba(0,0,0,0.4)] border-t-white/20 border-l-white/20 border-b-black/40 border-r-black/40"
                     : "bg-m3-on-surface/5 text-m3-on-surface-variant border-m3-outline/10 hover:border-m3-primary/30 hover:text-m3-primary"
                 }`}
               >
@@ -172,7 +184,9 @@ const Blog: React.FC = () => {
                         })}
                       </time>
                       <span className="opacity-50">•</span>
-                      <span className="font-black">{post.readingTime} min read</span>
+                      <span className="font-black">
+                        {post.readingTime} min read
+                      </span>
                     </div>
                   </div>
                   <span className="material-symbols-rounded text-m3-on-surface-variant opacity-0 group-hover:opacity-100 group-hover:text-m3-primary transition-all duration-300 self-center flex-shrink-0">
@@ -188,7 +202,7 @@ const Blog: React.FC = () => {
                   {post.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="px-2.5 py-1 bg-m3-primary/10 text-m3-primary rounded-lg text-[10px] font-black uppercase tracking-wider border border-m3-primary/10"
+                      className="px-2.5 py-1 bg-m3-primary/10 text-m3-primary rounded-none text-[10px] font-black uppercase tracking-wider border border-m3-primary/10 inline-block"
                     >
                       #{tag}
                     </span>
@@ -202,7 +216,7 @@ const Blog: React.FC = () => {
         {/* Loading */}
         {loading && (
           <div className="flex justify-center py-12">
-            <div className="w-8 h-8 border-2 border-m3-primary border-t-transparent rounded-full animate-spin" />
+            <div className="w-8 h-8 border-2 border-m3-primary border-t-transparent rounded-sm animate-spin" />
           </div>
         )}
 

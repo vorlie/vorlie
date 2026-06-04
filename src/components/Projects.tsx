@@ -149,21 +149,21 @@ const Projects: React.FC = () => {
               placeholder="Search projects..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full bg-m3-on-surface/5 border border-m3-outline/20 rounded-2xl py-3 pl-11 pr-4 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-m3-primary/30 focus:border-m3-primary/50 transition-all placeholder:text-m3-on-surface-variant/40"
+              className="w-full bg-m3-on-surface/5 border border-m3-outline/20 rounded-sm py-3 pl-11 pr-4 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-m3-primary/30 focus:border-m3-primary/50 transition-all placeholder:text-m3-on-surface-variant/40"
             />
           </div>
 
-          <div className="flex bg-m3-on-surface/5 p-1 rounded-2xl border border-m3-outline/20 shrink-0">
+          <div className="flex bg-m3-on-surface/5 p-1 rounded-sm border border-m3-outline/20 shrink-0">
             <button
               onClick={() => setView("grid")}
-              className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-bold transition-all ${view === "grid" ? "bg-m3-primary text-m3-on-primary shadow-sm" : "text-m3-on-surface-variant hover:bg-m3-on-surface/10"}`}
+              className={`flex items-center gap-2 px-4 py-2 rounded-sm text-sm font-bold transition-all ${view === "grid" ? "bg-m3-primary text-m3-on-primary shadow-sm" : "text-m3-on-surface-variant hover:bg-m3-on-surface/10"}`}
             >
               <FaThLarge className="w-4 h-4" />
               <span>Grid</span>
             </button>
             <button
               onClick={() => setView("list")}
-              className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-bold transition-all ${view === "list" ? "bg-m3-primary text-m3-on-primary shadow-sm" : "text-m3-on-surface-variant hover:bg-m3-on-surface/10"}`}
+              className={`flex items-center gap-2 px-4 py-2 rounded-sm text-sm font-bold transition-all ${view === "list" ? "bg-m3-primary text-m3-on-primary shadow-sm" : "text-m3-on-surface-variant hover:bg-m3-on-surface/10"}`}
             >
               <FaList className="w-4 h-4" />
               <span>List</span>
@@ -178,7 +178,7 @@ const Projects: React.FC = () => {
           </span>
           <button
             onClick={() => setSelectedLanguage(null)}
-            className={`px-4 py-1.5 rounded-full text-xs font-bold transition-all border ${
+            className={`px-4 py-1.5 rounded-none text-xs font-bold transition-all border ${
               !selectedLanguage
                 ? "bg-m3-primary text-m3-on-primary border-m3-primary shadow-sm"
                 : "bg-m3-on-surface/5 text-m3-on-surface-variant border-m3-outline/10 hover:bg-m3-on-surface/10"
@@ -190,7 +190,7 @@ const Projects: React.FC = () => {
             <button
               key={lang}
               onClick={() => setSelectedLanguage(lang)}
-              className={`px-4 py-1.5 rounded-full text-xs font-bold transition-all border flex items-center gap-2 ${
+              className={`px-4 py-1.5 rounded-none text-xs font-bold transition-all border flex items-center gap-2 ${
                 selectedLanguage === lang
                   ? "bg-m3-primary text-m3-on-primary border-m3-primary shadow-sm"
                   : "bg-m3-on-surface/5 text-m3-on-surface-variant border-m3-outline/10 hover:bg-m3-on-surface/10"
@@ -244,7 +244,7 @@ const Projects: React.FC = () => {
       </motion.div>
 
       {filteredProjects.length === 0 && (
-        <div className="text-center py-12 bg-m3-surface-container/30 rounded-[32px] border border-dashed border-m3-outline/20">
+        <div className="text-center py-12 bg-m3-surface-container/30 rounded-none border border-dashed border-m3-outline/20">
           <p className="text-m3-on-surface-variant italic">
             No projects found matching your criteria.
           </p>
