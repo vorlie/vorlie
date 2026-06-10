@@ -224,7 +224,7 @@ function Home() {
               <img
                 src="/images/evernight_chibi.gif"
                 alt="Chibi Mascot"
-                className="w-full h-full object-contain drop-shadow-[0_0_20px_rgba(230,204,213,0.4)]"
+                className="w-full h-full object-contain"
                 onError={(e) => {
                   e.currentTarget.style.display = "none";
                 }}

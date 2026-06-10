@@ -1,36 +1,5 @@
 import React from "react";
-
-interface GameAccount {
-  name: string;
-  tag?: string;
-  region?: string;
-  accLink?: string;
-  platform?: string;
-}
-
-interface GameGroup {
-  gameTitle: string;
-  accounts: GameAccount[];
-}
-
-const GameAccsData: GameGroup[] = [
-  {
-    gameTitle: "League of Legends",
-    accounts: [{ name: "Hoof or Paw", tag: "uwu", region: "EUW" }],
-  },
-  {
-    gameTitle: "Dead by Daylight",
-    accounts: [{ name: "vorlieFUepi6", tag: "eaad", platform: "Epic Games" }],
-  },
-  {
-    gameTitle: "Xbox",
-    accounts: [{ name: "Mispiry"}],
-  },
-  {
-    gameTitle: "Wargaming (WoT, WoTB)",
-    accounts: [{ name: "__Evernight__", region: "EU" }],
-  },
-];
+import {GameAccsData} from "../data/gameData.ts";
 
 const GameAccs: React.FC = () => {
   return (
