@@ -1,4 +1,4 @@
-import ActivityTimestamp from "../ActivityTimestamp";
+import ActivityTimestamp from "./ActivityTimestamp";
 import { LanyardTheme } from "../../data/lanyardThemes";
 import { Activity } from "../../types/lanyard";
 import { extractImageUrl } from "../../utils/helpers";

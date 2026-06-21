@@ -1,5 +1,5 @@
 import { FaSpotify } from "react-icons/fa";
-import ActivityTimestamp from "../ActivityTimestamp";
+import ActivityTimestamp from "./ActivityTimestamp";
 import { SpotifyData } from "../../types/lanyard";
 
 interface SpotifyActivityProps {

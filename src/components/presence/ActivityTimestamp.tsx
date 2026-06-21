@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import {
   formatRelativeTime,
   calculateProgressPercent,
-} from "../utils/timeFormatter";
+} from "../../utils/timeFormatter";
 
 interface ActivityTimestampProps {
   startTime: number;
