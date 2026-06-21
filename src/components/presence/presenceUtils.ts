@@ -1,9 +1,4 @@
-import {
-  FaGamepad,
-  FaHeadphones,
-  FaTrophy,
-  FaVideo,
-} from "react-icons/fa";
+import { FaGamepad, FaHeadphones, FaTrophy, FaVideo } from "react-icons/fa";
 import { LANYARD_THEMES, LanyardTheme } from "../../data/lanyardThemes";
 import { Activity, PresenceData } from "../../types/lanyard";
 
@@ -40,29 +35,38 @@ export function getDisplayActivities(
   activities: Activity[],
   hasSpotify: boolean,
 ) {
-  const seenActivities = new Set<string>();
+  const uniqueActivities = new Map<
+    string,
+    { activity: Activity; originalIndex: number }
+  >();
 
-  return activities.filter((activity) => {
-    if (activity.type === 4) return false;
-    if (activity.name === "Spotify" && hasSpotify) return false;
+  activities.forEach((activity, index) => {
+    if (activity.type === 4) return;
+    if (activity.name === "Spotify" && hasSpotify) return;
 
-    const activityKey = [
-      activity.application_id,
-      activity.name,
-      activity.type,
-      activity.details,
-      activity.state,
-      activity.assets?.large_text,
-      activity.assets?.large_image,
-    ]
-      .filter(Boolean)
-      .join("|");
+    const activityKey = activity.application_id || activity.name;
 
-    if (seenActivities.has(activityKey)) return false;
+    const existingActivity = uniqueActivities.get(activityKey);
 
-    seenActivities.add(activityKey);
-    return true;
+    if (
+      !existingActivity ||
+      getActivityRecency(activity) >
+        getActivityRecency(existingActivity.activity)
+    ) {
+      uniqueActivities.set(activityKey, {
+        activity,
+        originalIndex: existingActivity?.originalIndex ?? index,
+      });
+    }
   });
+
+  return [...uniqueActivities.values()]
+    .sort((left, right) => left.originalIndex - right.originalIndex)
+    .map(({ activity }) => activity);
+}
+
+function getActivityRecency(activity: Activity) {
+  return activity.created_at || activity.timestamps?.start || 0;
 }
 
 export function getActivityTheme(activity: Activity): LanyardTheme {
