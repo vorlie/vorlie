@@ -1,0 +1,258 @@
+.about {
+
+  margin: 0 auto;
+  padding: 48px;
+}
+
+.about__header {
+  max-width: 760px;
+  margin-bottom: 64px;
+}
+
+.about__eyebrow {
+  display: block;
+  margin-bottom: 14px;
+
+  color: var(--color-accent);
+  font-size: 11px;
+  font-weight: 750;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.about__title {
+  margin: 0;
+
+  color: var(--color-text);
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  line-height: 1;
+  letter-spacing: -0.055em;
+}
+
+.about__title span {
+  color: var(--color-accent);
+}
+
+.about__intro {
+  max-width: 680px;
+  margin: 22px 0 0;
+
+  color: var(--color-text-secondary);
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.about__section {
+  padding: 36px 0;
+
+  border-top: 1px solid var(--color-border);
+}
+
+.about__section--last {
+  padding-bottom: 0;
+}
+
+.about__section-header {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  margin-bottom: 28px;
+}
+
+.about__section-number {
+  flex: 0 0 auto;
+
+  padding-top: 4px;
+
+  color: var(--color-accent);
+  font-family: monospace;
+  font-size: 11px;
+  font-weight: 700;
+  opacity: 0.7;
+}
+
+.about__section-header h2 {
+  margin: 0;
+
+  color: var(--color-text);
+  font-size: 21px;
+  letter-spacing: -0.02em;
+}
+
+.about__section-header p {
+  margin: 5px 0 0;
+
+  color: var(--color-text-muted);
+  font-size: 13px;
+}
+
+.about__text {
+  max-width: 760px;
+  margin: 14px 0 0;
+
+  color: var(--color-text-secondary);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.about__text:first-of-type {
+  margin-top: 0;
+}
+
+.about__text em {
+  color: var(--color-text);
+}
+
+/* Interests */
+
+.about__interest-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.about__interest {
+  padding: 18px;
+
+  background: var(--color-surface-transparent);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+
+  color: var(--color-text-secondary);
+  font-size: 13px;
+  font-weight: 600;
+
+  transition:
+    background var(--transition-fast),
+    border-color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.about__interest:hover {
+  background: var(--color-surface-hover-transparent);
+  border-color: var(--color-border-strong);
+  transform: translateY(-2px);
+}
+
+/* Toolkit */
+
+.about__toolkit {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.about__toolkit-group {
+  padding: 20px;
+
+  background: var(--color-surface-transparent);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.about__toolkit-group h3 {
+  margin: 0 0 14px;
+
+  color: var(--color-text);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.about__toolkit-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.about__toolkit-items span {
+  padding: 5px 8px;
+
+  background: var(--color-accent-subtle);
+  border: 1px solid var(--color-accent-muted);
+  border-radius: var(--radius-sm);
+
+  color: var(--color-text-secondary);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+/* Projects */
+
+.about__projects {
+  display: grid;
+  gap: 10px;
+}
+
+.about__project {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+
+  padding: 20px;
+
+  background: var(--color-surface-transparent);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+
+  text-decoration: none;
+
+  transition:
+    background var(--transition-fast),
+    border-color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.about__project:hover {
+  background: var(--color-surface-hover-transparent);
+  border-color: var(--color-border-strong);
+  transform: translateX(3px);
+}
+
+.about__project h3 {
+  margin: 0;
+
+  color: var(--color-text);
+  font-size: 14px;
+}
+
+.about__project p {
+  max-width: 700px;
+  margin: 6px 0 0;
+
+  color: var(--color-text-secondary);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.about__project-arrow {
+  flex: 0 0 auto;
+
+  color: var(--color-accent);
+  font-size: 18px;
+
+  transition: transform var(--transition-fast);
+}
+
+.about__project:hover .about__project-arrow {
+  transform: translate(2px, -2px);
+}
+
+@media (max-width: 700px) {
+  .about {
+    padding: 28px 20px;
+  }
+
+  .about__header {
+    margin-bottom: 42px;
+  }
+
+  .about__interest-grid,
+  .about__toolkit {
+    grid-template-columns: 1fr;
+  }
+
+  .about__section {
+    padding: 28px 0;
+  }
+}

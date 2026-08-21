@@ -1,0 +1,119 @@
+.activity-card {
+    display: flex;
+    gap: 14px;
+
+    padding: 12px;
+
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+
+    transition:
+        background 150ms ease,
+        border-color 150ms ease;
+}
+
+.activity-card:hover {
+    background: var(--color-surface-hover);
+    border-color: var(--color-border-strong);
+}
+
+.activity-card__media {
+    position: relative;
+    flex: 0 0 56px;
+    width: 56px;
+    height: 56px;
+}
+
+.activity-card__image,
+.activity-card__placeholder {
+    display: block;
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+}
+
+.activity-card__image {
+    object-fit: cover;
+}
+
+.activity-card__placeholder {
+    display: grid;
+    place-items: center;
+    background: var(--color-surface-raised);
+    color: var(--color-text-muted);
+}
+
+.activity-card__small-image {
+    position: absolute;
+    right: -4px;
+    bottom: -4px;
+    z-index: 2;
+
+    width: 20px;
+    height: 20px;
+
+    border: 2px solid var(--color-surface);
+    border-radius: 7px;
+
+    object-fit: cover;
+}
+
+.activity-card__content {
+    min-width: 0;
+    flex: 1;
+}
+
+.activity-header {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    min-width: 0;
+}
+
+.activity-card__label {
+    flex: 0 0 auto;
+    margin: 0;
+    color: var(--color-text-muted);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.activity-card__name {
+    min-width: 0;
+    overflow: hidden;
+    margin: 0;
+    color: var(--color-text);
+    font-size: 14px;
+    font-weight: 700;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.activity-card__details {
+    overflow: hidden;
+
+    margin: 2px 0 0;
+
+    color: var(--color-text-secondary);
+
+    font-size: 12px;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.activity-card__state {
+    overflow: hidden;
+
+    margin: 1px 0 0;
+
+    color: var(--color-text-muted);
+
+    font-size: 11px;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

@@ -1,0 +1,136 @@
+.buttons88 {
+  padding: 28px;
+  margin-top: 32px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+
+  background: var(--color-glass);
+}
+
+.buttons88__header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.buttons88__header h2 {
+  margin: 6px 0 0;
+
+  color: var(--color-text);
+
+  font-size: 1.35rem;
+  font-weight: 750;
+  letter-spacing: -0.025em;
+}
+
+.buttons88__count {
+  flex-shrink: 0;
+
+  color: var(--color-text-muted);
+
+  font-size: 11px;
+  font-weight: 650;
+}
+
+.buttons88__description {
+  margin: 8px 0 20px;
+
+  color: var(--color-text-secondary);
+
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.buttons88__grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.buttons88__button {
+  display: block;
+
+  width: 88px;
+  height: 31px;
+
+  border-radius: 4px;
+
+  overflow: hidden;
+
+  transition:
+    transform 150ms ease,
+    opacity 150ms ease,
+    box-shadow 150ms ease;
+}
+
+.buttons88__button img {
+  display: block;
+
+  width: 88px;
+  height: 31px;
+
+  image-rendering: auto;
+}
+
+.buttons88__button:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 4px 12px rgb(0 0 0 / 25%);
+
+  opacity: 0.9;
+}
+
+.buttons88__footer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  margin-top: 22px;
+  padding-top: 18px;
+
+  border-top: 1px solid var(--color-border);
+
+  color: var(--color-text-muted);
+
+  font-size: 11px;
+}
+
+.buttons88__footer button {
+  padding: 5px 9px;
+
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+
+  background: var(--color-surface-raised);
+  color: var(--color-text-secondary);
+
+  font: inherit;
+  font-weight: 650;
+
+  cursor: pointer;
+
+  transition:
+    background 150ms ease,
+    color 150ms ease,
+    border-color 150ms ease;
+}
+
+.buttons88__footer button:hover {
+  background: var(--color-accent-muted);
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+@media (max-width: 500px) {
+  .buttons88 {
+    padding: 22px;
+  }
+
+  .buttons88__header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 4px;
+  }
+}

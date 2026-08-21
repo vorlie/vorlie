@@ -1,0 +1,48 @@
+/* styles/shell.css */
+
+.app-shell {
+  position: relative;
+  isolation: isolate;
+
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+
+  display: grid;
+  grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
+  gap: var(--shell-gap);
+
+  padding: var(--shell-gap);
+  box-sizing: border-box;
+
+  overflow: hidden;
+}
+
+/* Full-window decorative background */
+.app-background {
+  position: absolute;
+  inset: -20px;
+  z-index: -1;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  filter: blur(2px);
+  transform: scale(1.02);
+
+  pointer-events: none;
+}
+
+/* Darken/soften the image */
+
+.app-background::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(180deg,
+      rgb(0 0 0 / 0.35),
+      rgb(0 0 0 / 0.55));
+}

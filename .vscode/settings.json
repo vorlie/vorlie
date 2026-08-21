@@ -8,6 +8,8 @@
     "titleBar.activeForeground": "#FCFBFD"
   },
   "editor.formatOnSave": true,
+  "editor.insertSpaces": true,
+  "editor.tabSize": 2,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "[json]": {
     "editor.defaultFormatter": "vscode.json-language-features"

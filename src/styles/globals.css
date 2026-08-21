@@ -1,0 +1,66 @@
+/* styles/globals.css */
+
+@import "./tokens.css";
+
+@import "./layout/shell.css";
+@import "./layout/mainframe.css";
+@import "./layout/sidebar.css";
+@import "./layout/sidebarprofile.css";
+
+
+@import "./pages/home/welcome.css";
+@import "./pages/home/featuredprojects.css";
+@import "./pages/home/projectcards.css";
+@import "./pages/home/buttons88x31.css";
+@import "./pages/projects.css";
+@import "./pages/about.css";
+
+@import "./lanyard/card.css";
+@import "./lanyard/timestamp.css";
+@import "./lanyard/presence.css";
+
+@import "";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-text);
+
+  font-family:
+    Inter,
+    "Segoe UI",
+    system-ui,
+    sans-serif;
+
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}

@@ -1,0 +1,57 @@
+/* styles/tokens.css */
+
+:root {
+  /* Background */
+  --color-background: #0d0e11;
+
+  /* Surfaces */
+  --color-surface: #15171b;
+  --color-surface-raised: #1b1e23;
+  --color-surface-hover: #22252b;
+
+  /* Transparent surfaces */
+  --color-surface-transparent: rgb(21 23 27 / 0.72);
+  --color-surface-raised-transparent: rgb(27 30 35 / 0.78);
+  --color-surface-hover-transparent: rgb(34 37 43 / 0.84);
+
+  /* Stronger glass surfaces */
+  --color-glass: rgb(21 23 27 / 0.58);
+  --color-glass-strong: rgb(21 23 27 / 0.76);
+
+  /* Text */
+  --color-text: #f1f2f4;
+  --color-text-secondary: #b5bac4;
+  --color-text-muted: #6f737c;
+
+  /* Accent */
+  --color-accent: #b9a7ff;
+  --color-accent-hover: #c9baff;
+  --color-accent-muted: rgb(185 167 255 / 0.14);
+  --color-accent-subtle: rgb(185 167 255 / 0.08);
+
+  /* Borders */
+  --color-border: rgb(255 255 255 / 0.07);
+  --color-border-strong: rgb(255 255 255 / 0.12);
+
+  /* Glass borders */
+  --color-glass-border: rgb(255 255 255 / 0.08);
+  --color-glass-highlight: rgb(255 255 255 / 0.04);
+
+  /* Overlay */
+  --color-overlay: rgb(0 0 0 / 0.35);
+  --color-overlay-heavy: rgb(0 0 0 / 0.55);
+
+  /* Layout */
+  --sidebar-width: 240px;
+  --shell-gap: 16px;
+
+  /* Radius */
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 26px;
+
+  /* Motion */
+  --transition-fast: 140ms ease;
+  --transition-normal: 220ms ease;
+}

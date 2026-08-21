@@ -1,0 +1,147 @@
+.sidebar {
+  min-width: 0;
+  min-height: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 20px 14px;
+
+  background: var(--color-glass);
+  border: 1px solid var(--color-glass-border);
+  border-radius: var(--radius-xl);
+
+  backdrop-filter: blur(24px) saturate(1.15);
+  -webkit-backdrop-filter: blur(24px) saturate(1.15);
+}
+
+.sidebar__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 8px 10px 24px;
+}
+
+.sidebar__logo {
+  width: 38px;
+  height: 38px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: var(--radius-md);
+
+  background: var(--color-accent-muted);
+  color: var(--color-accent);
+
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.sidebar__name {
+  font-size: 15px;
+  font-weight: 750;
+  letter-spacing: -0.01em;
+}
+
+.sidebar__subtitle {
+  margin-top: 2px;
+
+  color: var(--color-text-muted);
+
+  font-size: 11px;
+}
+
+.sidebar__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sidebar__section-label {
+  padding: 8px 12px;
+
+  color: var(--color-text-muted);
+
+  font-size: 10px;
+  font-weight: 750;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.sidebar__item {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  gap: 11px;
+
+  width: 100%;
+  min-height: 42px;
+  padding: 0 12px;
+
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+
+  background: transparent;
+  color: var(--color-text-secondary);
+
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+
+  transition:
+    background var(--transition-fast),
+    border-color var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.sidebar__item:hover {
+  background: var(--color-surface-hover);
+  color: var(--color-text);
+}
+
+.sidebar__item--active {
+  background: var(--color-accent-muted);
+  border-color: var(--color-border);
+  color: var(--color-accent);
+}
+
+.sidebar__item--active:hover {
+  background: var(--color-accent-muted);
+  color: var(--color-accent);
+}
+
+.sidebar__item .material-symbols-rounded {
+  width: 20px;
+
+  font-size: 20px;
+  line-height: 1;
+}
+
+.sidebar__item--active::before {
+  content: "";
+
+  position: absolute;
+  left: -1px;
+
+  width: 3px;
+  height: 18px;
+
+  border-radius: 0 3px 3px 0;
+
+  background: var(--color-accent);
+}
+
+.sidebar__footer {
+  margin-top: auto;
+
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  padding-top: 20px;
+
+  border-top: 1px solid var(--color-border);
+}
