@@ -82,7 +82,8 @@ export default function BlogPost() {
         }
 
         const content = await response.text();
-        const parsed = parsePost(slug, content);
+
+        const parsed = parsePost(slug!, content);
 
         if (!cancelled) {
           setPost(parsed);
