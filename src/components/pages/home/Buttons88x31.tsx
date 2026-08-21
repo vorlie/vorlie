@@ -37,11 +37,6 @@ const friendButtons = [
     alt: "megu.dev",
   },
   {
-    href: "https://kyuqdev.pages.dev/",
-    imgSrc: "https://kyuqdev.pages.dev/referer/banner.png",
-    alt: "kyuqdev.pages.dev",
-  },
-  {
     href: "https://port19.xyz/",
     imgSrc:
       "https://raw.githubusercontent.com/port19x/port19.xyz/refs/heads/master/static/buttons/port19.gif",
