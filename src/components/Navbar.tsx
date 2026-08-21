@@ -7,7 +7,6 @@ import {
 } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
-import { supportedLanguages, useTranslation } from "../i18n";
 import { PrideTheme, ThemeMode, useTheme } from "../theme";
 
 interface NavItem {
@@ -84,7 +83,6 @@ export default function Navbar() {
   const navRef = useRef<HTMLDivElement>(null);
   const preferencesRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
-  const { language, setLanguage } = useTranslation();
   const {
     themeMode,
     resolvedTheme,
@@ -379,31 +377,6 @@ export default function Navbar() {
       )}
     </div>
   );
-
-  const languageControl = (compact = false) => (
-    <div
-      className={`flex items-center gap-1 rounded-none border border-m3-outline/10 bg-m3-on-surface/5 p-1 ${
-        compact ? "w-full" : ""
-      }`}
-      aria-label="Language"
-    >
-      {supportedLanguages.map((lang) => (
-        <button
-          key={lang}
-          type="button"
-          onClick={() => setLanguage(lang)}
-          className={`cursor-pointer relative flex-1 rounded-none px-3 py-2 text-xs font-black transition-all duration-300 ${
-            language === lang
-              ? "bg-m3-secondary text-m3-on-secondary shadow-sm"
-              : "text-m3-on-surface-variant hover:bg-m3-on-surface/10"
-          }`}
-        >
-          {lang.toUpperCase()}
-        </button>
-      ))}
-    </div>
-  );
-
   const renderChildLink = (link: NavItem) => {
     if (link.type === "divider")
       return (
@@ -468,7 +441,6 @@ export default function Navbar() {
               </div>
               <div className="flex flex-col gap-2">
                 {themeControl(true)}
-                {languageControl(true)}
               </div>
               <p className="px-2 pt-2 text-[11px] font-bold text-m3-on-surface-variant/60">
                 {resolvedTheme === "pride"
@@ -495,8 +467,6 @@ export default function Navbar() {
         className="hidden md:flex pointer-events-auto items-center gap-2 rounded-none border border-m3-outline/20 bg-m3-surface-container/80 px-2 py-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,0.4)] backdrop-blur-xl border-t-white/20 border-l-white/20 border-b-black/40 border-r-black/40"
       >
         {themeControl()}
-        <div className="h-7 w-px bg-m3-outline/10" />
-        {languageControl()}
       </div>
 
       <nav

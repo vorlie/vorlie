@@ -1,7 +1,6 @@
 // src/components/Projects.tsx
 import React, { useState, useMemo } from "react";
 import Project from "./Project";
-import { motion, AnimatePresence } from "framer-motion";
 
 import {
   FaJava,
@@ -14,12 +13,7 @@ import {
 import { SiElectron, SiJavascript, SiCplusplus, SiRust } from "react-icons/si";
 
 const projectData = [
-  {
-    title: "SECURE_TERMINAL_V1.9",
-    desc: "A browser-based puzzle game teaching JavaScript fundamentals through real-time code execution and system-repair scenarios. Built with React & Tailwind CSS.",
-    links: [{ href: "https://secure-terminal.vorlie.pl/", text: "Homepage" }],
-    languages: ["React", "Typescript"],
-  },
+  
   {
     title: "Snake Shader",
     desc: "Welcome to Snake Shader, a high-performance, retro-futuristic reimplementation of the classic Snake game. We've ditched the basic 2D grids for a fully GPU-accelerated experience using ModernGL and Pygame",
@@ -102,6 +96,7 @@ const projectData = [
     ],
     languages: ["Electron"],
   },
+  
 ];
 
 const languageIconMap: { [key: string]: React.ReactNode } = {
@@ -208,11 +203,9 @@ const Projects: React.FC = () => {
       </div>
 
       {/* Projects Grid/List */}
-      <motion.div
-        layout
-        className={`grid gap-5 ${view === "grid" ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-3" : "grid-cols-1"}`}
+      <div
+        className={`grid gap-5 ${view === "grid" ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4" : "grid-cols-1"}`}
       >
-        <AnimatePresence mode="popLayout">
           {filteredProjects.map((proj) => {
             const mainLink =
               proj.links.find((l) =>
@@ -240,8 +233,7 @@ const Projects: React.FC = () => {
               />
             );
           })}
-        </AnimatePresence>
-      </motion.div>
+      </div>
 
       {filteredProjects.length === 0 && (
         <div className="text-center py-12 bg-m3-surface-container/30 rounded-none border border-dashed border-m3-outline/20">

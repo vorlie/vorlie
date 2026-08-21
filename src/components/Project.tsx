@@ -1,5 +1,4 @@
 import React from "react";
-import { motion } from "framer-motion";
 
 interface ProjectProps {
   title: string;
@@ -29,12 +28,7 @@ const Project: React.FC<ProjectProps> = ({
   };
 
   return (
-    <motion.div
-      layout
-      initial={{ opacity: 0, y: 10 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, scale: 0.95 }}
-      transition={{ duration: 0.2 }}
+    <div
       onClick={handleCardClick}
       className={`
         bg-m3-surface-container border border-m3-outline/10 rounded-none
@@ -111,7 +105,7 @@ const Project: React.FC<ProjectProps> = ({
           ))}
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 

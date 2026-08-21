@@ -4,6 +4,7 @@
 @layer base {
   html {
     font-family: 'Google Sans', 'Roboto', sans-serif;
+    scroll-behavior: smooth;
   }
 }
 
@@ -417,7 +418,7 @@ html[data-theme='pride'] .m3-card {
 }
 
 .m3-card {
-  @apply bg-m3-surface-container/60 backdrop-blur-2xl border border-m3-outline/10 rounded-none transition-all duration-300;
+  @apply bg-m3-surface-container/60 backdrop-blur-2xl border border-m3-outline/10 rounded-xl transition-all duration-300;
   box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 0.4);
   border-top-color: rgba(255, 255, 255, 0.2);
   border-left-color: rgba(255, 255, 255, 0.2);
@@ -457,4 +458,53 @@ html[data-theme='pride'] .m3-card {
 
 .animation-delay-4000 {
   animation-delay: 4s;
+}
+
+/* Sidebar specific styles */
+.sidebar-flat {
+  background: var(--color-m3-surface);
+  border-right: 1px solid var(--color-m3-outline/10);
+}
+
+.sidebar-icon {
+  transition: all 0.2s ease;
+}
+
+.sidebar-icon:hover {
+  transform: scale(1.05);
+}
+
+/* Tab bar mobile styles */
+.tabbar-mobile {
+  background: var(--color-m3-surface);
+  border-top: 1px solid var(--color-m3-outline/10);
+}
+
+/* Smooth scrolling for main content */
+main {
+  scroll-behavior: smooth;
+}
+
+/* Section spacing improvements */
+section {
+  scroll-margin-top: 80px;
+}
+
+/* Skip link for accessibility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Top bar styles */
+.topbar-overlay {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }

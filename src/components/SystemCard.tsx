@@ -92,10 +92,7 @@ const ItemList: React.FC<{ items: any[], columns?: number }> = ({ items, columns
 
 const SystemCard: React.FC<SystemCardProps> = ({ system }) => {
   return (
-    <div className="m3-card relative overflow-hidden group">
-      {/* Visual Accent */}
-      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-m3-primary via-m3-secondary to-m3-primary opacity-50" />
-      
+    <div className="relative overflow-hidden group">
       <div className="p-6 sm:p-10">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 pb-8 border-b border-m3-outline/10">
           <div>

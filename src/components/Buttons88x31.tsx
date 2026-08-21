@@ -42,6 +42,11 @@ const friendButtons = [
     imgSrc: "https://kyuqdev.pages.dev/referer/banner.png",
     alt: "kyuqdev.pages.dev button",
   },
+  {
+    href: "https://port19.xyz/",
+    imgSrc:"https://raw.githubusercontent.com/port19x/port19.xyz/refs/heads/master/static/buttons/port19.gif",
+    alt:"port19's button"
+  }
 ];
 
 const myButtonCode =
