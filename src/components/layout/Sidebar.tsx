@@ -19,6 +19,11 @@ const navigation = [
     icon: "person",
     href: "/about",
   },
+  {
+    label: "Blog",
+    icon: "article",
+    href: "/blog",
+  },
 ];
 
 export default function Sidebar() {

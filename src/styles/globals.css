@@ -14,12 +14,15 @@
 @import "./pages/home/buttons88x31.css";
 @import "./pages/projects.css";
 @import "./pages/about.css";
+@import "./pages/blog.css";
+@import "./pages/blogpost.css";
+
 
 @import "./lanyard/card.css";
 @import "./lanyard/timestamp.css";
 @import "./lanyard/presence.css";
 
-@import "";
+
 
 *,
 *::before,

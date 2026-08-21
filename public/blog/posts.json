@@ -1,50 +1,14 @@
 [
   {
-    "slug": "league-client-technical-debt",
-    "title": "The League Client: A Case Study in Technical Debt",
-    "date": "2026-03-06",
-    "tags": [
-      "league-of-legends",
-      "rant",
-      "webdev"
-    ],
-    "excerpt": "Why I keep uninstalling League, only to come back to a client held together by memory leaks and prayers.",
-    "readingTime": 2
-  },
-  {
-    "slug": "cloudflare-pages-dynamic-metadata-spa",
-    "title": "Dynamic SEO Metadata for SPAs using Cloudflare Pages",
-    "date": "2026-01-17",
-    "tags": [
-      "typescript",
-      "cloudflare",
-      "seo",
-      "webdev"
-    ],
-    "excerpt": "Learn how to use Cloudflare Pages Functions to inject dynamic OpenGraph and Meta tags into a Single Page Application for better social media previews.",
-    "readingTime": 4
-  },
-  {
-    "slug": "material-3-theming",
-    "title": "Building a Dynamic Material 3 Theme System",
-    "date": "2026-01-17",
-    "tags": [
-      "webdev",
-      "material-design",
-      "tutorial"
-    ],
-    "excerpt": "How I implemented Material You theming that extracts colors from my wallpaper and applies them across the entire website.",
-    "readingTime": 2
-  },
-  {
     "slug": "welcome",
-    "title": "Welcome to My Blog",
-    "date": "2026-01-16",
+    "title": "Welcome to my new site",
+    "date": "2026-08-22",
     "tags": [
       "announcement",
-      "meta"
+      "meta",
+      "webdev"
     ],
-    "excerpt": "The first post on my new blog. Here's what you can expect from this space.",
-    "readingTime": 1
+    "excerpt": "A small introduction to the new version of my personal site, what I'm building, and what I plan to write about.",
+    "readingTime": 3
   }
 ]
