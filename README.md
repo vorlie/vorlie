@@ -1,29 +1,86 @@
 <div align="center">
-  <h1> 💫 About Me: </h1>
-  <p> In free time I play games, such as Minecraft, osu!, NFS Heat and watch some movies, shows!<br></p>
-  <h3>🔥 Stuff that I know and try to learn:</h3>
-  <a href="https://skillicons.dev">
-    <img alt="Languages / Frameworks" src="https://skillicons.dev/icons?i=astro,css,html,js,md,py,ts&perline=13">
-  </a>
-  <h3>💯 Other stuff</h3>
-  <a href="https://skillicons.dev">
-    <img alt="Other Stuff" src="https://skillicons.dev/icons?i=discord,git,github,regex,vscode,arch&perline=13">
-  </a>
+
+# Hey, I'm Charlie 👋
+
+**Self-taught developer · tinkerer · professional over-engineerer**
+
+I like building small things, breaking them, and occasionally making them useful.
+
 </div>
 
+---
+
+### 🛠️ What I work with
+
 <div align="center">
-  <h1>🎶 Widgets:</h1>
-  <a href="https://discord.com/users/614807913302851594">
-    <img src="https://lanyard.cnrad.dev/api/614807913302851594?bg=45419B&amp&borderRadius=25px&animated=True&showDisplayName=true" alt="discord presence">
-  </a>
+
+<a href="https://skillicons.dev">
+  <img
+    src="https://skillicons.dev/icons?i=ts,js,react,rust,python,html,css,sqlite,nodejs,electron,tauri&perline=11"
+    alt="Languages and technologies"
+  />
+</a>
+
 </div>
+
+### 🔧 Tools & stuff
+
 <div align="center">
-  <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
-    <img src="https://github-readme-stats.vercel.app/api?username=vorlie&include_all_commits=true&&show_icons=true&line_height=20&title_color=C1BFFA&icon_color=C1BFFA&text_color=FFFFFF&bg_color=45419B&hide_border=true&border_radius=25&" alt="stats"/>
-  </a>
+
+<a href="https://skillicons.dev">
+  <img
+    src="https://skillicons.dev/icons?i=git,github,vscode,linux,arch,cloudflare,discord&perline=10"
+    alt="Tools"
+  />
+</a>
+
 </div>
+
+---
+
+### 🚧 What I'm building
+
+A few of the things I've been messing with:
+
+- **Kioku** -- an AniList manager with a native desktop feel
+- **AniPlay** -- a desktop media player / anime library ecosystem
+- **WOT Replay Manager** -- organizing and managing World of Tanks replays
+- Various smaller experiments, tools, themes and unnecessarily complicated side projects
+
+Most of my projects start with _"I wonder if I could..."_ and go from there.
+
+---
+
+### 🎮 Outside of coding
+
+When I'm not staring at a terminal, you'll probably find me playing:
+
+**osu! · Minecraft · Cyberpunk 2077 · various random games**
+
+I also listen to way too much music and watch anime.
+
+---
+
+### 🌐 Find me
+
 <div align="center">
-  <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
-    <img src="https://github-readme-stats.vercel.app/api/top-langs?username=Ushie&show_icons=true&locale=en&layout=compact&bg_color=45419B&title_color=C1BFFA&hide_border=true&border_radius=25&text_color=FFFFFF" alt="top langs" />
-  </a>
+
+<a href="https://vorlie.pl">
+  <img src="https://img.shields.io/badge/Website-vorlie.pl-C1BFFA?style=for-the-badge" alt="Website" />
+</a>
+<a href="https://github.com/vorlie">
+  <img src="https://img.shields.io/badge/GitHub-vorlie-C1BFFA?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" />
+</a>
+<a href="https://discord.com/users/614807913302851594">
+  <img src="https://img.shields.io/badge/Discord-Vorlie-C1BFFA?style=for-the-badge&logo=discord&logoColor=white" alt="Discord" />
+</a>
+
+</div>
+
+---
+
+<div align="center">
+
+<sub>Made with questionable amounts of caffeine and curiosity.</sub>
+
 </div>
