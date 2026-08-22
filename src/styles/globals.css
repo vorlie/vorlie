@@ -16,6 +16,8 @@
 @import "./pages/about.css";
 @import "./pages/blog.css";
 @import "./pages/blogpost.css";
+@import "./pages/gallery.css";
+@import "./pages/gallery-lightbox.css";
 
 
 @import "./lanyard/card.css";

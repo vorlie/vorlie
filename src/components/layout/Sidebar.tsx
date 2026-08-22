@@ -24,6 +24,11 @@ const navigation = [
     icon: "article",
     href: "/blog",
   },
+  {
+    label: "Gallery",
+    icon: "photo_library",
+    href: "/gallery",
+  },
 ];
 
 export default function Sidebar() {
