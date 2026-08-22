@@ -52,14 +52,14 @@ export default function Blog() {
   return (
     <main className="page blog-page">
       <header className="page-header">
-        <div className="page-header__eyebrow">Writing</div>
-
-        <h1 className="page-header__title">Blog</h1>
-
-        <p className="page-header__description">
-          Thoughts on development, Linux, technology, and whatever I happen to
-          be tinkering with.
-        </p>
+        <div>
+          <div className="page-header__eyebrow">Writing</div>
+          <h1 className="page-header__title">Blog</h1>
+          <p className="page-header__description">
+            Thoughts on development, Linux, technology, and whatever I happen to
+            be tinkering with.
+          </p>
+        </div>
       </header>
 
       {tags.length > 0 && (
