@@ -7,7 +7,6 @@
 @import "./layout/sidebar.css";
 @import "./layout/sidebarprofile.css";
 
-
 @import "./pages/home/welcome.css";
 @import "./pages/home/featuredprojects.css";
 @import "./pages/home/projectcards.css";
@@ -19,11 +18,9 @@
 @import "./pages/gallery.css";
 @import "./pages/gallery-lightbox.css";
 
-
 @import "./lanyard/card.css";
 @import "./lanyard/timestamp.css";
 @import "./lanyard/presence.css";
-
 
 
 *,
