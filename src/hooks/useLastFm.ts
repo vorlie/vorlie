@@ -15,59 +15,64 @@ export interface LastFmImage {
   size: string;
 }
 
-interface LastFmArtistResponse {
+export interface LastFmArtistResponse {
   name: string;
   playcount: string;
   url: string;
-  image: LastFmImage[];
+  image?: LastFmImage[];
 }
 
-interface LastFmTrackResponse {
+export interface LastFmTrackResponse {
   name: string;
-  artist: {
+
+  artist?: {
     "#text": string;
   };
-  album: {
+
+  album?: {
     "#text": string;
   };
-  image: LastFmImage[];
+
+  image?: LastFmImage[];
+
   url: string;
+
   "@attr"?: {
     nowplaying?: string;
   };
 }
 
-interface LastFmAlbumResponse {
+export interface LastFmAlbumResponse {
   name: string;
   playcount: string;
-  artist: {
+  artist?: {
     name: string;
   };
   url: string;
-  image: LastFmImage[];
+  image?: LastFmImage[];
 }
 
-interface RecentTracksResponse {
+export interface RecentTracksResponse {
   recenttracks?: {
-    track: LastFmTrackResponse[];
+    track?: LastFmTrackResponse[];
   };
 }
 
-interface TopArtistsResponse {
+export interface TopArtistsResponse {
   topartists?: {
-    artist: LastFmArtistResponse[];
+    artist?: LastFmArtistResponse[];
   };
 }
 
-interface TopTracksResponse {
+export interface TopTracksResponse {
   toptracks?: {
-    track: LastFmTrackResponse[];
+    track?: LastFmTrackResponse[];
   };
 }
 
-interface TopAlbumsResponse {
+export interface TopAlbumsResponse {
   topalbums?: {
-    album: LastFmAlbumResponse[];
+    album?: LastFmAlbumResponse[];
   };
 }
 
@@ -95,10 +100,10 @@ export interface Album {
   url: string;
 }
 
-const getImage = (images: LastFmImage[]): string => {
+const getImage = (images?: LastFmImage[]): string => {
   return (
     images
-      .slice()
+      ?.slice()
       .reverse()
       .find((image) => image["#text"])?.["#text"] ?? ""
   );
@@ -142,40 +147,47 @@ export const useLastFm = (period: LastFmPeriod = "7day") => {
           fetchLastFm<RecentTracksResponse>("user.getrecenttracks", {
             limit: "10",
           }),
-
           fetchLastFm<TopArtistsResponse>("user.gettopartists", {
             limit: "10",
             period,
           }),
-
           fetchLastFm<TopTracksResponse>("user.gettoptracks", {
             limit: "10",
             period,
           }),
-
           fetchLastFm<TopAlbumsResponse>("user.gettopalbums", {
             limit: "10",
             period,
           }),
         ]);
 
-      const tracks = (recentData.recenttracks?.track ?? []).map(mapTrack);
+      const tracks =
+        recentData.recenttracks?.track?.map(mapTrack) ?? [];
 
-      const currentlyPlaying = tracks.find((track) => track.isPlaying) ?? null;
+      const currentlyPlaying =
+        tracks.find((track) => track.isPlaying) ?? null;
 
       setNowPlaying(currentlyPlaying);
       setRecentTracks(tracks);
 
-      setTopArtists((artistsData.topartists?.artist ?? []).map(mapArtist));
+      setTopArtists(
+        artistsData.topartists?.artist?.map(mapArtist) ?? [],
+      );
 
-      setTopTracks((tracksData.toptracks?.track ?? []).map(mapTrack));
+      setTopTracks(
+        tracksData.toptracks?.track?.map(mapTrack) ?? [],
+      );
 
-      setTopAlbums((albumsData.topalbums?.album ?? []).map(mapAlbum));
+      setTopAlbums(
+        albumsData.topalbums?.album?.map(mapAlbum) ?? [],
+      );
     } catch (error) {
       console.error("Error fetching Last.fm data:", error);
 
       setError(
-        error instanceof Error ? error.message : "Failed to load Last.fm data",
+        error instanceof Error
+          ? error.message
+          : "Failed to load Last.fm data",
       );
     } finally {
       setLoading(false);
@@ -205,9 +217,9 @@ export const useLastFm = (period: LastFmPeriod = "7day") => {
 function mapTrack(track: LastFmTrackResponse): Track {
   return {
     name: track.name,
-    artist: track.artist["#text"],
-    album: track.album["#text"],
-    image: getImage(track.image),
+    artist: track.artist?.["#text"] ?? "Unknown Artist",
+    album: track.album?.["#text"] ?? "",
+    image: getImage(track.image) || "/images/placeholder_music.png",
     isPlaying: track["@attr"]?.nowplaying === "true",
     url: track.url,
   };
@@ -225,7 +237,7 @@ function mapArtist(artist: LastFmArtistResponse): Artist {
 function mapAlbum(album: LastFmAlbumResponse): Album {
   return {
     name: album.name,
-    artist: album.artist.name,
+    artist: album.artist?.name ?? "Unknown Artist",
     playcount: Number(album.playcount) || 0,
     image: getImage(album.image),
     url: album.url,
