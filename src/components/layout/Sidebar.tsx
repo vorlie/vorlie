@@ -29,6 +29,11 @@ const navigation = [
     icon: "photo_library",
     href: "/gallery",
   },
+  {
+    label: "Music",
+    icon: "music_history",
+    href: "/music",
+  }
 ];
 
 export default function Sidebar() {
