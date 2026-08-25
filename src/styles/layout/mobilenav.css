@@ -66,3 +66,9 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+@media (min-width: 769px) {
+  .mobile-nav {
+    display: none;
+  }
+}
