@@ -18,6 +18,18 @@
   overflow: hidden;
 }
 
+@media (max-width: 768px) {
+  .app-shell {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 0;
+    gap: 0;
+  }
+
+  .app-background {
+    inset: 0;
+  }
+}
+
 /* Full-window decorative background */
 .app-background {
   position: absolute;

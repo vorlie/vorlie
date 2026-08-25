@@ -15,6 +15,12 @@
   -webkit-backdrop-filter: blur(24px) saturate(1.15);
 }
 
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+}
+
 .sidebar__header {
   display: flex;
   align-items: center;

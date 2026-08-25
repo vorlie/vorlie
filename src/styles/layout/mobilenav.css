@@ -1,0 +1,68 @@
+.mobile-nav {
+  position: fixed;
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  z-index: 1000;
+
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+
+  padding: 8px;
+
+  background: var(--color-glass);
+  border: 1px solid var(--color-glass-border);
+  border-radius: var(--radius-lg);
+
+  backdrop-filter: blur(24px) saturate(1.15);
+  -webkit-backdrop-filter: blur(24px) saturate(1.15);
+
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+}
+
+.mobile-nav__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+
+  min-width: 0;
+  min-height: 52px;
+  padding: 6px 2px;
+
+  border-radius: var(--radius-md);
+
+  color: var(--color-text-secondary);
+  text-decoration: none;
+
+  transition:
+    background var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.mobile-nav__item:hover {
+  background: var(--color-surface-hover);
+  color: var(--color-text);
+}
+
+.mobile-nav__item--active {
+  background: var(--color-accent-muted);
+  color: var(--color-accent);
+}
+
+.mobile-nav__item .material-symbols-rounded {
+  font-size: 21px;
+  line-height: 1;
+}
+
+.mobile-nav__label {
+  overflow: hidden;
+  max-width: 100%;
+
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1.2;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

@@ -6,6 +6,7 @@
 @import "./layout/mainframe.css";
 @import "./layout/sidebar.css";
 @import "./layout/sidebarprofile.css";
+@import "./layout/mobilenav.css";
 
 @import "./pages/home/welcome.css";
 @import "./pages/home/featuredprojects.css";

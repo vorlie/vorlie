@@ -2,39 +2,7 @@ import { NavLink } from "react-router-dom";
 
 import { useLanyard } from "../../context/LanyardContext";
 import SidebarProfile from "./SidebarProfile";
-
-const navigation = [
-  {
-    label: "Home",
-    icon: "home",
-    href: "/",
-  },
-  {
-    label: "Projects",
-    icon: "code",
-    href: "/projects",
-  },
-  {
-    label: "About",
-    icon: "person",
-    href: "/about",
-  },
-  {
-    label: "Blog",
-    icon: "article",
-    href: "/blog",
-  },
-  {
-    label: "Gallery",
-    icon: "photo_library",
-    href: "/gallery",
-  },
-  {
-    label: "Music",
-    icon: "music_history",
-    href: "/music",
-  }
-];
+import { navigation } from "./nav";
 
 export default function Sidebar() {
   const { presence } = useLanyard();
