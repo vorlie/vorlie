@@ -1,5 +1,20 @@
 [
   {
+    "slug": "i-somehow-ended-up-building-a-blu-ray-ripping-setup",
+    "title": "I Somehow Ended Up Building a Blu-ray Ripping Setup",
+    "date": "2026-08-25",
+    "tags": [
+      "blu-ray",
+      "dvd",
+      "plex",
+      "makemkv",
+      "media",
+      "self-hosting"
+    ],
+    "excerpt": "A small rabbit hole involving old laptops, cheap DVD collections, Blu-ray drives, MakeMKV and Plex.",
+    "readingTime": 10
+  },
+  {
     "slug": "welcome",
     "title": "Welcome to my new site",
     "date": "2026-08-22",
