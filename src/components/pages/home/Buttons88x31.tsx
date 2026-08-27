@@ -7,6 +7,11 @@ const friendButtons = [
     alt: "vorlie.pl",
   },
   {
+    href: "https://a35hie.me?utm_source=badge",
+    imgSrc: "https://a35hie.me/badges/a35hie.png",
+    alt: "Ashie's badge",
+  },
+  {
     href: "https://uwu.gal/about-us",
     imgSrc: "https://uwu.gal/button.png",
     alt: "uwu.gal",
@@ -71,9 +76,7 @@ export default function Buttons88x31() {
           <h2>Friends &amp; cool people</h2>
         </div>
 
-        <span className="buttons88__count">
-          {friendButtons.length} sites
-        </span>
+        <span className="buttons88__count">{friendButtons.length} sites</span>
       </div>
 
       <p className="buttons88__description">
