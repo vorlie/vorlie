@@ -18,14 +18,6 @@ const projects: Project[] = [
     accent: "#d27b7b",
   },
   {
-    name: "AniPlay",
-    description:
-      "A local media player and library built around anime.",
-    tags: ["Electron", "React", "Node", "ffmpeg"],
-    href: "https://github.com/vorlie/aniplayv2",
-    accent: "#5da9e9",
-  },
-  {
     name: "ani-cli-rs",
     description:
       "A cross-platform Rust port of ani-cli with two independent Anikoto catalogs and native MegaPlay/KotoCDN playback..",
