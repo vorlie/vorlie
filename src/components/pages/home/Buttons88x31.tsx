@@ -18,7 +18,7 @@ const friendButtons = [
   },
   {
     href: "https://byeoon.dev/",
-    imgSrc: "/images/byoon.png",
+    imgSrc: "https://byeoon.dev/img/button.png",
     alt: "byeoon.dev",
   },
   {
@@ -26,14 +26,14 @@ const friendButtons = [
     imgSrc: "https://pre1ude.dev/blankie.png",
     alt: "pre1ude.dev",
   },
-  {
-    href: "https://deepy.me/",
-    imgSrc: "/images/deepy.png",
-    alt: "deepy.me",
-  },
+  //{
+  //  href: "https://deepy.me/",
+  //  imgSrc: "/images/deepy.png",
+  //  alt: "deepy.me",
+  //},
   {
     href: "https://specifix.dev/",
-    imgSrc: "/images/specifix.png",
+    imgSrc: "https://specifix.dev/images/88x31.png",
     alt: "specifix.dev",
   },
   {
