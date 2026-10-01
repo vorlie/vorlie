@@ -17,8 +17,6 @@
   "dependencies": {
     "@heroicons/react": "^2.2.0",
     "@material/material-color-utilities": "^0.4.0",
-    "@tailwindcss/typography": "^0.5.20",
-    "@tailwindcss/vite": "^4.3.3",
     "colorthief": "^3.5.0",
     "framer-motion": "^13.1.1",
     "gray-matter": "^4.0.3",
@@ -32,8 +30,7 @@
     "react-router-dom": "^7.18.2",
     "rehype-highlight": "^7.0.2",
     "rehype-raw": "^7.0.0",
-    "remark-gfm": "^4.0.1",
-    "tailwindcss": "^4.3.3"
+    "remark-gfm": "^4.0.1"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
