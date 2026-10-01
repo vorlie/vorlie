@@ -18,17 +18,17 @@ const desktop = ["Electron", "Tauri"];
 const tooling = ["Node.js", "SQLite", "GraphQL", "Git", "Linux"];
 
 const currentProjects = [
-  {
+    {
+    name: "ani-cli-rs",
+    description:
+      "A fast, cross-platform anime CLI written in Rust.",
+    href: "https://github.com/vorlie/ani-cli-rs",
+  },
+  { 
     name: "Kioku",
     description:
       "An AniList manager focused on making anime and manga management feel like a proper desktop application.",
-    href: "/projects",
-  },
-  {
-    name: "AniPlay",
-    description:
-      "A media player and download ecosystem for managing and watching anime locally.",
-    href: "/projects",
+    href: "https://github.com/vorlie/kioku",
   },
 ];
 
