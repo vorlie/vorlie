@@ -29,14 +29,6 @@
   --color-accent-muted: rgb(185 167 255 / 0.14);
   --color-accent-subtle: rgb(185 167 255 / 0.08);
 
-  /* Borders */
-  --color-border: rgb(255 255 255 / 0.07);
-  --color-border-strong: rgb(255 255 255 / 0.12);
-
-  /* Glass borders */
-  --color-glass-border: rgb(255 255 255 / 0.08);
-  --color-glass-highlight: rgb(255 255 255 / 0.04);
-
   /* Overlay */
   --color-overlay: rgb(0 0 0 / 0.35);
   --color-overlay-heavy: rgb(0 0 0 / 0.55);

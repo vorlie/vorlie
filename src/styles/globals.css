@@ -24,6 +24,7 @@
 @import "./lanyard/timestamp.css";
 @import "./lanyard/presence.css";
 
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 
 *,
 *::before,
@@ -44,11 +45,7 @@ body {
   color: var(--color-text);
 
   font-family:
-    Inter,
-    "Segoe UI",
-    system-ui,
-    sans-serif;
-
+    Outfit;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
