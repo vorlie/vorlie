@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 
+import MotionEntry from "../components/pages/motion/MotionEntry";
 import ProjectGrid from "../components/pages/projects/ProjectGrid";
 import { useGitHubRepos } from "../hooks/useGitHubRepos";
 
@@ -49,6 +50,8 @@ export default function Projects() {
           View GitHub
         </a>
       </header>
+
+      <MotionEntry />
 
       {!loading && !error && languages.length > 0 && (
         <div className="project-filters">

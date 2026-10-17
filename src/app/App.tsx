@@ -10,6 +10,8 @@ import Blog from "../pages/Blog";
 import BlogPost from "../pages/BlogPost";
 import Gallery from "../pages/Gallery";
 import Music from "../pages/Music";
+import Motion from "../pages/Motion";
+import MotionProjectPage from "../pages/MotionProjectPage";
 
 export default function App() {
   return (
@@ -24,6 +26,8 @@ export default function App() {
             <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/gallery" element={<Gallery/>}/>
             <Route path="/music" element={<Music />} />
+            <Route path="/motion" element={<Motion />} />
+            <Route path="/motion/:slug" element={<MotionProjectPage />} />
 
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
