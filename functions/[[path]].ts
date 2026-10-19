@@ -10,7 +10,7 @@ interface RouteMetadata {
   image?: string;
 }
 
-const DEFAULT_IMAGE = "https://vorlie.pl/images/favicon.png";
+const DEFAULT_IMAGE = "https://vorlie.pl/favicon.png";
 
 // Static Route Metadata Map
 const routeMetadata: Record<string, RouteMetadata> = {
