@@ -70,7 +70,7 @@ export const motionProjects: MotionProject[] = [
 
     poster: "https://gallery.vorlie.pl/share/1792410950933-upload.png",
 
-    video: { type: "youtube", id: "cTDRtkBfYB8" },
+    video: { type: "youtube", id: "ztAjGFK0NY0" },
     // video: {
     //   type: "file",
     //   sources: [
