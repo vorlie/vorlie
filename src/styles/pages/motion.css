@@ -672,6 +672,30 @@
   transform: translate(2px, -2px);
 }
 
+.motion-prose__section + .motion-prose__section {
+  margin-top: 1.75rem;
+}
+
+.motion-prose__section h3 {
+  margin: 0 0 0.65rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.motion-prose__section p + p {
+  margin-top: 0.75rem;
+}
+
+.motion-prose__section ul {
+  margin: 0.75rem 0 0;
+  padding-left: 1.25rem;
+}
+
+.motion-prose__section li + li {
+  margin-top: 0.4rem;
+}
+
+
 /* ---------- Responsive ---------- */
 
 @media (max-width: 768px) {
