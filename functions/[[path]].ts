@@ -4,55 +4,42 @@ interface Env {
   ASSETS: { fetch: (request: Request) => Promise<Response> };
 }
 
+interface RouteMetadata {
+  title: string;
+  description: string;
+  image?: string;
+}
+
+const DEFAULT_IMAGE = "https://vorlie.pl/images/favicon.png";
+
 // Static Route Metadata Map
-const routeMetadata: Record<string, { title: string; description: string }> = {
+const routeMetadata: Record<string, RouteMetadata> = {
   "/": {
     title: "Home | vorlie",
     description: "My personal corner of the internet.",
-  },
-  "/specs": {
-    title: "PC Specs | vorlie",
-    description: "My computer specifications, peripherals, and setup details.",
-  },
-  "/clips": {
-    title: "Clips | vorlie",
-    description:
-      "A collection of my gaming clips, highlights, and funny moments.",
-  },
-  "/project/iota-player": {
-    title: "Iota Player | vorlie",
-    description:
-      "A modern, lightweight, and beautiful music player for Windows built with Python.",
   },
   "/music": {
     title: "Music | vorlie",
     description:
       "Check out what I'm listening to! Real-time stats from Last.fm.",
   },
-  "/rat": {
-    title: "Rats | vorlie",
-    description: "A gallery of rats.",
+  "/about": {
+    title: "About | vorlie",
+    description: "A little about me and my work.",
   },
-  "/colors": {
-    title: "Colors | vorlie",
+  "/projects": {
+    title: "Projects | vorlie",
+    description: "A collection of my projects.",
+  },
+  "/motion": {
+    title: "Motion | vorlie",
+    description: "A collection of my motion graphics projects.",
+  },
+  "/motion/anm-new-2026": {
+    title: "ANM New 2026 — Music Visualizer | vorlie",
     description:
-      "Material 3 Dynamic Color Palette and WCAG 2.1 contrast checker.",
-  },
-  "/scanner": {
-    title: "Scanner | vorlie",
-    description: "QR Code and Barcode Scanner utility.",
-  },
-  "/miko/privacy-policy": {
-    title: "Privacy Policy | vorlie",
-    description: "Privacy Policy for Miko and vorlie services.",
-  },
-  "/miko/terms-of-service": {
-    title: "Terms of Service | vorlie",
-    description: "Terms of Service for Miko and vorlie services.",
-  },
-  "/verify": {
-    title: "Verify | vorlie",
-    description: "Verification page.",
+      "A music visualizer for Arcando & IRAH's Killer Instinct, featuring a red audio-reactive spectrum, manually timed lyrics, and beat-driven effects.",
+    image: "https://gallery.vorlie.pl/share/1792410950933-upload.png",
   },
   "/blog": {
     title: "Blog | vorlie",
@@ -79,12 +66,13 @@ export const onRequest = async (context: any) => {
   // 2. Defaults
   let title = "vorlie";
   let description = "My personal corner of the internet.";
-  let image = "https://vorlie.pl/images/favicon.png";
+  let image = DEFAULT_IMAGE;
   let videoUrl = "";
   let isYouTube = false;
 
   // 3. Blog dynamic
   const blogMatch = path.match(/^\/blog\/([^/]+)$/);
+
   if (blogMatch) {
     const slug = blogMatch[1];
 
@@ -99,65 +87,31 @@ export const onRequest = async (context: any) => {
         if (post) {
           title = `${post.title} | vorlie's blog`;
           description = post.excerpt || description;
+
+          if (post.image) {
+            image = post.image;
+          }
         }
       }
     } catch (e) {
       console.error("Blog metadata fetch failed:", e);
     }
-  }
-
-  // 4. Clips dynamic
-  else if (path.startsWith("/clips")) {
-    let clipId: string | null = null;
-
-    if (path === "/clips") {
-      clipId = url.searchParams.get("id");
-    } else {
-      clipId = path.split("/")[2];
-    }
-
-    if (clipId) {
-      try {
-        const clipsRes = await fetch("https://api.vorlie.pl/clips.json");
-
-        if (clipsRes.ok) {
-          const clips: any[] = await clipsRes.json();
-          const clip = clips.find((c) => c.id === clipId);
-
-          if (clip) {
-            title = `${clip.title} | vorlie`;
-            description = clip.description; // ← THIS is what Discord needs
-            image = clip.thumbnailUrl;
-            videoUrl = clip.videoUrl;
-
-            isYouTube =
-              videoUrl.includes("youtube.com") || videoUrl.includes("youtu.be");
-
-            console.log("Clip metadata applied:", clipId);
-          } else {
-            console.log("Clip not found:", clipId);
-          }
-        }
-      } catch (e) {
-        console.error("Clip metadata fetch failed:", e);
-      }
-    }
-  }
-
-  // 5. Static routes fallback
-  else {
+  } else {
+    // 4. Static routes
     const meta = routeMetadata[path] || routeMetadata[path.replace(/\/$/, "")];
 
     if (meta) {
       title = meta.title;
       description = meta.description;
+      image = meta.image || DEFAULT_IMAGE;
     }
   }
 
-  // 6. Fetch base HTML
+  // 5. Fetch base HTML
   const response = await context.env.ASSETS.fetch(context.request);
 
   const contentType = response.headers.get("content-type");
+
   if (!contentType || !contentType.includes("text/html")) {
     return response;
   }
@@ -168,7 +122,7 @@ export const onRequest = async (context: any) => {
       ? "video.other"
       : "website";
 
-  // 7. HTMLRewriter
+  // 6. Update metadata
   let rewriter = new HTMLRewriter()
     .on("title", {
       element(el) {
@@ -197,7 +151,7 @@ export const onRequest = async (context: any) => {
     })
     .on('meta[property="og:url"]', {
       element(el: Element) {
-        el.setAttribute("content", url.href);
+        el.setAttribute("content", `${url.origin}${path}`);
       },
     })
     .on('meta[property="og:type"]', {
@@ -215,13 +169,18 @@ export const onRequest = async (context: any) => {
         el.setAttribute("content", description);
       },
     })
+    .on('meta[name="twitter:image"]', {
+      element(el: Element) {
+        el.setAttribute("content", image);
+      },
+    })
     .on('meta[name="twitter:card"]', {
       element(el: Element) {
-        el.setAttribute("content", videoUrl ? "player" : "summary_large_image");
+        el.setAttribute("content", "summary_large_image");
       },
     });
 
-  // Inject video tags
+  // 7. Inject video tags
   if (videoUrl && !isYouTube) {
     rewriter = rewriter.on("head", {
       element(el: Element) {
@@ -236,12 +195,13 @@ export const onRequest = async (context: any) => {
 
   const transformed = rewriter.transform(response);
 
-  // 8. Disable cache for embeds (VERY IMPORTANT)
+  // 8. Preserve response headers and disable caching
+  const headers = new Headers(response.headers);
+  headers.set("cache-control", "no-cache, no-store, must-revalidate");
+
   return new Response(transformed.body, {
-    headers: {
-      "content-type": "text/html; charset=UTF-8",
-      "cache-control": "no-cache, no-store, must-revalidate",
-    },
+    headers,
     status: response.status,
+    statusText: response.statusText,
   });
 };
