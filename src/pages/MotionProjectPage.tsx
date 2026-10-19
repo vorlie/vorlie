@@ -49,17 +49,41 @@ export default function MotionProjectPage() {
       <VideoPlayer key={project.slug} project={project} />
 
       <div className="motion-body">
-        {project.description && project.description.length > 0 && (
+        {(project.descriptionSections?.length ?? 0) > 0 ||
+        (project.description?.length ?? 0) > 0 ? (
           <section className="motion-section">
             <h2 className="motion-section__title">About</h2>
 
             <div className="motion-prose">
-              {project.description.map((paragraph) => (
-                <p key={paragraph}>{paragraph}</p>
-              ))}
+              {project.descriptionSections?.length ? (
+                project.descriptionSections.map((section, index) => (
+                  <div
+                    className="motion-prose__section"
+                    key={`${section.title ?? "section"}-${index}`}
+                  >
+                    {section.title && <h3>{section.title}</h3>}
+
+                    {section.paragraphs?.map((paragraph) => (
+                      <p key={paragraph}>{paragraph}</p>
+                    ))}
+
+                    {section.list && section.list.length > 0 && (
+                      <ul>
+                        {section.list.map((item) => (
+                          <li key={item}>{item}</li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                ))
+              ) : (
+                project.description?.map((paragraph) => (
+                  <p key={paragraph}>{paragraph}</p>
+                ))
+              )}
             </div>
           </section>
-        )}
+        ) : null}
 
         <ProjectDetails project={project} />
       </div>

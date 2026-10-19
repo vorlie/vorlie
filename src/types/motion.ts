@@ -63,6 +63,7 @@ export interface MotionProject {
   poster?: string;
 
   /** Paragraphs. */
+  descriptionSections?: MotionDescriptionSection[];
   description?: string[];
   plugins?: string[];
   techniques?: string[];
@@ -73,3 +74,9 @@ export interface MotionProject {
   /** Asset credits other than the music and the visualizer itself. */
   otherCredits?: Array<MotionLink & { role?: string }>;
 }
+
+export type MotionDescriptionSection = {
+  title?: string;
+  paragraphs?: string[];
+  list?: string[];
+};
