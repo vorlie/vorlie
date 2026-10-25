@@ -20,10 +20,10 @@
 .gallery-page__title {
   margin: 0 0 14px;
   color: var(--color-text);
-  font-size: clamp(42px, 6vw, 72px);
   font-weight: 800;
-  letter-spacing: -0.05em;
-  line-height: 1;
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  line-height: 1.05;
+  letter-spacing: -0.045em;
 }
 
 .gallery-page__accent {

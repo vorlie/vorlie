@@ -1,10 +1,5 @@
 .buttons88 {
-  padding: 28px;
   margin-top: 32px;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-
-  background: var(--color-glass);
 }
 
 .buttons88__header {

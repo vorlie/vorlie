@@ -40,9 +40,7 @@
   background-repeat: no-repeat;
   background-size: cover;
 
-  filter: blur(2px);
-  transform: scale(1.02);
-
+  background-color: var(--color-background);
   pointer-events: none;
 }
 
@@ -52,9 +50,4 @@
   content: "";
   position: absolute;
   inset: 0;
-
-  background:
-    linear-gradient(180deg,
-      rgb(0 0 0 / 0.35),
-      rgb(0 0 0 / 0.55));
 }

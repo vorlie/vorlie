@@ -1,12 +1,10 @@
 .about {
-
   margin: 0 auto;
-  padding: 48px;
 }
 
 .about__header {
   max-width: 760px;
-  margin-bottom: 64px;
+
 }
 
 .about__eyebrow {
@@ -24,9 +22,9 @@
   margin: 0;
 
   color: var(--color-text);
-  font-size: clamp(2.5rem, 6vw, 4.5rem);
-  line-height: 1;
-  letter-spacing: -0.055em;
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  line-height: 1.05;
+  letter-spacing: -0.045em;
 }
 
 .about__title span {
@@ -66,7 +64,7 @@
 
   color: var(--color-accent);
   font-family: monospace;
-  font-size: 11px;
+  font-size: 32px;
   font-weight: 700;
   opacity: 0.7;
 }

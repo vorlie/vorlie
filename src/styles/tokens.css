@@ -2,32 +2,32 @@
 
 :root {
   /* Background */
-  --color-background: #0d0e11;
+  --color-background: #110d0d;
+  --color-background-alt: #1d1616;
 
   /* Surfaces */
-  --color-surface: #15171b;
-  --color-surface-raised: #1b1e23;
-  --color-surface-hover: #22252b;
+  --color-surface: #1b1515;
+  --color-surface-raised: #231b1b;
+  --color-surface-hover: #2b2222;
 
   /* Transparent surfaces */
-  --color-surface-transparent: rgb(21 23 27 / 0.72);
-  --color-surface-raised-transparent: rgb(27 30 35 / 0.78);
-  --color-surface-hover-transparent: rgb(34 37 43 / 0.84);
+  --color-surface-transparent: rgb(27, 21, 21);
+  --color-surface-raised-transparent: rgb(35, 27, 27);
+  --color-surface-hover-transparent: rgb(43, 34, 34);
 
   /* Stronger glass surfaces */
-  --color-glass: rgb(21 23 27 / 0.58);
-  --color-glass-strong: rgb(21 23 27 / 0.76);
+  --color-glass: rgb(27, 21, 21);
 
   /* Text */
-  --color-text: #f1f2f4;
-  --color-text-secondary: #b5bac4;
-  --color-text-muted: #6f737c;
+  --color-text: #f4f1f1;
+  --color-text-secondary: #c4b5b5;
+  --color-text-muted: #7c6f6f;
 
   /* Accent */
-  --color-accent: #b9a7ff;
-  --color-accent-hover: #c9baff;
-  --color-accent-muted: rgb(185 167 255 / 0.14);
-  --color-accent-subtle: rgb(185 167 255 / 0.08);
+  --color-accent: #ffa7a7;
+  --color-accent-hover: #ffbaba;
+  --color-accent-muted: rgba(255, 167, 167, 0.14);
+  --color-accent-subtle: rgba(255, 167, 167, 0.08);
 
   /* Overlay */
   --color-overlay: rgb(0 0 0 / 0.35);

@@ -2,12 +2,7 @@
     display: grid;
     grid-template-columns: minmax(0, 1.4fr) minmax(300px, 0.8fr);
     gap: 36px;
-
-    padding: 36px;
-
-    border: 1px solid var(--color-border);
     border-radius: var(--radius-lg);
-    background: var(--color-glass);
 }
 
 .welcome__eyebrow {

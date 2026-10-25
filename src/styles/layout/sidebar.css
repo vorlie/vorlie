@@ -6,13 +6,8 @@
   flex-direction: column;
 
   padding: 20px 14px;
-
-  background: var(--color-glass);
   border: 1px solid var(--color-glass-border);
   border-radius: var(--radius-xl);
-
-  backdrop-filter: blur(24px) saturate(1.15);
-  -webkit-backdrop-filter: blur(24px) saturate(1.15);
 }
 
 @media (max-width: 768px) {

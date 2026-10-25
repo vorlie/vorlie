@@ -14,7 +14,6 @@ export default function AppShell({ children }: AppShellProps) {
     <div className="app-shell">
       <div
         className="app-background"
-        style={{backgroundImage:"url('/images/background.jpg')"}}
       />
       <MobileNav />
       <Sidebar />
