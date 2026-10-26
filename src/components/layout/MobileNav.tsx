@@ -1,11 +1,12 @@
 import { NavLink } from "react-router-dom";
-
-import { navigation } from "./nav";
+import { navigationGroups } from "./nav";
 
 export default function MobileNav() {
+  const allItems = navigationGroups.flatMap((group) => group.items);
+
   return (
     <nav className="mobile-nav" aria-label="Main navigation">
-      {navigation.map((item) => (
+      {allItems.map((item) => (
         <NavLink
           key={item.href}
           to={item.href}

@@ -1,11 +1,11 @@
 import { NavLink } from "react-router-dom";
-
 import { useLanyard } from "../../context/LanyardContext";
 import SidebarProfile from "./SidebarProfile";
-import { navigation } from "./nav";
+import { navigationGroups } from "./nav";
 
 export default function Sidebar() {
   const { presence } = useLanyard();
+
   return (
     <aside className="sidebar">
       {presence && (
@@ -16,23 +16,28 @@ export default function Sidebar() {
       )}
 
       <nav className="sidebar__nav" aria-label="Main navigation">
-        <div className="sidebar__section-label">Navigate</div>
-
-        {navigation.map((item) => (
-          <NavLink
-            key={item.href}
-            to={item.href}
-            end={item.href === "/"}
-            className={({ isActive }) =>
-              `sidebar__item ${isActive ? "sidebar__item--active" : ""}`
-            }
-          >
-            <span className="material-symbols-rounded" aria-hidden="true">
-              {item.icon}
-            </span>
-
-            <span>{item.label}</span>
-          </NavLink>
+        {navigationGroups.map((group) => (
+          <div key={group.title} className="sidebar__group">
+            <div className="sidebar__section-label">{group.title}</div>
+            
+            <div className="sidebar__items">
+              {group.items.map((item) => (
+                <NavLink
+                  key={item.href}
+                  to={item.href}
+                  end={item.href === "/"}
+                  className={({ isActive }) =>
+                    `sidebar__item ${isActive ? "sidebar__item--active" : ""}`
+                  }
+                >
+                  <span className="material-symbols-rounded" aria-hidden="true">
+                    {item.icon}
+                  </span>
+                  <span>{item.label}</span>
+                </NavLink>
+              ))}
+            </div>
+          </div>
         ))}
       </nav>
 
@@ -46,7 +51,6 @@ export default function Sidebar() {
           <span className="material-symbols-rounded" aria-hidden="true">
             code
           </span>
-
           <span>GitHub</span>
         </a>
       </div>
