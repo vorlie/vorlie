@@ -47,6 +47,11 @@ const friendButtons = [
       "https://raw.githubusercontent.com/port19x/port19.xyz/refs/heads/master/static/buttons/port19.gif",
     alt: "port19.xyz",
   },
+  {
+    href: "https://dvop.fyi",
+    imgSrc: "https://dvop.fyi/images/frank.png",
+    alt: "dvop.fyi",
+  }
 ];
 
 const myButtonCode =
