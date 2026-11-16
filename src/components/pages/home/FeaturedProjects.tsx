@@ -10,6 +10,14 @@ interface Project {
 
 const projects: Project[] = [
   {
+    name: "Iota Player",
+    description:
+      "A local-first desktop music player.",
+    tags: ["React", "TypeScript", "Electron"],
+    href: "https://github.com/vorlie/iotaplayer-rewrite",
+    accent: "#ffa7a7",
+  },
+  {
     name: "Kioku",
     description:
       "A desktop AniList manager for keeping track of anime and manga.",
