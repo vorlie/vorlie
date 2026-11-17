@@ -1,8 +1,11 @@
 import { useMemo, useState } from "react";
+import { Link } from "react-router-dom";
+import { ArrowUpRight } from "lucide-react";
 
 import MotionEntry from "../components/pages/motion/MotionEntry";
 import ProjectGrid from "../components/pages/projects/ProjectGrid";
 import { useGitHubRepos } from "../hooks/useGitHubRepos";
+import "../styles/pages/iotaplayer.css";
 
 export default function Projects() {
   const { repositories, loading, error } = useGitHubRepos();
@@ -52,6 +55,19 @@ export default function Projects() {
       </header>
 
       <MotionEntry />
+
+      <Link to="/projects/iotaplayer" className="iotaplayer-entry">
+        <img
+          src="/images/projects/iotaplayer.svg"
+          alt="IotaPlayer icon"
+          className="iotaplayer-entry__icon"
+        />
+        <span className="iotaplayer-entry__text">
+          <strong>IotaPlayer</strong>
+          <span>Local-first desktop music player with word-synced lyrics, MPV &amp; Web Audio EQ</span>
+        </span>
+        <ArrowUpRight size={18} className="iotaplayer-entry__arrow" aria-hidden="true" />
+      </Link>
 
       {!loading && !error && languages.length > 0 && (
         <div className="filter-chips" role="group" aria-label="Filter by language">

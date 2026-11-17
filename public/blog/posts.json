@@ -27,7 +27,7 @@
       "iotaplayer"
     ],
     "excerpt": "Adding word-by-word lyrics synchronization to IotaPlayer meant dealing with two incompatible timing formats, Polish punctuation, and a subtle CSS transition flicker.",
-    "readingTime": 5
+    "readingTime": 6
   },
   {
     "slug": "i-somehow-ended-up-building-a-blu-ray-ripping-setup",

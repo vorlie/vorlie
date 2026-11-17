@@ -5,6 +5,7 @@ import { LanyardProvider } from "../context/LanyardContext";
 
 import Home from "../pages/Home";
 import Projects from "../pages/Projects";
+import IotaPlayerPage from "../pages/IotaPlayerPage";
 import About from "../pages/About";
 import Blog from "../pages/Blog";
 import BlogPost from "../pages/BlogPost";
@@ -21,6 +22,9 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/projects" element={<Projects />} />
+            <Route path="/projects/iotaplayer" element={<IotaPlayerPage tab="overview" />} />
+            <Route path="/projects/iotaplayer/download" element={<IotaPlayerPage tab="download" />} />
+            <Route path="/projects/iotaplayer/changelog" element={<IotaPlayerPage tab="changelog" />} />
             <Route path="/about" element={<About />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
