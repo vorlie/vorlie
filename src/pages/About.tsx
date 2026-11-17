@@ -34,7 +34,7 @@ const currentProjects = [
 
 export default function About() {
   return (
-    <div className="about">
+    <div className="page about">
       <header className="about__header">
         <span className="about__eyebrow">ABOUT ME</span>
 
@@ -124,6 +124,8 @@ export default function About() {
             <a
               className="about__project"
               href={project.href}
+              target="_blank"
+              rel="noopener noreferrer"
               key={project.name}
             >
               <div>

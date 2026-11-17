@@ -1,6 +1,7 @@
 /* styles/globals.css */
 
 @import "./tokens.css";
+@import "./components.css";
 
 @import "./layout/shell.css";
 @import "./layout/mainframe.css";
@@ -25,8 +26,6 @@
 @import "./lanyard/timestamp.css";
 @import "./lanyard/presence.css";
 
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
-
 *,
 *::before,
 *::after {
@@ -45,10 +44,19 @@ body {
   background: var(--color-background);
   color: var(--color-text);
 
-  font-family:
-    Outfit;
+  font-family: var(--font-sans);
+  line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
 }
 
 button,
@@ -65,4 +73,20 @@ button {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+:where(a, button, input, textarea, select, [tabindex]):focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

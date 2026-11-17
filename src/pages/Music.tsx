@@ -42,21 +42,21 @@ export default function Music() {
   } = useLastFm(period);
 
   return (
-    <main className="page music-page">
-      <header className="music-page__header">
+    <div className="page music-page">
+      <header className="page-header">
         <div>
-          <div className="page-header__eyebrow">Last.fm</div>
+          <span className="page-header__eyebrow">Last.fm</span>
 
-          <h1>Music</h1>
+          <h1 className="page-header__title">Music</h1>
 
-          <p>What I've been listening to lately.</p>
+          <p className="page-header__description">What I've been listening to lately.</p>
         </div>
 
         <a
           href="https://www.last.fm/user/vorlie"
           target="_blank"
-          rel="noreferrer"
-          className="music-page__lastfm-link"
+          rel="noopener noreferrer"
+          className="button button--secondary"
         >
           <Headphones size={16} />
           Last.fm
@@ -143,6 +143,7 @@ export default function Music() {
             onClick={() => void refresh()}
             disabled={loading}
             title="Refresh"
+            aria-label="Refresh recent tracks"
           >
             <RefreshCw
               size={15}
@@ -196,7 +197,7 @@ export default function Music() {
           <h2>My favorites</h2>
         </div>
 
-        <div className="music-period__controls">
+        <div className="music-period__controls" role="group" aria-label="Time period">
           {periods.map((item) => (
             <button
               key={item.value}
@@ -334,6 +335,6 @@ export default function Music() {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

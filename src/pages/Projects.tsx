@@ -54,10 +54,10 @@ export default function Projects() {
       <MotionEntry />
 
       {!loading && !error && languages.length > 0 && (
-        <div className="project-filters">
+        <div className="filter-chips" role="group" aria-label="Filter by language">
           <button
             type="button"
-            className={language === "all" ? "active" : ""}
+            className={`filter-chip ${language === "all" ? "filter-chip--active" : ""}`}
             onClick={() => setLanguage("all")}
           >
             All
@@ -67,7 +67,7 @@ export default function Projects() {
             <button
               type="button"
               key={item}
-              className={language === item ? "active" : ""}
+              className={`filter-chip ${language === item ? "filter-chip--active" : ""}`}
               onClick={() => setLanguage(item)}
             >
               {item}

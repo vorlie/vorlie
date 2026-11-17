@@ -23,11 +23,11 @@
 
   overflow: hidden;
 
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-lg);
 
   box-shadow:
-    0 20px 60px rgba(0, 0, 0, 0.45),
-    0 0 0 1px rgba(255, 255, 255, 0.08);
+    var(--shadow-lg),
+    0 0 0 1px var(--color-border-strong);
 }
 
 .gallery-lightbox__image {
@@ -83,8 +83,8 @@
 
   padding: 0;
 
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: var(--radius-pill);
 
   background: rgba(255, 255, 255, 0.08);
   color: white;

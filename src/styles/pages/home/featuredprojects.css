@@ -1,69 +1,62 @@
 .featured-projects {
   display: flex;
   flex-direction: column;
-  gap: 24px;
-
-  margin-top: 32px;
+  gap: 20px;
 }
 
 .featured-projects__header {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-
   gap: 24px;
 }
 
 .featured-projects__header h2 {
-  margin: 5px 0 8px;
+  margin: 0 0 8px;
 
   color: var(--color-text);
 
-  font-size: clamp(24px, 3vw, 32px);
-  font-weight: 750;
-  letter-spacing: -0.03em;
+  font-size: clamp(1.45rem, 2.5vw, 1.95rem);
+  font-weight: 700;
+  letter-spacing: -0.025em;
 }
 
 .featured-projects__header p {
-  max-width: 560px;
-
+  max-width: 56ch;
   margin: 0;
 
   color: var(--color-text-secondary);
-
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.6;
-}
-
-.section-eyebrow {
-  color: var(--color-accent);
-
-  font-size: 10px;
-  font-weight: 750;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
 }
 
 .featured-projects__link {
   display: inline-flex;
   align-items: center;
   gap: 5px;
-
   flex: 0 0 auto;
 
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
   color: var(--color-text-secondary);
 
+  font-family: var(--font-display);
   font-size: 12px;
-  font-weight: 650;
-
+  font-weight: 600;
   text-decoration: none;
 
   transition:
-    color 150ms ease,
-    gap 150ms ease;
+    color var(--transition-fast),
+    background var(--transition-fast),
+    border-color var(--transition-fast),
+    gap var(--transition-fast);
 }
 
 .featured-projects__link:hover {
+  background: var(--color-surface-hover);
+  border-color: var(--color-border-strong);
   color: var(--color-accent);
   gap: 8px;
 }
@@ -71,5 +64,23 @@
 .featured-projects__grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 12px;
+  gap: 14px;
+}
+
+@media (max-width: 1024px) {
+  .featured-projects__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .featured-projects__header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .featured-projects__grid {
+    grid-template-columns: 1fr;
+  }
 }

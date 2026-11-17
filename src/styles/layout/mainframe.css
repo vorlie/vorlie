@@ -5,14 +5,8 @@
   overflow: hidden;
 
   background: var(--color-background-alt);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-xl);
-}
-
-@media (max-width: 768px) {
-  .main-frame {
-    border: none;
-    border-radius: 0;
-  }
 }
 
 .main-frame__content {
@@ -22,11 +16,16 @@
   overflow-y: auto;
   overflow-x: hidden;
 
-  padding: 32px;
+  padding: 36px 40px;
 }
 
 @media (max-width: 768px) {
+  .main-frame {
+    border: none;
+    border-radius: 0;
+  }
+
   .main-frame__content {
-    padding: 16px;
+    padding: 24px 16px var(--mobile-nav-clearance);
   }
 }

@@ -106,20 +106,20 @@ export default function BlogPost() {
 
   if (loading) {
     return (
-      <main className="page blog-post-page">
+      <div className="page blog-post-page">
         <div className="blog-state">
           <span className="blog-state__spinner" />
           Loading post...
         </div>
-      </main>
+      </div>
     );
   }
 
   if (!post) {
     return (
-      <main className="page blog-post-page">
+      <div className="page blog-post-page">
         <div className="blog-state">
-          <span className="material-symbols-rounded">article</span>
+          <span className="material-symbols-rounded" aria-hidden="true">article</span>
 
           <h1>Post not found</h1>
 
@@ -127,12 +127,12 @@ export default function BlogPost() {
             Back to blog
           </Link>
         </div>
-      </main>
+      </div>
     );
   }
 
   return (
-    <main className="page blog-post-page">
+    <article className="page blog-post-page">
       <Link to="/blog" className="blog-post__back">
         <span className="material-symbols-rounded">arrow_back</span>
         Blog
@@ -183,6 +183,6 @@ export default function BlogPost() {
           {post.readingTime} min read · {new Date(post.date).getFullYear()}
         </span>
       </footer>
-    </main>
+    </article>
   );
 }

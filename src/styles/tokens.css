@@ -1,49 +1,69 @@
 /* styles/tokens.css */
 
 :root {
+  /* Typography */
+  --font-display: "Google Sans", "Outfit", system-ui, -apple-system, sans-serif;
+  --font-sans: "Outfit", system-ui, -apple-system, sans-serif;
+  --font-mono: ui-monospace, "Cascadia Code", "Fira Code", monospace;
+
   /* Background */
   --color-background: #110d0d;
-  --color-background-alt: #1d1616;
+  --color-background-alt: #181212;
 
-  /* Surfaces */
-  --color-surface: #1b1515;
-  --color-surface-raised: #231b1b;
-  --color-surface-hover: #2b2222;
+  /* Surfaces (Material 3 tonal hierarchy) */
+  --color-surface: #1d1616;
+  --color-surface-raised: #241c1c;
+  --color-surface-hover: #2d2323;
 
-  /* Transparent surfaces */
-  --color-surface-transparent: rgb(27, 21, 21);
-  --color-surface-raised-transparent: rgb(35, 27, 27);
-  --color-surface-hover-transparent: rgb(43, 34, 34);
+  /* Transparent & glass surfaces */
+  --color-surface-transparent: rgba(29, 22, 22, 0.85);
+  --color-surface-raised-transparent: rgba(36, 28, 28, 0.9);
+  --color-surface-hover-transparent: rgba(45, 35, 35, 0.94);
+  --color-glass: rgba(29, 22, 22, 0.82);
+  --color-glass-strong: rgba(39, 30, 30, 0.92);
 
-  /* Stronger glass surfaces */
-  --color-glass: rgb(27, 21, 21);
+  /* Borders */
+  --color-border: rgba(255, 228, 228, 0.08);
+  --color-border-strong: rgba(255, 228, 228, 0.16);
+  --color-glass-border: rgba(255, 228, 228, 0.11);
 
   /* Text */
-  --color-text: #f4f1f1;
-  --color-text-secondary: #c4b5b5;
-  --color-text-muted: #7c6f6f;
+  --color-text: #f5f0f0;
+  --color-text-secondary: #c9b9b9;
+  --color-text-muted: #8c7b7b;
 
   /* Accent */
   --color-accent: #ffa7a7;
-  --color-accent-hover: #ffbaba;
+  --color-accent-hover: #ffbfbf;
+  --color-accent-on: #1a1012;
   --color-accent-muted: rgba(255, 167, 167, 0.14);
   --color-accent-subtle: rgba(255, 167, 167, 0.08);
 
   /* Overlay */
   --color-overlay: rgb(0 0 0 / 0.35);
-  --color-overlay-heavy: rgb(0 0 0 / 0.55);
+  --color-overlay-heavy: rgb(0 0 0 / 0.58);
+
+  /* Elevation */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.28);
+  --shadow-lg: 0 18px 48px rgba(0, 0, 0, 0.42);
 
   /* Layout */
-  --sidebar-width: 240px;
+  --sidebar-width: 244px;
   --shell-gap: 16px;
+  --content-max-width: 1180px;
+  --mobile-nav-clearance: 104px;
 
   /* Radius */
-  --radius-sm: 10px;
-  --radius-md: 14px;
-  --radius-lg: 20px;
-  --radius-xl: 26px;
+  --radius-xs: 8px;
+  --radius-sm: 12px;
+  --radius-md: 16px;
+  --radius-lg: 22px;
+  --radius-xl: 28px;
+  --radius-pill: 9999px;
 
   /* Motion */
-  --transition-fast: 140ms ease;
-  --transition-normal: 220ms ease;
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --transition-fast: 150ms var(--ease-standard);
+  --transition-normal: 240ms var(--ease-standard);
 }

@@ -50,7 +50,7 @@ export default function Blog() {
     : posts;
 
   return (
-    <main className="page blog-page">
+    <div className="page blog-page">
       <header className="page-header">
         <div>
           <div className="page-header__eyebrow">Writing</div>
@@ -63,12 +63,10 @@ export default function Blog() {
       </header>
 
       {tags.length > 0 && (
-        <div className="blog-tags">
+        <div className="filter-chips" role="group" aria-label="Filter posts by tag">
           <button
             type="button"
-            className={
-              selectedTag === null ? "blog-tag blog-tag--active" : "blog-tag"
-            }
+            className={`filter-chip ${selectedTag === null ? "filter-chip--active" : ""}`}
             onClick={() => setSelectedTag(null)}
           >
             All
@@ -78,9 +76,7 @@ export default function Blog() {
             <button
               type="button"
               key={tag}
-              className={
-                selectedTag === tag ? "blog-tag blog-tag--active" : "blog-tag"
-              }
+              className={`filter-chip ${selectedTag === tag ? "filter-chip--active" : ""}`}
               onClick={() => setSelectedTag(selectedTag === tag ? null : tag)}
             >
               #{tag}
@@ -140,6 +136,6 @@ export default function Blog() {
           ))}
         </div>
       )}
-    </main>
+    </div>
   );
 }

@@ -56,15 +56,17 @@
 }
 
 .motion-tags li {
-  padding: 4px 9px;
+  padding: 4px 10px;
 
-  border-radius: 6px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
 
-  background: var(--color-accent-muted);
+  background: var(--color-accent-subtle);
   color: var(--color-accent);
 
+  font-family: var(--font-display);
   font-size: 11px;
-  font-weight: 650;
+  font-weight: 600;
 }
 
 .motion-section {
@@ -155,20 +157,23 @@
   min-width: 0;
   overflow: hidden;
 
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
 
-  background: var(--color-glass);
+  background: var(--color-surface);
   color: inherit;
 
   transition:
     transform var(--transition-fast),
+    border-color var(--transition-fast),
     background var(--transition-fast);
 }
 
 .motion-card:hover {
   transform: translateY(-2px);
 
-  background: var(--color-surface-hover-transparent);
+  border-color: var(--color-border-strong);
+  background: var(--color-surface-raised);
 }
 
 .motion-card__media {
@@ -599,26 +604,25 @@
   align-items: center;
   gap: 14px;
 
-  padding: 14px 18px;
+  padding: 16px 20px;
 
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
 
-  background: var(--color-glass);
+  background: var(--color-surface);
   color: inherit;
 
   transition:
     transform var(--transition-fast),
+    border-color var(--transition-fast),
     background var(--transition-fast);
 }
 
 .motion-entry:hover {
   transform: translateY(-2px);
 
-  background: var(--color-surface-hover-transparent);
-}
-
-.home .motion-entry {
-  margin-top: 12px;
+  border-color: var(--color-border-strong);
+  background: var(--color-surface-raised);
 }
 
 .motion-entry__icon {
@@ -697,14 +701,6 @@
 
 
 /* ---------- Responsive ---------- */
-
-@media (max-width: 768px) {
-  /* Clear the fixed mobile nav. */
-  .motion-page,
-  .motion-project {
-    padding-bottom: 104px;
-  }
-}
 
 @media (max-width: 600px) {
   .motion-card__body,

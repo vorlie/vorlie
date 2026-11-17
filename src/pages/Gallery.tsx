@@ -101,6 +101,9 @@ export default function Gallery() {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           className="gallery-lightbox"
+          role="dialog"
+          aria-modal="true"
+          aria-label={images[selectedIndex].title}
           onClick={() => setSelectedIndex(null)}
         >
           <button
@@ -187,18 +190,16 @@ export default function Gallery() {
   );
 
   return (
-    <div className="gallery-page">
-      <div className="gallery-page__header">
-        <p className="gallery-page__eyebrow">Arasaka Dataterm</p>
-
-        <h1 className="gallery-page__title">Gallery</h1>
-
-        <div className="gallery-page__accent" />
-
-        <p className="gallery-page__description">
-          Property of Arasaka Corporation
-        </p>
-      </div>
+    <div className="page gallery-page">
+      <header className="page-header">
+        <div>
+          <span className="page-header__eyebrow">Arasaka Dataterm</span>
+          <h1 className="page-header__title">Gallery</h1>
+          <p className="page-header__description">
+            Property of Arasaka Corporation
+          </p>
+        </div>
+      </header>
 
       {isLoading ? (
         <div className="gallery-page__loading">
@@ -218,6 +219,7 @@ export default function Gallery() {
               key={image.id}
               type="button"
               className="gallery-card"
+              aria-label={`View ${image.title}`}
               initial={{ opacity: 0, scale: 0.96 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{

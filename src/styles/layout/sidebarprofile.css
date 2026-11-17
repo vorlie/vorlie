@@ -1,83 +1,85 @@
 .sidebar-profile {
-    display: flex;
-    align-items: center;
-    gap: 11px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
 
-    padding: 8px 9px 22px;
+  padding: 10px 10px 18px;
+  margin-bottom: 4px;
+  border-bottom: 1px solid var(--color-border);
 }
 
 .sidebar-profile__avatar-wrapper {
-    position: relative;
-    flex: 0 0 auto;
+  position: relative;
+  flex: 0 0 auto;
 }
 
 .sidebar-profile__avatar {
-    display: block;
+  display: block;
 
-    width: 40px;
-    height: 40px;
+  width: 42px;
+  height: 42px;
 
-    border-radius: 12px;
+  border-radius: var(--radius-sm);
 
-    object-fit: cover;
+  object-fit: cover;
 
-    border: 1px solid var(--color-border-strong);
+  border: 1px solid var(--color-border-strong);
 }
 
 .sidebar-profile__status {
-    position: absolute;
-    right: -2px;
-    bottom: -2px;
+  position: absolute;
+  right: -2px;
+  bottom: -2px;
 
-    width: 12px;
-    height: 12px;
+  width: 12px;
+  height: 12px;
 
-    border: 3px solid var(--color-surface);
-
-    border-radius: 50%;
+  border: 3px solid var(--color-surface);
+  border-radius: 50%;
 }
 
 .sidebar-profile__status--online {
-    background: #23a55a;
+  background: #23a55a;
 }
 
 .sidebar-profile__status--idle {
-    background: #f0b232;
+  background: #f0b232;
 }
 
 .sidebar-profile__status--dnd {
-    background: #f23f42;
+  background: #f23f42;
 }
 
 .sidebar-profile__status--offline {
-    background: #80848e;
+  background: #80848e;
 }
 
 .sidebar-profile__info {
-    min-width: 0;
+  min-width: 0;
 
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 
 .sidebar-profile__info strong {
-    overflow: hidden;
+  overflow: hidden;
 
-    color: var(--color-text);
+  color: var(--color-text);
 
-    font-size: 13px;
-    font-weight: 700;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .sidebar-profile__info span {
-    overflow: hidden;
+  overflow: hidden;
 
-    color: var(--color-text-muted);
+  color: var(--color-text-muted);
 
-    font-size: 11px;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+  font-size: 11px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }

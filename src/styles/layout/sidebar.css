@@ -4,9 +4,11 @@
 
   display: flex;
   flex-direction: column;
+  gap: 8px;
 
   padding: 20px 14px;
-  border: 1px solid var(--color-glass-border);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-xl);
 }
 
@@ -16,59 +18,35 @@
   }
 }
 
-.sidebar__header {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-
-  padding: 8px 10px 24px;
-}
-
-.sidebar__logo {
-  width: 38px;
-  height: 38px;
-
-  display: grid;
-  place-items: center;
-
-  border-radius: var(--radius-md);
-
-  background: var(--color-accent-muted);
-  color: var(--color-accent);
-
-  font-size: 16px;
-  font-weight: 800;
-}
-
-.sidebar__name {
-  font-size: 15px;
-  font-weight: 750;
-  letter-spacing: -0.01em;
-}
-
-.sidebar__subtitle {
-  margin-top: 2px;
-
-  color: var(--color-text-muted);
-
-  font-size: 11px;
-}
-
 .sidebar__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  overflow-y: auto;
+}
+
+.sidebar__group {
   display: flex;
   flex-direction: column;
   gap: 4px;
 }
 
 .sidebar__section-label {
-  padding: 8px 12px;
+  padding: 4px 14px 6px;
 
   color: var(--color-text-muted);
 
+  font-family: var(--font-display);
   font-size: 10px;
-  font-weight: 750;
+  font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
+}
+
+.sidebar__items {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .sidebar__item {
@@ -76,19 +54,20 @@
 
   display: flex;
   align-items: center;
-  gap: 11px;
+  gap: 12px;
 
   width: 100%;
-  min-height: 42px;
-  padding: 0 12px;
+  min-height: 44px;
+  padding: 0 14px;
 
   border: 1px solid transparent;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-pill);
 
   background: transparent;
   color: var(--color-text-secondary);
 
-  font-size: 15px;
+  font-family: var(--font-display);
+  font-size: 14px;
   font-weight: 600;
   text-decoration: none;
 
@@ -105,7 +84,7 @@
 
 .sidebar__item--active {
   background: var(--color-accent-muted);
-  border-color: var(--color-border);
+  border-color: rgba(255, 167, 167, 0.16);
   color: var(--color-accent);
 }
 
@@ -121,20 +100,6 @@
   line-height: 1;
 }
 
-.sidebar__item--active::before {
-  content: "";
-
-  position: absolute;
-  left: -1px;
-
-  width: 3px;
-  height: 18px;
-
-  border-radius: 0 3px 3px 0;
-
-  background: var(--color-accent);
-}
-
 .sidebar__footer {
   margin-top: auto;
 
@@ -142,7 +107,7 @@
   flex-direction: column;
   gap: 4px;
 
-  padding-top: 20px;
+  padding-top: 14px;
 
   border-top: 1px solid var(--color-border);
 }

@@ -2,20 +2,22 @@
   position: fixed;
   left: 12px;
   right: 12px;
-  bottom: 12px;
+  bottom: max(12px, env(safe-area-inset-bottom));
   z-index: 1000;
 
   display: grid;
   grid-template-columns: repeat(6, 1fr);
+  gap: 4px;
 
-  padding: 8px;
+  padding: 6px;
+  background: var(--color-glass);
   border: 1px solid var(--color-glass-border);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-xl);
 
-  backdrop-filter: blur(24px) saturate(1.15);
-  -webkit-backdrop-filter: blur(24px) saturate(1.15);
+  backdrop-filter: blur(24px) saturate(1.2);
+  -webkit-backdrop-filter: blur(24px) saturate(1.2);
 
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+  box-shadow: var(--shadow-lg);
 }
 
 .mobile-nav__item {
@@ -58,6 +60,7 @@
   overflow: hidden;
   max-width: 100%;
 
+  font-family: var(--font-display);
   font-size: 10px;
   font-weight: 600;
   line-height: 1.2;

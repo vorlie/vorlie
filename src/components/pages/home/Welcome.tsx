@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import LanyardPresence from "../presence/LanyardPresence";
 import { useLanyard } from "../../../context/LanyardContext";
 
@@ -73,13 +74,13 @@ export default function Welcome() {
         </div>
 
         <div className="welcome__actions">
-          <a href="/projects" className="button button--primary">
+          <Link to="/projects" className="button button--primary">
             View projects
-          </a>
+          </Link>
 
-          <a href="/about" className="button button--secondary">
+          <Link to="/about" className="button button--secondary">
             About me
-          </a>
+          </Link>
         </div>
       </div>
 

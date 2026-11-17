@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 
 interface Project {
@@ -50,13 +51,13 @@ export default function FeaturedProjects() {
           </p>
         </div>
 
-        <a
-          href="/projects"
+        <Link
+          to="/projects"
           className="featured-projects__link"
         >
           View all
           <ArrowUpRight size={15} />
-        </a>
+        </Link>
       </header>
 
       <div className="featured-projects__grid">

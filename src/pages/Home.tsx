@@ -6,7 +6,7 @@ import MotionEntry from "../components/pages/motion/MotionEntry";
 export default function Home() {
 
   return (
-    <div className="home">
+    <div className="page home">
       <Welcome />
       <FeaturedProjects />
       <MotionEntry />
