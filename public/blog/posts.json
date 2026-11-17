@@ -1,5 +1,35 @@
 [
   {
+    "slug": "blogpost_volume_initialization",
+    "title": "Fixing Startup Volume Spikes Across MPV and Web Audio in Electron",
+    "date": "2026-11-17",
+    "tags": [
+      "electron",
+      "mpv",
+      "web-audio",
+      "typescript",
+      "audio",
+      "iotaplayer"
+    ],
+    "excerpt": "How async initialization races between settings hydration, an MPV IPC socket, and HTMLAudioElement caused cold-launch volume blasts—and how a single volume coordinator fixed it.",
+    "readingTime": 4
+  },
+  {
+    "slug": "blogpost_word_level_lyrics",
+    "title": "Implementing Word-Level Lyrics Sync (and Why My First Karaoke Animation Flickered)",
+    "date": "2026-11-17",
+    "tags": [
+      "electron",
+      "react",
+      "typescript",
+      "css",
+      "lyrics",
+      "iotaplayer"
+    ],
+    "excerpt": "Adding word-by-word lyrics synchronization to IotaPlayer meant dealing with two incompatible timing formats, Polish punctuation, and a subtle CSS transition flicker.",
+    "readingTime": 5
+  },
+  {
     "slug": "i-somehow-ended-up-building-a-blu-ray-ripping-setup",
     "title": "I Somehow Ended Up Building a Blu-ray Ripping Setup",
     "date": "2026-08-25",
