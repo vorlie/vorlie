@@ -23,6 +23,7 @@ export default function App() {
             <Route path="/" element={<Home />} />
             <Route path="/projects" element={<Projects />} />
             <Route path="/projects/iotaplayer" element={<IotaPlayerPage tab="overview" />} />
+            <Route path="/projects/iotaplayer/gallery" element={<IotaPlayerPage tab="gallery" />} />
             <Route path="/projects/iotaplayer/download" element={<IotaPlayerPage tab="download" />} />
             <Route path="/projects/iotaplayer/changelog" element={<IotaPlayerPage tab="changelog" />} />
             <Route path="/about" element={<About />} />

@@ -1,101 +1,108 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import {
   ArrowLeft,
   AudioLines,
   Database,
   Download,
   ExternalLink,
+  Gauge,
+  Globe,
+  Image as ImageIcon,
   Layers,
   Mic2,
-  Shuffle,
-  Sliders,
+  X,
 } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
+import {
+  FALLBACK_METADATA,
+  fetchIotaPlayerData,
+  formatBytes,
+  getRawAssetUrl,
+  GITHUB_RELEASES_URL,
+  GITHUB_REPO_URL,
+  groupReleaseAssets,
+  type GitHubRelease,
+  type IotaMetadata,
+  type IotaScreenshot,
+} from "../utils/iotaplayer";
 import "../styles/pages/iotaplayer.css";
 
-export type IotaPlayerTab = "overview" | "download" | "changelog";
+export type IotaPlayerTab = "overview" | "gallery" | "download" | "changelog";
 
 interface IotaPlayerPageProps {
   tab?: IotaPlayerTab;
 }
 
-const GITHUB_REPO = "https://github.com/vorlie/iotaplayer-rewrite";
-const GITHUB_RELEASES = `${GITHUB_REPO}/releases`;
+const HIGHLIGHT_ICONS: Record<string, typeof AudioLines> = {
+  "playback-engine": AudioLines,
+  "lyrics-engine": Mic2,
+  "fullscreen-modes": Layers,
+  "library-insights": Database,
+  "low-performance-mode": Gauge,
+  "desktop-integration": Globe,
+};
 
-const FEATURES = [
+const FALLBACK_DOWNLOAD_TARGETS = [
   {
-    title: "Dual Playback Engine",
-    description:
-      "Uses MPV over IPC for broad lossless/lossy format support, with an automatic Browser / Web Audio fallback featuring a 10-band parametric EQ and real-time spectrum visualizer.",
-    Icon: AudioLines,
-  },
-  {
-    title: "Word- & Line-Synchronized Lyrics",
-    description:
-      "Parses Lyricsfile 1.0 (.lyricsfile.yaml), Enhanced LRC, standard LRC, embedded SYLT/USLT/Vorbis tags, and plain .txt sidecars with click-to-word seeking.",
-    Icon: Mic2,
-  },
-  {
-    title: "Fisher–Yates Shuffle & History",
-    description:
-      "Exhaustive per-cycle shuffle backed by stable queue-entry IDs, true Previous/Next history navigation, and cycle-boundary Repeat All protection.",
-    Icon: Shuffle,
-  },
-  {
-    title: "Fast SQLite Library",
-    description:
-      "Local-first indexing of tracks, albums, artists, and artwork with multi-field search, drag-and-drop playlists, favorites, and per-track resume positions.",
-    Icon: Database,
-  },
-  {
-    title: "Immersive Now Playing",
-    description:
-      "Switch between a 3-pane resizable Now Playing workspace and a blurred-artwork Fullscreen overlay with Split, Artwork, and Lyrics focus modes.",
-    Icon: Layers,
-  },
-  {
-    title: "Desktop & OS Integration",
-    description:
-      "Race-free startup volume hydration, OS Media Session hardware key controls, single-instance focus handling, and Discord Rich Presence.",
-    Icon: Sliders,
-  },
-];
-
-const DOWNLOAD_TARGETS = [
-  {
+    key: "windows" as const,
     platform: "Windows 10 / 11",
     arch: "x64",
-    files: [
-      "IotaPlayer-1.0.0-win32-x64-setup.exe",
-      "IotaPlayer-win32-x64-1.0.0.zip",
-    ],
     note: "Squirrel installer with Start Menu shortcut & uninstaller, plus portable zip.",
   },
   {
+    key: "macos" as const,
     platform: "macOS 12+",
     arch: "Apple Silicon (arm64) & Intel (x64)",
-    files: [
-      "IotaPlayer-1.0.0-mac-arm64.dmg",
-      "IotaPlayer-1.0.0-mac-x64.dmg",
-    ],
     note: "Drag-and-drop DMG bundles with pl.vorlie.iotaplayer bundle identity.",
   },
   {
+    key: "linux" as const,
     platform: "Linux",
     arch: "x64",
-    files: [
-      "IotaPlayer-1.0.0-linux-x64.AppImage",
-      "IotaPlayer-1.0.0-linux-x64.deb",
-    ],
     note: "Portable AppImage and Debian package with pl.vorlie.iotaplayer.desktop.",
   },
 ];
 
 export default function IotaPlayerPage({ tab = "overview" }: IotaPlayerPageProps) {
+  const [metadata, setMetadata] = useState<IotaMetadata>(FALLBACK_METADATA);
+  const [packageVersion, setPackageVersion] = useState<string | null>(null);
+  const [releases, setReleases] = useState<GitHubRelease[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [activeShot, setActiveShot] = useState<IotaScreenshot | null>(null);
+
   useEffect(() => {
     document.querySelector(".main-frame__content")?.scrollTo({ top: 0 });
   }, [tab]);
+
+  useEffect(() => {
+    let cancelled = false;
+    void fetchIotaPlayerData()
+      .then((data) => {
+        if (cancelled) return;
+        setMetadata(data.metadata);
+        setPackageVersion(data.packageVersion);
+        setReleases(data.releases);
+      })
+      .finally(() => {
+        if (!cancelled) setLoading(false);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  const latestRelease = releases[0] ?? null;
+  const displayVersion =
+    latestRelease?.tag_name ??
+    (packageVersion ? `v${packageVersion}` : "Latest");
+  const repoUrl = metadata.links?.github || GITHUB_REPO_URL;
+  const releasesUrl = metadata.links?.releases || GITHUB_RELEASES_URL;
+  const groupedAssets = latestRelease
+    ? groupReleaseAssets(latestRelease.assets ?? [])
+    : null;
 
   return (
     <div className="page iotaplayer-page">
@@ -114,12 +121,11 @@ export default function IotaPlayerPage({ tab = "overview" }: IotaPlayerPageProps
             className="iotaplayer-hero__icon"
           />
           <div>
-            <span className="iotaplayer-hero__eyebrow">Desktop Music Player · v1.0.0</span>
-            <h1 className="iotaplayer-hero__title">IotaPlayer</h1>
-            <p className="iotaplayer-hero__subtitle">
-              A modern desktop music player focused on local music libraries,
-              seamless playback, word-synchronized lyrics, and a native-feeling interface.
-            </p>
+            <span className="iotaplayer-hero__eyebrow">
+              Desktop Music Player · {displayVersion}
+            </span>
+            <h1 className="iotaplayer-hero__title">{metadata.name}</h1>
+            <p className="iotaplayer-hero__subtitle">{metadata.tagline}</p>
           </div>
         </div>
 
@@ -129,7 +135,7 @@ export default function IotaPlayerPage({ tab = "overview" }: IotaPlayerPageProps
             Downloads
           </Link>
           <a
-            href={GITHUB_REPO}
+            href={repoUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="button button--secondary"
@@ -149,6 +155,12 @@ export default function IotaPlayerPage({ tab = "overview" }: IotaPlayerPageProps
           Overview
         </Link>
         <Link
+          to="/projects/iotaplayer/gallery"
+          className={`filter-chip ${tab === "gallery" ? "filter-chip--active" : ""}`}
+        >
+          Gallery
+        </Link>
+        <Link
           to="/projects/iotaplayer/download"
           className={`filter-chip ${tab === "download" ? "filter-chip--active" : ""}`}
         >
@@ -164,29 +176,40 @@ export default function IotaPlayerPage({ tab = "overview" }: IotaPlayerPageProps
 
       {tab === "overview" && (
         <>
+          {metadata.heroImage && (
+            <section className="iotaplayer-preview">
+              <img
+                src={getRawAssetUrl(metadata.heroImage, metadata.repo)}
+                alt={`${metadata.name} preview`}
+                className="iotaplayer-preview__img"
+              />
+              <div className="iotaplayer-preview__footer">
+                <span>{metadata.summary}</span>
+                <Link to="/projects/iotaplayer/gallery" className="button button--secondary">
+                  <ImageIcon size={14} />
+                  View Gallery ({metadata.screenshots.length})
+                </Link>
+              </div>
+            </section>
+          )}
+
           <section className="iotaplayer-grid">
-            {FEATURES.map(({ title, description, Icon }) => (
-              <article key={title} className="iotaplayer-card">
-                <div className="iotaplayer-card__icon">
-                  <Icon size={18} />
-                </div>
-                <h2>{title}</h2>
-                <p>{description}</p>
-              </article>
-            ))}
+            {metadata.highlights.map((item) => {
+              const Icon = HIGHLIGHT_ICONS[item.id] ?? AudioLines;
+              return (
+                <article key={item.id} className="iotaplayer-card">
+                  <div className="iotaplayer-card__icon">
+                    <Icon size={18} />
+                  </div>
+                  <h2>{item.title}</h2>
+                  <p>{item.description}</p>
+                </article>
+              );
+            })}
           </section>
 
           <section className="iotaplayer-specs" aria-label="Technology stack">
-            {[
-              "Electron 44",
-              "React 19",
-              "TypeScript",
-              "SQLite (better-sqlite3)",
-              "MPV IPC",
-              "Web Audio API",
-              "Zustand",
-              "pl.vorlie.iotaplayer",
-            ].map((item) => (
+            {metadata.techStack.map((item) => (
               <span key={item} className="iotaplayer-spec-pill">
                 {item}
               </span>
@@ -195,78 +218,187 @@ export default function IotaPlayerPage({ tab = "overview" }: IotaPlayerPageProps
         </>
       )}
 
+      {tab === "gallery" && (
+        <section className="iotaplayer-gallery">
+          {metadata.screenshots.map((shot) => (
+            <button
+              key={shot.path}
+              type="button"
+              className="iotaplayer-shot"
+              onClick={() => setActiveShot(shot)}
+            >
+              <img
+                src={getRawAssetUrl(shot.path, metadata.repo)}
+                alt={shot.title}
+                loading="lazy"
+              />
+              <strong>{shot.title}</strong>
+              <span>{shot.caption}</span>
+            </button>
+          ))}
+        </section>
+      )}
+
       {tab === "download" && (
         <>
           <div className="iotaplayer-note">
             <strong>Pre-release / Unsigned Notice:</strong> Initial builds are unsigned.
             Windows SmartScreen or macOS Gatekeeper may show an unrecognized-publisher prompt
-            on first launch. Verify downloads against <code>SHA256SUMS.txt</code> on GitHub Releases.
-            Installing <code>mpv</code> on your system <code>PATH</code> is recommended for full codec support.
+            on first launch.
+            {groupedAssets?.checksums ? (
+              <>
+                {" "}
+                Verify downloads against{" "}
+                <a
+                  href={groupedAssets.checksums.browser_download_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <code>{groupedAssets.checksums.name}</code>
+                </a>
+                .
+              </>
+            ) : (
+              <>
+                {" "}
+                Verify downloads against <code>SHA256SUMS.txt</code> on GitHub Releases.
+              </>
+            )}{" "}
+            Installing <code>mpv</code> on your system <code>PATH</code> is recommended for full
+            codec support.
           </div>
 
           <section className="iotaplayer-downloads">
-            {DOWNLOAD_TARGETS.map((target) => (
-              <article key={target.platform} className="iotaplayer-download-card">
-                <div>
-                  <h3>{target.platform}</h3>
-                  <div className="iotaplayer-download-card__meta">{target.arch}</div>
-                  <p style={{ marginTop: 10, fontSize: 13, color: "var(--color-text-secondary)", lineHeight: 1.55 }}>
-                    {target.note}
-                  </p>
-                  <div className="iotaplayer-download-card__files" style={{ marginTop: 12 }}>
-                    {target.files.map((file) => (
-                      <span key={file}>{file}</span>
-                    ))}
-                  </div>
-                </div>
+            {FALLBACK_DOWNLOAD_TARGETS.map((target) => {
+              const assets = groupedAssets?.[target.key] ?? [];
+              return (
+                <article key={target.platform} className="iotaplayer-download-card">
+                  <div>
+                    <h3>{target.platform}</h3>
+                    <div className="iotaplayer-download-card__meta">
+                      {target.arch}
+                      {latestRelease ? ` · ${latestRelease.tag_name}` : ""}
+                    </div>
+                    <p
+                      style={{
+                        marginTop: 10,
+                        fontSize: 13,
+                        color: "var(--color-text-secondary)",
+                        lineHeight: 1.55,
+                      }}
+                    >
+                      {target.note}
+                    </p>
 
-                <a
-                  href={GITHUB_RELEASES}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="button button--primary"
-                >
-                  <Download size={14} />
-                  Get on GitHub Releases
-                </a>
-              </article>
-            ))}
+                    {assets.length > 0 && (
+                      <div className="iotaplayer-asset-links">
+                        {assets.map((asset) => (
+                          <a
+                            key={asset.name}
+                            href={asset.browser_download_url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="iotaplayer-asset-link"
+                          >
+                            <span>{asset.name}</span>
+                            <span>{formatBytes(asset.size)}</span>
+                          </a>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+
+                  <a
+                    href={latestRelease?.html_url ?? releasesUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="button button--primary"
+                  >
+                    <Download size={14} />
+                    {assets.length > 0 ? "Release Page" : "Get on GitHub Releases"}
+                  </a>
+                </article>
+              );
+            })}
           </section>
         </>
       )}
 
       {tab === "changelog" && (
         <section className="iotaplayer-changelog">
-          <article className="iotaplayer-release">
-            <div className="iotaplayer-release__header">
-              <h2>v1.0.0-rc.1</h2>
-              <span className="iotaplayer-release__date">2026-11-17</span>
+          {loading && releases.length === 0 ? (
+            <div className="iotaplayer-note">Loading releases from GitHub…</div>
+          ) : releases.length > 0 ? (
+            releases.map((release) => (
+              <article key={release.id} className="iotaplayer-release">
+                <div className="iotaplayer-release__header">
+                  <h2>
+                    <a
+                      href={release.html_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{ color: "inherit", textDecoration: "none" }}
+                    >
+                      {release.name || release.tag_name}
+                    </a>
+                  </h2>
+                  <span className="iotaplayer-release__date">
+                    {release.published_at?.slice(0, 10)}
+                  </span>
+                </div>
+                <div className="iotaplayer-markdown">
+                  <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                    {release.body || "_No release notes provided._"}
+                  </ReactMarkdown>
+                </div>
+              </article>
+            ))
+          ) : (
+            <div className="iotaplayer-note">
+              Unable to load live releases right now.{" "}
+              <a href={releasesUrl} target="_blank" rel="noopener noreferrer">
+                View all releases on GitHub
+              </a>
+              .
             </div>
-            <ul>
-              <li>
-                Added custom <strong>Harmonic Pillar</strong> cross-platform app icons
-                (<code>.ico</code>, <code>.icns</code>, Linux PNG/SVG) and Windows AppUserModelID{" "}
-                <code>pl.vorlie.iotaplayer</code>.
-              </li>
-              <li>
-                Implemented word-level lyrics synchronization for <strong>Lyricsfile 1.0</strong>{" "}
-                and <strong>Enhanced LRC</strong> with click-to-word seeking and zero-flicker rendering.
-              </li>
-              <li>
-                Redesigned shuffle with a Fisher–Yates permutation deck, stable queue-entry IDs,
-                and real <code>Previous</code>/<code>Next</code> playback history.
-              </li>
-              <li>
-                Fixed <code>repeatMode === &apos;one&apos;</code> auto-resume on EOF and eliminated
-                cold-launch startup volume spikes across MPV and Web Audio backends.
-              </li>
-              <li>
-                Enforced single-instance locking, production Content Security Policy, transactional
-                SQLite migrations, and automated cross-platform GitHub Actions releases.
-              </li>
-            </ul>
-          </article>
+          )}
         </section>
+      )}
+
+      {activeShot && (
+        <div
+          className="iotaplayer-lightbox"
+          role="dialog"
+          aria-modal="true"
+          aria-label={activeShot.title}
+          onClick={() => setActiveShot(null)}
+        >
+          <div
+            className="iotaplayer-lightbox__dialog"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="iotaplayer-lightbox__meta">
+              <div>
+                <strong>{activeShot.title}</strong>
+                <div style={{ fontSize: 12.5, color: "var(--color-text-secondary)" }}>
+                  {activeShot.caption}
+                </div>
+              </div>
+              <button
+                type="button"
+                className="button button--secondary"
+                onClick={() => setActiveShot(null)}
+                aria-label="Close preview"
+              >
+                <X size={14} />
+              </button>
+            </div>
+            <img
+              src={getRawAssetUrl(activeShot.path, metadata.repo)}
+              alt={activeShot.title}
+            />
+          </div>
+        </div>
       )}
     </div>
   );
